@@ -15,7 +15,7 @@ const Footer = () => {
               <span className="text-xl font-poppins font-bold">MBACIO</span>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Making I.T. Easy so you can focus on growing your business. Trusted by manufacturers, law firms, and CPA practices across Chicago.
+              Making I.T. Easy so you can focus on growing your business. Trusted by manufacturers, law firms, and CPA practices nationwide.
             </p>
             <div className="bg-accent/20 text-accent px-4 py-2 rounded-lg inline-block">
               <span className="font-semibold">🔒 Guaranteed Confidentiality. Always.</span>
@@ -55,15 +55,15 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0" />
                 <div className="text-gray-300">
-                  <div>Glenview, Illinois</div>
-                  <div>Serving Chicago Metro</div>
+                  <div>2515 Waukegan Road</div>
+                  <div>Bannockburn, Illinois 60015</div>
                 </div>
               </div>
               
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="tel:+1-555-MBACIO-1" className="text-gray-300 hover:text-accent transition-colors">
-                  (555) MBACIO-1
+                <a href="tel:+1-773-657-2300" className="text-gray-300 hover:text-accent transition-colors">
+                  (773) 657-2300
                 </a>
               </div>
               
@@ -78,10 +78,22 @@ const Footer = () => {
             <div className="mt-6">
               <h4 className="font-semibold mb-3">Business Hours</h4>
               <div className="text-gray-300 text-sm space-y-1">
-                <div>Monday - Friday: 8:00 AM - 6:00 PM</div>
+                <div>Monday - Friday: 9:00 AM - 5:00 PM</div>
                 <div>Emergency Support: 24/7</div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Warranty Section */}
+        <div className="border-t border-gray-700 pt-8 mb-8">
+          <div className="bg-navy/30 rounded-lg p-6">
+            <h3 className="text-xl font-poppins font-semibold mb-4 text-accent">60-Day Satisfaction Warranty</h3>
+            <p className="text-gray-300 leading-relaxed">
+              We guarantee complete satisfaction with our IT services for 60 days from project completion. 
+              If you're not satisfied, we'll address any issues at no additional cost. 
+              <span className="text-accent font-medium"> Warranty excludes issues from undisclosed changes, configurations, or vendor modifications not communicated to MBACIO during onboarding.</span>
+            </p>
           </div>
         </div>
 
@@ -89,7 +101,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              © 2024 MBACIO. All rights reserved. • IT Support for Growing Businesses
+              © 2024 MBACIO, LLC. All rights reserved. • IT Support for Growing Businesses
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-accent transition-colors">Privacy Policy</a>

@@ -5,29 +5,34 @@ import { Button } from '@/components/ui/button';
 const WhyMBACIO = () => {
   const benefits = [
     {
-      title: "Expense Optimization",
-      description: "Cut IT costs by 20-40% through strategic vendor consolidation and efficient resource allocation.",
-      metric: "20-40% Cost Reduction"
+      title: "Your Strategic IT Partners",
+      description: "We go beyond IT—we're your trusted allies in business development, crafting milestone-driven strategies for sustainable growth.",
+      metric: "Strategic Partnership"
     },
     {
       title: "Vendor Consolidation", 
-      description: "Simplify your IT ecosystem with fewer vendors, clearer accountability, and streamlined support.",
+      description: "Simplify your IT ecosystem with fewer vendors, clearer accountability, and streamlined support—all aligned with your business objectives.",
       metric: "Single Point of Contact"
     },
     {
-      title: "Automation & AI Agents",
-      description: "Deploy intelligent automation that handles routine tasks, freeing your team for strategic work.",
+      title: "Automation & AI Solutions",
+      description: "Deploy intelligent automation that handles routine tasks, freeing your team for strategic work that drives business forward.",
       metric: "80% Less Manual Work"
     },
     {
-      title: "Next-Gen Dashboards",
-      description: "Real-time insights and proactive alerts that keep you ahead of problems before they impact operations.",
-      metric: "24/7 Monitoring"
+      title: "Cybersecurity & Compliance",
+      description: "Safeguard your business against cyber threats and stay compliant with industry regulations using cutting-edge technologies.",
+      metric: "24/7 Protection"
     },
     {
       title: "Proactive Problem Resolution",
-      description: "We detect and resolve IT issues before they impact your operations or your reputation.",
+      description: "We detect and resolve IT issues before they impact your operations—so you can rest easy while we handle the demanding back-end functions.",
       metric: "99.9% Uptime"
+    },
+    {
+      title: "60-Day Satisfaction Warranty",
+      description: "Complete peace of mind with our comprehensive warranty—we stand behind every solution we deliver.",
+      metric: "Guaranteed Results"
     }
   ];
 
@@ -36,10 +41,11 @@ const WhyMBACIO = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-poppins font-bold mb-6">
-            Why MBACIO?
+            What Makes Us Unique
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We don't just fix problems—we prevent them. Our proactive approach ensures your business runs smoothly while you focus on growth.
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto">
+            Your Strategic Partners for Business Growth Across Finance, Real Estate, and Manufacturing! 
+            We craft tailored solutions for networking, hardware, and software, aligning technology seamlessly with your business objectives.
           </p>
         </div>
 
@@ -53,7 +59,7 @@ const WhyMBACIO = () => {
                 <p className="text-gray-300 mb-4 leading-relaxed">
                   {benefit.description}
                 </p>
-                <div className="text-2xl font-poppins font-bold text-white">
+                <div className="text-lg font-poppins font-bold text-white">
                   {benefit.metric}
                 </div>
               </CardContent>
@@ -61,12 +67,29 @@ const WhyMBACIO = () => {
           ))}
         </div>
 
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-poppins font-bold mb-4 text-accent">Our Mission</h3>
+              <p className="text-gray-300 leading-relaxed">
+                At MBACIO, we are dedicated to delivering affordable, high-touch solutions that enable our clients to streamline systems, protect their data, and drive their business forward. Leave the demanding back-end functions and infrastructure in our capable hands, so you can rest easy at night.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-2xl font-poppins font-bold mb-4 text-accent">Our Vision</h3>
+              <p className="text-gray-300 leading-relaxed">
+                To provide innovative and efficient solutions for businesses seeking to enhance their performance and profitability. We offer a one-stop destination for all your needs, helping you navigate challenges and drive your business to new heights.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="text-center">
           <Button 
             size="lg" 
             className="bg-gradient-yellow text-navy hover:opacity-90 font-semibold text-lg px-8 py-6"
           >
-            See How We Can Help Your Business
+            Partner With Us for Strategic Growth
           </Button>
         </div>
       </div>
