@@ -1,4 +1,3 @@
-
 import { Headphones, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -10,7 +9,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <img
-                src="/lovable-uploads/ec151905-4eae-4fed-8284-05f239474d3c.png"
+                src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
                 alt="MBACIO Logo"
                 className="h-12 w-auto"
                 style={{ maxHeight: 48 }}

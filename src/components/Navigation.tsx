@@ -2,14 +2,14 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
-// Improved logo - larger, aligned left, no animation
+// Modern logo - larger, fully transparent background, aligned left
 const Logo = () => (
   <div className="flex items-center h-full py-2">
     <img
-      src="/lovable-uploads/ec151905-4eae-4fed-8284-05f239474d3c.png"
+      src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
       alt="MBACIO Logo"
       className="h-16 md:h-20 w-auto select-none pointer-events-none"
-      style={{ filter: 'drop-shadow(0 2px 12px rgba(0,0,0,0.22))' }}
+      style={{ filter: 'drop-shadow(0 2px 18px rgba(0,0,0,0.16))' }}
       draggable={false}
     />
   </div>
@@ -43,9 +43,9 @@ const Navigation = () => {
             aria-label="Toggle menu"
           >
             <img
-              src="/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png"
+              src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png"
               alt="Menu"
-              className="w-10 h-10 invert brightness-200 drop-shadow-header"
+              className="w-10 h-10 drop-shadow-header"
             />
             <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
           </button>

@@ -15,6 +15,7 @@ const Hero = () => {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none z-0"
         src={videoSrc}
+        poster="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
       />
       <div className="absolute inset-0 bg-navy/60 bg-gradient-to-br from-navy/90 via-navy/80 to-deep-blue/70 z-10 pointer-events-none" />
       <div className="container mx-auto px-4 relative z-20">
@@ -32,19 +33,19 @@ const Hero = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
-                  <span className="text-navy font-bold text-sm">✓</span>
+                  <img src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png" alt="accent-icon" className="w-4 h-4" />
                 </div>
                 <span className="text-lg">Guaranteed ROI in 6 weeks</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
-                  <span className="text-navy font-bold text-sm">✓</span>
+                  <img src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png" alt="accent-icon" className="w-4 h-4" />
                 </div>
                 <span className="text-lg">60-Day Satisfaction Warranty</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
-                  <span className="text-navy font-bold text-sm">✓</span>
+                  <img src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png" alt="accent-icon" className="w-4 h-4" />
                 </div>
                 <span className="text-lg">Serving businesses nationwide</span>
               </div>
@@ -62,11 +63,11 @@ const Hero = () => {
               </p>
             </div>
           </div>
-          {/* Still image overlay for branding (optional; or remove, if not desired): */}
+          {/* Branded still overlay for hero */}
           <div className="relative z-10 hidden lg:flex items-center justify-center h-full">
             <img
-              src="/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png"
-              alt="Robot Head Icon"
+              src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png"
+              alt="MBACIO Robot Head Icon"
               className="w-40 h-40 object-contain opacity-90"
               draggable={false}
             />
