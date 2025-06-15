@@ -6,24 +6,24 @@ import { Calendar } from 'lucide-react';
 const posts = [
   {
     title: "5 Signs Your Business Needs IT Automation",
-    excerpt: "Discover the key indicators that your growing business would benefit from automated IT processes and workflows.",
+    excerpt: "Discover the top reasons to automate, from process bottlenecks to growth pains.",
     date: "March 15, 2024",
     category: "Automation",
-    img: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=600&q=80"
   },
   {
     title: "QuickBooks Integration Best Practices",
-    excerpt: "Learn how to seamlessly connect QuickBooks with your existing business tools for maximum efficiency.",
+    excerpt: "How to unify QuickBooks with your business workflows for seamless, accurate results.",
     date: "March 10, 2024", 
     category: "Integration",
-    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"
   },
   {
     title: "Cybersecurity for Small Manufacturers",
-    excerpt: "Essential security measures every food & beverage manufacturer should implement to protect their operations.",
+    excerpt: "Security essentials every manufacturer needs to defend operations and reputation.",
     date: "March 5, 2024",
     category: "Security",
-    img: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80"
   }
 ];
 
@@ -43,7 +43,7 @@ const BlogTeaser = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
           {posts.map((post, index) => (
-            <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-accent/30 bg-white">
               <CardHeader>
                 <img
                   src={post.img}
@@ -53,7 +53,7 @@ const BlogTeaser = () => {
                   loading="lazy"
                 />
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm bg-accent/20 text-navy px-2 py-1 rounded-full font-medium">
+                  <span className="text-sm bg-accent/20 text-navy px-2 py-1 rounded-full font-medium font-poppins">
                     {post.category}
                   </span>
                   <div className="flex items-center text-sm text-muted-foreground">
@@ -61,7 +61,7 @@ const BlogTeaser = () => {
                     {post.date}
                   </div>
                 </div>
-                <CardTitle className="text-xl font-poppins font-bold text-navy hover:text-accent transition-colors cursor-pointer">
+                <CardTitle className="text-lg md:text-xl font-poppins font-bold text-navy hover:text-accent transition-colors cursor-pointer">
                   {post.title}
                 </CardTitle>
               </CardHeader>
@@ -69,7 +69,7 @@ const BlogTeaser = () => {
                 <p className="text-muted-foreground mb-4 leading-relaxed">
                   {post.excerpt}
                 </p>
-                <Button variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
+                <Button variant="outline" className="border-navy text-navy font-semibold hover:bg-navy hover:text-accent transition">
                   Read More
                 </Button>
               </CardContent>
@@ -87,4 +87,3 @@ const BlogTeaser = () => {
   );
 };
 export default BlogTeaser;
-
