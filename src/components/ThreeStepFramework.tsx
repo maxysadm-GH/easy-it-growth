@@ -135,7 +135,7 @@ const ThreeStepFramework = () => {
               if (contactSection) contactSection.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            Schedule Your Free IT Consultation
+            Schedule Your Free IT Assessment
           </Button>
         </div>
       </div>
