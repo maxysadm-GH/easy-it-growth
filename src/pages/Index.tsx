@@ -5,6 +5,7 @@ import IdealClients from '../components/IdealClients';
 import WhyMBACIO from '../components/WhyMBACIO';
 import ThreeStepFramework from '../components/ThreeStepFramework';
 import ServicePlans from '../components/ServicePlans';
+import ExpandedServices from '../components/ExpandedServices';
 import AIInsights from '../components/AIInsights';
 // import AssessmentForms from '../components/AssessmentForms'; // Removed from homepage
 import Integrations from '../components/Integrations';
@@ -20,6 +21,7 @@ const Index = () => {
       <Hero />
       <IdealClients />
       <WhyMBACIO />
+      <ExpandedServices />
       <ThreeStepFramework />
       <ServicePlans />
       <AIInsights />
@@ -34,3 +36,4 @@ const Index = () => {
 };
 
 export default Index;
+
