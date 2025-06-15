@@ -1,4 +1,3 @@
-
 import { Headphones, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -9,10 +8,12 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-yellow rounded-full flex items-center justify-center">
-                <Headphones className="w-5 h-5 text-navy" />
-              </div>
-              <span className="text-xl font-poppins font-bold">MBACIO</span>
+              <img
+                src="/lovable-uploads/ec151905-4eae-4fed-8284-05f239474d3c.png"
+                alt="MBACIO Logo"
+                className="h-10 w-auto"
+                style={{maxHeight: 40}}
+              />
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Making I.T. Easy so you can focus on growing your business. Trusted by manufacturers, law firms, and CPA practices nationwide.

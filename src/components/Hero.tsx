@@ -1,6 +1,7 @@
-import { Button } from '@/components/ui/button';
-import { Headphones } from 'lucide-react';
 
+import { Button } from '@/components/ui/button';
+
+// Update to use blue background robot icon where previously had the Lucide Headphones
 const Hero = () => {
   return (
     <section className="min-h-screen bg-gradient-to-br from-navy via-deep-blue to-navy text-white pt-16 flex items-center">
@@ -53,8 +54,12 @@ const Hero = () => {
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 space-y-6">
               <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-gradient-yellow rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <Headphones className="w-8 h-8 text-navy" />
+                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                  <img
+                    src="/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png"
+                    alt="Robot Head Icon"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <h3 className="text-2xl font-poppins font-bold text-accent">Quick Assessment</h3>
                 <p className="text-gray-300">Get your IT Risk Score in 2 minutes</p>
