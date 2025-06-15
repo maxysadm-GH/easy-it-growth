@@ -11,7 +11,8 @@ import ClientPortal from '../components/ClientPortal';
 import BlogTeaser from '../components/BlogTeaser';
 import Chatbot from '../components/Chatbot';
 import Footer from '../components/Footer';
-import ServicePlansPage from '../components/ServicePlansPage';
+import ServicePlansPage from '../pages/ServicePlansPage';
+import DashboardSolutions from '../pages/DashboardSolutions';
 
 const Index = () => {
   return (
@@ -20,17 +21,11 @@ const Index = () => {
       <Hero />
       <IdealClients />
       <WhyMBACIO />
-      {/* 1. MOVE ThreeStepFramework BEFORE AIInsights and Services */}
       <ThreeStepFramework />
       <AIInsights />
-      {/* 2. MOVE Services AFTER AIInsights */}
       <ExpandedServices />
       <Integrations />
-      <ClientPortal />
-      <BlogTeaser />
-      {/* Add global Chatbot */}
-      <Chatbot />
-      {/* Link to Service Plans page */}
+      {/* Add easy access links for key subpages */}
       <div className="container mx-auto px-4 py-10 text-center">
         <a
           href="/service-plans"
