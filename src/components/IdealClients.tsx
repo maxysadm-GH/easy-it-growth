@@ -1,11 +1,11 @@
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Gear, Users, Utensils, FileText } from 'lucide-react';
+import { Settings, Users, Utensils, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const clientData = [
   {
-    icon: Gear, // Use PascalCase per lucide-react docs
+    icon: Settings, // Use 'Settings' instead of invalid 'Gear'
     title: "ERP & MRP-Powered Manufacturers",
     description:
       "Manufacturers running ERP/MRP systems like Fishbowl, Acumatica, Infor, or QuickBooks/QBO who need seamless integration, automation, and tech-backed operational visibility.",
@@ -92,4 +92,3 @@ const IdealClients = () => {
 };
 
 export default IdealClients;
-
