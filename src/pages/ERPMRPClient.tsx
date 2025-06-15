@@ -1,12 +1,12 @@
 
-import { gear } from "lucide-react";
+import { Gear } from "lucide-react";
 
 const ERPMRPClient = () => (
   <article className="max-w-3xl mx-auto py-16 px-4">
     <header className="mb-8">
       <div className="flex items-center gap-4 mb-2">
         <div className="w-12 h-12 bg-gradient-yellow rounded-xl flex items-center justify-center">
-          <gear className="w-6 h-6 text-navy" />
+          <Gear className="w-6 h-6 text-navy" />
         </div>
         <h1 className="text-3xl font-poppins font-bold text-navy">ERP & MRP-Powered Manufacturers</h1>
       </div>
