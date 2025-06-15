@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -61,7 +60,6 @@ const ThreeStepFramework = () => {
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-b from-navy via-deep-blue to-charcoal text-white relative" id="framework">
       <div className="container mx-auto px-4">
-        {/* No highlighted pill/button, per user */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-white mb-5 drop-shadow-header">
             Our 3-Step Framework
@@ -70,60 +68,7 @@ const ThreeStepFramework = () => {
             <span className="font-bold text-accent">Guaranteed ROI in 6 weeks</span> through our proven methodology that transforms your IT from a cost center to a competitive advantage.
           </p>
         </div>
-        {/* Axis/Line with corrected readable labels */}
-        <div className="flex flex-col items-center mb-12">
-          <div className="w-full max-w-3xl flex justify-between items-center relative pb-6 px-2 mx-auto">
-            <div className="absolute top-8 left-0 w-full h-5 flex items-center z-0">
-              <svg width="100%" height="36" viewBox="0 0 750 36" fill="none" className="w-full h-10">
-                {/* Yellow line */}
-                <path
-                  d="M35 18 Q 195 0, 375 18 T 715 18"
-                  stroke="#FACF39"
-                  strokeWidth="5"
-                  fill="none"
-                />
-                {/* Circles at step positions */}
-                <circle cx="35" cy="18" r="15" fill="#1a4578" stroke="#FACF39" strokeWidth="5"/>
-                <circle cx="375" cy="18" r="15" fill="#1a4578" stroke="#FACF39" strokeWidth="5"/>
-                <circle cx="715" cy="18" r="15" fill="#1a4578" stroke="#FACF39" strokeWidth="5"/>
-              </svg>
-            </div>
-            {/* Corrected axis labels: absolutely positioned, yellow, bold, not overlapped */}
-            <div className="relative flex justify-between items-end w-full z-10">
-              {/* Left label */}
-              <span
-                className="absolute -top-3 left-0 font-poppins font-bold text-accent text-lg lg:text-xl leading-tight whitespace-nowrap"
-                style={{
-                  textShadow: '0px 2px 6px rgba(0,0,0,0.14)',
-                  maxWidth: 140,
-                }}
-              >
-                Assessment
-              </span>
-              {/* Middle label, centered */}
-              <span
-                className="absolute -top-4 left-1/2 -translate-x-1/2 font-poppins font-bold text-accent text-lg lg:text-xl leading-tight whitespace-nowrap"
-                style={{
-                  textShadow: '0px 2px 6px rgba(0,0,0,0.14)',
-                  maxWidth: 180,
-                }}
-              >
-                Stabilization
-              </span>
-              {/* Right label */}
-              <span
-                className="absolute -top-3 right-0 font-poppins font-bold text-accent text-lg lg:text-xl leading-tight whitespace-nowrap"
-                style={{
-                  textShadow: '0px 2px 6px rgba(0,0,0,0.14)',
-                  maxWidth: 200,
-                }}
-              >
-                Operational Efficiency
-              </span>
-            </div>
-          </div>
-        </div>
-        {/* Steps cards with fade-in animation and fixed alignment */}
+        {/* Steps cards with animation and fixed KEY DELIVERABLES alignment */}
         <div
           ref={stepsRef}
           className="grid lg:grid-cols-3 gap-8 text-white"
@@ -135,19 +80,18 @@ const ThreeStepFramework = () => {
                 relative group shadow-lg border-none
                 bg-gradient-to-br from-navy/80 via-deep-blue/80 to-charcoal/80
                 transition duration-300 backdrop-blur-md
-                ${
-                  stepsInView ?
-                    `animate-fade-in opacity-100 translate-y-0`
-                  : 'opacity-0 translate-y-12'
-                }
+                ${stepsInView ? `animate-fade-in opacity-100 translate-y-0` : 'opacity-0 translate-y-12'}
               `}
               style={{
                 animationDelay: stepsInView ? `${index * 230 + 120}ms` : '0ms',
                 animationFillMode: 'both',
-                minHeight: 390,
+                minHeight: 410,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
               }}
             >
-              <CardContent className="p-8 pb-6">
+              <CardContent className="p-8 pb-6 flex flex-col h-full">
                 <div className="absolute -top-6 left-8">
                   <div className="w-12 h-12 bg-gradient-yellow rounded-full flex items-center justify-center text-navy font-bold text-lg border-4 border-white/10 shadow-lg">
                     {step.number}
@@ -164,7 +108,9 @@ const ThreeStepFramework = () => {
                 <p className="text-pale-yellow mb-6 leading-relaxed font-inter">
                   {step.description}
                 </p>
-                <div className="mt-8 space-y-2">
+                {/* Spacer to push KEY DELIVERABLES down, so it's always aligned */}
+                <div className="flex-1" />
+                <div className="space-y-2">
                   <h4 className="font-bold text-accent text-sm uppercase tracking-wide">KEY DELIVERABLES:</h4>
                   <ul className="space-y-1 pl-0">
                     {step.deliverables.map((deliverable, idx) => (
