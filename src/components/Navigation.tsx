@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
-// Modern logo - larger, fully transparent background, aligned left
 const Logo = () => (
   <div className="flex items-center h-full py-2">
     <img
@@ -24,18 +23,27 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 w-full bg-navy z-50 shadow-lg border-b-0">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-24 md:h-28">
-          {/* Logo */}
           <Logo />
-
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#services" className={navLinkClass}>Services</a>
+            <a href="#services" className={navLinkClass}>IT & Automation Services</a>
             <a href="#framework" className={navLinkClass}>Our Process</a>
             <a href="#insights" className={navLinkClass}>AI Solutions</a>
-            <a href="#integrations" className={navLinkClass}>Integrations</a>
+            <a href="/integrations" className={navLinkClass}>Integrations</a>
+            {/* Tools Dropdown */}
+            <div className="relative group">
+              <button className={navLinkClass + " focus:outline-none"}>
+                Tools <span className="ml-1 align-top">▼</span>
+              </button>
+              <div className="absolute hidden group-hover:block pt-2 z-20">
+                <div className="bg-charcoal rounded shadow-lg py-2 w-60">
+                  <a href="/assessment-risk" className="flex items-center px-5 py-2 hover:bg-accent/10 text-white">🛡 Cyber Risk Assessment Tool</a>
+                  <a href="/assessment-automation" className="flex items-center px-5 py-2 hover:bg-accent/10 text-white">⚙️ Automation ROI Calculator</a>
+                </div>
+              </div>
+            </div>
             <a href="#contact" className="ml-2 bg-gradient-yellow text-navy px-5 py-2 rounded-lg font-bold font-poppins text-lg md:text-xl shadow-md transition hover:opacity-90">Book Free Consultation</a>
           </div>
-
           {/* Mobile Menu Button */}
           <button
             className="md:hidden focus:outline-none relative"
@@ -50,15 +58,18 @@ const Navigation = () => {
             <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
           </button>
         </div>
-
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 animate-fade-in">
             <div className="flex flex-col space-y-4 bg-navy rounded-xl p-5 shadow-lg">
-              <a href="#services" className={navLinkClass}>Services</a>
+              <a href="#services" className={navLinkClass}>IT & Automation Services</a>
               <a href="#framework" className={navLinkClass}>Our Process</a>
               <a href="#insights" className={navLinkClass}>AI Solutions</a>
-              <a href="#integrations" className={navLinkClass}>Integrations</a>
+              <a href="/integrations" className={navLinkClass}>Integrations</a>
+              <div className="flex flex-col gap-1">
+                <a href="/assessment-risk" className={navLinkClass + " pl-2"}>🛡 Cyber Risk Assessment Tool</a>
+                <a href="/assessment-automation" className={navLinkClass + " pl-2"}>⚙️ Automation ROI Calculator</a>
+              </div>
               <a href="#contact" className="bg-gradient-yellow text-navy px-5 py-2 rounded-lg font-bold font-poppins text-lg shadow">Book Free Consultation</a>
             </div>
           </div>

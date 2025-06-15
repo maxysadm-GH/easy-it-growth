@@ -1,3 +1,4 @@
+
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import IdealClients from '../components/IdealClients';
@@ -6,7 +7,6 @@ import ThreeStepFramework from '../components/ThreeStepFramework';
 import ServicePlans from '../components/ServicePlans';
 import ExpandedServices from '../components/ExpandedServices';
 import AIInsights from '../components/AIInsights';
-// import AssessmentForms from '../components/AssessmentForms'; // Removed from homepage
 import Integrations from '../components/Integrations';
 import ClientPortal from '../components/ClientPortal';
 import BlogTeaser from '../components/BlogTeaser';
@@ -20,15 +20,15 @@ const Index = () => {
       <Hero />
       <IdealClients />
       <WhyMBACIO />
-      {/* 1. MOVE ThreeStepFramework BEFORE AIInsights */}
+      {/* 1. MOVE ThreeStepFramework BEFORE AIInsights and Services */}
       <ThreeStepFramework />
       <AIInsights />
-      {/* 2. MOVE Services AFTER AIInsights (was before) */}
+      {/* 2. MOVE Services AFTER AIInsights */}
       <ExpandedServices />
       <Integrations />
       <ClientPortal />
       <BlogTeaser />
-      {/* 5. Add global Chatbot */}
+      {/* Add global Chatbot */}
       <Chatbot />
       <Footer />
     </div>

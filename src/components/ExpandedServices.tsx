@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Settings,
@@ -19,13 +18,13 @@ import {
 const services = [
   {
     icon: Settings,
-    title: "Managed IT Services",
+    title: "IT & Automation Services",
     description:
-      "Comprehensive IT management, monitoring, and support for California businesses. Experience proactive, strategic, always-on support that keeps your operations running smoothly and securely.",
-    highlight: "24/7 Monitoring • Strategic IT",
-    seo: "Managed IT California, Proactive Tech Support Los Angeles, Secure IT Orange County",
-    geo: "California, Los Angeles, Bay Area",
-    color: "from-navy to-deep-blue",
+      "Modern, secure, and scalable technology support for businesses nationwide. From managed IT and 24/7 monitoring to advanced workflow automation and compliance, we help you accelerate growth and protect your future.",
+    highlight: "Managed IT • Automation • Security",
+    seo: "Managed IT Services Chicago, National IT Consulting, Workflow Automation US, Strategic IT, Proactive Support",
+    geo: "Chicago, Nationwide, United States",
+    color: "from-navy to-accent"
   },
   {
     icon: Shield,
@@ -69,12 +68,12 @@ const services = [
   },
   {
     icon: Database,
-    title: "ERP & Operations Integration",
-    description: // Updated per request & SEO
-      "Seamlessly connect ERP, MRP, finance, and HR systems for integrated, actionable data—Fishbowl, Acumatica, QuickBooks, and more. Drive efficiency and growth in California's manufacturing and professional sectors.",
-    highlight: "ERP • Integration",
-    seo: "ERP Integration California, Acumatica Consultant, Manufacturing IT LA, Fishbowl Integration",
-    geo: "California, Los Angeles, Bay Area",
+    title: "ERP & System Integration",
+    description:
+      "Integrate ERP, MRP, accounting, and HR platforms (Fishbowl, Acumatica, QuickBooks, and more) for streamlined data, automated workflows, and real-time performance insights—essential for manufacturers, legal, CPA, and SMBs looking to scale securely.",
+    highlight: "ERP • Integration • Automation",
+    seo: "ERP Integration Chicago, Acumatica Consultant US, Fishbowl Integration Nationwide, Manufacturing IT",
+    geo: "Chicago, United States",
     color: "from-navy to-accent",
   },
   {
@@ -112,33 +111,37 @@ const services = [
 const ExpandedServices = () => (
   <section
     className="py-16 lg:py-24 bg-gradient-to-b from-secondary/30 via-gray-100 to-white"
-    id="expanded-services"
+    id="services"
   >
     <div className="container mx-auto px-4">
       <div className="text-center mb-16">
         <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-6">
-          California IT & Security Services
+          IT, Security & Automation Services
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Scalable, secure, and AI-powered solutions for California manufacturers, finance professionals, and growth-focused SMBs.
+          Scalable solutions for modern businesses in <b>Chicago</b> and across the <b>United States</b>.
+          <span className="block pt-2 text-base text-navy/80">Cybersecurity, Automation, Cloud, ERP/Accounting Integration, and more—optimized for regulated, fast-growing organizations.</span>
         </p>
       </div>
-      {/* Match AI Insights card grid */}
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10">
         {services.map((service, idx) => {
           const Icon = service.icon;
           return (
-            <Card
+            <div
               key={service.title}
               className={`
-                group border-0 rounded-2xl shadow-lg
-                bg-gradient-to-br ${service.color}
-                hover:scale-105 transition-all duration-300 flex flex-col h-full
+                group border-0 rounded-2xl shadow-lg bg-gradient-to-br ${service.color}
+                flex flex-col h-full transition transform hover:scale-105
               `}
+              style={{
+                minHeight: 320,
+                filter: "brightness(1.06) contrast(1)",
+                transition: "box-shadow .2s,transform .2s",
+              }}
             >
-              <CardContent className="p-8 flex flex-col h-full">
+              <div className="p-8 flex flex-col h-full">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="w-12 h-12 rounded-xl bg-white/75 flex items-center justify-center shadow group-hover:bg-white">
+                  <span className="w-12 h-12 rounded-xl bg-white/80 flex items-center justify-center shadow group-hover:bg-white">
                     <Icon className="w-7 h-7 text-accent" aria-hidden="true" />
                   </span>
                   <h3 className="text-lg lg:text-xl font-poppins font-bold text-navy group-hover:text-accent mb-0 leading-snug">
@@ -149,18 +152,17 @@ const ExpandedServices = () => (
                   {service.description}
                 </p>
                 <div className="flex items-end mt-auto">
-                  <span className="inline-block bg-accent text-navy px-3 py-1 rounded-full text-xs font-semibold shadow-sm mr-2">
+                  <span className="inline-block bg-accent text-navy px-3 py-1 rounded-full text-xs font-semibold shadow-sm mr-2 border-accent border">
                     {service.highlight}
                   </span>
-                  {/* For SEO: geo keywords and industry */}
                   <span className="inline-block bg-gray-900/10 text-gray-600 ml-auto px-2 py-0.5 rounded-full text-[10px] font-medium">
                     {service.geo}
                   </span>
                 </div>
-                {/* For SEO (hidden from users but present for crawlers) */}
+                {/* For SEO (hidden) */}
                 <span className="absolute w-0 h-0 overflow-hidden opacity-0">{service.seo}</span>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           );
         })}
       </div>

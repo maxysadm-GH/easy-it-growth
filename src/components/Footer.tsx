@@ -1,6 +1,14 @@
 import { Headphones, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
+  // Fake login state for demonstration. In production, use a real auth system
+  const isLoggedIn = false;
+  const handleWarrantyClick = (e: React.MouseEvent) => {
+    if (!isLoggedIn) {
+      e.preventDefault();
+      window.location.href = "/login?redirect=/warranty";
+    }
+  };
   return (
     <footer className="bg-charcoal text-white py-16" id="contact">
       <div className="container mx-auto px-4">
@@ -19,11 +27,16 @@ const Footer = () => {
               Chicago’s Strategic IT & Automation Partner for Security, Data Visibility & Business Growth.
               Serving manufacturers, law firms, and CPA practices nationwide.
             </p>
-            {/* Warranty text added back here */}
+            {/* Warranty text as a link requiring login */}
             <div className="mb-4">
-              <span className="inline-block bg-gradient-yellow text-navy font-bold px-5 py-2 rounded-full shadow-md">
+              <a
+                href="/warranty"
+                onClick={handleWarrantyClick}
+                className="inline-block bg-gradient-yellow text-navy font-bold px-5 py-2 rounded-full shadow-md hover:underline"
+                style={{ textDecoration: 'none' }}
+              >
                 60-Day Satisfaction Warranty
-              </span>
+              </a>
             </div>
           </div>
           {/* Services */}
