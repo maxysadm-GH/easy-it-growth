@@ -1,4 +1,4 @@
-
+import React from "react";
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Search, Settings, Calendar } from 'lucide-react';
@@ -162,4 +162,3 @@ const ThreeStepFramework = () => {
 };
 
 export default ThreeStepFramework;
-
