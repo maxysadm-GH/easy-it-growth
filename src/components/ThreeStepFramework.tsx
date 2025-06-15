@@ -3,9 +3,8 @@ import React, { useEffect, useRef } from "react";
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Search, Settings, Calendar } from 'lucide-react';
-import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
-// DATA FOR THE AXIS (Copy the long, clear step names)
+// DATA FOR THE AXIS (Visible, readable step names)
 const dataLine = [
   { step: "Assessment", value: 1 },
   { step: "Stabilization", value: 2 },
@@ -36,7 +35,7 @@ const steps = [
   }
 ];
 
-// Simple custom intersection hook for animation
+// Custom intersection observer for fade-in animation
 const useInView = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isInView, setIsInView] = React.useState(false);
@@ -62,19 +61,7 @@ const ThreeStepFramework = () => {
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-b from-navy via-deep-blue to-charcoal text-white relative" id="framework">
       <div className="container mx-auto px-4">
-        {/* HIGHLIGHTED PILL */}
-        <div className="flex justify-center mb-6">
-          <div
-            className={`inline-block bg-gradient-yellow text-navy font-semibold rounded-full px-7 py-2
-              text-base shadow-md tracking-wide animate-fade-in`}
-            style={{
-              animationDelay: '100ms',
-              animationFillMode: 'both'
-            }}
-          >
-            ⚡ HIGHLIGHTED FRAMEWORK
-          </div>
-        </div>
+        {/* No highlighted pill/button, per user */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-white mb-5 drop-shadow-header">
             Our 3-Step Framework
@@ -83,7 +70,7 @@ const ThreeStepFramework = () => {
             <span className="font-bold text-accent">Guaranteed ROI in 6 weeks</span> through our proven methodology that transforms your IT from a cost center to a competitive advantage.
           </p>
         </div>
-        {/* Axis/Line with readable step labels */}
+        {/* Axis/Line with corrected readable labels */}
         <div className="flex flex-col items-center mb-12">
           <div className="w-full max-w-3xl flex justify-between items-center relative pb-6 px-2 mx-auto">
             <div className="absolute top-8 left-0 w-full h-5 flex items-center z-0">
@@ -101,23 +88,42 @@ const ThreeStepFramework = () => {
                 <circle cx="715" cy="18" r="15" fill="#1a4578" stroke="#FACF39" strokeWidth="5"/>
               </svg>
             </div>
-            {/* Actual axis labels, match yellow, prevent cutoff, large font */}
+            {/* Corrected axis labels: absolutely positioned, yellow, bold, not overlapped */}
             <div className="relative flex justify-between items-end w-full z-10">
-              {dataLine.map((pt, i) => (
-                <div key={pt.step} className="flex flex-col items-center w-1/3">
-                  <span className="font-poppins font-bold text-accent text-lg lg:text-xl leading-tight whitespace-nowrap"
-                    style={{
-                      textShadow: '0px 2px 6px rgba(0,0,0,0.12)',
-                      marginTop: i === 1 ? 24 : 0, // to match "arch" curve
-                    }}>
-                    {pt.step}
-                  </span>
-                </div>
-              ))}
+              {/* Left label */}
+              <span
+                className="absolute -top-3 left-0 font-poppins font-bold text-accent text-lg lg:text-xl leading-tight whitespace-nowrap"
+                style={{
+                  textShadow: '0px 2px 6px rgba(0,0,0,0.14)',
+                  maxWidth: 140,
+                }}
+              >
+                Assessment
+              </span>
+              {/* Middle label, centered */}
+              <span
+                className="absolute -top-4 left-1/2 -translate-x-1/2 font-poppins font-bold text-accent text-lg lg:text-xl leading-tight whitespace-nowrap"
+                style={{
+                  textShadow: '0px 2px 6px rgba(0,0,0,0.14)',
+                  maxWidth: 180,
+                }}
+              >
+                Stabilization
+              </span>
+              {/* Right label */}
+              <span
+                className="absolute -top-3 right-0 font-poppins font-bold text-accent text-lg lg:text-xl leading-tight whitespace-nowrap"
+                style={{
+                  textShadow: '0px 2px 6px rgba(0,0,0,0.14)',
+                  maxWidth: 200,
+                }}
+              >
+                Operational Efficiency
+              </span>
             </div>
           </div>
         </div>
-        {/* Steps cards with animation */}
+        {/* Steps cards with fade-in animation and fixed alignment */}
         <div
           ref={stepsRef}
           className="grid lg:grid-cols-3 gap-8 text-white"
@@ -158,9 +164,9 @@ const ThreeStepFramework = () => {
                 <p className="text-pale-yellow mb-6 leading-relaxed font-inter">
                   {step.description}
                 </p>
-                <div className="space-y-2">
-                  <h4 className="font-bold text-accent text-sm uppercase tracking-wide">Key Deliverables:</h4>
-                  <ul className="ml-2 space-y-1">
+                <div className="mt-8 space-y-2">
+                  <h4 className="font-bold text-accent text-sm uppercase tracking-wide">KEY DELIVERABLES:</h4>
+                  <ul className="space-y-1 pl-0">
                     {step.deliverables.map((deliverable, idx) => (
                       <li key={idx} className="flex items-center space-x-2">
                         <span className="w-1.5 h-1.5 bg-accent rounded-full inline-block" />
@@ -191,4 +197,3 @@ const ThreeStepFramework = () => {
   );
 };
 export default ThreeStepFramework;
-
