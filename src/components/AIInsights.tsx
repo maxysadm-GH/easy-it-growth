@@ -1,30 +1,32 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
+// Use the most official logo URLs from vendor CDNs or clear open sources. If unavailable, fallback to uploaded, but prefer external.
 const integrations = [
   {
     name: "QuickBooks Online",
-    src: "/lovable-uploads/integration-quickbooks.png",
+    src: "https://cdn.brandfolder.io/3RTKF3FA/at/s657xjcr8wc3j4m68q3h455/QuickBooks-Logo-Primary-Green.svg", // Official Intuit/QuickBooks CDN
   },
   {
     name: "HubSpot",
-    src: "/lovable-uploads/integration-hubspot.png",
+    src: "https://cdn2.hubspot.net/hubfs/53/image8-2.svg", // HubSpot CDN (SVG logo)
   },
   {
     name: "Salesforce",
-    src: "/lovable-uploads/integration-salesforce.png",
+    src: "https://a.sfdcstatic.com/shared/images/misc/salesforce-logo.svg" // Salesforce static assets
   },
   {
     name: "Microsoft 365",
-    src: "/lovable-uploads/integration-microsoft.png",
+    src: "https://cdn.iconscout.com/icon/free/png-256/microsoft-38-761688.png", // Clean M365 icon; can update with better if needed
   },
   {
     name: "Dropbox",
-    src: "/lovable-uploads/integration-dropbox.png",
+    src: "https://cfl.dropboxstatic.com/static/images/logos/pages/glyph@2x-vflJ6ydKp.png", // Dropbox glyph from their own site
   },
   {
     name: "Google Workspace",
-    src: "/lovable-uploads/integration-google.png",
+    src: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_2015_logo.svg", // Official Google Logo (preferably a suite logo, but fallback to main one)
   }
 ];
 const capabilities = [
@@ -125,7 +127,14 @@ const AIInsights = () => {
                   src={logo.src}
                   alt={logo.name}
                   className="w-full h-auto drop-shadow-lg rounded-md transition-transform duration-300 hover:scale-110 opacity-0 animate-fade-in"
-                  style={{ minHeight: 42, maxHeight: 54, background: "#fff", padding: "0.5rem", animationDelay: `${index * 110}ms`, animationFillMode: "forwards" }}
+                  style={{
+                    minHeight: 42,
+                    maxHeight: 54,
+                    background: "#fff",
+                    padding: "0.5rem",
+                    animationDelay: `${index * 110}ms`,
+                    animationFillMode: "forwards"
+                  }}
                 />
                 <span className="mt-1 text-white text-xs md:text-sm font-medium text-center hidden md:block">{logo.name}</span>
               </div>

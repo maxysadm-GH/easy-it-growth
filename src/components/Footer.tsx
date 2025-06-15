@@ -1,3 +1,4 @@
+
 import { Headphones, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -19,9 +20,7 @@ const Footer = () => {
               Chicago’s Strategic IT & Automation Partner for Security, Data Visibility & Business Growth.
               Serving manufacturers, law firms, and CPA practices nationwide.
             </p>
-            <div className="bg-accent/20 text-accent px-4 py-2 rounded-lg inline-block">
-              <span className="font-semibold">60-Day Satisfaction Warranty</span>
-            </div>
+            {/* Warranty text removed here */}
           </div>
           {/* Services */}
           <div>
@@ -30,7 +29,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-accent transition-colors">IT Consulting & Strategy</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Managed IT & Security</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Automation & AI Solutions</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">ERP & SaaS Integration</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">MRP & ERP Consulting & Integration</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Cloud Migrations</a></li>
             </ul>
           </div>
@@ -42,7 +41,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-accent transition-colors">Professional Services</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Legal</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Accounting / CPA Firms</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Healthcare</a></li>
+              {/* "Healthcare" removed as requested */}
             </ul>
           </div>
           {/* Contact */}
@@ -84,7 +83,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        {/* Bottom Bar - removed yellow dot */}
+        {/* Bottom Bar */}
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">

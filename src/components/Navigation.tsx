@@ -1,13 +1,16 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
-// Animated sweep overlay for the logo
-const LogoWithSweep = () => (
-  <div className="relative group w-32 md:w-44 aspect-square flex items-center transition-all duration-300">
+// Improved logo - larger, aligned left, no animation
+const Logo = () => (
+  <div className="flex items-center h-full py-2">
     <img
       src="/lovable-uploads/ec151905-4eae-4fed-8284-05f239474d3c.png"
       alt="MBACIO Logo"
-      className="w-full h-auto rounded-lg shadow-xl"
+      className="h-16 md:h-20 w-auto select-none pointer-events-none"
+      style={{ filter: 'drop-shadow(0 2px 12px rgba(0,0,0,0.22))' }}
+      draggable={false}
     />
   </div>
 );
@@ -21,8 +24,8 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 w-full bg-navy z-50 shadow-lg border-b-0">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-24 md:h-28">
-          {/* Logo with sweep */}
-          <LogoWithSweep />
+          {/* Logo */}
+          <Logo />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -51,7 +54,7 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-4 bg-navy rounded-xl p-5 shadow-lg">
               <a href="#services" className={navLinkClass}>Services</a>
               <a href="#framework" className={navLinkClass}>Our Process</a>
               <a href="#insights" className={navLinkClass}>AI Solutions</a>

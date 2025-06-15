@@ -49,15 +49,22 @@ const ThreeStepFramework = () => {
           </p>
         </div>
         <div className="flex flex-col lg:flex-row items-center lg:justify-center gap-8 mb-16 relative">
-          {/* Animated Chartwell-style Progress Line for Steps */}
+          {/* Chartwell-style chart improved - less white, more accent */}
           <ResponsiveContainer width="100%" height={110} className="!w-full lg:!w-4/5 xl:!w-2/3">
             <LineChart
               data={dataLine}
               margin={{ top: 30, right: 48, left: 48, bottom: 0 }}
             >
-              <XAxis dataKey="step" interval={0} tick={{ fill: "#FACF39", fontWeight: 700, fontSize: 18 }} />
+              <XAxis dataKey="step" interval={0} tick={{ fill: "#FACF39", fontWeight: 700, fontSize: 18 }} axisLine={{ stroke: "#FACF39" }} tickLine={false} />
               <Tooltip />
-              <Line type="monotone" dataKey="value" stroke="#FACF39" strokeWidth={7} dot={{ strokeWidth: 6, r: 10, fill: '#fff', stroke: '#FACF39' }} isAnimationActive />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#FACF39"
+                strokeWidth={7}
+                dot={{ strokeWidth: 6, r: 10, fill: '#28344b', stroke: '#FACF39' }}
+                isAnimationActive
+              />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -65,7 +72,7 @@ const ThreeStepFramework = () => {
           {steps.map((step, index) => (
             <Card
               key={index}
-              className="relative group shadow-lg border-none bg-white/5 hover:bg-white/15 transition duration-300 backdrop-blur-md"
+              className="relative group shadow-lg border-none bg-gradient-to-tr from-navy/70 via-deep-blue/60 to-charcoal/80 hover:bg-white/10 transition duration-300 backdrop-blur-md"
             >
               <CardContent className="p-8">
                 <div className="absolute -top-6 left-8">
@@ -85,20 +92,22 @@ const ThreeStepFramework = () => {
                   {step.description}
                 </p>
                 <div className="space-y-2">
-                  <h4 className="font-semibold text-navy text-sm uppercase tracking-wide">Key Deliverables:</h4>
-                  {step.deliverables.map((deliverable, idx) => (
-                    <div key={idx} className="flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
-                      <span className="text-sm text-gray-200">{deliverable}</span>
-                    </div>
-                  ))}
+                  <h4 className="font-semibold text-accent text-sm uppercase tracking-wide">Key Deliverables:</h4>
+                  <ul className="ml-2 space-y-1">
+                    {step.deliverables.map((deliverable, idx) => (
+                      <li key={idx} className="flex items-center space-x-2">
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full inline-block" />
+                        <span className="text-sm text-gray-100">{deliverable}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
-        {/* Ready to Transform Your IT Operations? Section (styled as attached image) */}
-        <div className="text-center bg-charcoal mt-20 p-6 rounded-2xl flex flex-col items-center">
+        {/* Ready to Transform Your IT Operations? Section */}
+        <div className="text-center bg-charcoal/80 mt-20 p-6 rounded-2xl flex flex-col items-center shadow-lg">
           <span className="inline-block bg-[#bdbdbd] px-7 py-2 font-poppins text-2xl font-bold text-gray-900 rounded shadow mb-2" style={{ background: "#bdbdbd" }}>
             Ready to Transform
             <span style={{ color: '#FACF39'}}>•</span>
