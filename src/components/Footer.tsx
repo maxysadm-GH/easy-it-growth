@@ -19,7 +19,12 @@ const Footer = () => {
               Chicago’s Strategic IT & Automation Partner for Security, Data Visibility & Business Growth.
               Serving manufacturers, law firms, and CPA practices nationwide.
             </p>
-            {/* Warranty text removed here */}
+            {/* Warranty text added back here */}
+            <div className="mb-4">
+              <span className="inline-block bg-gradient-yellow text-navy font-bold px-5 py-2 rounded-full shadow-md">
+                60-Day Satisfaction Warranty
+              </span>
+            </div>
           </div>
           {/* Services */}
           <div>

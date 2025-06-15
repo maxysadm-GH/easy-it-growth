@@ -1,7 +1,9 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Search, Settings, Calendar } from 'lucide-react';
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { useEffect, useRef } from 'react';
 
 const dataLine = [
   { step: 'Assessment', value: 1 },
@@ -33,7 +35,29 @@ const steps = [
   }
 ];
 
+// Simple custom intersection/animation hook
+const useInView = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [isInView, setIsInView] = React.useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsInView(true);
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [ref]);
+  return [ref, isInView] as const;
+};
+
 const ThreeStepFramework = () => {
+  const [stepRef, stepsInView] = useInView();
+
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-b from-navy via-deep-blue to-charcoal text-white relative" id="framework">
       <div className="container mx-auto px-4">
@@ -49,7 +73,7 @@ const ThreeStepFramework = () => {
           </p>
         </div>
         <div className="flex flex-col lg:flex-row items-center lg:justify-center gap-8 mb-16 relative">
-          {/* Chartwell-style chart improved - less white, more accent */}
+          {/* Chart */}
           <ResponsiveContainer width="100%" height={110} className="!w-full lg:!w-4/5 xl:!w-2/3">
             <LineChart
               data={dataLine}
@@ -68,27 +92,40 @@ const ThreeStepFramework = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <div className="grid lg:grid-cols-3 gap-8 text-white">
+        <div ref={stepRef} className="grid lg:grid-cols-3 gap-8 text-white">
           {steps.map((step, index) => (
             <Card
               key={index}
-              className="relative group shadow-lg border-none bg-gradient-to-tr from-navy/70 via-deep-blue/60 to-charcoal/80 hover:bg-white/10 transition duration-300 backdrop-blur-md"
+              className={`
+                relative group shadow-lg border-none 
+                bg-gradient-to-br from-navy/80 via-deep-blue/80 to-charcoal/80 
+                transition duration-300 backdrop-blur-md
+                ${
+                  stepsInView
+                    ? `animate-fade-in`
+                    : 'opacity-0 translate-y-8'
+                }
+                `}
+              style={{
+                animationDelay: stepsInView ? `${index * 180 + 50}ms` : '0ms',
+                animationFillMode: 'both',
+              }}
             >
               <CardContent className="p-8">
                 <div className="absolute -top-6 left-8">
-                  <div className="w-12 h-12 bg-gradient-yellow rounded-full flex items-center justify-center text-navy font-bold text-lg">
+                  <div className="w-12 h-12 bg-gradient-yellow rounded-full flex items-center justify-center text-navy font-bold text-lg border-4 border-white/10">
                     {step.number}
                   </div>
                 </div>
                 <div className="mt-8 mb-6">
-                  <div className="w-16 h-16 bg-navy/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <step.icon className="w-8 h-8 text-navy" />
+                  <div className="w-16 h-16 bg-navy/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <step.icon className="w-8 h-8 text-accent" />
                   </div>
                 </div>
                 <h3 className="text-2xl font-poppins font-bold text-accent mb-4">
                   {step.title}
                 </h3>
-                <p className="text-gray-200 mb-6 leading-relaxed">
+                <p className="text-pale-yellow mb-6 leading-relaxed">
                   {step.description}
                 </p>
                 <div className="space-y-2">
@@ -106,13 +143,18 @@ const ThreeStepFramework = () => {
             </Card>
           ))}
         </div>
-        {/* Ready to Transform Your IT Operations? Section */}
-        <div className="text-center bg-charcoal/80 mt-20 p-6 rounded-2xl flex flex-col items-center shadow-lg">
-          <span className="inline-block bg-[#bdbdbd] px-7 py-2 font-poppins text-2xl font-bold text-gray-900 rounded shadow mb-2" style={{ background: "#bdbdbd" }}>
-            Ready to Transform
-            <span style={{ color: '#FACF39'}}>•</span>
-            Your IT Operations?
-          </span>
+        {/* New Contact CTA (replaces yellow dot banner) */}
+        <div className="text-center mt-20">
+          <Button 
+            size="lg"
+            className="bg-gradient-yellow text-navy font-bold text-2xl px-12 py-6 shadow-lg hover:scale-105 transition-transform"
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) contactSection.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Schedule Your Free IT Consultation
+          </Button>
         </div>
       </div>
     </section>
@@ -120,3 +162,4 @@ const ThreeStepFramework = () => {
 };
 
 export default ThreeStepFramework;
+
