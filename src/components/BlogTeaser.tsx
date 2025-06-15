@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar } from 'lucide-react';
@@ -36,11 +35,9 @@ const BlogTeaser = () => {
             Latest Insights & Resources
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Stay informed with expert insights on IT automation, security, and business optimization. 
-            <span className="block mt-2 text-accent font-semibold">Coming soon: AI-generated content powered by n8n automation</span>
+            Stay informed with expert insights on IT automation, security, and business optimization.
           </p>
         </div>
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
           {posts.map((post, index) => (
             <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-accent/30 bg-white">
@@ -76,7 +73,6 @@ const BlogTeaser = () => {
             </Card>
           ))}
         </div>
-
         <div className="text-center">
           <Button size="lg" className="bg-navy text-white hover:bg-deep-blue font-semibold">
             View All Articles

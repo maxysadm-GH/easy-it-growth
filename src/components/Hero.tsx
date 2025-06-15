@@ -2,13 +2,13 @@
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
-  // New home video
+  // Home video link per instruction
   const videoSrc = "https://img1.wsimg.com/isteam/videos/n4Wqzxp";
   const fallbackImg = "/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png";
 
   return (
-    <section className="relative min-h-screen bg-navy text-white pt-24 flex items-center overflow-hidden">
-      {/* BG Video or fallback */}
+    <section className="relative min-h-screen bg-navy text-white pt-32 flex items-center overflow-hidden">
+      {/* Video BG */}
       <video
         autoPlay
         loop
@@ -18,7 +18,7 @@ const Hero = () => {
         src={videoSrc}
         poster={fallbackImg}
       />
-      {/* Logo watermark */}
+      {/* Stylish watermark bg */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
         <svg
           width="60vw"
@@ -39,10 +39,10 @@ const Hero = () => {
       <div className="absolute inset-0 bg-navy/80 bg-gradient-to-br from-navy/95 via-navy/80 to-deep-blue/70 z-20 pointer-events-none" />
       <div className="container mx-auto px-4 relative z-30">
         <div className="max-w-2xl mx-auto md:max-w-4xl lg:ml-0 lg:mr-auto">
-          <h1 className="text-4xl lg:text-6xl font-poppins font-bold leading-tight mb-3 drop-shadow-header text-center lg:text-left">
+          <h1 className="text-4xl lg:text-6xl font-poppins font-bold leading-tight mb-6 drop-shadow-header text-center lg:text-left">
             Making I.T. Easy
           </h1>
-          <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed mb-8 mt-2 drop-shadow-header text-center lg:text-left">
+          <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed mb-7 mt-2 drop-shadow-header text-center lg:text-left">
             From food & beverage manufacturers to law and accounting firms—we simplify, automate, and modernize your IT so your team can focus on results.
           </p>
           <ul className="flex flex-col sm:flex-row gap-2 sm:gap-6 mb-8 justify-center lg:justify-start">
@@ -66,7 +66,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
             <Button 
               size="lg" 
-              className="bg-gradient-yellow text-navy hover:bg-accent hover:text-navy font-semibold text-lg px-8 py-6 w-full sm:w-auto shadow-lg shadow-black/20"
+              className="bg-gradient-yellow text-navy font-poppins font-bold text-lg px-8 py-5 w-full sm:w-auto shadow hover:opacity-90 duration-150"
             >
               Book Free Assessment
             </Button>
