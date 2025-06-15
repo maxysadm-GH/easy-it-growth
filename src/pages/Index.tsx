@@ -1,4 +1,3 @@
-
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import IdealClients from '../components/IdealClients';
@@ -11,7 +10,7 @@ import AIInsights from '../components/AIInsights';
 import Integrations from '../components/Integrations';
 import ClientPortal from '../components/ClientPortal';
 import BlogTeaser from '../components/BlogTeaser';
-import ChatAssistant from '../components/ChatAssistant';
+import Chatbot from '../components/Chatbot';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -21,19 +20,19 @@ const Index = () => {
       <Hero />
       <IdealClients />
       <WhyMBACIO />
-      <ExpandedServices />
+      {/* 1. MOVE ThreeStepFramework BEFORE AIInsights */}
       <ThreeStepFramework />
-      <ServicePlans />
       <AIInsights />
+      {/* 2. MOVE Services AFTER AIInsights (was before) */}
+      <ExpandedServices />
       <Integrations />
-      {/* Assessments have moved to subpages */}
       <ClientPortal />
       <BlogTeaser />
-      <ChatAssistant />
+      {/* 5. Add global Chatbot */}
+      <Chatbot />
       <Footer />
     </div>
   );
 };
 
 export default Index;
-
