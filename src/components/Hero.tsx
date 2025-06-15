@@ -1,7 +1,5 @@
-
 import { Button } from '@/components/ui/button';
 
-// Update to use blue background robot icon where previously had the Lucide Headphones
 const Hero = () => {
   return (
     <section className="min-h-screen bg-gradient-to-br from-navy via-deep-blue to-navy text-white pt-16 flex items-center">
@@ -52,57 +50,12 @@ const Hero = () => {
           </div>
 
           <div className="relative">
-            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 space-y-6">
-              <div className="text-center mb-8">
-                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                  <img
-                    src="/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png"
-                    alt="Robot Head Icon"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-2xl font-poppins font-bold text-accent">Quick Assessment</h3>
-                <p className="text-gray-300">Get your IT Risk Score in 2 minutes</p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Your Name *</label>
-                  <input 
-                    type="text" 
-                    className="w-full p-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Business Email *</label>
-                  <input 
-                    type="email" 
-                    className="w-full p-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
-                    placeholder="your@company.com"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Company Size</label>
-                  <select className="w-full p-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-accent">
-                    <option value="" className="text-gray-700">Select size</option>
-                    <option value="1-10" className="text-gray-700">1-10 employees</option>
-                    <option value="11-50" className="text-gray-700">11-50 employees</option>
-                    <option value="51-200" className="text-gray-700">51-200 employees</option>
-                    <option value="200+" className="text-gray-700">200+ employees</option>
-                  </select>
-                </div>
-
-                <Button className="w-full bg-accent text-navy hover:opacity-90 font-semibold py-3">
-                  Get My IT Risk Score
-                </Button>
-                
-                <p className="text-xs text-gray-400 text-center">
-                  This is an informative estimate, not a formal audit.
-                </p>
-              </div>
+            <div className="flex items-center justify-center h-full">
+              <img
+                src="/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png"
+                alt="Robot Head Icon"
+                className="w-32 h-32 object-contain"
+              />
             </div>
           </div>
         </div>
