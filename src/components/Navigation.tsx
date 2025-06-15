@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -7,7 +6,7 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
+    <nav className="fixed top-0 w-full bg-navy backdrop-blur-sm z-50 border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -63,4 +62,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation; 
+export default Navigation;
