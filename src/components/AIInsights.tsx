@@ -1,31 +1,32 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-// Use the most official logo URLs from vendor CDNs or clear open sources. If unavailable, fallback to uploaded, but prefer external.
+// Updated integrations list with working logos
 const integrations = [
   {
     name: "QuickBooks Online",
-    src: "https://cdn.brandfolder.io/3RTKF3FA/at/s657xjcr8wc3j4m68q3h455/QuickBooks-Logo-Primary-Green.svg",
+    src: "https://plugin.intuitcdn.net/designsystem_qbse/5.0.0/assets/images/logos/intuit-quickbooks-logo.svg",
   },
   {
     name: "HubSpot",
-    src: "https://cdn2.hubspot.net/hubfs/53/image8-2.svg",
+    src: "https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png",
   },
   {
     name: "Salesforce",
-    src: "https://a.sfdcstatic.com/shared/images/misc/salesforce-logo.svg"
+    src: "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg"
   },
   {
     name: "Microsoft 365",
-    src: "https://cdn.iconscout.com/icon/free/png-256/microsoft-38-761688.png",
+    src: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LJ5j?ver=20b3",
   },
   {
-    name: "Dropbox",
-    src: "https://cfl.dropboxstatic.com/static/images/logos/pages/glyph@2x-vflJ6ydKp.png",
+    name: "Slack",
+    src: "https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png",
   },
   {
-    name: "Google Workspace",
-    src: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_2015_logo.svg",
+    name: "Shopify",
+    src: "https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg",
   }
 ];
 
@@ -116,20 +117,17 @@ const AIInsights = () => {
           <div className="flex flex-wrap justify-center gap-8 py-4 w-full">
             {integrations.map((logo, index) => (
               <div key={logo.name} className="flex flex-col items-center w-20 md:w-28">
-                <img
-                  src={logo.src}
-                  alt={logo.name}
-                  className="w-full h-auto drop-shadow-lg rounded-md transition-transform duration-300 hover:scale-110 opacity-0 animate-fade-in"
-                  style={{
-                    minHeight: 42,
-                    maxHeight: 54,
-                    background: "#fff",
-                    padding: "0.5rem",
-                    animationDelay: `${index * 110}ms`,
-                    animationFillMode: "forwards"
-                  }}
-                />
-                <span className="mt-1 text-white text-xs md:text-sm font-medium text-center hidden md:block">{logo.name}</span>
+                <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-lg flex items-center justify-center">
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="w-full h-auto max-h-12 object-contain transition-transform duration-300 hover:scale-110"
+                    onError={(e) => {
+                      e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23112d4e'/%3E%3Ctext x='20' y='20' text-anchor='middle' dy='0.35em' fill='white' font-size='8'%3E" + logo.name.charAt(0) + "%3C/text%3E%3C/svg%3E";
+                    }}
+                  />
+                </div>
+                <span className="mt-2 text-white text-xs md:text-sm font-medium text-center">{logo.name}</span>
               </div>
             ))}
           </div>

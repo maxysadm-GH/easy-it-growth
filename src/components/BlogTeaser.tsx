@@ -11,7 +11,7 @@ const blogPosts = [
     date: "December 15, 2024",
     readTime: "5 min read",
     featured: true,
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format&q=80"
   },
   {
     title: "5 Critical Cybersecurity Mistakes Small Manufacturers Make",
@@ -20,7 +20,7 @@ const blogPosts = [
     date: "December 10, 2024",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=300&fit=crop&auto=format&q=80"
   },
   {
     title: "The Hidden Cost of IT Downtime: What Every CEO Should Know",
@@ -29,7 +29,7 @@ const blogPosts = [
     date: "December 8, 2024",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=300&fit=crop&auto=format&q=80"
   }
 ];
 
