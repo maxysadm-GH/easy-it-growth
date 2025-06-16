@@ -17,8 +17,8 @@ const tools = [
     icon: "🛡️",
     title: "Cybersecurity Risk Assessment",
     description: "Get your security risk score with our comprehensive assessment. Identify vulnerabilities before they become problems.",
-    path: "/assessment-risk",
-    status: "available"
+    path: "/tools/cyber-risk",
+    status: "coming-soon"
   },
   {
     icon: "⚠️",
@@ -32,28 +32,28 @@ const tools = [
     title: "Vendor Consolidation Savings",
     description: "Discover how much you could save by consolidating multiple IT vendors.",
     path: "/tools/vendor-consolidation",
-    status: "available"
+    status: "coming-soon"
   },
   {
     icon: "☁️",
     title: "Cloud Migration ROI",
     description: "Evaluate the return on investment for migrating to the cloud.",
     path: "/tools/cloud-migration",
-    status: "available"
+    status: "coming-soon"
   },
   {
     icon: "📋",
     title: "Compliance Cost Calculator",
     description: "Estimate the cost of meeting IT compliance requirements.",
     path: "/tools/compliance-cost",
-    status: "available"
+    status: "coming-soon"
   },
   {
     icon: "👥",
     title: "IT Staff Productivity Calculator",
     description: "Measure and optimize your IT team's productivity metrics.",
     path: "/tools/staff-productivity",
-    status: "available"
+    status: "coming-soon"
   }
 ];
 
