@@ -7,21 +7,21 @@ import { Shield, Zap, Users, Award, TrendingUp, Clock } from 'lucide-react';
 const benefits = [
   {
     icon: Zap,
-    title: "Automation-First Approach",
-    description: "We don't just fix problems—we eliminate them. Our automation-first methodology transforms manual processes into intelligent workflows that work 24/7.",
-    stat: "80% average process automation"
+    title: "Smarter Setup",
+    description: "Cloud-first infrastructure and seamless tool integrations. No more duct-tape fixes or patchwork solutions.",
+    stat: "Future-proof architecture"
+  },
+  {
+    icon: Clock,
+    title: "Faster Support",
+    description: "24/7 SLA-backed response times to keep your business secure. Experts around the globe who know your environment.",
+    stat: "Global expert coverage"
   },
   {
     icon: TrendingUp,
-    title: "Results-Driven Delivery",
-    description: "Guaranteed ROI in 6 weeks or we work for free. We're so confident in our results that we put our money where our mouth is.",
-    stat: "6-week ROI guarantee"
-  },
-  {
-    icon: Users,
-    title: "White-Glove Service",
-    description: "Your dedicated team becomes an extension of your business. No call centers, no tickets—just direct access to experts who know your business.",
-    stat: "Dedicated team per client"
+    title: "Clear ROI",
+    description: "Reduce IT overhead, cut manual work by up to 37%, and enjoy predictable monthly pricing with measurable outcomes.",
+    stat: "37% less manual work"
   },
   {
     icon: Shield,
@@ -30,15 +30,15 @@ const benefits = [
     stat: "Zero security incidents"
   },
   {
-    icon: Clock,
-    title: "Rapid Implementation",
-    description: "While others take months, we deliver in weeks. Our proven frameworks and pre-built integrations accelerate your transformation.",
-    stat: "3x faster deployment"
+    icon: Users,
+    title: "White-Glove Service",
+    description: "Your dedicated team becomes an extension of your business. No call centers, no tickets—just direct access to experts.",
+    stat: "Dedicated team per client"
   },
   {
     icon: Award,
     title: "Industry Expertise",
-    description: "Deep expertise in manufacturing, legal, accounting, and healthcare. We understand your industry's unique challenges and regulations.",
+    description: "Deep expertise in manufacturing, legal, accounting, and healthcare. We understand your industry's unique challenges.",
     stat: "15+ years experience"
   }
 ];
@@ -53,11 +53,11 @@ const WhyUs = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8 drop-shadow-header">
-              Why Choose MBACIO?
+              We Don't Just Fix IT. We Build Smarter Systems That Scale With You.
             </h1>
             <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
-              We're not just another IT company. We're your growth partner, 
-              delivering guaranteed results through automation, security, and strategic innovation.
+              Discover how MBACIO helps growing businesses modernize IT operations 
+              with smarter systems, faster support, and measurable ROI.
             </p>
             <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
               Book Your Free Assessment
@@ -108,7 +108,7 @@ const WhyUs = () => {
             and accelerated growth with MBACIO's proven approach.
           </p>
           <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
-            Start Your Free Assessment Today
+            Book Your Free Assessment
           </Button>
         </div>
       </section>

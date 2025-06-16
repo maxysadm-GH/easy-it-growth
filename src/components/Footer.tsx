@@ -17,16 +17,16 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-6">
+            <a href="/" className="flex items-center space-x-2 mb-6">
               <img
                 src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
                 alt="MBACIO Logo"
-                className="h-12 w-auto"
+                className="h-12 w-auto hover:scale-105 transition-transform duration-300"
                 style={{ maxHeight: 48 }}
               />
-            </div>
+            </a>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Chicago's Strategic IT & Automation Partner for Security, Data Visibility & Business Growth.
+              Strategic IT & Automation Partner for Security, Data Visibility & Business Growth.
               Serving manufacturers, law firms, and CPA practices nationwide.
             </p>
             {/* Warranty text as a link requiring login */}

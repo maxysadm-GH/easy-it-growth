@@ -7,24 +7,24 @@ import { Brain, BarChart3, Zap, Shield } from 'lucide-react';
 
 const features = [
   {
-    icon: Brain,
-    title: "AI Copilot",
-    description: "Your intelligent assistant for IT operations, predictive maintenance, and automated decision-making."
+    icon: BarChart3,
+    title: "Dashboards & KPIs",
+    description: "Real-time insights from Fishbowl, QuickBooks Online, and Shopify—no spreadsheets needed."
   },
   {
-    icon: BarChart3,
-    title: "Smart Dashboards",
-    description: "Real-time insights and analytics that turn your data into actionable business intelligence."
+    icon: Brain,
+    title: "AI Copilot",
+    description: "Anomaly detection, forecasts, and smart alerts that keep your operations running smoothly."
   },
   {
     icon: Zap,
-    title: "Automated Workflows",
-    description: "Intelligent automation that learns from your processes and optimizes them continuously."
+    title: "Automated Reports",
+    description: "Inbox-ready reports for leadership, finance, and operations—delivered automatically."
   },
   {
     icon: Shield,
-    title: "Predictive Security",
-    description: "AI-powered threat detection and prevention that stays ahead of emerging cybersecurity risks."
+    title: "System Integrations",
+    description: "Connect QuickBooks, Fishbowl, MySQL, Shopify, Excel, and Google Sheets seamlessly."
   }
 ];
 
@@ -38,14 +38,14 @@ const DataAI = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8 drop-shadow-header">
-              AI-Powered Business Intelligence
+              Your Data Should Work as Hard as You Do
             </h1>
             <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
-              Transform your data into competitive advantage with our AI copilot, 
-              smart dashboards, and predictive analytics—all tailored to your industry.
+              Explore MBACIO's AI-powered dashboards and reporting tools for operations, 
+              finance, and IT automation that transforms data into competitive advantage.
             </p>
             <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
-              Discover AI Solutions
+              Book Your Free Assessment
             </Button>
           </div>
         </div>
@@ -85,7 +85,7 @@ const DataAI = () => {
             enhance decision-making, and drive unprecedented growth.
           </p>
           <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
-            Book Your AI Assessment
+            Book Your Free Assessment
           </Button>
         </div>
       </section>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
 const Logo = () => (
-  <div className="flex items-center h-full py-2">
+  <a href="/" className="flex items-center h-full py-2">
     <img
       src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
       alt="MBACIO Logo"
@@ -11,7 +11,7 @@ const Logo = () => (
       style={{ filter: 'drop-shadow(0 2px 18px rgba(0,0,0,0.16))' }}
       draggable={false}
     />
-  </div>
+  </a>
 );
 
 const navLinkClass = "text-white font-poppins font-bold text-lg md:text-xl hover:text-accent transition-all duration-300 drop-shadow-header relative group";

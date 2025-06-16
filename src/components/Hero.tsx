@@ -42,12 +42,16 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 relative z-30">
         <div className="max-w-3xl mx-auto lg:max-w-4xl lg:ml-0 lg:mr-auto text-center lg:text-left">
-          <h1 className="text-4xl lg:text-6xl xl:text-7xl font-poppins font-bold leading-tight mb-8 drop-shadow-header">
+          <h1 className="text-4xl lg:text-6xl xl:text-7xl font-poppins font-bold leading-tight mb-4 drop-shadow-header">
             Making I.T. Easy
           </h1>
           
-          <p className="text-xl lg:text-2xl xl:text-3xl text-gray-200 leading-relaxed mb-10 drop-shadow-header max-w-4xl">
-            From food & beverage manufacturers to law and accounting firms—we simplify, automate, and modernize your IT so your team can focus on results.
+          <p className="text-2xl lg:text-3xl xl:text-4xl font-poppins font-semibold text-accent mb-8 drop-shadow-header">
+            Smarter IT. Simpler Growth.
+          </p>
+          
+          <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed mb-10 drop-shadow-header max-w-4xl">
+            From manufacturers to professional firms—we simplify, automate, and modernize your IT operations so your team can focus on growth.
           </p>
           
           <ul className="flex flex-col sm:flex-row gap-3 sm:gap-8 mb-12 justify-center lg:justify-start">
