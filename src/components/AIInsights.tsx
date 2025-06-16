@@ -17,8 +17,8 @@ const integrations = [
     src: "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg"
   },
   {
-    name: "Microsoft 365",
-    src: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LJ5j?ver=20b3",
+    name: "Microsoft Excel",
+    src: "https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg",
   },
   {
     name: "Slack",
@@ -122,9 +122,6 @@ const AIInsights = () => {
                     src={logo.src}
                     alt={logo.name}
                     className="w-full h-auto max-h-12 object-contain transition-transform duration-300 hover:scale-110"
-                    onError={(e) => {
-                      e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23112d4e'/%3E%3Ctext x='20' y='20' text-anchor='middle' dy='0.35em' fill='white' font-size='8'%3E" + logo.name.charAt(0) + "%3C/text%3E%3C/svg%3E";
-                    }}
                   />
                 </div>
                 <span className="mt-2 text-white text-xs md:text-sm font-medium text-center">{logo.name}</span>

@@ -2,21 +2,21 @@
 import React from "react";
 
 const integrations = [
-  { name: "QuickBooks Online", logo: "https://app-screenshots.s3.amazonaws.com/prod/05e8e67d-00bb-5de8-9ce4-0a69b49d1252.png" },
-  { name: "HubSpot", logo: "https://app-screenshots.s3.amazonaws.com/prod/c7c41a20-25dc-5b9b-bb2c-4b3a33a2d4e8.png" },
-  { name: "Salesforce", logo: "https://app-screenshots.s3.amazonaws.com/prod/dea7eddc-fe59-5a13-8c6a-ddeac0cd3e5b.png" },
-  { name: "Microsoft Excel", logo: "https://app-screenshots.s3.amazonaws.com/prod/0829ef8e-7b8b-52a1-ba92-9ad1fb4d3777.png" },
-  { name: "Slack", logo: "https://app-screenshots.s3.amazonaws.com/prod/81720c3b-d6bf-51bb-81b7-2f1b10d13a62.png" },
-  { name: "Fishbowl Inventory", logo: "https://app-screenshots.s3.amazonaws.com/prod/d36bb325-b825-5c7e-bb60-ea0b3be5fb5a.png" },
-  { name: "Shopify", logo: "https://app-screenshots.s3.amazonaws.com/prod/df4a3a55-a0ac-5a06-a5ed-e1eeaf91e69e.png" },
-  { name: "Google Analytics", logo: "https://app-screenshots.s3.amazonaws.com/prod/b7dfc33b-8b49-5c19-af3e-a0c4a46eaceb.png" },
-  { name: "Xero", logo: "https://app-screenshots.s3.amazonaws.com/prod/a9b4f69b-a9ca-541b-a72f-6e0fbbe4c38f.png" },
-  { name: "NetSuite", logo: "https://app-screenshots.s3.amazonaws.com/prod/5bcd3d85-e1bb-5b33-9b4b-8e8c8b18c8b3.png" },
-  { name: "Sage", logo: "https://app-screenshots.s3.amazonaws.com/prod/a0fe8a33-de78-51dd-91d7-2a7dcecd3e0a.png" },
-  { name: "FreshBooks", logo: "https://app-screenshots.s3.amazonaws.com/prod/b2f3a4b2-f8bd-5432-9b1c-1e2d3a4b5c6d.png" },
-  { name: "Zoho", logo: "https://app-screenshots.s3.amazonaws.com/prod/c8b2e1b6-f3b5-5c42-9a3d-7e8f9a0b1c2d.png" },
-  { name: "monday.com", logo: "https://app-screenshots.s3.amazonaws.com/prod/e1d3b2f4-a5c6-5b89-9f2e-3d4a5b6c7e8f.png" },
-  { name: "Asana", logo: "https://app-screenshots.s3.amazonaws.com/prod/f2e4c3d5-b6a7-5c90-8e1f-4e5a6b7c8d9e.png" }
+  { name: "QuickBooks Online", logo: "https://plugin.intuitcdn.net/designsystem_qbse/5.0.0/assets/images/logos/intuit-quickbooks-logo.svg" },
+  { name: "HubSpot", logo: "https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png" },
+  { name: "Salesforce", logo: "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg" },
+  { name: "Microsoft Excel", logo: "https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" },
+  { name: "Slack", logo: "https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png" },
+  { name: "Fishbowl Inventory", logo: "https://www.fishbowlinventory.com/wp-content/uploads/2023/04/fishbowl-logo.svg" },
+  { name: "Shopify", logo: "https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg" },
+  { name: "Google Analytics", logo: "https://www.google.com/analytics/static/9b4f9e6e/images/analytics-logo.svg" },
+  { name: "Xero", logo: "https://www.xero.com/content/dam/xero/images/logos/xero-logo.svg" },
+  { name: "NetSuite", logo: "https://www.netsuite.com/portal/assets/img/logos/netsuite-logo.svg" },
+  { name: "Sage", logo: "https://www.sage.com/~/media/group/images/sage-rebrand/sage-logo.svg" },
+  { name: "FreshBooks", logo: "https://www.freshbooks.com/wp-content/themes/freshbooks/dist/images/logos/freshbooks-logo.svg" },
+  { name: "Zoho", logo: "https://www.zoho.com/sites/zweb/images/zoho-logo.svg" },
+  { name: "monday.com", logo: "https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/monday-logo-x2.png" },
+  { name: "Asana", logo: "https://luna1.co/eb0187.png" }
 ];
 
 const Integrations = () => {
@@ -52,10 +52,6 @@ const Integrations = () => {
                     alt={integration.name + " logo"}
                     className="w-full h-full object-contain"
                     draggable={false}
-                    onError={(e) => {
-                      // Fallback for broken images
-                      e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23112d4e'/%3E%3Ctext x='20' y='20' text-anchor='middle' dy='0.35em' fill='white' font-size='8'%3E" + integration.name.charAt(0) + "%3C/text%3E%3C/svg%3E";
-                    }}
                   />
                 </div>
                 <span className="mt-3 text-sm font-medium text-white text-center group-hover:text-accent transition-colors duration-300">

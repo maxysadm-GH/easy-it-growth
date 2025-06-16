@@ -10,8 +10,8 @@ const blogPosts = [
     category: "AI & Automation",
     date: "December 15, 2024",
     readTime: "5 min read",
-    featured: true,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format&q=80"
+    featured: false,
+    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=300&fit=crop&auto=format&q=80"
   },
   {
     title: "5 Critical Cybersecurity Mistakes Small Manufacturers Make",
@@ -20,7 +20,7 @@ const blogPosts = [
     date: "December 10, 2024",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=300&fit=crop&auto=format&q=80"
   },
   {
     title: "The Hidden Cost of IT Downtime: What Every CEO Should Know",
@@ -29,7 +29,7 @@ const blogPosts = [
     date: "December 8, 2024",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=300&fit=crop&auto=format&q=80"
   }
 ];
 
@@ -46,11 +46,11 @@ const BlogTeaser = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
           {blogPosts.map((post, index) => (
-            <Card key={index} className={`group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden ${post.featured ? 'lg:col-span-2 lg:row-span-2' : ''}`}>
+            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden">
               {/* Image */}
-              <div className={`relative overflow-hidden ${post.featured ? 'h-64' : 'h-48'}`}>
+              <div className="relative overflow-hidden h-48">
                 <img
                   src={post.image}
                   alt={post.title}
@@ -70,13 +70,13 @@ const BlogTeaser = () => {
                     {post.date}
                   </span>
                 </div>
-                <CardTitle className={`font-poppins font-bold text-navy group-hover:text-accent transition-colors duration-300 ${post.featured ? 'text-2xl lg:text-3xl' : 'text-xl'}`}>
+                <CardTitle className="text-xl font-poppins font-bold text-navy group-hover:text-accent transition-colors duration-300">
                   {post.title}
                 </CardTitle>
               </CardHeader>
 
               <CardContent className="relative">
-                <p className={`text-muted-foreground leading-relaxed mb-6 ${post.featured ? 'text-lg' : 'text-base'}`}>
+                <p className="text-muted-foreground leading-relaxed mb-6 text-base">
                   {post.excerpt}
                 </p>
 
