@@ -1,48 +1,49 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Logo = () => (
-  <div className="flex items-center h-full py-2">
+  <Link to="/" className="flex items-center h-full py-2 transition-transform duration-300 hover:scale-105">
     <img
       src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
       alt="MBACIO Logo"
-      className="h-16 md:h-20 w-auto select-none pointer-events-none transition-all duration-300 hover:scale-105"
+      className="h-16 md:h-20 w-auto select-none pointer-events-none"
       style={{ filter: 'drop-shadow(0 2px 18px rgba(0,0,0,0.16))' }}
       draggable={false}
     />
-  </div>
+  </Link>
 );
 
-const navLinkClass = "text-white font-poppins font-bold text-lg md:text-xl hover:text-accent transition-all duration-300 drop-shadow-header relative group";
+const navLinkClass = "text-white font-inter font-semibold text-lg md:text-xl hover:text-electric-blue transition-all duration-300 drop-shadow-header relative group";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-navy/95 backdrop-blur-sm z-50 shadow-lg border-b border-accent/20">
-      <div className="container mx-auto px-4">
+    <nav className="fixed top-0 left-0 w-full bg-navy/95 backdrop-blur-sm z-50 shadow-lg border-b border-electric-blue/20">
+      <div className="container mx-auto container-padding">
         <div className="flex items-center justify-between h-20 md:h-24">
           <Logo />
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            <a href="/why-us" className={navLinkClass}>
+            <Link to="/why-us" className={navLinkClass}>
               Why MBACIO
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="/services" className={navLinkClass}>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-electric-blue transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/services" className={navLinkClass}>
               Services
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="/data-ai" className={navLinkClass}>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-electric-blue transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/data-ai" className={navLinkClass}>
               Data & AI
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="/blog" className={navLinkClass}>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-electric-blue transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/blog" className={navLinkClass}>
               Blog
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-            </a>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-electric-blue transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             
             {/* Tools Dropdown */}
             <div className="relative group">
@@ -53,28 +54,28 @@ const Navigation = () => {
                 </svg>
               </button>
               <div className="absolute hidden group-hover:block pt-2 z-20 left-0">
-                <div className="bg-charcoal/95 backdrop-blur-sm rounded-lg shadow-xl py-3 w-64 border border-accent/20">
-                  <a href="/tools" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl py-3 w-64 border border-electric-blue/20">
+                  <Link to="/tools" className="flex items-center px-5 py-3 hover:bg-electric-blue/10 text-navy transition-all duration-200">
                     <span className="mr-3">🛠️</span>
                     All Assessment Tools
-                  </a>
-                  <a href="/assessment-risk" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                  </Link>
+                  <Link to="/assessment-risk" className="flex items-center px-5 py-3 hover:bg-electric-blue/10 text-navy transition-all duration-200">
                     <span className="mr-3">🛡</span>
                     Cyber Risk Assessment
-                  </a>
-                  <a href="/assessment-automation" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                  </Link>
+                  <Link to="/tools/automation-roi" className="flex items-center px-5 py-3 hover:bg-electric-blue/10 text-navy transition-all duration-200">
                     <span className="mr-3">⚙️</span>
                     Automation ROI Calculator
-                  </a>
-                  <a href="/tools/downtime-cost" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                  </Link>
+                  <Link to="/tools/downtime-cost" className="flex items-center px-5 py-3 hover:bg-electric-blue/10 text-navy transition-all duration-200">
                     <span className="mr-3">⚠️</span>
                     Downtime Cost Calculator
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             
-            <Button className="ml-4 bg-gradient-yellow text-navy px-6 py-2.5 rounded-lg font-bold font-poppins text-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:opacity-90 hover:shadow-accent/20">
+            <Button className="ml-4 bg-electric-blue text-white px-6 py-2.5 rounded-lg font-semibold font-inter text-lg shadow-lg glow-hover">
               Book Your Free Assessment
             </Button>
           </div>
@@ -96,17 +97,17 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-4 bg-navy/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-accent/20">
-              <a href="/why-us" className={navLinkClass}>Why MBACIO</a>
-              <a href="/services" className={navLinkClass}>Services</a>
-              <a href="/data-ai" className={navLinkClass}>Data & AI</a>
-              <a href="/blog" className={navLinkClass}>Blog</a>
+            <div className="flex flex-col space-y-4 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-electric-blue/20">
+              <Link to="/why-us" className="text-navy font-semibold text-lg">Why MBACIO</Link>
+              <Link to="/services" className="text-navy font-semibold text-lg">Services</Link>
+              <Link to="/data-ai" className="text-navy font-semibold text-lg">Data & AI</Link>
+              <Link to="/blog" className="text-navy font-semibold text-lg">Blog</Link>
               <div className="flex flex-col gap-2 pl-4">
-                <a href="/tools" className={navLinkClass + " text-base"}>🛠️ All Assessment Tools</a>
-                <a href="/assessment-risk" className={navLinkClass + " text-base"}>🛡 Cyber Risk Assessment</a>
-                <a href="/assessment-automation" className={navLinkClass + " text-base"}>⚙️ Automation ROI Calculator</a>
+                <Link to="/tools" className="text-navy font-medium">🛠️ All Assessment Tools</Link>
+                <Link to="/assessment-risk" className="text-navy font-medium">🛡 Cyber Risk Assessment</Link>
+                <Link to="/tools/automation-roi" className="text-navy font-medium">⚙️ Automation ROI Calculator</Link>
               </div>
-              <Button className="bg-gradient-yellow text-navy px-6 py-3 rounded-lg font-bold font-poppins text-lg shadow-lg">
+              <Button className="bg-electric-blue text-white px-6 py-3 rounded-lg font-semibold font-inter text-lg shadow-lg glow-hover">
                 Book Your Free Assessment
               </Button>
             </div>
