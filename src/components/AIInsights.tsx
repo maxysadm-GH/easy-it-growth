@@ -1,32 +1,31 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-// Updated integrations list with working logos
+// Updated integrations list with reliable working logos
 const integrations = [
   {
     name: "QuickBooks Online",
-    src: "https://plugin.intuitcdn.net/designsystem_qbse/5.0.0/assets/images/logos/intuit-quickbooks-logo.svg",
+    src: "https://images.ctfassets.net/5965pury2lcm/4BtBWCBiiwmoqQiEsE6wuC/f8b5270bba737c9e7726b856ba60e20b/quickbooks-seeklogo.com.svg",
   },
   {
     name: "HubSpot",
-    src: "https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png",
+    src: "https://cdn2.hubspot.net/hubfs/53/HubSpot%20Logos/HubSpot-Inversed-Favicon.png",
   },
   {
     name: "Salesforce",
-    src: "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg"
+    src: "https://logos-world.net/wp-content/uploads/2020/10/Salesforce-Logo.png"
   },
   {
     name: "Microsoft Excel",
-    src: "https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg",
+    src: "https://logos-world.net/wp-content/uploads/2020/12/Excel-Logo.png",
   },
   {
     name: "Slack",
-    src: "https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png",
+    src: "https://logos-world.net/wp-content/uploads/2020/10/Slack-Logo.png",
   },
   {
     name: "Shopify",
-    src: "https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg",
+    src: "https://logos-world.net/wp-content/uploads/2020/11/Shopify-Logo.png",
   }
 ];
 

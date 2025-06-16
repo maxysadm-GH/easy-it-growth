@@ -2,21 +2,66 @@
 import React from "react";
 
 const integrations = [
-  { name: "QuickBooks Online", logo: "https://plugin.intuitcdn.net/designsystem_qbse/5.0.0/assets/images/logos/intuit-quickbooks-logo.svg" },
-  { name: "HubSpot", logo: "https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png" },
-  { name: "Salesforce", logo: "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg" },
-  { name: "Microsoft Excel", logo: "https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" },
-  { name: "Slack", logo: "https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png" },
-  { name: "Fishbowl Inventory", logo: "https://www.fishbowlinventory.com/wp-content/uploads/2023/04/fishbowl-logo.svg" },
-  { name: "Shopify", logo: "https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg" },
-  { name: "Google Analytics", logo: "https://www.google.com/analytics/static/9b4f9e6e/images/analytics-logo.svg" },
-  { name: "Xero", logo: "https://www.xero.com/content/dam/xero/images/logos/xero-logo.svg" },
-  { name: "NetSuite", logo: "https://www.netsuite.com/portal/assets/img/logos/netsuite-logo.svg" },
-  { name: "Sage", logo: "https://www.sage.com/~/media/group/images/sage-rebrand/sage-logo.svg" },
-  { name: "FreshBooks", logo: "https://www.freshbooks.com/wp-content/themes/freshbooks/dist/images/logos/freshbooks-logo.svg" },
-  { name: "Zoho", logo: "https://www.zoho.com/sites/zweb/images/zoho-logo.svg" },
-  { name: "monday.com", logo: "https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/monday-logo-x2.png" },
-  { name: "Asana", logo: "https://luna1.co/eb0187.png" }
+  { 
+    name: "QuickBooks Online", 
+    logo: "https://images.ctfassets.net/5965pury2lcm/4BtBWCBiiwmoqQiEsE6wuC/f8b5270bba737c9e7726b856ba60e20b/quickbooks-seeklogo.com.svg"
+  },
+  { 
+    name: "HubSpot", 
+    logo: "https://cdn2.hubspot.net/hubfs/53/HubSpot%20Logos/HubSpot-Inversed-Favicon.png"
+  },
+  { 
+    name: "Salesforce", 
+    logo: "https://logos-world.net/wp-content/uploads/2020/10/Salesforce-Logo.png"
+  },
+  { 
+    name: "Microsoft Excel", 
+    logo: "https://logos-world.net/wp-content/uploads/2020/12/Excel-Logo.png"
+  },
+  { 
+    name: "Slack", 
+    logo: "https://logos-world.net/wp-content/uploads/2020/10/Slack-Logo.png"
+  },
+  { 
+    name: "Fishbowl Inventory", 
+    logo: "https://www.fishbowlinventory.com/wp-content/uploads/2023/04/fishbowl-logo.svg"
+  },
+  { 
+    name: "Shopify", 
+    logo: "https://logos-world.net/wp-content/uploads/2020/11/Shopify-Logo.png"
+  },
+  { 
+    name: "Google Analytics", 
+    logo: "https://logos-world.net/wp-content/uploads/2021/02/Google-Analytics-Logo.png"
+  },
+  { 
+    name: "Xero", 
+    logo: "https://logos-world.net/wp-content/uploads/2021/02/Xero-Logo.png"
+  },
+  { 
+    name: "NetSuite", 
+    logo: "https://logos-world.net/wp-content/uploads/2021/02/Oracle-NetSuite-Logo.png"
+  },
+  { 
+    name: "Sage", 
+    logo: "https://logos-world.net/wp-content/uploads/2020/11/Sage-Logo.png"
+  },
+  { 
+    name: "FreshBooks", 
+    logo: "https://logos-world.net/wp-content/uploads/2021/02/FreshBooks-Logo.png"
+  },
+  { 
+    name: "Zoho", 
+    logo: "https://logos-world.net/wp-content/uploads/2020/11/Zoho-Logo.png"
+  },
+  { 
+    name: "monday.com", 
+    logo: "https://logos-world.net/wp-content/uploads/2021/08/Monday.com-Logo.png"
+  },
+  { 
+    name: "Asana", 
+    logo: "https://logos-world.net/wp-content/uploads/2020/12/Asana-Logo.png"
+  }
 ];
 
 const Integrations = () => {
