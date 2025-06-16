@@ -11,6 +11,9 @@ import AssessmentAutomation from "./pages/AssessmentAutomation";
 import AssessmentTools from "./pages/AssessmentTools";
 import AutomationROI from "./pages/AutomationROI";
 import DowntimeCost from "./pages/DowntimeCost";
+import VendorConsolidation from "./pages/VendorConsolidation";
+import CloudMigration from "./pages/CloudMigration";
+import StaffProductivity from "./pages/StaffProductivity";
 import ERPMRPClient from "./pages/ERPMRPClient";
 import FinanceLeadersClient from "./pages/FinanceLeadersClient";
 import FoodBeverageClient from "./pages/FoodBeverageClient";
@@ -41,6 +44,9 @@ const App = () => (
           <Route path="/tools" element={<AssessmentTools />} />
           <Route path="/tools/automation-roi" element={<AutomationROI />} />
           <Route path="/tools/downtime-cost" element={<DowntimeCost />} />
+          <Route path="/tools/vendor-consolidation" element={<VendorConsolidation />} />
+          <Route path="/tools/cloud-migration" element={<CloudMigration />} />
+          <Route path="/tools/staff-productivity" element={<StaffProductivity />} />
           <Route path="/assessment-risk" element={<AssessmentRisk />} />
           <Route path="/assessment-automation" element={<AssessmentAutomation />} />
           <Route path="/ideal-client/erp-mrp" element={<ERPMRPClient />} />
