@@ -37,7 +37,7 @@ const IntegrationCartwheel = () => {
             }}
           >
             <div className="group relative">
-              <div className="w-16 h-16 bg-white rounded-2xl p-3 shadow-lg border-2 border-transparent group-hover:border-electric-blue transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
+              <div className="w-16 h-16 bg-white rounded-2xl p-3 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
                 <img
                   src={integration.logo}
                   alt={integration.name + " logo"}
@@ -56,14 +56,14 @@ const IntegrationCartwheel = () => {
       })}
       
       {/* Center: MBACIO bot head icon */}
-      <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-full shadow-2xl border-4 border-electric-blue flex items-center justify-center w-32 h-32 group hover:scale-105 transition-transform duration-300">
+      <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-full shadow-2xl border-4 border-accent flex items-center justify-center w-32 h-32 group hover:scale-105 transition-transform duration-300">
         <img
           src="/lovable-uploads/9047d06d-8e00-44f9-a949-19b842c87735.png"
           alt="MBACIO AI Assistant"
           className="w-20 h-20"
           draggable={false}
         />
-        <div className="absolute inset-0 rounded-full bg-electric-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 rounded-full bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
       
       <style>{`
@@ -78,19 +78,21 @@ const IntegrationCartwheel = () => {
 
 const Integrations = () => {
   return (
-    <section className="section-padding bg-navy relative text-white overflow-hidden" id="integrations">
+    <section className="py-24 bg-navy relative text-white overflow-hidden" id="integrations">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/20 via-transparent to-slate-gray/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-transparent to-deep-blue/20"></div>
       </div>
       
-      <div className="container mx-auto container-padding relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-inter font-bold mb-6 text-electric-blue drop-shadow-header">
-            Works With Your Favorite Tools
+          <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-6 text-accent drop-shadow-header">
+            Powered for Business Growth
           </h2>
-          <p className="max-w-4xl mx-auto text-center text-lg md:text-xl mb-8 text-white/90 font-inter leading-relaxed">
-            As business intelligence software, we build comprehensive integrations. Across our 100+ connectors, we've pre-built thousands of metrics—just drag & drop into any dashboard and your visualizations update automatically.
+          <p className="max-w-3xl mx-auto text-center text-lg md:text-xl mb-8 text-white/90 font-inter leading-relaxed">
+            Connect 100+ business apps—CRM, ERP, accounting, marketing and more.
+            <br />
+            <span className="text-accent font-semibold">Unlock automation and real-time analytics.</span>
           </p>
         </div>
         
@@ -103,7 +105,7 @@ const Integrations = () => {
             </p>
             <a
               href="/integrations"
-              className="inline-flex items-center gap-2 bg-electric-blue text-white px-8 py-4 rounded-lg font-semibold font-inter text-lg shadow-xl glow-hover"
+              className="inline-flex items-center gap-2 bg-gradient-yellow text-navy px-8 py-4 rounded-lg font-bold font-poppins text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:opacity-90"
             >
               View All Integrations
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
