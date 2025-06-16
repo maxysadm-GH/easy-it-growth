@@ -1,5 +1,5 @@
 
-import { Headphones, Mail, Phone, MapPin } from 'lucide-react';
+import { Headphones, Mail, Phone, MapPin, Globe } from 'lucide-react';
 
 const Footer = () => {
   // Fake login state for demonstration. In production, use a real auth system
@@ -89,9 +89,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
-                  <div className="w-4 h-4 bg-accent rounded-full"></div>
-                </div>
+                <Globe className="w-5 h-5 text-accent flex-shrink-0" />
                 <a href="https://mbacio.com" className="text-gray-300 hover:text-accent transition-colors" rel="noopener noreferrer" target="_blank">
                   www.mbacio.com
                 </a>

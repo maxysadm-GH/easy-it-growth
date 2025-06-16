@@ -2,21 +2,21 @@
 import React from "react";
 
 const integrations = [
-  { name: "QuickBooks Online", logo: "https://plugin.intuitcdn.net/designsystem_qbse/5.0.0/assets/images/logos/intuit-quickbooks-logo.svg" },
-  { name: "HubSpot", logo: "https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png" },
-  { name: "Salesforce", logo: "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg" },
-  { name: "Microsoft 365", logo: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LJ5j?ver=20b3" },
-  { name: "Slack", logo: "https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png" },
-  { name: "Fishbowl Inventory", logo: "https://www.fishbowlinventory.com/wp-content/themes/fishbowl2019/img/fishbowl-logo.svg" },
-  { name: "Shopify", logo: "https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg" },
-  { name: "Google Analytics", logo: "https://www.google.com/analytics/static/1bc00e493d/img/new-ga-logo.svg" },
-  { name: "Xero", logo: "https://www.xero.com/content/dam/xero/images/logos/xero-logo-hires-RGB.svg" },
-  { name: "NetSuite", logo: "https://www.netsuite.com/portal/assets/img/logos/oracle-netsuite-logo.svg" },
-  { name: "Sage", logo: "https://www.sage.com/~/media/images/sagedotcom/master/global/logos/sage_logo_green.svg" },
-  { name: "Zoho", logo: "https://www.zoho.com/sites/default/files/zoho_general_pages/zoho-logo.svg" },
-  { name: "monday.com", logo: "https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/monday-logo-x2.png" },
-  { name: "Asana", logo: "https://d3ki9tyy5l5ruj.cloudfront.net/obj/ddd7b323463d079fa01e863ac0e99c4e8ef3b014/asana-logo-coral.svg" },
-  { name: "Dropbox", logo: "https://cfl.dropboxstatic.com/static/images/logo_catalog/dropbox_logo_glyph_blue_m1.svg" }
+  { name: "QuickBooks Online", logo: "https://app-screenshots.s3.amazonaws.com/prod/05e8e67d-00bb-5de8-9ce4-0a69b49d1252.png" },
+  { name: "HubSpot", logo: "https://app-screenshots.s3.amazonaws.com/prod/c7c41a20-25dc-5b9b-bb2c-4b3a33a2d4e8.png" },
+  { name: "Salesforce", logo: "https://app-screenshots.s3.amazonaws.com/prod/dea7eddc-fe59-5a13-8c6a-ddeac0cd3e5b.png" },
+  { name: "Microsoft Excel", logo: "https://app-screenshots.s3.amazonaws.com/prod/0829ef8e-7b8b-52a1-ba92-9ad1fb4d3777.png" },
+  { name: "Slack", logo: "https://app-screenshots.s3.amazonaws.com/prod/81720c3b-d6bf-51bb-81b7-2f1b10d13a62.png" },
+  { name: "Fishbowl Inventory", logo: "https://app-screenshots.s3.amazonaws.com/prod/d36bb325-b825-5c7e-bb60-ea0b3be5fb5a.png" },
+  { name: "Shopify", logo: "https://app-screenshots.s3.amazonaws.com/prod/df4a3a55-a0ac-5a06-a5ed-e1eeaf91e69e.png" },
+  { name: "Google Analytics", logo: "https://app-screenshots.s3.amazonaws.com/prod/b7dfc33b-8b49-5c19-af3e-a0c4a46eaceb.png" },
+  { name: "Xero", logo: "https://app-screenshots.s3.amazonaws.com/prod/a9b4f69b-a9ca-541b-a72f-6e0fbbe4c38f.png" },
+  { name: "NetSuite", logo: "https://app-screenshots.s3.amazonaws.com/prod/5bcd3d85-e1bb-5b33-9b4b-8e8c8b18c8b3.png" },
+  { name: "Sage", logo: "https://app-screenshots.s3.amazonaws.com/prod/a0fe8a33-de78-51dd-91d7-2a7dcecd3e0a.png" },
+  { name: "FreshBooks", logo: "https://app-screenshots.s3.amazonaws.com/prod/b2f3a4b2-f8bd-5432-9b1c-1e2d3a4b5c6d.png" },
+  { name: "Zoho", logo: "https://app-screenshots.s3.amazonaws.com/prod/c8b2e1b6-f3b5-5c42-9a3d-7e8f9a0b1c2d.png" },
+  { name: "monday.com", logo: "https://app-screenshots.s3.amazonaws.com/prod/e1d3b2f4-a5c6-5b89-9f2e-3d4a5b6c7e8f.png" },
+  { name: "Asana", logo: "https://app-screenshots.s3.amazonaws.com/prod/f2e4c3d5-b6a7-5c90-8e1f-4e5a6b7c8d9e.png" }
 ];
 
 const Integrations = () => {

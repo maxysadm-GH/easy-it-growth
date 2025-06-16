@@ -58,17 +58,29 @@ const Navigation = () => {
                     <span className="mr-3">🛠️</span>
                     All Assessment Tools
                   </a>
-                  <a href="/assessment-risk" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
-                    <span className="mr-3">🛡</span>
-                    Cyber Risk Assessment
-                  </a>
-                  <a href="/assessment-automation" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                  <a href="/tools/automation-roi" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                     <span className="mr-3">⚙️</span>
                     Automation ROI Calculator
+                  </a>
+                  <a href="/tools/cyber-risk" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <span className="mr-3">🛡️</span>
+                    Cyber Risk Assessment
                   </a>
                   <a href="/tools/downtime-cost" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                     <span className="mr-3">⚠️</span>
                     Downtime Cost Calculator
+                  </a>
+                  <a href="/tools/vendor-consolidation" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <span className="mr-3">📊</span>
+                    Vendor Consolidation Savings
+                  </a>
+                  <a href="/tools/cloud-migration" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <span className="mr-3">☁️</span>
+                    Cloud Migration ROI
+                  </a>
+                  <a href="/tools/staff-productivity" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <span className="mr-3">📈</span>
+                    IT Staff Productivity Calculator
                   </a>
                 </div>
               </div>
@@ -103,8 +115,12 @@ const Navigation = () => {
               <a href="/blog" className={navLinkClass}>Blog</a>
               <div className="flex flex-col gap-2 pl-4">
                 <a href="/tools" className={navLinkClass + " text-base"}>🛠️ All Assessment Tools</a>
-                <a href="/assessment-risk" className={navLinkClass + " text-base"}>🛡 Cyber Risk Assessment</a>
-                <a href="/assessment-automation" className={navLinkClass + " text-base"}>⚙️ Automation ROI Calculator</a>
+                <a href="/tools/automation-roi" className={navLinkClass + " text-base"}>⚙️ Automation ROI Calculator</a>
+                <a href="/tools/cyber-risk" className={navLinkClass + " text-base"}>🛡️ Cyber Risk Assessment</a>
+                <a href="/tools/downtime-cost" className={navLinkClass + " text-base"}>⚠️ Downtime Cost Calculator</a>
+                <a href="/tools/vendor-consolidation" className={navLinkClass + " text-base"}>📊 Vendor Consolidation Savings</a>
+                <a href="/tools/cloud-migration" className={navLinkClass + " text-base"}>☁️ Cloud Migration ROI</a>
+                <a href="/tools/staff-productivity" className={navLinkClass + " text-base"}>📈 IT Staff Productivity Calculator</a>
               </div>
               <Button className="bg-gradient-yellow text-navy px-6 py-3 rounded-lg font-bold font-poppins text-lg shadow-lg">
                 Book Your Free Assessment

@@ -17,7 +17,7 @@ const caseStudies = [
     ],
     icon: TrendingUp,
     gradient: "from-accent via-gradient-yellow-end to-pale-yellow",
-    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=600&h=300&fit=crop&auto=format&q=80"
   },
   {
     title: "Law Firm Achieves Complete Digital Transformation",
@@ -32,7 +32,7 @@ const caseStudies = [
     ],
     icon: Shield,
     gradient: "from-navy via-deep-blue to-accent",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=300&fit=crop&auto=format&q=80"
   },
   {
     title: "Accounting Firm Automates 44% of Processes",
@@ -47,7 +47,7 @@ const caseStudies = [
     ],
     icon: Zap,
     gradient: "from-gradient-yellow-start via-accent to-gradient-yellow-end",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=300&fit=crop&auto=format&q=80"
   }
 ];
 
