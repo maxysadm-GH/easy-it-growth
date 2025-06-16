@@ -5,49 +5,52 @@ import { ArrowRight, TrendingUp, Shield, Zap } from 'lucide-react';
 
 const caseStudies = [
   {
-    title: "Manufacturing Company Saves 40% on IT Costs",
+    title: "Manufacturing Company Saves 40% on IT Operations Costs",
     company: "Midwest Food Manufacturer",
-    industry: "Food & Beverage",
-    challenge: "Legacy systems causing production delays and security vulnerabilities",
-    solution: "Cloud migration, automation, and cybersecurity overhaul",
+    industry: "Food & Beverage Manufacturing",
+    challenge: "Legacy systems causing production delays and security vulnerabilities in Bannockburn IL region",
+    solution: "Cloud migration, automation, and cybersecurity overhaul with 24/7 dashboard monitoring",
     results: [
-      "40% reduction in IT costs",
-      "99.9% uptime achieved",
-      "Zero security incidents"
+      "40% reduction in IT operations costs",
+      "99.9% uptime achieved across all systems",
+      "Zero security incidents since implementation"
     ],
     icon: TrendingUp,
     gradient: "from-accent via-gradient-yellow-end to-pale-yellow",
-    image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=600&h=300&fit=crop&auto=format&q=80",
+    alt: "Manufacturing facility with automated production line and IT dashboard monitoring"
   },
   {
-    title: "Law Firm Achieves Complete Digital Transformation",
+    title: "Law Firm Achieves Complete Digital Transformation with ROI",
     company: "Chicago Legal Group", 
     industry: "Legal Services",
-    challenge: "Manual documentation processes and inefficient discovery workflows slowing case preparation",
-    solution: "Automated documentation audit, discovery acceleration system, and encrypted client data platform",
+    challenge: "Manual documentation processes and inefficient discovery workflows slowing case preparation for Chicagoland clients",
+    solution: "Automated documentation audit, discovery acceleration system, and encrypted client data platform with dashboard support",
     results: [
-      "22% productivity increase",
-      "Diminished company risk",
-      "Secure client data encryption"
+      "22% productivity increase in legal operations",
+      "Diminished company risk through automation",
+      "Secure client data encryption with 24/7 monitoring"
     ],
     icon: Shield,
     gradient: "from-navy via-deep-blue to-accent",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=300&fit=crop&auto=format&q=80",
+    alt: "Legal professionals working with digital documents and automated workflows in modern office"
   },
   {
-    title: "Accounting Firm Automates 44% of Processes",
+    title: "Accounting Firm Automates 44% of Processes with Dashboard Insights",
     company: "Regional CPA Firm",
-    industry: "Accounting",
-    challenge: "Manual processes slowing growth and increasing client delivery times",
-    solution: "Process automation, reporting integrations, and workflow optimization", 
+    industry: "Accounting & Professional Services",
+    challenge: "Manual processes slowing growth and increasing client delivery times in competitive Bannockburn market",
+    solution: "Process automation, reporting integrations, workflow optimization, and real-time dashboards for ROI tracking", 
     results: [
-      "44% process automation",
-      "57% faster client delivery",
-      "Near-zero manual errors"
+      "44% process automation across all operations",
+      "57% faster client delivery and support",
+      "Near-zero manual errors with dashboard monitoring"
     ],
     icon: Zap,
     gradient: "from-gradient-yellow-start via-accent to-gradient-yellow-end",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=300&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=300&fit=crop&auto=format&q=80",
+    alt: "CPA professionals using automated accounting software and data dashboards for client reporting"
   }
 ];
 
@@ -60,7 +63,7 @@ const CaseStudies = () => {
             Real Results for Real Businesses
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            See how we've helped businesses like yours streamline operations, enhance security, and drive growth through smart IT solutions.
+            See how we've helped businesses like yours streamline IT operations, enhance security, and drive ROI growth through smart automation and dashboard solutions. Serving Bannockburn & Chicagoland.
           </p>
         </div>
 
@@ -75,7 +78,7 @@ const CaseStudies = () => {
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={study.image}
-                    alt={study.title}
+                    alt={study.alt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent"></div>

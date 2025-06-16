@@ -86,9 +86,11 @@ const Navigation = () => {
               </div>
             </div>
             
-            <Button className="ml-4 bg-gradient-yellow text-navy px-6 py-2.5 rounded-lg font-bold font-poppins text-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:opacity-90 hover:shadow-accent/20">
-              Book Your Free Assessment
-            </Button>
+            <a href="/">
+              <Button className="ml-4 bg-gradient-yellow text-navy px-6 py-2.5 rounded-lg font-bold font-poppins text-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:opacity-90 hover:shadow-accent/20">
+                Book Your Free Assessment
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -122,9 +124,11 @@ const Navigation = () => {
                 <a href="/tools/cloud-migration" className={navLinkClass + " text-base"}>☁️ Cloud Migration ROI</a>
                 <a href="/tools/staff-productivity" className={navLinkClass + " text-base"}>📈 IT Staff Productivity Calculator</a>
               </div>
-              <Button className="bg-gradient-yellow text-navy px-6 py-3 rounded-lg font-bold font-poppins text-lg shadow-lg">
-                Book Your Free Assessment
-              </Button>
+              <a href="/">
+                <Button className="bg-gradient-yellow text-navy px-6 py-3 rounded-lg font-bold font-poppins text-lg shadow-lg">
+                  Book Your Free Assessment
+                </Button>
+              </a>
             </div>
           </div>
         )}

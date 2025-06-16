@@ -10,6 +10,19 @@ const Footer = () => {
       window.location.href = "/login?redirect=/warranty";
     }
   };
+
+  const handleMapClick = () => {
+    const address = "2515 Waukegan Road, Bannockburn, IL 60015";
+    const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address)}`;
+    const appleMapsUrl = `https://maps.apple.com/?address=${encodeURIComponent(address)}`;
+    
+    // Try to open Apple Maps on iOS, Google Maps otherwise
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      window.open(appleMapsUrl, '_blank');
+    } else {
+      window.open(googleMapsUrl, '_blank');
+    }
+  };
   
   return (
     <footer className="bg-charcoal text-white py-12" id="contact">
@@ -19,7 +32,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-center space-x-3">
               <MapPin className="w-5 h-5 text-accent flex-shrink-0" />
-              <div className="text-gray-300 text-sm">
+              <div className="text-gray-300 text-sm cursor-pointer hover:text-accent transition-colors" onClick={handleMapClick}>
                 <div>2515 Waukegan Road</div>
                 <div>Bannockburn, IL 60015</div>
               </div>
