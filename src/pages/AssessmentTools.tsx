@@ -63,7 +63,8 @@ const AssessmentTools = () => {
       <Navigation />
       
       {/* Professional Icon Styles */}
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .professional-icon {
           width: 60px;
           height: 60px;
@@ -157,7 +158,8 @@ const AssessmentTools = () => {
           font-size: 2rem;
           font-weight: 900;
         }
-      `}</style>
+        `
+      }} />
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-br from-navy to-deep-blue text-white">
