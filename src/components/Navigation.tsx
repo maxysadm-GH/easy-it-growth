@@ -54,6 +54,10 @@ const Navigation = () => {
               </button>
               <div className="absolute hidden group-hover:block pt-2 z-20 left-0">
                 <div className="bg-charcoal/95 backdrop-blur-sm rounded-lg shadow-xl py-3 w-64 border border-accent/20">
+                  <a href="/tools" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <span className="mr-3">🛠️</span>
+                    All Assessment Tools
+                  </a>
                   <a href="/assessment-risk" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                     <span className="mr-3">🛡</span>
                     Cyber Risk Assessment
@@ -61,6 +65,10 @@ const Navigation = () => {
                   <a href="/assessment-automation" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                     <span className="mr-3">⚙️</span>
                     Automation ROI Calculator
+                  </a>
+                  <a href="/tools/downtime-cost" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <span className="mr-3">⚠️</span>
+                    Downtime Cost Calculator
                   </a>
                 </div>
               </div>
@@ -94,6 +102,7 @@ const Navigation = () => {
               <a href="/data-ai" className={navLinkClass}>Data & AI</a>
               <a href="/blog" className={navLinkClass}>Blog</a>
               <div className="flex flex-col gap-2 pl-4">
+                <a href="/tools" className={navLinkClass + " text-base"}>🛠️ All Assessment Tools</a>
                 <a href="/assessment-risk" className={navLinkClass + " text-base"}>🛡 Cyber Risk Assessment</a>
                 <a href="/assessment-automation" className={navLinkClass + " text-base"}>⚙️ Automation ROI Calculator</a>
               </div>

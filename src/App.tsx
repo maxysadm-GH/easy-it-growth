@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AssessmentRisk from "./pages/AssessmentRisk";
 import AssessmentAutomation from "./pages/AssessmentAutomation";
+import AssessmentTools from "./pages/AssessmentTools";
+import AutomationROI from "./pages/AutomationROI";
+import DowntimeCost from "./pages/DowntimeCost";
 import ERPMRPClient from "./pages/ERPMRPClient";
 import FinanceLeadersClient from "./pages/FinanceLeadersClient";
 import FoodBeverageClient from "./pages/FoodBeverageClient";
@@ -33,6 +36,9 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/data-ai" element={<DataAI />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/tools" element={<AssessmentTools />} />
+          <Route path="/tools/automation-roi" element={<AutomationROI />} />
+          <Route path="/tools/downtime-cost" element={<DowntimeCost />} />
           <Route path="/assessment-risk" element={<AssessmentRisk />} />
           <Route path="/assessment-automation" element={<AssessmentAutomation />} />
           <Route path="/ideal-client/erp-mrp" element={<ERPMRPClient />} />
