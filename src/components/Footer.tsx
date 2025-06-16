@@ -23,6 +23,10 @@ const Footer = () => {
       window.open(googleMapsUrl, '_blank');
     }
   };
+
+  const handleBookAssessment = () => {
+    window.open('https://calendly.com/mbacio/free-assessment', '_blank');
+  };
   
   return (
     <footer className="bg-charcoal text-white py-12" id="contact">
@@ -73,12 +77,12 @@ const Footer = () => {
               Strategic IT & Automation Partner for Security, Data Visibility & Business Growth.
               Serving manufacturers, law firms, and CPA practices nationwide.
             </p>
-            {/* Warranty text as a link requiring login */}
+            {/* Warranty text as a clickable link */}
             <div className="mb-4">
               <a
                 href="/warranty"
                 onClick={handleWarrantyClick}
-                className="inline-block bg-gradient-yellow text-navy font-bold px-4 py-2 rounded-full shadow-md hover:underline transition-all duration-300 hover:scale-105 text-sm"
+                className="inline-block bg-gradient-yellow text-navy font-bold px-4 py-2 rounded-full shadow-md hover:underline transition-all duration-300 hover:scale-105 text-sm cursor-pointer"
                 style={{ textDecoration: 'none' }}
               >
                 60-Day Satisfaction Warranty
@@ -152,7 +156,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              © 2024 MBACIO, LLC. All rights reserved. • IT Support for Growing Businesses
+              © 2024 MBACIO, LLC. All rights reserved. • IT Support for Growing Businesses • Serving Bannockburn & Chicagoland
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-accent transition-colors">Privacy Policy</a>

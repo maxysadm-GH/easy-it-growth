@@ -50,6 +50,10 @@ const capabilities = [
 ];
 
 const AIInsights = () => {
+  const handleDashboardSolutions = () => {
+    window.location.href = '/dashboard-solutions';
+  };
+
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-br from-navy via-charcoal to-deep-blue text-white" id="insights">
       <div className="container mx-auto px-4">
@@ -120,7 +124,7 @@ const AIInsights = () => {
                 <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-lg flex items-center justify-center">
                   <img
                     src={logo.src}
-                    alt={logo.name}
+                    alt={logo.name + " integration"}
                     className="w-full h-full object-contain transition-transform duration-300 hover:scale-110"
                   />
                 </div>
@@ -130,13 +134,12 @@ const AIInsights = () => {
           </div>
         </div>
         <div className="text-center">
-          <a href="/dashboard-solutions">
-            <button
-              className="bg-gradient-yellow text-navy hover:opacity-90 font-semibold text-lg px-8 py-6 rounded-lg shadow"
-            >
-              MBACIO Dashboard Solutions
-            </button>
-          </a>
+          <button
+            onClick={handleDashboardSolutions}
+            className="bg-gradient-yellow text-navy hover:opacity-90 font-semibold text-lg px-8 py-6 rounded-lg shadow transition-all duration-300 hover:scale-105"
+          >
+            MBACIO Dashboard Solutions
+          </button>
         </div>
       </div>
     </section>

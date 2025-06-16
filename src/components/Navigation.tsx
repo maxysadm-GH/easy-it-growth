@@ -19,6 +19,10 @@ const navLinkClass = "text-white font-poppins font-bold text-lg md:text-xl hover
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleBookAssessment = () => {
+    window.open('https://calendly.com/mbacio/free-assessment', '_blank');
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-navy/95 backdrop-blur-sm z-50 shadow-lg border-b border-accent/20">
       <div className="container mx-auto px-4">
@@ -86,11 +90,12 @@ const Navigation = () => {
               </div>
             </div>
             
-            <a href="/">
-              <Button className="ml-4 bg-gradient-yellow text-navy px-6 py-2.5 rounded-lg font-bold font-poppins text-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:opacity-90 hover:shadow-accent/20">
-                Book Your Free Assessment
-              </Button>
-            </a>
+            <Button 
+              onClick={handleBookAssessment}
+              className="ml-4 bg-gradient-yellow text-navy px-6 py-2.5 rounded-lg font-bold font-poppins text-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:opacity-90 hover:shadow-accent/20"
+            >
+              Book Your Free Assessment
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -124,11 +129,12 @@ const Navigation = () => {
                 <a href="/tools/cloud-migration" className={navLinkClass + " text-base"}>☁️ Cloud Migration ROI</a>
                 <a href="/tools/staff-productivity" className={navLinkClass + " text-base"}>📈 IT Staff Productivity Calculator</a>
               </div>
-              <a href="/">
-                <Button className="bg-gradient-yellow text-navy px-6 py-3 rounded-lg font-bold font-poppins text-lg shadow-lg">
-                  Book Your Free Assessment
-                </Button>
-              </a>
+              <Button 
+                onClick={handleBookAssessment}
+                className="bg-gradient-yellow text-navy px-6 py-3 rounded-lg font-bold font-poppins text-lg shadow-lg"
+              >
+                Book Your Free Assessment
+              </Button>
             </div>
           </div>
         )}

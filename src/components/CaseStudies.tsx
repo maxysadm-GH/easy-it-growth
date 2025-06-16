@@ -55,6 +55,18 @@ const caseStudies = [
 ];
 
 const CaseStudies = () => {
+  const handleViewCaseStudies = () => {
+    window.location.href = '/case-studies';
+  };
+
+  const handleBookAssessment = () => {
+    window.open('https://calendly.com/mbacio/free-assessment', '_blank');
+  };
+
+  const handleViewFullStory = (studySlug: string) => {
+    window.location.href = `/case-studies/${studySlug}`;
+  };
+
   return (
     <section className="py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
@@ -70,6 +82,7 @@ const CaseStudies = () => {
         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
           {caseStudies.map((study, index) => {
             const Icon = study.icon;
+            const studySlug = study.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             return (
               <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden relative">
                 <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
@@ -122,10 +135,19 @@ const CaseStudies = () => {
                     </ul>
                   </div>
 
-                  <Button variant="outline" className="w-full border-navy text-navy font-semibold hover:bg-navy hover:text-white transition-all duration-300 group/btn">
-                    Read Full Case Study
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                    <div className="text-sm text-gray-500">
+                      <span>Industry: {study.industry.split(' ')[0]} • Timeline: 90 Days • Location: Bannockburn IL</span>
+                    </div>
+                    <Button 
+                      onClick={() => handleViewFullStory(studySlug)}
+                      variant="outline" 
+                      className="border-navy text-navy font-semibold hover:bg-navy hover:text-white transition-all duration-300 group/btn"
+                    >
+                      View Full Story
+                      <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             );
@@ -133,9 +155,20 @@ const CaseStudies = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-navy text-white hover:bg-deep-blue font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105">
+          <Button 
+            onClick={handleViewCaseStudies}
+            size="lg" 
+            className="bg-navy text-white hover:bg-deep-blue font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105 mr-4"
+          >
             View All Case Studies
             <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
+          <Button 
+            onClick={handleBookAssessment}
+            size="lg" 
+            className="bg-gradient-yellow text-navy font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
+          >
+            Book Your Free Assessment
           </Button>
         </div>
       </div>

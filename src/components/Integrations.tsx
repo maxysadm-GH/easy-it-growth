@@ -28,7 +28,7 @@ const integrations = [
   },
   { 
     name: "Fishbowl Inventory", 
-    logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAACjCAMAAACvjKdaAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAA9QTFRF////MzMzZmZmmZmZzMzM7u7uCvK3jAAAAAFiS0dEBmFmuH0AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCgwSJwGJ8pE1AAAA6klEQVR42u3WQQ0AAAzCsOHf9F6oABXQS7N2kYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYnJB2jWAWHKWs8zAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTEwLTEyVDE4OjM5OjAxKzAwOjAwUV8OLQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0xMC0xMlQxODozOTowMSswMDowMCACtpEAAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjMtMTAtMTJUMTg6Mzk6MDErMDA6MDCGO7wAAAAASUVORK5CYII="
+    logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAACjCAMAAACvjKdaAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAA9QTFRF////MzMzZmZmmZmZzMzM7u7uCvK3jAAAAAFiS0dEBmFmuH0AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCgwSJwGJ8pE1AAAA6klEQVR42u3WQQ0AAAzCsOHf9F6oABXQS7N2kYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYnJB2jWAWHKWs8zAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTEwLTEyVDE4OjM5OjAxKzAwOjAwUV8OLQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0xMC0xMlQxODozOTowMSswMDowMCACtpEAAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjMtMTAtMTJUMTg6Mzk6MDErMDA6MDCGO7wAAAAASUVORK5CYII="
   },
   { 
     name: "Google Analytics", 
@@ -65,8 +65,16 @@ const integrations = [
 ];
 
 const Integrations = () => {
+  const handleBookAssessment = () => {
+    window.open('https://calendly.com/mbacio/free-assessment', '_blank');
+  };
+
   return (
     <section className="py-24 bg-navy relative text-white overflow-hidden" id="integrations">
+      {/* SEO Meta Tags */}
+      <title>IT Integrations & Dashboard Solutions | MBACIO | Bannockburn & Chicagoland</title>
+      <meta name="description" content="100+ business intelligence integrations including QuickBooks, Salesforce, Fishbowl, and more. Pre-built metrics and automated dashboards. Serving Bannockburn & Chicagoland." />
+      
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-transparent to-deep-blue/20"></div>
@@ -83,7 +91,7 @@ const Integrations = () => {
           </p>
         </div>
         
-        {/* Grid Layout - 4 columns desktop, 2 mobile */}
+        {/* Static Grid Layout - 4 columns desktop, 2 mobile */}
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center">
             {integrations.map((integration, i) => (
@@ -95,7 +103,7 @@ const Integrations = () => {
                 <div className="w-18 h-18 bg-white rounded-xl p-3 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
                   <img
                     src={integration.logo}
-                    alt={integration.name + " logo"}
+                    alt={integration.name + " integration logo"}
                     className="w-full h-full object-contain"
                     style={{ width: '72px', height: '72px' }}
                     draggable={false}
@@ -106,6 +114,22 @@ const Integrations = () => {
                 </span>
               </a>
             ))}
+            
+            {/* Center MBACIO Logo */}
+            <div className="group flex flex-col items-center transition-all duration-300 hover:scale-110">
+              <div className="w-18 h-18 bg-gradient-yellow rounded-xl p-3 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
+                <img
+                  src="/lovable-uploads/9047d06d-8e00-44f9-a949-19b842c87735.png"
+                  alt="MBACIO Dashboard Solutions"
+                  className="w-full h-full object-contain"
+                  style={{ width: '72px', height: '72px' }}
+                  draggable={false}
+                />
+              </div>
+              <span className="mt-3 text-sm font-medium text-accent text-center group-hover:text-white transition-colors duration-300">
+                MBACIO Dashboards
+              </span>
+            </div>
           </div>
         </div>
         
@@ -113,15 +137,15 @@ const Integrations = () => {
           <p className="text-white/80 mb-6 text-lg">
             Seamlessly integrate with the tools your team already loves
           </p>
-          <a
-            href="/"
+          <button
+            onClick={handleBookAssessment}
             className="inline-flex items-center gap-2 bg-gradient-yellow text-navy px-8 py-4 rounded-lg font-bold font-poppins text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:opacity-90"
           >
             Book Your Free Assessment
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
