@@ -16,35 +16,38 @@ const caseStudies = [
       "Zero security incidents"
     ],
     icon: TrendingUp,
-    gradient: "from-accent via-gradient-yellow-end to-pale-yellow"
+    gradient: "from-accent via-gradient-yellow-end to-pale-yellow",
+    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=600&h=300&fit=crop&auto=format&q=80"
   },
   {
-    title: "Law Firm Achieves HIPAA Compliance",
+    title: "Law Firm Achieves Complete Digital Transformation",
     company: "Chicago Legal Group", 
     industry: "Legal Services",
-    challenge: "HIPAA compliance requirements and data security concerns",
-    solution: "Comprehensive security audit, compliance framework, and staff training",
+    challenge: "Manual documentation processes and inefficient discovery workflows slowing case preparation",
+    solution: "Automated documentation audit, discovery acceleration system, and encrypted client data platform",
     results: [
-      "100% HIPAA compliance",
-      "Staff productivity up 25%",
-      "Client trust restored"
+      "22% productivity increase",
+      "Diminished company risk",
+      "Secure client data encryption"
     ],
     icon: Shield,
-    gradient: "from-navy via-deep-blue to-accent"
+    gradient: "from-navy via-deep-blue to-accent",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=300&fit=crop&auto=format&q=80"
   },
   {
-    title: "Accounting Firm Automates 80% of Processes",
+    title: "Accounting Firm Automates 44% of Processes",
     company: "Regional CPA Firm",
     industry: "Accounting",
-    challenge: "Manual processes slowing growth and increasing errors",
-    solution: "Process automation, ERP integration, and workflow optimization", 
+    challenge: "Manual processes slowing growth and increasing client delivery times",
+    solution: "Process automation, reporting integrations, and workflow optimization", 
     results: [
-      "80% process automation",
-      "50% faster client delivery",
+      "44% process automation",
+      "57% faster client delivery",
       "Near-zero manual errors"
     ],
     icon: Zap,
-    gradient: "from-gradient-yellow-start via-accent to-gradient-yellow-end"
+    gradient: "from-gradient-yellow-start via-accent to-gradient-yellow-end",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=300&fit=crop&auto=format&q=80"
   }
 ];
 
@@ -67,6 +70,16 @@ const CaseStudies = () => {
             return (
               <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden relative">
                 <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
+                
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={study.image}
+                    alt={study.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent"></div>
+                </div>
                 
                 <CardHeader className="relative">
                   <div className="flex items-center gap-3 mb-4">

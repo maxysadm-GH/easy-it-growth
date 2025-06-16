@@ -17,15 +17,15 @@ const CPALawClient = () => (
     <section className="mb-8">
       <h2 className="text-2xl font-bold mb-2 text-deep-blue">Business Case</h2>
       <p>
-        A mid-sized CPA firm in Southern California was juggling too many IT vendors and facing inconsistent remote work support.
+        A mid-sized law firm in Chicago was drowning in manual documentation processes and inefficient discovery workflows that were slowing case preparation and increasing client costs.
         <br /><br />
-        <strong>MBACIO's impact:</strong> Consolidated IT vendors, automated data workflows and delivered a secure, compliant remote desktop solution. Result: faster client turnaround and new business won.
+        <strong>MBACIO's transformation:</strong> Implemented automated documentation audit system, discovery acceleration workflows, and encrypted client data platform. Results: 22% productivity increase, dramatically diminished company risk, and implemented comprehensive encryption solution for all client data ensuring complete confidentiality and compliance.
       </p>
     </section>
     <section className="mb-8">
       <h2 className="text-xl font-semibold mb-2">Geo/Industry Focus</h2>
       <ul className="list-disc pl-5">
-        <li>Orange County, San Diego, Inland Empire</li>
+        <li>Orange County, San Diego, Inland Empire, Chicago Metro</li>
         <li>CPA & Law Offices, Legal Tech, Financial Services</li>
       </ul>
     </section>
@@ -33,7 +33,7 @@ const CPALawClient = () => (
       <h2 className="text-xl font-semibold mb-2">Keywords & SEO</h2>
       <p>
         <em>
-          IT for CPA firms California, remote law office IT, accounting IT compliance soc2, vendor consolidation legal, OC managed IT services
+          Legal documentation automation, law firm discovery acceleration, encrypted client data solutions, Chicago legal IT services, productivity automation legal
         </em>
       </p>
     </section>

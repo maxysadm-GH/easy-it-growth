@@ -5,28 +5,31 @@ import { ArrowRight, Calendar, Tag } from 'lucide-react';
 
 const blogPosts = [
   {
-    title: "How We Helped a Midwest Manufacturer Reduce IT Tickets by 70% Using Automation",
-    excerpt: "Discover the step-by-step automation strategy that transformed a manufacturing company's IT operations and dramatically reduced support tickets.",
-    category: "Client Wins",
+    title: "How Smart SMBs Are Using AI to Streamline IT Operations",
+    excerpt: "If you're still waiting on reports or solving the same support issues week after week—there's a better way. Learn how AI workflows can reclaim hours of lost productivity.",
+    category: "AI & Automation",
     date: "December 15, 2024",
     readTime: "5 min read",
-    featured: true
+    featured: true,
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop&auto=format&q=80"
   },
   {
     title: "5 Critical Cybersecurity Mistakes Small Manufacturers Make",
-    excerpt: "Learn about the most common security vulnerabilities we see in manufacturing environments and how to protect your business.",
+    excerpt: "These common security vulnerabilities could cost your business everything. Discover the blind spots that hackers exploit and how to protect yourself.",
     category: "Cybersecurity",
     date: "December 10, 2024",
     readTime: "7 min read",
-    featured: false
+    featured: false,
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=300&fit=crop&auto=format&q=80"
   },
   {
-    title: "AI Dashboards: Turn Your Business Data Into Competitive Advantage",
-    excerpt: "Explore how AI-powered dashboards can provide real-time insights and predictive analytics for better business decisions.",
-    category: "AI & Automation",
+    title: "The Hidden Cost of IT Downtime: What Every CEO Should Know",
+    excerpt: "One hour of downtime could cost your business thousands. See the shocking numbers and learn how to bulletproof your operations.",
+    category: "Business Strategy",
     date: "December 8, 2024",
     readTime: "6 min read",
-    featured: false
+    featured: false,
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=300&fit=crop&auto=format&q=80"
   }
 ];
 
@@ -46,6 +49,16 @@ const BlogTeaser = () => {
         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
           {blogPosts.map((post, index) => (
             <Card key={index} className={`group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden ${post.featured ? 'lg:col-span-2 lg:row-span-2' : ''}`}>
+              {/* Image */}
+              <div className={`relative overflow-hidden ${post.featured ? 'h-64' : 'h-48'}`}>
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
               <CardHeader className="relative">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="inline-flex items-center gap-1 px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium">

@@ -42,18 +42,18 @@ const tools = [
     status: "available"
   },
   {
-    iconClass: "icon-compliance",
-    title: "Compliance Cost Calculator",
-    description: "Estimate the cost of meeting IT compliance requirements.",
-    path: "/tools/compliance-cost",
-    status: "coming-soon"
-  },
-  {
     iconClass: "icon-productivity",
     title: "IT Staff Productivity Calculator",
     description: "Measure and optimize your IT team's productivity metrics.",
     path: "/tools/staff-productivity",
     status: "available"
+  },
+  {
+    iconClass: "icon-compliance",
+    title: "Compliance Cost Calculator",
+    description: "Estimate the cost of meeting IT compliance requirements.",
+    path: "/tools/compliance-cost",
+    status: "coming-soon"
   }
 ];
 
