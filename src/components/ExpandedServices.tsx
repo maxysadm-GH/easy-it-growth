@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Settings,
@@ -11,10 +12,6 @@ import {
   Sliders,
 } from "lucide-react";
 
-/**
- * New visual style, improved contrast, AI Insights style card.
- * Added SEO keywords and geo references for each service.
- */
 const services = [
   {
     icon: Settings,
@@ -22,153 +19,125 @@ const services = [
     description:
       "Proactive IT support, automation, and monitoring to ensure your business is secure and scalable.",
     highlight: "Managed IT • Automation",
-    seo: "Chicago managed IT, automation, technology partner",
     geo: "Chicago, Nationwide",
-    color: "from-navy via-charcoal to-gradient-yellow-end",
-    cardClass: "bg-gradient-to-br from-navy via-charcoal to-gradient-yellow-end",
-    textClass: "text-gradient-yellow-end"
   },
   {
     icon: Shield,
     title: "Cybersecurity & Compliance",
     description: "Protect your data and meet required standards—HIPAA, CMMC, PCI, and more.",
     highlight: "Compliance • Protection",
-    seo: "Chicago cybersecurity, compliance consultant US",
     geo: "Chicago, US",
-    color: "from-accent via-gradient-yellow-end to-amber-300",
-    cardClass: "bg-gradient-to-br from-accent via-gradient-yellow-end to-yellow-300",
-    textClass: "text-charcoal"
   },
   {
     icon: Cloud,
     title: "Cloud Solutions",
     description: "Migration & management for Microsoft 365, Google Workspace, Azure, AWS and more.",
     highlight: "Cloud • Microsoft 365",
-    seo: "Cloud migration Chicago, Azure, Google Workspace",
     geo: "Nationwide",
-    color: "from-gradient-yellow-end via-pale-yellow to-white",
-    cardClass: "bg-gradient-to-br from-gradient-yellow-end via-pale-yellow to-white",
-    textClass: "text-navy"
   },
   {
     icon: Zap,
     title: "Process Automation",
     description: "Eliminate bottlenecks and automate workflows with RPA and digital solutions.",
     highlight: "Workflow • RPA",
-    seo: "Process automation Chicago, workflow automation",
     geo: "Chicago, US",
-    color: "from-gradient-yellow-end via-navy to-gradient-yellow-start",
-    cardClass: "bg-gradient-to-br from-gradient-yellow-end via-navy to-gradient-yellow-start",
-    textClass: "text-white"
   },
   {
     icon: BarChart2,
     title: "AI Insights & Dashboards",
     description: "Real-time dashboards, analytics, and reporting for data-driven decisions.",
     highlight: "Dashboards • AI Insights",
-    seo: "AI dashboards Chicago, analytics, reporting",
     geo: "Chicago, US",
-    color: "from-pale-yellow via-gradient-yellow-end to-accent",
-    cardClass: "bg-gradient-to-br from-pale-yellow via-gradient-yellow-end to-accent",
-    textClass: "text-navy"
   },
   {
     icon: Database,
     title: "ERP, MRP & System Integration",
     description: "Connect ERP, MRP, and accounting for automated, real-time workflows.",
     highlight: "ERP • Integration",
-    seo: "ERP integration Chicago, MRP solutions",
     geo: "Chicago, US",
-    color: "from-navy via-accent to-gradient-yellow-end",
-    cardClass: "bg-gradient-to-br from-navy via-accent to-gradient-yellow-end",
-    textClass: "text-white"
   },
   {
     icon: Users,
     title: "Collaboration & Productivity",
     description: "Empower hybrid teams with secure tools, cloud files, and unified communications.",
     highlight: "Teams • Productivity",
-    seo: "Collaboration tools Chicago, unified communications",
     geo: "Chicago, US",
-    color: "from-gradient-yellow-end via-charcoal to-navy",
-    cardClass: "bg-gradient-to-br from-gradient-yellow-end via-charcoal to-navy",
-    textClass: "text-white"
   },
   {
     icon: Lock,
     title: "Backup & Disaster Recovery",
     description: "Tailored backups and rapid recovery for business continuity.",
     highlight: "Continuity • Recovery",
-    seo: "Disaster recovery Chicago, backup",
     geo: "Chicago, US",
-    color: "from-deep-blue via-pale-yellow to-gradient-yellow-end",
-    cardClass: "bg-gradient-to-br from-deep-blue via-pale-yellow to-gradient-yellow-end",
-    textClass: "text-navy"
   },
   {
     icon: Sliders,
     title: "IT Roadmapping & vCIO",
     description: "Strategic IT planning and vCIO—align your tech with growth goals.",
     highlight: "Strategy • vCIO",
-    seo: "vCIO Chicago, IT roadmap",
     geo: "Chicago, Nationwide",
-    color: "from-charcoal via-gradient-yellow-start to-pale-yellow",
-    cardClass: "bg-gradient-to-br from-charcoal via-gradient-yellow-start to-pale-yellow",
-    textClass: "text-navy"
   },
 ];
 
 const ExpandedServices = () => (
-  <section className="py-20 bg-gradient-to-b from-navy via-deep-blue/80 to-navy" id="services">
+  <section className="py-20 bg-white" id="services">
     <div className="container mx-auto px-4">
-      <div className="text-center mb-14">
-        <h2 className="text-2xl md:text-5xl font-poppins font-bold text-gradient-yellow-end mb-4 drop-shadow-header">
-          IT, Security & Automation Services
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-poppins font-bold text-navy mb-6">
+          Complete IT Solutions for Growing Businesses
         </h2>
-        <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-inter font-medium drop-shadow-header">
-          Expert IT, cybersecurity & automation for growing businesses in Chicago and nationwide—Cybersecurity, Automation, Cloud, ERP/Accounting Integration, and more.
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto font-inter leading-relaxed">
+          From cybersecurity to automation, we provide comprehensive IT services 
+          that scale with your business and protect what matters most.
         </p>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-10">
+      
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {services.map((service, idx) => {
           const Icon = service.icon;
           return (
-            <div
+            <Card
               key={service.title}
-              className={`
-                group rounded-2xl shadow-2xl ${service.cardClass}
-                flex flex-col h-full transition-transform hover:scale-105 border-0 p-1
-                relative overflow-hidden
-              `}
-              style={{
-                minHeight: 320,
-              }}
+              className="group bg-white border border-gray-200 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-xl overflow-hidden"
             >
-              <div className="p-7 md:p-8 flex flex-col h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="w-11 h-11 rounded-xl bg-white/80 flex items-center justify-center shadow border">
-                    <Icon className="w-7 h-7 text-accent" aria-hidden="true" />
-                  </span>
-                  <h3 className="text-lg lg:text-xl font-poppins font-bold leading-snug drop-shadow-header" style={{ color: "#21314B" }}>
+              <CardContent className="p-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
+                    <Icon className="w-6 h-6 text-accent" />
+                  </div>
+                  <h3 className="text-xl font-poppins font-bold text-navy group-hover:text-accent transition-colors duration-300">
                     {service.title}
                   </h3>
                 </div>
-                <p className="mb-5 font-inter text-base leading-relaxed flex-1 min-h-[58px] max-w-[95%] text-white drop-shadow-header">
+                
+                <p className="text-gray-600 font-inter leading-relaxed mb-6 min-h-[60px]">
                   {service.description}
                 </p>
-                <div className="flex items-end mt-auto gap-2">
-                  <span className="inline-block bg-accent text-navy px-3 py-1 rounded-full text-xs font-semibold shadow-sm border font-poppins">
+                
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <span className="inline-block bg-navy/5 text-navy px-3 py-1 rounded-full text-sm font-semibold">
                     {service.highlight}
                   </span>
-                  <span className="inline-block bg-gray-900/20 text-gray-100 ml-auto px-2 py-0.5 rounded-full text-[11px] font-medium">
+                  <span className="text-xs text-gray-500 font-medium">
                     {service.geo}
                   </span>
                 </div>
-                <span className="absolute w-0 h-0 opacity-0 pointer-events-none">{service.seo}</span>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           );
         })}
+      </div>
+      
+      <div className="text-center mt-16">
+        <a
+          href="/services"
+          className="inline-flex items-center gap-2 bg-navy text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg hover:bg-deep-blue transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+        >
+          View All Services
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
