@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,6 +17,7 @@ import DashboardSolutions from "./pages/DashboardSolutions";
 import WhyUs from "./pages/WhyUs";
 import Services from "./pages/Services";
 import DataAI from "./pages/DataAI";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +32,7 @@ const App = () => (
           <Route path="/why-us" element={<WhyUs />} />
           <Route path="/services" element={<Services />} />
           <Route path="/data-ai" element={<DataAI />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/assessment-risk" element={<AssessmentRisk />} />
           <Route path="/assessment-automation" element={<AssessmentAutomation />} />
           <Route path="/ideal-client/erp-mrp" element={<ERPMRPClient />} />

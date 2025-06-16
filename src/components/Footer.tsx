@@ -1,3 +1,4 @@
+
 import { Headphones, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -9,10 +10,11 @@ const Footer = () => {
       window.location.href = "/login?redirect=/warranty";
     }
   };
+  
   return (
-    <footer className="bg-charcoal text-white py-16" id="contact">
+    <footer className="bg-charcoal text-white py-12" id="contact">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-6">
@@ -24,7 +26,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Chicago’s Strategic IT & Automation Partner for Security, Data Visibility & Business Growth.
+              Chicago's Strategic IT & Automation Partner for Security, Data Visibility & Business Growth.
               Serving manufacturers, law firms, and CPA practices nationwide.
             </p>
             {/* Warranty text as a link requiring login */}
@@ -32,35 +34,37 @@ const Footer = () => {
               <a
                 href="/warranty"
                 onClick={handleWarrantyClick}
-                className="inline-block bg-gradient-yellow text-navy font-bold px-5 py-2 rounded-full shadow-md hover:underline"
+                className="inline-block bg-gradient-yellow text-navy font-bold px-5 py-2 rounded-full shadow-md hover:underline transition-all duration-300 hover:scale-105"
                 style={{ textDecoration: 'none' }}
               >
                 60-Day Satisfaction Warranty
               </a>
             </div>
           </div>
+          
           {/* Services */}
           <div>
             <h3 className="text-xl font-poppins font-semibold mb-6">Services</h3>
             <ul className="space-y-3 text-gray-300">
-              <li><a href="#" className="hover:text-accent transition-colors">IT Consulting & Strategy</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Managed IT & Security</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Automation & AI Solutions</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">MRP & ERP Consulting & Integration</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Cloud Migrations</a></li>
+              <li><a href="/services" className="hover:text-accent transition-colors">IT Consulting & Strategy</a></li>
+              <li><a href="/services" className="hover:text-accent transition-colors">Managed IT & Security</a></li>
+              <li><a href="/data-ai" className="hover:text-accent transition-colors">Automation & AI Solutions</a></li>
+              <li><a href="/services" className="hover:text-accent transition-colors">MRP & ERP Integration</a></li>
+              <li><a href="/services" className="hover:text-accent transition-colors">Cloud Migrations</a></li>
             </ul>
           </div>
+          
           {/* Industries */}
           <div>
             <h3 className="text-xl font-poppins font-semibold mb-6">Industries</h3>
             <ul className="space-y-3 text-gray-300">
-              <li><a href="#" className="hover:text-accent transition-colors">Manufacturing</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Professional Services</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Legal</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Accounting / CPA Firms</a></li>
-              {/* "Healthcare" removed as requested */}
+              <li><a href="/ideal-client/food-beverage" className="hover:text-accent transition-colors">Manufacturing</a></li>
+              <li><a href="/services" className="hover:text-accent transition-colors">Professional Services</a></li>
+              <li><a href="/ideal-client/cpa-law" className="hover:text-accent transition-colors">Legal</a></li>
+              <li><a href="/ideal-client/cpa-law" className="hover:text-accent transition-colors">Accounting / CPA Firms</a></li>
             </ul>
           </div>
+          
           {/* Contact */}
           <div>
             <h3 className="text-xl font-poppins font-semibold mb-6">Contact</h3>
@@ -100,8 +104,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 pt-8">
+        <div className="border-t border-gray-700 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
               © 2024 MBACIO, LLC. All rights reserved. • IT Support for Growing Businesses
@@ -117,4 +122,5 @@ const Footer = () => {
     </footer>
   );
 };
+
 export default Footer;

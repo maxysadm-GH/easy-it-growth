@@ -39,6 +39,10 @@ const Navigation = () => {
               Data & AI
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
             </a>
+            <a href="/blog" className={navLinkClass}>
+              Blog
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
             
             {/* Tools Dropdown */}
             <div className="relative group">
@@ -62,7 +66,7 @@ const Navigation = () => {
               </div>
             </div>
             
-            <Button className="ml-4 bg-gradient-yellow text-navy px-6 py-2.5 rounded-lg font-bold font-poppins text-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:opacity-90">
+            <Button className="ml-4 bg-gradient-yellow text-navy px-6 py-2.5 rounded-lg font-bold font-poppins text-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:opacity-90 hover:shadow-accent/20">
               Book Your Free Assessment
             </Button>
           </div>
@@ -88,6 +92,7 @@ const Navigation = () => {
               <a href="/why-us" className={navLinkClass}>Why MBACIO</a>
               <a href="/services" className={navLinkClass}>Services</a>
               <a href="/data-ai" className={navLinkClass}>Data & AI</a>
+              <a href="/blog" className={navLinkClass}>Blog</a>
               <div className="flex flex-col gap-2 pl-4">
                 <a href="/assessment-risk" className={navLinkClass + " text-base"}>🛡 Cyber Risk Assessment</a>
                 <a href="/assessment-automation" className={navLinkClass + " text-base"}>⚙️ Automation ROI Calculator</a>

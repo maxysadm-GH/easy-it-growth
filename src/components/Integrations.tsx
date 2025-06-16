@@ -2,16 +2,16 @@
 import React from "react";
 
 const integrations = [
-  { name: "Excel", logo: "https://cdn-icons-png.flaticon.com/512/888/888879.png" },
-  { name: "Google Sheets", logo: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png" },
+  { name: "Excel", logo: "https://cdn-icons-png.flaticon.com/512/732/732220.png" },
+  { name: "Google Sheets", logo: "https://cdn-icons-png.flaticon.com/512/5968/5968331.png" },
+  { name: "QuickBooks", logo: "https://cdn-icons-png.flaticon.com/512/888/888879.png" },
+  { name: "HubSpot", logo: "https://cdn-icons-png.flaticon.com/512/888/888867.png" },
+  { name: "Salesforce", logo: "https://cdn-icons-png.flaticon.com/512/873/873089.png" },
+  { name: "Shopify", logo: "https://cdn-icons-png.flaticon.com/512/5968/5968520.png" },
   { name: "Slack", logo: "https://cdn-icons-png.flaticon.com/512/2111/2111615.png" },
   { name: "Make", logo: "https://cdn-icons-png.flaticon.com/512/5968/5968371.png" },
   { name: "Zapier", logo: "https://cdn-icons-png.flaticon.com/512/5968/5968520.png" },
-  { name: "Trello", logo: "https://cdn-icons-png.flaticon.com/512/2111/2111646.png" },
-  { name: "Shopify", logo: "https://cdn-icons-png.flaticon.com/512/888/888839.png" },
-  { name: "QuickBooks", logo: "/lovable-uploads/quickbooks-logo.svg" },
-  { name: "Salesforce", logo: "/lovable-uploads/salesforce-logo.svg" },
-  { name: "HubSpot", logo: "/lovable-uploads/hubspot-logo.svg" },
+  { name: "Trello", logo: "https://cdn-icons-png.flaticon.com/512/5968/5968791.png" },
 ];
 
 const IntegrationCartwheel = () => {
@@ -19,7 +19,7 @@ const IntegrationCartwheel = () => {
   const radius = 160;
 
   return (
-    <div className="relative w-[380px] h-[380px] sm:w-[450px] sm:h-[450px] mb-8 flex items-center justify-center">
+    <div className="relative w-[400px] h-[400px] mb-8 flex items-center justify-center">
       {integrations.map((integration, i) => {
         const angle = ((2 * Math.PI) / total) * i;
         const x = Math.cos(angle) * radius;
@@ -37,12 +37,14 @@ const IntegrationCartwheel = () => {
             }}
           >
             <div className="group relative">
-              <img
-                src={integration.logo}
-                alt={integration.name + " logo"}
-                className="w-16 h-16 bg-white rounded-2xl p-3 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl"
-                draggable={false}
-              />
+              <div className="w-16 h-16 bg-white rounded-2xl p-3 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
+                <img
+                  src={integration.logo}
+                  alt={integration.name + " logo"}
+                  className="w-10 h-10 object-contain"
+                  draggable={false}
+                />
+              </div>
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                 <span className="text-xs font-medium text-white bg-navy/90 px-2 py-1 rounded whitespace-nowrap">
                   {integration.name}
@@ -85,7 +87,7 @@ const Integrations = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-poppins font-bold mb-6 text-accent drop-shadow-header">
-            Works With Your Favorite Tools
+            Powered for Business Growth
           </h2>
           <p className="max-w-3xl mx-auto text-center text-lg md:text-xl mb-8 text-white/90 font-inter leading-relaxed">
             Connect 100+ business apps—CRM, ERP, accounting, marketing and more.
