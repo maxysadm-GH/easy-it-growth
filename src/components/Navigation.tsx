@@ -7,46 +7,69 @@ const Logo = () => (
     <img
       src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
       alt="MBACIO Logo"
-      className="h-16 md:h-20 w-auto select-none pointer-events-none"
+      className="h-16 md:h-20 w-auto select-none pointer-events-none transition-all duration-300 hover:scale-105"
       style={{ filter: 'drop-shadow(0 2px 18px rgba(0,0,0,0.16))' }}
       draggable={false}
     />
   </div>
 );
 
-const navLinkClass = "text-white font-poppins font-bold text-lg md:text-xl hover:text-accent transition-colors drop-shadow-header";
+const navLinkClass = "text-white font-poppins font-bold text-lg md:text-xl hover:text-accent transition-all duration-300 drop-shadow-header relative group";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-navy z-50 shadow-lg border-b-0">
+    <nav className="fixed top-0 left-0 w-full bg-navy/95 backdrop-blur-sm z-50 shadow-lg border-b border-accent/20">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-24 md:h-28">
+        <div className="flex items-center justify-between h-20 md:h-24">
           <Logo />
+          
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#services" className={navLinkClass}>IT & Automation Services</a>
-            <a href="#framework" className={navLinkClass}>Our Process</a>
-            <a href="#insights" className={navLinkClass}>AI Solutions</a>
-            <a href="/integrations" className={navLinkClass}>Integrations</a>
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+            <a href="/why-us" className={navLinkClass}>
+              Why MBACIO
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="/services" className={navLinkClass}>
+              Services
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="/data-ai" className={navLinkClass}>
+              Data & AI
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            
             {/* Tools Dropdown */}
             <div className="relative group">
-              <button className={navLinkClass + " focus:outline-none"}>
-                Tools <span className="ml-1 align-top">▼</span>
+              <button className={navLinkClass + " focus:outline-none flex items-center gap-1"}>
+                Tools
+                <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
               </button>
-              <div className="absolute hidden group-hover:block pt-2 z-20">
-                <div className="bg-charcoal rounded shadow-lg py-2 w-60">
-                  <a href="/assessment-risk" className="flex items-center px-5 py-2 hover:bg-accent/10 text-white">🛡 Cyber Risk Assessment Tool</a>
-                  <a href="/assessment-automation" className="flex items-center px-5 py-2 hover:bg-accent/10 text-white">⚙️ Automation ROI Calculator</a>
+              <div className="absolute hidden group-hover:block pt-2 z-20 left-0">
+                <div className="bg-charcoal/95 backdrop-blur-sm rounded-lg shadow-xl py-3 w-64 border border-accent/20">
+                  <a href="/assessment-risk" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <span className="mr-3">🛡</span>
+                    Cyber Risk Assessment
+                  </a>
+                  <a href="/assessment-automation" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <span className="mr-3">⚙️</span>
+                    Automation ROI Calculator
+                  </a>
                 </div>
               </div>
             </div>
-            <a href="#contact" className="ml-2 bg-gradient-yellow text-navy px-5 py-2 rounded-lg font-bold font-poppins text-lg md:text-xl shadow-md transition hover:opacity-90">Book Free Consultation</a>
+            
+            <Button className="ml-4 bg-gradient-yellow text-navy px-6 py-2.5 rounded-lg font-bold font-poppins text-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:opacity-90">
+              Book Your Free Assessment
+            </Button>
           </div>
+
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden focus:outline-none relative"
+            className="md:hidden focus:outline-none relative transition-transform duration-200 hover:scale-110"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -55,22 +78,23 @@ const Navigation = () => {
               alt="Menu"
               className="w-10 h-10 drop-shadow-header"
             />
-            <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
           </button>
         </div>
+
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-4 bg-navy rounded-xl p-5 shadow-lg">
-              <a href="#services" className={navLinkClass}>IT & Automation Services</a>
-              <a href="#framework" className={navLinkClass}>Our Process</a>
-              <a href="#insights" className={navLinkClass}>AI Solutions</a>
-              <a href="/integrations" className={navLinkClass}>Integrations</a>
-              <div className="flex flex-col gap-1">
-                <a href="/assessment-risk" className={navLinkClass + " pl-2"}>🛡 Cyber Risk Assessment Tool</a>
-                <a href="/assessment-automation" className={navLinkClass + " pl-2"}>⚙️ Automation ROI Calculator</a>
+            <div className="flex flex-col space-y-4 bg-navy/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-accent/20">
+              <a href="/why-us" className={navLinkClass}>Why MBACIO</a>
+              <a href="/services" className={navLinkClass}>Services</a>
+              <a href="/data-ai" className={navLinkClass}>Data & AI</a>
+              <div className="flex flex-col gap-2 pl-4">
+                <a href="/assessment-risk" className={navLinkClass + " text-base"}>🛡 Cyber Risk Assessment</a>
+                <a href="/assessment-automation" className={navLinkClass + " text-base"}>⚙️ Automation ROI Calculator</a>
               </div>
-              <a href="#contact" className="bg-gradient-yellow text-navy px-5 py-2 rounded-lg font-bold font-poppins text-lg shadow">Book Free Consultation</a>
+              <Button className="bg-gradient-yellow text-navy px-6 py-3 rounded-lg font-bold font-poppins text-lg shadow-lg">
+                Book Your Free Assessment
+              </Button>
             </div>
           </div>
         )}

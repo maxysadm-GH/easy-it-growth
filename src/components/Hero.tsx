@@ -2,13 +2,12 @@
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
-  // Home video link per instruction
   const videoSrc = "https://img1.wsimg.com/isteam/videos/n4Wqzxp";
   const fallbackImg = "/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png";
 
   return (
-    <section className="relative min-h-screen bg-navy text-white pt-32 flex items-center overflow-hidden">
-      {/* Video BG */}
+    <section className="relative min-h-screen bg-navy text-white pt-24 flex items-center overflow-hidden">
+      {/* Video Background */}
       <video
         autoPlay
         loop
@@ -18,13 +17,14 @@ const Hero = () => {
         src={videoSrc}
         poster={fallbackImg}
       />
-      {/* Stylish watermark bg */}
+      
+      {/* Stylish watermark background */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
         <svg
           width="60vw"
           height="60vw"
           viewBox="0 0 370 370"
-          className="opacity-10 hidden md:block"
+          className="opacity-5 hidden md:block animate-pulse"
           style={{ maxWidth: 600, maxHeight: 600 }}
         >
           <image
@@ -36,42 +36,49 @@ const Hero = () => {
           />
         </svg>
       </div>
-      <div className="absolute inset-0 bg-navy/80 bg-gradient-to-br from-navy/95 via-navy/80 to-deep-blue/70 z-20 pointer-events-none" />
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/85 to-deep-blue/75 z-20 pointer-events-none" />
+      
       <div className="container mx-auto px-4 relative z-30">
-        <div className="max-w-2xl mx-auto md:max-w-4xl lg:ml-0 lg:mr-auto">
-          <h1 className="text-4xl lg:text-6xl font-poppins font-bold leading-tight mb-6 drop-shadow-header text-center lg:text-left">
+        <div className="max-w-3xl mx-auto lg:max-w-4xl lg:ml-0 lg:mr-auto text-center lg:text-left">
+          <h1 className="text-4xl lg:text-6xl xl:text-7xl font-poppins font-bold leading-tight mb-8 drop-shadow-header">
             Making I.T. Easy
           </h1>
-          <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed mb-7 mt-2 drop-shadow-header text-center lg:text-left">
+          
+          <p className="text-xl lg:text-2xl xl:text-3xl text-gray-200 leading-relaxed mb-10 drop-shadow-header max-w-4xl">
             From food & beverage manufacturers to law and accounting firms—we simplify, automate, and modernize your IT so your team can focus on results.
           </p>
-          <ul className="flex flex-col sm:flex-row gap-2 sm:gap-6 mb-8 justify-center lg:justify-start">
+          
+          <ul className="flex flex-col sm:flex-row gap-3 sm:gap-8 mb-12 justify-center lg:justify-start">
             {[
               "Guaranteed ROI in 6 weeks",
-              "60-Day Satisfaction Warranty",
+              "60-Day Satisfaction Warranty", 
               "Nationwide Service",
             ].map((item) => (
-              <li key={item} className="flex items-center gap-2">
-                <span className="w-5 h-5 bg-accent rounded-full flex items-center justify-center">
+              <li key={item} className="flex items-center gap-3 group">
+                <span className="w-6 h-6 bg-accent rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
                   <img
                     src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png"
                     alt="accent-icon"
-                    className="w-3 h-3"
+                    className="w-4 h-4"
                   />
                 </span>
-                <span className="text-lg text-white">{item}</span>
+                <span className="text-lg lg:text-xl text-white font-medium">{item}</span>
               </li>
             ))}
           </ul>
-          <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+          
+          <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
             <Button 
               size="lg" 
-              className="bg-gradient-yellow text-navy font-poppins font-bold text-lg px-8 py-5 w-full sm:w-auto shadow hover:opacity-90 duration-150"
+              className="bg-gradient-yellow text-navy font-poppins font-bold text-xl px-10 py-6 w-full sm:w-auto shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:opacity-90"
             >
-              Book Free Assessment
+              Book Your Free Assessment
             </Button>
-            <p className="text-sm text-gray-300 pt-2 lg:pt-0">
-              <span role="img" aria-label="lock">🔒</span> Guaranteed Confidentiality.
+            <p className="text-sm lg:text-base text-gray-300 pt-3 lg:pt-4 flex items-center gap-2">
+              <span className="text-accent">🔒</span> 
+              Guaranteed Confidentiality
             </p>
           </div>
         </div>
@@ -79,4 +86,5 @@ const Hero = () => {
     </section>
   );
 };
+
 export default Hero;

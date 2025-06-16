@@ -13,6 +13,9 @@ import FoodBeverageClient from "./pages/FoodBeverageClient";
 import CPALawClient from "./pages/CPALawClient";
 import ServicePlansPage from "./pages/ServicePlansPage";
 import DashboardSolutions from "./pages/DashboardSolutions";
+import WhyUs from "./pages/WhyUs";
+import Services from "./pages/Services";
+import DataAI from "./pages/DataAI";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +27,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/why-us" element={<WhyUs />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/data-ai" element={<DataAI />} />
           <Route path="/assessment-risk" element={<AssessmentRisk />} />
           <Route path="/assessment-automation" element={<AssessmentAutomation />} />
           <Route path="/ideal-client/erp-mrp" element={<ERPMRPClient />} />
