@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BookingPopup from './BookingPopup';
@@ -45,14 +44,14 @@ const Integrations = () => {
           {/* Animated Logo Carousel */}
           <div className="max-w-6xl mx-auto mb-12">
             <div className="relative overflow-hidden">
-              <div className="flex animate-[scroll_30s_linear_infinite] hover:[animation-play-state:paused]">
+              <div className="flex animate-[scroll_45s_linear_infinite] hover:[animation-play-state:paused]">
                 {duplicatedIntegrations.map((integration, i) => (
                   <Link
                     key={`${integration.slug}-${i}`}
                     to={`/integrations/${integration.slug}`}
                     className="group flex flex-col items-center transition-all duration-300 hover:scale-110 flex-shrink-0 mx-6"
                   >
-                    <div className="w-20 h-20 bg-white rounded-xl p-4 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
+                    <div className="w-24 h-24 bg-white rounded-xl p-4 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
                       <img
                         src={integration.logo}
                         alt={`${integration.name} integration logo`}
