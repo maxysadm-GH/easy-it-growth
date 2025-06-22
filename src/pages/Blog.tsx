@@ -3,8 +3,32 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { useBlogPosts } from '../hooks/useBlogPosts';
+import { Calendar, User, Tag, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Blog = () => {
+  const { data: blogPosts, isLoading, error } = useBlogPosts();
+  const navigate = useNavigate();
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  const createSlug = (title: string, id: string) => {
+    return title.toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '') || `post-${id}`;
+  };
+
+  const getExcerpt = (body: string, maxLength: number = 150) => {
+    return body.length > maxLength ? body.substring(0, maxLength) + '...' : body;
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -26,47 +50,113 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Featured Post */}
+      {/* Blog Posts Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white border border-gray-200">
-              <CardContent className="p-8">
-                <div className="text-sm text-accent font-medium mb-4">Featured Post</div>
-                <h2 className="text-2xl lg:text-3xl font-poppins font-bold text-navy mb-6">
-                  How Smart SMBs Are Using AI to Streamline IT Operations
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-8 text-lg">
-                  If you're still waiting on reports or solving the same support issues week after week—there's a better way. 
-                  Learn how AI workflows can reclaim hours of lost productivity and transform your IT operations into a competitive advantage.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-                  <div className="text-sm text-gray-500">
-                    <span>Published: Coming Soon</span>
-                  </div>
-                  <Button className="bg-gradient-yellow text-navy font-bold px-6 py-3 hover:scale-105 transition-transform duration-300">
-                    Book Your Free Assessment →
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+          {isLoading && (
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading blog posts...</p>
+            </div>
+          )}
 
-      {/* Coming Soon Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-poppins font-bold mb-6 text-navy">
-            More Insights Coming Soon
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            We're working on bringing you valuable insights on IT automation, cybersecurity, 
-            and business growth strategies. Subscribe to our newsletter to be notified when new posts go live.
-          </p>
-          <Button size="lg" className="bg-accent text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
-            Book Your Free Assessment
-          </Button>
+          {error && (
+            <div className="text-center">
+              <h2 className="text-2xl font-poppins font-bold text-navy mb-4">Unable to Load Posts</h2>
+              <p className="text-gray-600 mb-8">We're experiencing technical difficulties. Please try again later.</p>
+              <Button 
+                onClick={() => window.location.reload()}
+                className="bg-accent text-navy font-bold px-6 py-3"
+              >
+                Retry
+              </Button>
+            </div>
+          )}
+
+          {blogPosts && blogPosts.length > 0 && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {blogPosts.map((post) => {
+                const slug = post.slug || createSlug(post.title, post.id);
+                return (
+                  <Card 
+                    key={post.id} 
+                    className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden cursor-pointer"
+                    onClick={() => navigate(`/blog/${slug}`)}
+                  >
+                    {/* Hero Image */}
+                    {post.hero_image_url && (
+                      <div className="relative overflow-hidden h-48">
+                        <img
+                          src={post.hero_image_url}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
+                    )}
+
+                    <CardContent className="p-6">
+                      {/* Meta Info */}
+                      <div className="flex flex-wrap items-center gap-3 mb-4 text-sm text-gray-600">
+                        <div className="flex items-center gap-1">
+                          <User className="w-3 h-3" />
+                          <span>{post.author}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3" />
+                          <span>{formatDate(post.date || post.created_at)}</span>
+                        </div>
+                        {post.seo_keyword && (
+                          <div className="flex items-center gap-1">
+                            <Tag className="w-3 h-3" />
+                            <span className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">
+                              {post.seo_keyword}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-xl font-poppins font-bold text-navy mb-4 group-hover:text-accent transition-colors duration-300">
+                        {post.title}
+                      </h3>
+
+                      {/* Excerpt */}
+                      <p className="text-gray-700 leading-relaxed mb-6">
+                        {getExcerpt(post.body)}
+                      </p>
+
+                      {/* Read More */}
+                      <div className="flex items-center justify-between">
+                        <Button 
+                          variant="outline" 
+                          className="border-navy text-navy font-semibold hover:bg-navy hover:text-white transition-all duration-300 group/btn"
+                        >
+                          Read More
+                          <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
+
+          {blogPosts && blogPosts.length === 0 && (
+            <div className="text-center">
+              <h2 className="text-3xl font-poppins font-bold text-navy mb-6">
+                Coming Soon
+              </h2>
+              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                We're working on bringing you valuable insights on IT automation, cybersecurity, 
+                and business growth strategies. Check back soon for our latest posts.
+              </p>
+              <Button size="lg" className="bg-accent text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
+                Book Your Free Assessment
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 

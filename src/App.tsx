@@ -24,6 +24,7 @@ import WhyUs from "./pages/WhyUs";
 import Services from "./pages/Services";
 import DataAI from "./pages/DataAI";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import CaseStudies from "./pages/CaseStudies";
 import IntegrationsPage from "./pages/IntegrationsPage";
 import IntegrationDetail from "./pages/IntegrationDetail";
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/data-ai" element={<DataAI />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/integrations" element={<IntegrationsPage />} />
           <Route path="/integrations/:integrationSlug" element={<IntegrationDetail />} />
