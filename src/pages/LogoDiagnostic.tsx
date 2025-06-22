@@ -66,15 +66,12 @@ const LogoDiagnostic = () => {
                         className="w-full h-full object-contain"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
-                          e.currentTarget.nextElementSibling.style.display = 'block';
+                          const parent = e.currentTarget.parentElement;
+                          if (parent) {
+                            parent.innerHTML = '<div class="text-gray-400 text-sm text-center">Failed to load</div>';
+                          }
                         }}
                       />
-                      <div 
-                        className="text-gray-400 text-sm text-center hidden"
-                        style={{ display: 'none' }}
-                      >
-                        Failed to load
-                      </div>
                     </div>
                     
                     <div className="text-center space-y-2">
