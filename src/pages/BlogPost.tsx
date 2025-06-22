@@ -1,11 +1,11 @@
-
 import { useParams, Navigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import BlogSubscription from '../components/BlogSubscription';
+import BlogContentParser from '../components/BlogContentParser';
 import { Button } from '@/components/ui/button';
 import { useBlogPost } from '../hooks/useBlogPosts';
-import { Calendar, User, Tag } from 'lucide-react';
+import { Calendar, User, Tag, Share2 } from 'lucide-react';
 import { useState } from 'react';
 
 const BlogPost = () => {
@@ -20,11 +20,13 @@ const BlogPost = () => {
 
   const getWorkingImageUrl = (originalUrl: string | null) => {
     if (imageError || !originalUrl) {
-      // Fallback to a working Unsplash image
+      // Different fallback images based on content
+      if (slug?.includes('cyberattack') || slug?.includes('security')) {
+        return `https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80`;
+      }
       return `https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80`;
     }
     
-    // If the URL is incomplete, fix it
     if (originalUrl.includes('unsplash.com') && !originalUrl.startsWith('http')) {
       return `https://images.${originalUrl}`;
     }
@@ -76,32 +78,29 @@ const BlogPost = () => {
     });
   };
 
-  const formatBodyContent = (body: string | null) => {
-    if (!body) return [];
-    return body.split('\n').map((paragraph, index) => {
-      if (paragraph.trim() === '') return null;
-      return (
-        <p key={index} className="mb-6 leading-relaxed text-lg text-gray-700 font-inter">
-          {paragraph}
-        </p>
-      );
-    });
-  };
-
-  const bodyParagraphs = formatBodyContent(post.body);
-  const midPoint = Math.floor(bodyParagraphs.length / 2);
   const imageUrl = getWorkingImageUrl(post.hero_image_url);
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: post.title,
+        url: window.location.href
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
       
-      {/* Hero Section */}
+      {/* Enhanced Hero Section */}
       <section className="pt-32 pb-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            {/* Hero Image with error handling */}
-            <div className="mb-8 rounded-xl overflow-hidden shadow-2xl animate-fade-in bg-gray-200">
+            {/* Hero Image with enhanced styling */}
+            <div className="mb-8 rounded-xl overflow-hidden shadow-2xl animate-fade-in bg-gray-200 relative">
               <img
                 src={imageUrl}
                 alt={post.title}
@@ -109,73 +108,89 @@ const BlogPost = () => {
                 onError={() => setImageError(true)}
                 loading="eager"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent"></div>
             </div>
 
-            {/* Post Meta */}
-            <div className="flex flex-wrap items-center gap-4 mb-6 text-gray-600">
-              {post.author && (
+            {/* Enhanced Post Meta */}
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex flex-wrap items-center gap-4 text-gray-600">
+                {post.author && (
+                  <div className="flex items-center gap-2">
+                    <User className="w-4 h-4" />
+                    <span className="font-inter font-medium">{post.author}</span>
+                  </div>
+                )}
                 <div className="flex items-center gap-2">
-                  <User className="w-4 h-4" />
-                  <span className="font-inter">{post.author}</span>
+                  <Calendar className="w-4 h-4" />
+                  <span className="font-inter">{formatDate(post.date || post.created_at)}</span>
                 </div>
-              )}
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span className="font-inter">{formatDate(post.date || post.created_at)}</span>
+                {post.seo_keyword && (
+                  <div className="flex items-center gap-2">
+                    <Tag className="w-4 h-4" />
+                    <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium font-inter">
+                      {post.seo_keyword}
+                    </span>
+                  </div>
+                )}
               </div>
-              {post.seo_keyword && (
-                <div className="flex items-center gap-2">
-                  <Tag className="w-4 h-4" />
-                  <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium font-inter">
-                    {post.seo_keyword}
-                  </span>
-                </div>
-              )}
+              
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleShare}
+                className="border-navy text-navy hover:bg-navy hover:text-white"
+              >
+                <Share2 className="w-4 h-4 mr-2" />
+                Share
+              </Button>
             </div>
 
-            {/* Title */}
-            <h1 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-8 animate-fade-in">
+            {/* Enhanced Title */}
+            <h1 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-8 animate-fade-in leading-tight">
               {post.title}
             </h1>
           </div>
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Enhanced Content Section */}
       <section className="pb-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 animate-fade-in">
-              {/* First half of content */}
-              <div className="prose prose-lg max-w-none">
-                {bodyParagraphs.slice(0, midPoint)}
-              </div>
+              {/* Use our enhanced content parser */}
+              <BlogContentParser 
+                content={post.body || ''} 
+                seoKeyword={post.seo_keyword}
+                title={post.title}
+              />
 
-              {/* Embedded content in the middle */}
+              {/* Embedded content */}
               {post.embedded_c && (
                 <div className="my-12 animate-fade-in">
                   <div 
-                    className="bg-gray-50 p-6 rounded-lg border-l-4 border-accent"
+                    className="bg-gradient-to-r from-accent/5 to-transparent p-6 rounded-lg border-l-4 border-accent"
                     dangerouslySetInnerHTML={{ __html: post.embedded_c }}
                   />
                 </div>
               )}
 
-              {/* Second half of content */}
-              <div className="prose prose-lg max-w-none">
-                {bodyParagraphs.slice(midPoint)}
-              </div>
-
-              {/* CTA Section */}
+              {/* Enhanced CTA Section */}
               {post.cta_text && post.cta_link && (
                 <div className="mt-12 pt-8 border-t border-gray-200 text-center animate-fade-in">
-                  <Button 
-                    size="lg"
-                    className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
-                    onClick={() => window.open(post.cta_link!, '_blank')}
-                  >
-                    {post.cta_text}
-                  </Button>
+                  <div className="bg-gradient-to-br from-navy to-deep-blue p-8 rounded-xl text-white">
+                    <h3 className="text-2xl font-poppins font-bold mb-4">Ready to Transform Your Business?</h3>
+                    <p className="text-lg mb-6 font-inter opacity-90">
+                      Don't wait for a crisis to act. Let's discuss how we can protect and optimize your operations.
+                    </p>
+                    <Button 
+                      size="lg"
+                      className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
+                      onClick={() => window.open(post.cta_link!, '_blank')}
+                    >
+                      {post.cta_text}
+                    </Button>
+                  </div>
                 </div>
               )}
             </div>
