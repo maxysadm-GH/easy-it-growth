@@ -1,3 +1,4 @@
+
 export interface Integration {
   id: string;
   name: string;
@@ -229,6 +230,330 @@ export const integrations: Integration[] = [
       "Build e-commerce dashboards"
     ],
     useCase: "Perfect for e-commerce businesses wanting deep insights into sales performance, customer behavior, and product analytics."
+  },
+  {
+    id: "slack",
+    name: "Slack",
+    slug: "slack",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Communication",
+    description: "Slack is a cloud-based collaboration platform that connects teams and enables efficient communication across organizations.",
+    shortDescription: "Team collaboration and communication platform",
+    keyBenefits: [
+      "Team productivity metrics",
+      "Communication analytics",
+      "Channel engagement tracking",
+      "Response time monitoring"
+    ],
+    metrics: [
+      "Message volume",
+      "Response times",
+      "Channel activity",
+      "User engagement",
+      "File sharing stats",
+      "Integration usage"
+    ],
+    features: [
+      "Real-time messaging data",
+      "Channel analytics",
+      "User activity tracking",
+      "Integration monitoring"
+    ],
+    setupSteps: [
+      "Connect Slack workspace",
+      "Configure permissions",
+      "Select channels to monitor",
+      "Build team analytics dashboard"
+    ],
+    useCase: "Ideal for teams wanting insights into communication patterns and collaboration effectiveness."
+  },
+  {
+    id: "google-analytics",
+    name: "Google Analytics",
+    slug: "google-analytics",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Analytics",
+    description: "Google Analytics provides detailed insights into website traffic, user behavior, and conversion tracking for digital marketing optimization.",
+    shortDescription: "Web analytics and traffic monitoring platform",
+    keyBenefits: [
+      "Website traffic analysis",
+      "User behavior insights",
+      "Conversion tracking",
+      "Marketing campaign ROI"
+    ],
+    metrics: [
+      "Page views",
+      "Unique visitors",
+      "Bounce rate",
+      "Conversion rate",
+      "Session duration",
+      "Traffic sources"
+    ],
+    features: [
+      "Real-time traffic data",
+      "Goal tracking",
+      "Audience segmentation",
+      "Custom reporting"
+    ],
+    setupSteps: [
+      "Connect Google Analytics account",
+      "Configure tracking goals",
+      "Set up custom dimensions",
+      "Create web analytics dashboard"
+    ],
+    useCase: "Essential for businesses tracking website performance and digital marketing effectiveness."
+  },
+  {
+    id: "mailchimp",
+    name: "Mailchimp",
+    slug: "mailchimp",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Email Marketing",
+    description: "Mailchimp is an all-in-one email marketing platform that helps businesses create, send, and analyze email campaigns.",
+    shortDescription: "Email marketing and automation platform",
+    keyBenefits: [
+      "Email campaign performance",
+      "Subscriber growth tracking",
+      "Automation effectiveness",
+      "Revenue attribution"
+    ],
+    metrics: [
+      "Open rates",
+      "Click-through rates",
+      "Subscriber growth",
+      "Revenue per email",
+      "Unsubscribe rates",
+      "Campaign ROI"
+    ],
+    features: [
+      "Campaign analytics",
+      "Subscriber management",
+      "Automation tracking",
+      "Revenue reporting"
+    ],
+    setupSteps: [
+      "Connect Mailchimp account",
+      "Configure API permissions",
+      "Select lists to track",
+      "Build email marketing dashboard"
+    ],
+    useCase: "Perfect for marketing teams tracking email campaign performance and subscriber engagement."
+  },
+  {
+    id: "asana",
+    name: "Asana",
+    slug: "asana",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Project Management",
+    description: "Asana is a project management platform that helps teams organize, track, and manage their work and projects efficiently.",
+    shortDescription: "Project management and team collaboration platform",
+    keyBenefits: [
+      "Project progress tracking",
+      "Team productivity insights",
+      "Task completion analytics",
+      "Resource allocation optimization"
+    ],
+    metrics: [
+      "Task completion rates",
+      "Project timelines",
+      "Team workload",
+      "Milestone progress",
+      "Time tracking",
+      "Resource utilization"
+    ],
+    features: [
+      "Project analytics",
+      "Team performance tracking",
+      "Task management",
+      "Timeline visualization"
+    ],
+    setupSteps: [
+      "Connect Asana workspace",
+      "Configure project access",
+      "Select teams to monitor",
+      "Create project management dashboard"
+    ],
+    useCase: "Ideal for project managers and teams needing visibility into project progress and team productivity."
+  },
+  {
+    id: "zendesk",
+    name: "Zendesk",
+    slug: "zendesk",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Customer Support",
+    description: "Zendesk is a customer service platform that provides ticketing, live chat, and customer support analytics for better customer experiences.",
+    shortDescription: "Customer support and service management platform",
+    keyBenefits: [
+      "Customer satisfaction tracking",
+      "Support ticket analytics",
+      "Agent performance monitoring",
+      "Response time optimization"
+    ],
+    metrics: [
+      "Ticket volume",
+      "Response times",
+      "Resolution rates",
+      "Customer satisfaction",
+      "Agent productivity",
+      "Escalation rates"
+    ],
+    features: [
+      "Support analytics",
+      "Agent performance tracking",
+      "Customer satisfaction monitoring",
+      "SLA compliance reporting"
+    ],
+    setupSteps: [
+      "Connect Zendesk instance",
+      "Configure API access",
+      "Select support metrics",
+      "Build customer service dashboard"
+    ],
+    useCase: "Essential for customer support teams tracking service quality and agent performance."
+  },
+  {
+    id: "trello",
+    name: "Trello",
+    slug: "trello",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Project Management",
+    description: "Trello is a visual project management tool that uses boards, lists, and cards to help teams organize and prioritize projects.",
+    shortDescription: "Visual project management and organization platform",
+    keyBenefits: [
+      "Visual project tracking",
+      "Team collaboration insights",
+      "Card movement analytics",
+      "Board activity monitoring"
+    ],
+    metrics: [
+      "Card completion rates",
+      "Board activity",
+      "Team collaboration",
+      "Project velocity",
+      "Due date tracking",
+      "Member productivity"
+    ],
+    features: [
+      "Board analytics",
+      "Card tracking",
+      "Team activity monitoring",
+      "Progress visualization"
+    ],
+    setupSteps: [
+      "Connect Trello account",
+      "Configure board access",
+      "Select boards to track",
+      "Create visual project dashboard"
+    ],
+    useCase: "Perfect for teams using visual project management and needing insights into project flow and completion."
+  },
+  {
+    id: "stripe",
+    name: "Stripe",
+    slug: "stripe",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Payments",
+    description: "Stripe is a payment processing platform that enables businesses to accept and manage online payments with comprehensive analytics.",
+    shortDescription: "Online payment processing and financial platform",
+    keyBenefits: [
+      "Payment analytics",
+      "Revenue tracking",
+      "Transaction monitoring",
+      "Financial reporting"
+    ],
+    metrics: [
+      "Transaction volume",
+      "Revenue trends",
+      "Payment success rates",
+      "Chargeback rates",
+      "Customer lifetime value",
+      "Geographic revenue"
+    ],
+    features: [
+      "Payment analytics",
+      "Revenue reporting",
+      "Transaction tracking",
+      "Financial insights"
+    ],
+    setupSteps: [
+      "Connect Stripe account",
+      "Configure webhook endpoints",
+      "Select payment metrics",
+      "Build payment analytics dashboard"
+    ],
+    useCase: "Essential for businesses processing online payments and needing detailed financial analytics."
+  },
+  {
+    id: "xero",
+    name: "Xero",
+    slug: "xero",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Accounting",
+    description: "Xero is cloud-based accounting software designed for small and medium businesses, offering comprehensive financial management tools.",
+    shortDescription: "Cloud accounting and financial management platform",
+    keyBenefits: [
+      "Real-time financial reporting",
+      "Cash flow management",
+      "Invoice and expense tracking",
+      "Tax compliance reporting"
+    ],
+    metrics: [
+      "Cash flow",
+      "Profit and loss",
+      "Balance sheet data",
+      "Invoice tracking",
+      "Expense analysis",
+      "Tax reporting"
+    ],
+    features: [
+      "Financial reporting",
+      "Bank reconciliation",
+      "Invoice management",
+      "Expense tracking"
+    ],
+    setupSteps: [
+      "Connect Xero account",
+      "Configure data sync",
+      "Select financial metrics",
+      "Create accounting dashboard"
+    ],
+    useCase: "Ideal for small to medium businesses needing comprehensive accounting and financial reporting capabilities."
+  },
+  {
+    id: "monday",
+    name: "Monday.com",
+    slug: "monday",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Project Management",
+    description: "Monday.com is a work operating system that enables teams to run projects and workflows with confidence and clarity.",
+    shortDescription: "Work management and team collaboration platform",
+    keyBenefits: [
+      "Project timeline tracking",
+      "Team workload management",
+      "Progress visualization",
+      "Resource planning insights"
+    ],
+    metrics: [
+      "Project progress",
+      "Task completion",
+      "Team capacity",
+      "Timeline adherence",
+      "Budget tracking",
+      "Resource allocation"
+    ],
+    features: [
+      "Project tracking",
+      "Team analytics",
+      "Workflow monitoring",
+      "Progress reporting"
+    ],
+    setupSteps: [
+      "Connect Monday.com account",
+      "Configure board access",
+      "Select tracking metrics",
+      "Build project management dashboard"
+    ],
+    useCase: "Perfect for teams managing complex projects and needing comprehensive workflow visibility."
   }
 ];
 
@@ -239,7 +564,13 @@ export const integrationCategories = [
   "CRM",
   "ERP",
   "Inventory",
-  "E-commerce"
+  "E-commerce",
+  "Communication",
+  "Analytics",
+  "Email Marketing",
+  "Project Management",
+  "Customer Support",
+  "Payments"
 ];
 
 export function getIntegrationBySlug(slug: string): Integration | undefined {
