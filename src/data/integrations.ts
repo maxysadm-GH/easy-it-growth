@@ -1,4 +1,3 @@
-
 export interface Integration {
   id: string;
   name: string;
@@ -487,7 +486,7 @@ export const integrations: Integration[] = [
     id: "xero",
     name: "Xero",
     slug: "xero",
-    logo: "/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png",
+    logo: "/lovable-uploads/1ab91a6b-e3f8-43f8-9178-1fbd96d033d3.png",
     category: "Accounting",
     description: "Xero is cloud-based accounting software designed for small and medium businesses, offering comprehensive financial management tools.",
     shortDescription: "Cloud accounting and financial management platform",
