@@ -8,7 +8,7 @@ const integrations = [
   },
   { 
     name: "HubSpot", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hubspot.svg"
+    logo: "/lovable-uploads/ce3f28ff-97cd-41cf-9b02-622f72b9cc0b.png"
   },
   { 
     name: "Salesforce", 
@@ -40,7 +40,7 @@ const integrations = [
   },
   { 
     name: "NetSuite", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/netsuite.svg"
+    logo: "/lovable-uploads/c529216b-8e7e-41e1-a770-a5fc7bf00c58.png"
   },
   { 
     name: "Sage", 
@@ -48,7 +48,7 @@ const integrations = [
   },
   { 
     name: "FreshBooks", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/freshbooks.svg"
+    logo: "/lovable-uploads/b96e5d58-1268-4350-90f9-e2f5f1b25c2f.png"
   },
   { 
     name: "Zoho", 
@@ -56,7 +56,7 @@ const integrations = [
   },
   { 
     name: "monday.com", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mondaydotcom.svg"
+    logo: "/lovable-uploads/1ab91a6b-e3f8-43f8-9178-1fbd96d033d3.png"
   },
   { 
     name: "Asana", 
@@ -66,7 +66,7 @@ const integrations = [
 
 const Integrations = () => {
   const handleBookAssessment = () => {
-    window.open('https://calendly.com/mbacio/free-assessment', '_blank');
+    window.open('https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/?ismsaljsauthenabled', '_blank');
   };
 
   const handleLogoError = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -108,11 +108,13 @@ const Integrations = () => {
                   <img
                     src={integration.logo}
                     alt={integration.name + " integration logo"}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain transition-all duration-300"
                     style={{ 
                       width: '72px', 
                       height: '72px', 
-                      filter: integration.name === 'Fishbowl Inventory' ? 'none' : 'brightness(0) saturate(100%)' 
+                      filter: ['Fishbowl Inventory', 'HubSpot', 'NetSuite', 'FreshBooks', 'monday.com'].includes(integration.name) 
+                        ? 'none group-hover:none' 
+                        : 'brightness(0) saturate(100%) group-hover:none'
                     }}
                     draggable={false}
                     onError={handleLogoError}

@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -9,7 +10,7 @@ const integrations = [
   },
   {
     name: "HubSpot",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hubspot.svg",
+    src: "/lovable-uploads/ce3f28ff-97cd-41cf-9b02-622f72b9cc0b.png",
   },
   {
     name: "Salesforce",
@@ -123,17 +124,21 @@ const AIInsights = () => {
           </h3>
           <div className="flex flex-wrap justify-center gap-8 py-4 w-full">
             {integrations.map((logo, index) => (
-              <a key={logo.name} href="/" className="flex flex-col items-center w-20 md:w-28">
+              <a key={logo.name} href="/" className="flex flex-col items-center w-20 md:w-28 group">
                 <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-lg flex items-center justify-center">
                   <img
                     src={logo.src}
                     alt={logo.name + " integration"}
-                    className="w-full h-full object-contain transition-transform duration-300 hover:scale-110"
-                    style={{ filter: 'brightness(0) saturate(100%)' }}
+                    className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
+                    style={{ 
+                      filter: logo.name === 'HubSpot' 
+                        ? 'none' 
+                        : 'brightness(0) saturate(100%) group-hover:none'
+                    }}
                     onError={handleLogoError}
                   />
                 </div>
-                <span className="mt-2 text-white text-xs md:text-sm font-medium text-center">{logo.name}</span>
+                <span className="mt-2 text-white text-xs md:text-sm font-medium text-center group-hover:text-accent transition-colors duration-300">{logo.name}</span>
               </a>
             ))}
           </div>
