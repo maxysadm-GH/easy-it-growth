@@ -41,7 +41,7 @@ const integrations = [
   },
   { 
     name: "NetSuite", 
-    logo: "/lovable-uploads/6c02622d-f929-4272-8fb2-56a68e33cc30.png"
+    logo: "/lovable-uploads/76149f2e-0b85-4889-9a76-c7f2a3926d7c.png"
   },
   { 
     name: "Sage", 
