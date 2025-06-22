@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import BookingPopup from './BookingPopup';
 
@@ -49,7 +48,7 @@ const integrations = [
   },
   { 
     name: "FreshBooks", 
-    logo: "/lovable-uploads/b96e5d58-1268-4350-90f9-e2f5f1b25c2f.png"
+    logo: "/lovable-uploads/ae564825-4d4f-43ea-b2f9-a67a15532b80.png"
   },
   { 
     name: "Zoho", 

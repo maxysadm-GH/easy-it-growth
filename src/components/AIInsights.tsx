@@ -36,6 +36,10 @@ const integrations = [
   {
     name: "NetSuite",
     src: "/lovable-uploads/76149f2e-0b85-4889-9a76-c7f2a3926d7c.png",
+  },
+  {
+    name: "FreshBooks",
+    src: "/lovable-uploads/ae564825-4d4f-43ea-b2f9-a67a15532b80.png",
   }
 ];
 
@@ -74,7 +78,7 @@ const AIInsights = () => {
   };
 
   // Define which logos should remain colored
-  const coloredLogos = ['HubSpot', 'Fishbowl Inventory', 'NetSuite'];
+  const coloredLogos = ['HubSpot', 'Fishbowl Inventory', 'NetSuite', 'FreshBooks'];
 
   return (
     <>
