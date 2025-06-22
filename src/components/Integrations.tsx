@@ -55,17 +55,7 @@ const Integrations = () => {
                       <img
                         src={integration.logo}
                         alt={integration.name + " integration logo"}
-                        className="w-full h-full object-contain transition-all duration-300"
-                        style={{ 
-                          filter: 'brightness(0) saturate(100%)',
-                          transition: 'filter 0.3s ease'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.filter = 'none';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.filter = 'brightness(0) saturate(100%)';
-                        }}
+                        className="w-full h-full object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
                         draggable={false}
                         onError={handleLogoError}
                       />
@@ -107,7 +97,7 @@ const Integrations = () => {
         </div>
 
         {/* Add CSS for the scroll animation */}
-        <style jsx>{`
+        <style>{`
           @keyframes scroll {
             0% {
               transform: translateX(0);

@@ -2,9 +2,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import BookingPopup from './BookingPopup';
-import { integrations } from '../data/integrations';
 
 const capabilities = [
   {
@@ -35,14 +33,6 @@ const AIInsights = () => {
   const handleBookAssessment = () => {
     setIsBookingOpen(true);
   };
-
-  const handleLogoError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src = "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png";
-  };
-
-  // Use first 9 integrations for this section
-  const displayIntegrations = integrations.slice(0, 9);
-  const duplicatedIntegrations = [...displayIntegrations, ...displayIntegrations, ...displayIntegrations];
 
   return (
     <>
@@ -104,45 +94,6 @@ const AIInsights = () => {
               </div>
             </div>
           </div>
-          {/* Integrations Logos */}
-          <div className="text-center mb-16">
-            <h3 className="text-2xl font-poppins font-bold mb-8 text-accent">
-              Works With Your Favorite Tools
-            </h3>
-            <div className="relative overflow-hidden">
-              <div className="flex animate-[scroll_25s_linear_infinite] hover:[animation-play-state:paused]">
-                {duplicatedIntegrations.map((integration, index) => (
-                  <Link 
-                    key={`${integration.slug}-${index}`} 
-                    to={`/integrations/${integration.slug}`} 
-                    className="flex flex-col items-center group flex-shrink-0 mx-4"
-                  >
-                    <div className="w-16 h-16 bg-white rounded-lg p-3 shadow-lg flex items-center justify-center">
-                      <img
-                        src={integration.logo}
-                        alt={integration.name + " integration"}
-                        className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
-                        style={{ 
-                          filter: 'brightness(0) saturate(100%)',
-                          transition: 'filter 0.3s ease'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.filter = 'none';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.filter = 'brightness(0) saturate(100%)';
-                        }}
-                        onError={handleLogoError}
-                      />
-                    </div>
-                    <span className="mt-2 text-white text-xs md:text-sm font-medium text-center group-hover:text-accent transition-colors duration-300 whitespace-nowrap">
-                      {integration.name}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
           <div className="text-center">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -160,18 +111,6 @@ const AIInsights = () => {
             </div>
           </div>
         </div>
-
-        {/* Add CSS for the scroll animation */}
-        <style jsx>{`
-          @keyframes scroll {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-33.333333%);
-            }
-          }
-        `}</style>
       </section>
 
       {/* Booking Popup */}
