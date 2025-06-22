@@ -4,69 +4,73 @@ import React from "react";
 const integrations = [
   { 
     name: "QuickBooks Online", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888879.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/quickbooks.svg"
   },
   { 
     name: "HubSpot", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888867.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hubspot.svg"
   },
   { 
     name: "Salesforce", 
-    logo: "https://cdn-icons-png.flaticon.com/512/873/873089.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/salesforce.svg"
   },
   { 
     name: "Microsoft Excel", 
-    logo: "https://cdn-icons-png.flaticon.com/512/732/732220.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftexcel.svg"
   },
   { 
     name: "Slack", 
-    logo: "https://cdn-icons-png.flaticon.com/512/2111/2111615.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/slack.svg"
   },
   { 
     name: "Shopify", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888839.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/shopify.svg"
   },
   { 
     name: "Fishbowl Inventory", 
-    logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAACjCAMAAACvjKdaAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAA9QTFRF////MzMzZmZmmZmZzMzM7u7uCvK3jAAAAAFiS0dEBmFmuH0AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfnCgwSJwGJ8pE1AAAA6klEQVR42u3WQQ0AAAzCsOHf9F6oABXQS7N2kYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYnJB2jWAWHKWs8zAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTEwLTEyVDE4OjM5OjAxKzAwOjAwUV8OLQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0xMC0xMlQxODozOTowMSswMDowMCACtpEAAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjMtMTAtMTJUMTg6Mzk6MDErMDA6MDCGO7wAAAAASUVORK5CYII="
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/databricks.svg"
   },
   { 
     name: "Google Analytics", 
-    logo: "https://cdn-icons-png.flaticon.com/512/881/881045.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googleanalytics.svg"
   },
   { 
     name: "Xero", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888861.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/xero.svg"
   },
   { 
     name: "NetSuite", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888870.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/oracle.svg"
   },
   { 
     name: "Sage", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888858.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/sage.svg"
   },
   { 
     name: "FreshBooks", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888876.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/freshbooks.svg"
   },
   { 
     name: "Zoho", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888857.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zoho.svg"
   },
   { 
     name: "monday.com", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888913.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/monday.svg"
   },
   { 
     name: "Asana", 
-    logo: "https://cdn-icons-png.flaticon.com/512/888/888847.png"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/asana.svg"
   }
 ];
 
 const Integrations = () => {
   const handleBookAssessment = () => {
     window.open('https://calendly.com/mbacio/free-assessment', '_blank');
+  };
+
+  const handleLogoError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png";
   };
 
   return (
@@ -105,8 +109,9 @@ const Integrations = () => {
                     src={integration.logo}
                     alt={integration.name + " integration logo"}
                     className="w-full h-full object-contain"
-                    style={{ width: '72px', height: '72px' }}
+                    style={{ width: '72px', height: '72px', filter: 'brightness(0) saturate(100%)' }}
                     draggable={false}
+                    onError={handleLogoError}
                   />
                 </div>
                 <span className="mt-3 text-sm font-medium text-white text-center group-hover:text-accent transition-colors duration-300">

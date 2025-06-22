@@ -2,31 +2,31 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-// Updated integrations list with reliable logos
+// Updated integrations list with Simple Icons CDN
 const integrations = [
   {
     name: "QuickBooks Online",
-    src: "https://cdn-icons-png.flaticon.com/512/888/888879.png",
+    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/quickbooks.svg",
   },
   {
     name: "HubSpot",
-    src: "https://cdn-icons-png.flaticon.com/512/888/888867.png",
+    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hubspot.svg",
   },
   {
     name: "Salesforce",
-    src: "https://cdn-icons-png.flaticon.com/512/873/873089.png"
+    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/salesforce.svg"
   },
   {
     name: "Microsoft Excel",
-    src: "https://cdn-icons-png.flaticon.com/512/732/732220.png",
+    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftexcel.svg",
   },
   {
     name: "Slack",
-    src: "https://cdn-icons-png.flaticon.com/512/2111/2111615.png",
+    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/slack.svg",
   },
   {
     name: "Shopify",
-    src: "https://cdn-icons-png.flaticon.com/512/888/888839.png",
+    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/shopify.svg",
   }
 ];
 
@@ -52,6 +52,10 @@ const capabilities = [
 const AIInsights = () => {
   const handleDashboardSolutions = () => {
     window.location.href = '/dashboard-solutions';
+  };
+
+  const handleLogoError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png";
   };
 
   return (
@@ -126,6 +130,8 @@ const AIInsights = () => {
                     src={logo.src}
                     alt={logo.name + " integration"}
                     className="w-full h-full object-contain transition-transform duration-300 hover:scale-110"
+                    style={{ filter: 'brightness(0) saturate(100%)' }}
+                    onError={handleLogoError}
                   />
                 </div>
                 <span className="mt-2 text-white text-xs md:text-sm font-medium text-center">{logo.name}</span>
