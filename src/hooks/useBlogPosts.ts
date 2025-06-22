@@ -43,7 +43,7 @@ export const useBlogPosts = () => {
       return (data as BlogPost[]) || [];
     },
     staleTime: 0, // Always consider data stale
-    cacheTime: 0, // Don't cache
+    gcTime: 0, // Don't cache (renamed from cacheTime in v5)
     refetchOnMount: true,
     refetchOnWindowFocus: true,
   });
@@ -90,6 +90,6 @@ export const useBlogPost = (slug: string) => {
       return post as BlogPost;
     },
     staleTime: 0,
-    cacheTime: 0,
+    gcTime: 0, // Don't cache (renamed from cacheTime in v5)
   });
 };
