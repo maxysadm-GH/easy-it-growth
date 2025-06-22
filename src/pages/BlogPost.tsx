@@ -5,15 +5,31 @@ import Footer from '../components/Footer';
 import { Button } from '@/components/ui/button';
 import { useBlogPost } from '../hooks/useBlogPosts';
 import { Calendar, User, Tag } from 'lucide-react';
+import { useState } from 'react';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
+  const [imageError, setImageError] = useState(false);
   
   if (!slug) {
     return <Navigate to="/blog" replace />;
   }
 
   const { data: post, isLoading, error } = useBlogPost(slug);
+
+  const getWorkingImageUrl = (originalUrl: string | null) => {
+    if (imageError || !originalUrl) {
+      // Fallback to a working Unsplash image
+      return `https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80`;
+    }
+    
+    // If the URL is incomplete, fix it
+    if (originalUrl.includes('unsplash.com') && !originalUrl.startsWith('http')) {
+      return `https://images.${originalUrl}`;
+    }
+    
+    return originalUrl;
+  };
 
   if (isLoading) {
     return (
@@ -73,6 +89,7 @@ const BlogPost = () => {
 
   const bodyParagraphs = formatBodyContent(post.body);
   const midPoint = Math.floor(bodyParagraphs.length / 2);
+  const imageUrl = getWorkingImageUrl(post.hero_image_url);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -82,16 +99,16 @@ const BlogPost = () => {
       <section className="pt-32 pb-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            {/* Hero Image */}
-            {post.hero_image_url && (
-              <div className="mb-8 rounded-xl overflow-hidden shadow-2xl animate-fade-in">
-                <img
-                  src={post.hero_image_url}
-                  alt={post.title}
-                  className="w-full h-64 md:h-96 object-cover"
-                />
-              </div>
-            )}
+            {/* Hero Image with error handling */}
+            <div className="mb-8 rounded-xl overflow-hidden shadow-2xl animate-fade-in bg-gray-200">
+              <img
+                src={imageUrl}
+                alt={post.title}
+                className="w-full h-64 md:h-96 object-cover"
+                onError={() => setImageError(true)}
+                loading="eager"
+              />
+            </div>
 
             {/* Post Meta */}
             <div className="flex flex-wrap items-center gap-4 mb-6 text-gray-600">

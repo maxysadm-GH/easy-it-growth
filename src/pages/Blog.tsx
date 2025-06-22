@@ -6,10 +6,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useBlogPosts } from '../hooks/useBlogPosts';
 import { Calendar, User, Tag, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Blog = () => {
   const { data: blogPosts, isLoading, error } = useBlogPosts();
   const navigate = useNavigate();
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -28,6 +30,24 @@ const Blog = () => {
   const getExcerpt = (body: string | null, maxLength: number = 150) => {
     if (!body) return 'Read more to discover the full content...';
     return body.length > maxLength ? body.substring(0, maxLength) + '...' : body;
+  };
+
+  const handleImageError = (postId: string) => {
+    setImageErrors(prev => ({ ...prev, [postId]: true }));
+  };
+
+  const getWorkingImageUrl = (originalUrl: string | null, postId: string) => {
+    if (imageErrors[postId] || !originalUrl) {
+      // Fallback to a working Unsplash image
+      return `https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`;
+    }
+    
+    // If the URL is incomplete, fix it
+    if (originalUrl.includes('unsplash.com') && !originalUrl.startsWith('http')) {
+      return `https://images.${originalUrl}`;
+    }
+    
+    return originalUrl;
   };
 
   return (
@@ -78,6 +98,8 @@ const Blog = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {blogPosts.map((post, index) => {
                 const slug = createSlug(post.title, post.id);
+                const imageUrl = getWorkingImageUrl(post.hero_image_url, post.id);
+                
                 return (
                   <Card 
                     key={post.id} 
@@ -85,17 +107,17 @@ const Blog = () => {
                     style={{ animationDelay: `${index * 100}ms` }}
                     onClick={() => navigate(`/blog/${slug}`)}
                   >
-                    {/* Hero Image */}
-                    {post.hero_image_url && (
-                      <div className="relative overflow-hidden h-48">
-                        <img
-                          src={post.hero_image_url}
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      </div>
-                    )}
+                    {/* Hero Image with error handling */}
+                    <div className="relative overflow-hidden h-48 bg-gray-200">
+                      <img
+                        src={imageUrl}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={() => handleImageError(post.id)}
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
 
                     <CardContent className="p-6">
                       {/* Meta Info */}
