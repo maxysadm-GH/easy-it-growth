@@ -20,12 +20,13 @@ const Blog = () => {
   };
 
   const createSlug = (title: string, id: string) => {
-    return title.toLowerCase()
+    return title?.toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '') || `post-${id}`;
   };
 
-  const getExcerpt = (body: string, maxLength: number = 150) => {
+  const getExcerpt = (body: string | null, maxLength: number = 150) => {
+    if (!body) return 'Read more to discover the full content...';
     return body.length > maxLength ? body.substring(0, maxLength) + '...' : body;
   };
 
@@ -37,13 +38,13 @@ const Blog = () => {
       <section className="pt-32 pb-20 bg-gradient-to-br from-navy via-deep-blue to-charcoal text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8 drop-shadow-header">
+            <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8 drop-shadow-header animate-fade-in">
               MBACIO Blog
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
+            <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed animate-fade-in">
               Stay ahead with MBACIO insights on IT strategy, automation, AI, cybersecurity, and business growth.
             </p>
-            <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
+            <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300 animate-fade-in">
               Book Your Free Assessment
             </Button>
           </div>
@@ -75,12 +76,13 @@ const Blog = () => {
 
           {blogPosts && blogPosts.length > 0 && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {blogPosts.map((post) => {
-                const slug = post.slug || createSlug(post.title, post.id);
+              {blogPosts.map((post, index) => {
+                const slug = createSlug(post.title, post.id);
                 return (
                   <Card 
                     key={post.id} 
-                    className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden cursor-pointer"
+                    className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden cursor-pointer animate-fade-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
                     onClick={() => navigate(`/blog/${slug}`)}
                   >
                     {/* Hero Image */}
@@ -98,10 +100,12 @@ const Blog = () => {
                     <CardContent className="p-6">
                       {/* Meta Info */}
                       <div className="flex flex-wrap items-center gap-3 mb-4 text-sm text-gray-600">
-                        <div className="flex items-center gap-1">
-                          <User className="w-3 h-3" />
-                          <span>{post.author}</span>
-                        </div>
+                        {post.author && (
+                          <div className="flex items-center gap-1">
+                            <User className="w-3 h-3" />
+                            <span>{post.author}</span>
+                          </div>
+                        )}
                         <div className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
                           <span>{formatDate(post.date || post.created_at)}</span>
@@ -122,7 +126,7 @@ const Blog = () => {
                       </h3>
 
                       {/* Excerpt */}
-                      <p className="text-gray-700 leading-relaxed mb-6">
+                      <p className="text-gray-700 leading-relaxed mb-6 font-inter">
                         {getExcerpt(post.body)}
                       </p>
 
@@ -145,14 +149,14 @@ const Blog = () => {
 
           {blogPosts && blogPosts.length === 0 && (
             <div className="text-center">
-              <h2 className="text-3xl font-poppins font-bold text-navy mb-6">
+              <h2 className="text-3xl font-poppins font-bold text-navy mb-6 animate-fade-in">
                 Coming Soon
               </h2>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto font-inter animate-fade-in">
                 We're working on bringing you valuable insights on IT automation, cybersecurity, 
                 and business growth strategies. Check back soon for our latest posts.
               </p>
-              <Button size="lg" className="bg-accent text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
+              <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300 animate-fade-in">
                 Book Your Free Assessment
               </Button>
             </div>

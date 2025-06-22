@@ -22,7 +22,7 @@ const BlogPost = () => {
         <div className="pt-32 pb-20">
           <div className="container mx-auto px-4 text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading blog post...</p>
+            <p className="mt-4 text-gray-600 font-inter">Loading blog post...</p>
           </div>
         </div>
         <Footer />
@@ -37,7 +37,7 @@ const BlogPost = () => {
         <div className="pt-32 pb-20">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-3xl font-poppins font-bold text-navy mb-4">Post Not Found</h1>
-            <p className="text-gray-600 mb-8">The blog post you're looking for doesn't exist.</p>
+            <p className="text-gray-600 mb-8 font-inter">The blog post you're looking for doesn't exist.</p>
             <Button 
               onClick={() => window.location.href = '/blog'}
               className="bg-accent text-navy font-bold px-6 py-3"
@@ -59,11 +59,12 @@ const BlogPost = () => {
     });
   };
 
-  const formatBodyContent = (body: string) => {
+  const formatBodyContent = (body: string | null) => {
+    if (!body) return [];
     return body.split('\n').map((paragraph, index) => {
       if (paragraph.trim() === '') return null;
       return (
-        <p key={index} className="mb-6 leading-relaxed text-lg text-gray-700">
+        <p key={index} className="mb-6 leading-relaxed text-lg text-gray-700 font-inter">
           {paragraph}
         </p>
       );
@@ -94,18 +95,20 @@ const BlogPost = () => {
 
             {/* Post Meta */}
             <div className="flex flex-wrap items-center gap-4 mb-6 text-gray-600">
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4" />
-                <span>{post.author}</span>
-              </div>
+              {post.author && (
+                <div className="flex items-center gap-2">
+                  <User className="w-4 h-4" />
+                  <span className="font-inter">{post.author}</span>
+                </div>
+              )}
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
-                <span>{formatDate(post.date || post.created_at)}</span>
+                <span className="font-inter">{formatDate(post.date || post.created_at)}</span>
               </div>
               {post.seo_keyword && (
                 <div className="flex items-center gap-2">
                   <Tag className="w-4 h-4" />
-                  <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium font-inter">
                     {post.seo_keyword}
                   </span>
                 </div>
@@ -124,7 +127,7 @@ const BlogPost = () => {
       <section className="pb-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 animate-fade-in">
               {/* First half of content */}
               <div className="prose prose-lg max-w-none">
                 {bodyParagraphs.slice(0, midPoint)}
@@ -151,7 +154,7 @@ const BlogPost = () => {
                   <Button 
                     size="lg"
                     className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
-                    onClick={() => window.open(post.cta_link, '_blank')}
+                    onClick={() => window.open(post.cta_link!, '_blank')}
                   >
                     {post.cta_text}
                   </Button>
