@@ -29,7 +29,7 @@ const integrations = [
   },
   { 
     name: "Fishbowl Inventory", 
-    logo: "/lovable-uploads/31fd0b08-30e1-4290-93b6-8547b1d4cfb5.png"
+    logo: "/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png"
   },
   { 
     name: "Google Analytics", 
@@ -41,7 +41,7 @@ const integrations = [
   },
   { 
     name: "NetSuite", 
-    logo: "/lovable-uploads/c529216b-8e7e-41e1-a770-a5fc7bf00c58.png"
+    logo: "/lovable-uploads/6c02622d-f929-4272-8fb2-56a68e33cc30.png"
   },
   { 
     name: "Sage", 
@@ -76,6 +76,9 @@ const Integrations = () => {
     e.currentTarget.src = "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png";
   };
 
+  // Define which logos should remain colored (uploaded logos)
+  const coloredLogos = ['HubSpot', 'Fishbowl Inventory', 'NetSuite', 'FreshBooks', 'monday.com'];
+
   return (
     <>
       <section className="py-24 bg-navy relative text-white overflow-hidden" id="integrations">
@@ -108,26 +111,24 @@ const Integrations = () => {
                   href="/"
                   className="group flex flex-col items-center transition-all duration-300 hover:scale-110"
                 >
-                  <div className="w-18 h-18 bg-white rounded-xl p-3 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white rounded-xl p-4 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
                     <img
                       src={integration.logo}
                       alt={integration.name + " integration logo"}
                       className="w-full h-full object-contain transition-all duration-300"
                       style={{ 
-                        width: '72px', 
-                        height: '72px', 
-                        filter: ['Fishbowl Inventory', 'HubSpot', 'NetSuite', 'FreshBooks', 'monday.com'].includes(integration.name) 
+                        filter: coloredLogos.includes(integration.name) 
                           ? 'none' 
                           : 'brightness(0) saturate(100%)',
                         transition: 'filter 0.3s ease'
                       }}
                       onMouseEnter={(e) => {
-                        if (!['Fishbowl Inventory', 'HubSpot', 'NetSuite', 'FreshBooks', 'monday.com'].includes(integration.name)) {
+                        if (!coloredLogos.includes(integration.name)) {
                           e.currentTarget.style.filter = 'none';
                         }
                       }}
                       onMouseLeave={(e) => {
-                        if (!['Fishbowl Inventory', 'HubSpot', 'NetSuite', 'FreshBooks', 'monday.com'].includes(integration.name)) {
+                        if (!coloredLogos.includes(integration.name)) {
                           e.currentTarget.style.filter = 'brightness(0) saturate(100%)';
                         }
                       }}

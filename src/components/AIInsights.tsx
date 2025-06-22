@@ -66,6 +66,9 @@ const AIInsights = () => {
     e.currentTarget.src = "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png";
   };
 
+  // Define which logos should remain colored
+  const coloredLogos = ['HubSpot'];
+
   return (
     <>
       <section className="py-16 lg:py-24 bg-gradient-to-br from-navy via-charcoal to-deep-blue text-white" id="insights">
@@ -134,24 +137,24 @@ const AIInsights = () => {
             <div className="flex flex-wrap justify-center gap-8 py-4 w-full">
               {integrations.map((logo, index) => (
                 <a key={logo.name} href="/" className="flex flex-col items-center w-20 md:w-28 group">
-                  <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-lg flex items-center justify-center">
+                  <div className="w-16 h-16 bg-white rounded-lg p-3 shadow-lg flex items-center justify-center">
                     <img
                       src={logo.src}
                       alt={logo.name + " integration"}
                       className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
                       style={{ 
-                        filter: logo.name === 'HubSpot' 
+                        filter: coloredLogos.includes(logo.name) 
                           ? 'none' 
                           : 'brightness(0) saturate(100%)',
                         transition: 'filter 0.3s ease'
                       }}
                       onMouseEnter={(e) => {
-                        if (logo.name !== 'HubSpot') {
+                        if (!coloredLogos.includes(logo.name)) {
                           e.currentTarget.style.filter = 'none';
                         }
                       }}
                       onMouseLeave={(e) => {
-                        if (logo.name !== 'HubSpot') {
+                        if (!coloredLogos.includes(logo.name)) {
                           e.currentTarget.style.filter = 'brightness(0) saturate(100%)';
                         }
                       }}
