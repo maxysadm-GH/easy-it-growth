@@ -21,10 +21,13 @@ const Blog = () => {
     });
   };
 
-  const createSlug = (title: string, id: string) => {
-    return title?.toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '') || `post-${id}`;
+  const createSlug = (title: string) => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
   };
 
   const getExcerpt = (body: string | null, maxLength: number = 150) => {
@@ -62,7 +65,7 @@ const Blog = () => {
               MBACIO Blog
             </h1>
             <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed animate-fade-in">
-              Stay ahead with MBACIO insights on IT strategy, automation, AI, cybersecurity, and business growth.
+              Real stories from real businesses. Discover how automation, AI, and smart IT strategies are transforming companies just like yours.
             </p>
             <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300 animate-fade-in">
               Book Your Free Assessment
@@ -77,7 +80,7 @@ const Blog = () => {
           {isLoading && (
             <div className="text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
-              <p className="text-gray-600">Loading blog posts...</p>
+              <p className="text-gray-600">Loading success stories...</p>
             </div>
           )}
 
@@ -97,7 +100,7 @@ const Blog = () => {
           {blogPosts && blogPosts.length > 0 && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {blogPosts.map((post, index) => {
-                const slug = createSlug(post.title, post.id);
+                const slug = createSlug(post.title);
                 const imageUrl = getWorkingImageUrl(post.hero_image_url, post.id);
                 
                 return (
@@ -143,12 +146,12 @@ const Blog = () => {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-xl font-poppins font-bold text-navy mb-4 group-hover:text-accent transition-colors duration-300">
+                      <h3 className="text-xl font-poppins font-bold text-navy mb-4 group-hover:text-accent transition-colors duration-300 line-clamp-2">
                         {post.title}
                       </h3>
 
                       {/* Excerpt */}
-                      <p className="text-gray-700 leading-relaxed mb-6 font-inter">
+                      <p className="text-gray-700 leading-relaxed mb-6 font-inter line-clamp-3">
                         {getExcerpt(post.body)}
                       </p>
 
@@ -158,7 +161,7 @@ const Blog = () => {
                           variant="outline" 
                           className="border-navy text-navy font-semibold hover:bg-navy hover:text-white transition-all duration-300 group/btn"
                         >
-                          Read More
+                          Read Success Story
                           <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
                         </Button>
                       </div>

@@ -40,50 +40,44 @@ export const useBlogPosts = () => {
   });
 };
 
+const createSlugFromTitle = (title: string) => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+};
+
 export const useBlogPost = (slug: string) => {
   return useQuery({
     queryKey: ['blog-post', slug],
     queryFn: async () => {
       console.log('Fetching blog post by slug:', slug);
       
-      // First try to find by exact slug match
-      let { data, error } = await supabase
+      // Get all posts and find by matching generated slug
+      const { data: allPosts, error } = await supabase
         .from('blog_posts')
-        .select('*')
-        .eq('title', slug.replace(/-/g, ' '))
-        .maybeSingle();
-
-      // If not found, try to find by generated slug pattern
-      if (!data && !error) {
-        const { data: allPosts, error: allError } = await supabase
-          .from('blog_posts')
-          .select('*');
-        
-        if (allError) {
-          console.error('Error fetching all posts:', allError);
-          throw allError;
-        }
-
-        // Find post by matching generated slug
-        data = allPosts?.find(post => {
-          const generatedSlug = post.title?.toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/(^-|-$)/g, '') || `post-${post.id}`;
-          return generatedSlug === slug;
-        }) || null;
-      }
-
+        .select('*');
+      
       if (error) {
-        console.error('Error fetching blog post:', error);
+        console.error('Error fetching blog posts:', error);
         throw error;
       }
 
-      if (!data) {
+      // Find post by matching generated slug
+      const post = allPosts?.find(post => {
+        const generatedSlug = createSlugFromTitle(post.title);
+        return generatedSlug === slug;
+      });
+
+      if (!post) {
+        console.log('No post found for slug:', slug);
         throw new Error('Post not found');
       }
 
-      console.log('Blog post found:', data);
-      return data as BlogPost;
+      console.log('Blog post found:', post);
+      return post as BlogPost;
     },
   });
 };
