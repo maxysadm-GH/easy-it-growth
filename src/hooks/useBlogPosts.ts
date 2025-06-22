@@ -19,9 +19,9 @@ interface BlogPost {
 
 export const useBlogPosts = () => {
   return useQuery({
-    queryKey: ['blog-posts-v5'], // Updated cache key to fetch fresh data
+    queryKey: ['blog-posts', Date.now()], // Always fresh
     queryFn: async () => {
-      console.log('🔄 Fetching blog posts from Supabase...');
+      console.log('🔄 Fresh fetch: Fetching blog posts from Supabase...');
       
       const { data, error } = await supabase
         .from('blog_posts')
@@ -33,14 +33,19 @@ export const useBlogPosts = () => {
         throw error;
       }
 
-      console.log('✅ Blog posts fetched successfully:', data?.length || 0, 'posts found');
-      console.log('📝 First post preview:', data?.[0]?.title || 'No posts');
+      console.log('✅ Raw Supabase response:', data);
+      console.log('📊 Posts count:', data?.length || 0);
       
-      return data as BlogPost[] || [];
+      if (data && data.length > 0) {
+        console.log('📝 Sample post:', data[0]);
+      }
+      
+      return (data as BlogPost[]) || [];
     },
-    retry: 2,
-    retryDelay: 500,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 0, // Always consider data stale
+    cacheTime: 0, // Don't cache
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
   });
 };
 
@@ -55,7 +60,7 @@ const createSlugFromTitle = (title: string) => {
 
 export const useBlogPost = (slug: string) => {
   return useQuery({
-    queryKey: ['blog-post-v5', slug],
+    queryKey: ['blog-post', slug, Date.now()],
     queryFn: async () => {
       console.log('🔍 Fetching blog post by slug:', slug);
       
@@ -84,7 +89,7 @@ export const useBlogPost = (slug: string) => {
       console.log('✅ Blog post found:', post.title);
       return post as BlogPost;
     },
-    retry: 1,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 0,
+    cacheTime: 0,
   });
 };

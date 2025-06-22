@@ -9,11 +9,11 @@ const BlogTeaser = () => {
   const { data: blogPosts, isLoading, error } = useBlogPosts();
   const navigate = useNavigate();
 
-  console.log('🏠 BlogTeaser render state:', {
+  console.log('🏠 BlogTeaser FRESH render:', {
     isLoading,
     error: error?.message || null,
     postsCount: blogPosts?.length || 0,
-    posts: blogPosts
+    postsData: blogPosts
   });
 
   const createSlug = (title: string) => {
@@ -107,9 +107,9 @@ const BlogTeaser = () => {
     );
   }
 
-  // Check for empty or undefined data
+  // Check for empty data - this should NOT happen now
   if (!blogPosts || blogPosts.length === 0) {
-    console.log('📭 BlogTeaser: No posts available', { blogPosts });
+    console.log('📭 BlogTeaser: No posts available - THIS SHOULD NOT HAPPEN!', { blogPosts });
     return (
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -123,14 +123,17 @@ const BlogTeaser = () => {
           </div>
           <div className="text-center">
             <h3 className="text-2xl font-poppins font-bold text-navy mb-6">
-              Coming Soon
+              Data Issue Detected
             </h3>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              We're working on bringing you valuable insights on IT automation, cybersecurity, 
-              and business growth strategies. Check back soon for our latest posts.
+              We found data in the database but it's not displaying properly. Please refresh the page.
             </p>
-            <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
-              Book Your Free Assessment
+            <Button 
+              size="lg" 
+              className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
+              onClick={() => window.location.reload()}
+            >
+              Refresh Page
             </Button>
           </div>
         </div>
