@@ -1,4 +1,3 @@
-
 export interface Integration {
   id: string;
   name: string;
@@ -19,7 +18,7 @@ export const integrations: Integration[] = [
     id: "quickbooks-online",
     name: "QuickBooks Online",
     slug: "quickbooks-online",
-    logo: "/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png",
+    logo: "/lovable-uploads/ffe520da-678f-47c4-ae10-5aa2728c4b2e.png",
     category: "Accounting",
     description: "QuickBooks Online is the world's most popular cloud-based accounting software for small and medium businesses, offering comprehensive financial management tools.",
     shortDescription: "Cloud-based accounting and financial management platform",
@@ -91,7 +90,7 @@ export const integrations: Integration[] = [
     id: "salesforce",
     name: "Salesforce",
     slug: "salesforce",
-    logo: "/lovable-uploads/c529216b-8e7e-41e1-a770-a5fc7bf00c58.png",
+    logo: "/lovable-uploads/494ff85e-e7cd-44ec-bc15-19691a2bc978.png",
     category: "CRM",
     description: "Salesforce is the world's leading customer relationship management (CRM) platform, helping businesses connect with customers in innovative ways.",
     shortDescription: "Enterprise-grade CRM and customer platform",
