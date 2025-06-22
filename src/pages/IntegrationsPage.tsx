@@ -105,13 +105,8 @@ const IntegrationsPage = () => {
                             src={integration.logo}
                             alt={integration.name}
                             className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110"
-                            style={{ filter: 'brightness(0) saturate(100%)' }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.filter = 'none';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.filter = 'brightness(0) saturate(100%)';
-                            }}
+                            onLoad={() => console.log(`Logo loaded: ${integration.name} - ${integration.logo}`)}
+                            onError={() => console.log(`Logo failed: ${integration.name} - ${integration.logo}`)}
                           />
                         </div>
                         <div>

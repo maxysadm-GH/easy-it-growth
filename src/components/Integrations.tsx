@@ -11,12 +11,6 @@ const Integrations = () => {
     setIsBookingOpen(true);
   };
 
-  const handleLogoError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    console.log('Logo failed to load:', e.currentTarget.src);
-    // Use a more generic fallback
-    e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f3f4f6'/%3E%3Ctext x='50' y='50' text-anchor='middle' dy='.3em' font-family='Arial' font-size='12' fill='%236b7280'%3ELogo%3C/text%3E%3C/svg%3E";
-  };
-
   // Create duplicated arrays for seamless infinite scroll
   const duplicatedIntegrations = [...integrations, ...integrations, ...integrations];
 
@@ -59,8 +53,8 @@ const Integrations = () => {
                         alt={`${integration.name} integration logo`}
                         className="w-full h-full object-contain transition-all duration-300"
                         draggable={false}
-                        onError={handleLogoError}
                         onLoad={() => console.log(`Logo loaded successfully: ${integration.name} - ${integration.logo}`)}
+                        onError={() => console.log(`Logo failed to load: ${integration.name} - ${integration.logo}`)}
                       />
                     </div>
                     <span className="mt-3 text-sm font-medium text-white text-center group-hover:text-accent transition-colors duration-300 whitespace-nowrap">
