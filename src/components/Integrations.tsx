@@ -12,6 +12,7 @@ const Integrations = () => {
   };
 
   const handleLogoError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    console.log('Logo failed to load:', e.currentTarget.src);
     e.currentTarget.src = "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png";
   };
 
@@ -54,10 +55,11 @@ const Integrations = () => {
                     <div className="w-20 h-20 bg-white rounded-xl p-4 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
                       <img
                         src={integration.logo}
-                        alt={integration.name + " integration logo"}
+                        alt={`${integration.name} integration logo`}
                         className="w-full h-full object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
                         draggable={false}
                         onError={handleLogoError}
+                        onLoad={() => console.log(`Logo loaded successfully: ${integration.name}`)}
                       />
                     </div>
                     <span className="mt-3 text-sm font-medium text-white text-center group-hover:text-accent transition-colors duration-300 whitespace-nowrap">
