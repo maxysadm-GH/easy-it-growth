@@ -2,47 +2,9 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import BookingPopup from './BookingPopup';
-
-// Updated integrations list with correct logos
-const integrations = [
-  {
-    name: "QuickBooks Online",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/quickbooks.svg",
-  },
-  {
-    name: "HubSpot",
-    src: "/lovable-uploads/ce3f28ff-97cd-41cf-9b02-622f72b9cc0b.png",
-  },
-  {
-    name: "Salesforce",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/salesforce.svg"
-  },
-  {
-    name: "Microsoft Excel",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftexcel.svg",
-  },
-  {
-    name: "Slack",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/slack.svg",
-  },
-  {
-    name: "Shopify",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/shopify.svg",
-  },
-  {
-    name: "Fishbowl Inventory",
-    src: "/lovable-uploads/1d9f3afd-8528-4663-b663-8ca0cf42bb4c.png",
-  },
-  {
-    name: "NetSuite",
-    src: "/lovable-uploads/e75b7648-be7f-4dcd-836a-4e02c209286c.png",
-  },
-  {
-    name: "FreshBooks",
-    src: "/lovable-uploads/ae564825-4d4f-43ea-b2f9-a67a15532b80.png",
-  }
-];
+import { integrations } from '../data/integrations';
 
 const capabilities = [
   {
@@ -78,8 +40,9 @@ const AIInsights = () => {
     e.currentTarget.src = "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png";
   };
 
-  // Define which logos should remain colored
-  const coloredLogos = ['HubSpot', 'Fishbowl Inventory', 'NetSuite', 'FreshBooks'];
+  // Use first 9 integrations for this section
+  const displayIntegrations = integrations.slice(0, 9);
+  const duplicatedIntegrations = [...displayIntegrations, ...displayIntegrations, ...displayIntegrations];
 
   return (
     <>
@@ -146,36 +109,38 @@ const AIInsights = () => {
             <h3 className="text-2xl font-poppins font-bold mb-8 text-accent">
               Works With Your Favorite Tools
             </h3>
-            <div className="flex flex-wrap justify-center gap-8 py-4 w-full">
-              {integrations.map((logo, index) => (
-                <a key={logo.name} href="/" className="flex flex-col items-center w-20 md:w-28 group">
-                  <div className="w-16 h-16 bg-white rounded-lg p-3 shadow-lg flex items-center justify-center">
-                    <img
-                      src={logo.src}
-                      alt={logo.name + " integration"}
-                      className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
-                      style={{ 
-                        filter: coloredLogos.includes(logo.name) 
-                          ? 'none' 
-                          : 'brightness(0) saturate(100%)',
-                        transition: 'filter 0.3s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!coloredLogos.includes(logo.name)) {
+            <div className="relative overflow-hidden">
+              <div className="flex animate-[scroll_25s_linear_infinite] hover:[animation-play-state:paused]">
+                {duplicatedIntegrations.map((integration, index) => (
+                  <Link 
+                    key={`${integration.slug}-${index}`} 
+                    to={`/integrations/${integration.slug}`} 
+                    className="flex flex-col items-center group flex-shrink-0 mx-4"
+                  >
+                    <div className="w-16 h-16 bg-white rounded-lg p-3 shadow-lg flex items-center justify-center">
+                      <img
+                        src={integration.logo}
+                        alt={integration.name + " integration"}
+                        className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
+                        style={{ 
+                          filter: 'brightness(0) saturate(100%)',
+                          transition: 'filter 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
                           e.currentTarget.style.filter = 'none';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!coloredLogos.includes(logo.name)) {
+                        }}
+                        onMouseLeave={(e) => {
                           e.currentTarget.style.filter = 'brightness(0) saturate(100%)';
-                        }
-                      }}
-                      onError={handleLogoError}
-                    />
-                  </div>
-                  <span className="mt-2 text-white text-xs md:text-sm font-medium text-center group-hover:text-accent transition-colors duration-300">{logo.name}</span>
-                </a>
-              ))}
+                        }}
+                        onError={handleLogoError}
+                      />
+                    </div>
+                    <span className="mt-2 text-white text-xs md:text-sm font-medium text-center group-hover:text-accent transition-colors duration-300 whitespace-nowrap">
+                      {integration.name}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
           <div className="text-center">
@@ -195,6 +160,18 @@ const AIInsights = () => {
             </div>
           </div>
         </div>
+
+        {/* Add CSS for the scroll animation */}
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-33.333333%);
+            }
+          }
+        `}</style>
       </section>
 
       {/* Booking Popup */}

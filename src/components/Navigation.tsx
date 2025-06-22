@@ -42,6 +42,10 @@ const Navigation = () => {
                 Services
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
+              <a href="/integrations" className={navLinkClass}>
+                Integrations
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+              </a>
               <a href="/data-ai" className={navLinkClass}>
                 Data & AI
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
@@ -121,6 +125,7 @@ const Navigation = () => {
               <div className="flex flex-col space-y-4 bg-navy/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-accent/20">
                 <a href="/why-us" className={navLinkClass}>Why MBACIO</a>
                 <a href="/services" className={navLinkClass}>Services</a>
+                <a href="/integrations" className={navLinkClass}>Integrations</a>
                 <a href="/data-ai" className={navLinkClass}>Data & AI</a>
                 <a href="/blog" className={navLinkClass}>Blog</a>
                 <div className="flex flex-col gap-2 pl-4">

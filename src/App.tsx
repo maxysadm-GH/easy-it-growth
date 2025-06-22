@@ -25,6 +25,8 @@ import Services from "./pages/Services";
 import DataAI from "./pages/DataAI";
 import Blog from "./pages/Blog";
 import CaseStudies from "./pages/CaseStudies";
+import IntegrationsPage from "./pages/IntegrationsPage";
+import IntegrationDetail from "./pages/IntegrationDetail";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +43,8 @@ const App = () => (
           <Route path="/data-ai" element={<DataAI />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/integrations" element={<IntegrationsPage />} />
+          <Route path="/integrations/:integrationSlug" element={<IntegrationDetail />} />
           <Route path="/tools" element={<AssessmentTools />} />
           <Route path="/tools/automation-roi" element={<AutomationROI />} />
           <Route path="/tools/downtime-cost" element={<DowntimeCost />} />

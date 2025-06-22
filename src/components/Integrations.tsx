@@ -1,69 +1,8 @@
 
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import BookingPopup from './BookingPopup';
-
-const integrations = [
-  { 
-    name: "QuickBooks Online", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/quickbooks.svg"
-  },
-  { 
-    name: "HubSpot", 
-    logo: "/lovable-uploads/ce3f28ff-97cd-41cf-9b02-622f72b9cc0b.png"
-  },
-  { 
-    name: "Salesforce", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/salesforce.svg"
-  },
-  { 
-    name: "Microsoft Excel", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftexcel.svg"
-  },
-  { 
-    name: "Slack", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/slack.svg"
-  },
-  { 
-    name: "Shopify", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/shopify.svg"
-  },
-  { 
-    name: "Fishbowl Inventory", 
-    logo: "/lovable-uploads/1d9f3afd-8528-4663-b663-8ca0cf42bb4c.png"
-  },
-  { 
-    name: "Google Analytics", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googleanalytics.svg"
-  },
-  { 
-    name: "Xero", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/xero.svg"
-  },
-  { 
-    name: "NetSuite", 
-    logo: "/lovable-uploads/e75b7648-be7f-4dcd-836a-4e02c209286c.png"
-  },
-  { 
-    name: "Sage", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/sage.svg"
-  },
-  { 
-    name: "FreshBooks", 
-    logo: "/lovable-uploads/ae564825-4d4f-43ea-b2f9-a67a15532b80.png"
-  },
-  { 
-    name: "Zoho", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zoho.svg"
-  },
-  { 
-    name: "monday.com", 
-    logo: "/lovable-uploads/1ab91a6b-e3f8-43f8-9178-1fbd96d033d3.png"
-  },
-  { 
-    name: "Asana", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/asana.svg"
-  }
-];
+import { integrations } from '../data/integrations';
 
 const Integrations = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -76,8 +15,8 @@ const Integrations = () => {
     e.currentTarget.src = "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png";
   };
 
-  // Define which logos should remain colored (uploaded logos)
-  const coloredLogos = ['HubSpot', 'Fishbowl Inventory', 'NetSuite', 'FreshBooks', 'monday.com'];
+  // Create duplicated arrays for seamless infinite scroll
+  const duplicatedIntegrations = [...integrations, ...integrations, ...integrations];
 
   return (
     <>
@@ -102,45 +41,41 @@ const Integrations = () => {
             </p>
           </div>
           
-          {/* Static Grid Layout - 5 columns desktop, 3 mobile */}
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-8 justify-items-center">
-              {integrations.map((integration, i) => (
-                <a
-                  key={integration.name}
-                  href="/"
-                  className="group flex flex-col items-center transition-all duration-300 hover:scale-110"
-                >
-                  <div className="w-20 h-20 bg-white rounded-xl p-4 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
-                    <img
-                      src={integration.logo}
-                      alt={integration.name + " integration logo"}
-                      className="w-full h-full object-contain transition-all duration-300"
-                      style={{ 
-                        filter: coloredLogos.includes(integration.name) 
-                          ? 'none' 
-                          : 'brightness(0) saturate(100%)',
-                        transition: 'filter 0.3s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!coloredLogos.includes(integration.name)) {
+          {/* Animated Logo Carousel */}
+          <div className="max-w-6xl mx-auto mb-12">
+            <div className="relative overflow-hidden">
+              <div className="flex animate-[scroll_30s_linear_infinite] hover:[animation-play-state:paused]">
+                {duplicatedIntegrations.map((integration, i) => (
+                  <Link
+                    key={`${integration.slug}-${i}`}
+                    to={`/integrations/${integration.slug}`}
+                    className="group flex flex-col items-center transition-all duration-300 hover:scale-110 flex-shrink-0 mx-6"
+                  >
+                    <div className="w-20 h-20 bg-white rounded-xl p-4 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
+                      <img
+                        src={integration.logo}
+                        alt={integration.name + " integration logo"}
+                        className="w-full h-full object-contain transition-all duration-300"
+                        style={{ 
+                          filter: 'brightness(0) saturate(100%)',
+                          transition: 'filter 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
                           e.currentTarget.style.filter = 'none';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!coloredLogos.includes(integration.name)) {
+                        }}
+                        onMouseLeave={(e) => {
                           e.currentTarget.style.filter = 'brightness(0) saturate(100%)';
-                        }
-                      }}
-                      draggable={false}
-                      onError={handleLogoError}
-                    />
-                  </div>
-                  <span className="mt-3 text-sm font-medium text-white text-center group-hover:text-accent transition-colors duration-300">
-                    {integration.name}
-                  </span>
-                </a>
-              ))}
+                        }}
+                        draggable={false}
+                        onError={handleLogoError}
+                      />
+                    </div>
+                    <span className="mt-3 text-sm font-medium text-white text-center group-hover:text-accent transition-colors duration-300 whitespace-nowrap">
+                      {integration.name}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
           
@@ -148,17 +83,40 @@ const Integrations = () => {
             <p className="text-white/80 mb-6 text-lg">
               Seamlessly integrate with the tools your team already loves
             </p>
-            <button
-              onClick={handleBookAssessment}
-              className="inline-flex items-center gap-2 bg-gradient-yellow text-navy px-8 py-4 rounded-lg font-bold font-poppins text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:opacity-90"
-            >
-              Book Your Free Assessment
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                to="/integrations"
+                className="inline-flex items-center gap-2 bg-transparent border-2 border-accent text-accent hover:bg-accent hover:text-navy px-8 py-4 rounded-lg font-bold font-poppins text-lg shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                View All Integrations
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </Link>
+              <button
+                onClick={handleBookAssessment}
+                className="inline-flex items-center gap-2 bg-gradient-yellow text-navy px-8 py-4 rounded-lg font-bold font-poppins text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:opacity-90"
+              >
+                Book Your Free Assessment
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Add CSS for the scroll animation */}
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-33.333333%);
+            }
+          }
+        `}</style>
       </section>
 
       {/* Booking Popup */}
