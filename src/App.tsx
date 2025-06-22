@@ -28,6 +28,8 @@ import CaseStudies from "./pages/CaseStudies";
 import IntegrationsPage from "./pages/IntegrationsPage";
 import IntegrationDetail from "./pages/IntegrationDetail";
 import LogoDiagnostic from "./pages/LogoDiagnostic";
+import ManufacturingAnalytics from "./pages/ManufacturingAnalytics";
+import EcommerceInsights from "./pages/EcommerceInsights";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +48,8 @@ const App = () => (
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/integrations" element={<IntegrationsPage />} />
           <Route path="/integrations/:integrationSlug" element={<IntegrationDetail />} />
+          <Route path="/solutions/manufacturing-analytics" element={<ManufacturingAnalytics />} />
+          <Route path="/solutions/ecommerce-insights" element={<EcommerceInsights />} />
           <Route path="/logo-diagnostic" element={<LogoDiagnostic />} />
           <Route path="/tools" element={<AssessmentTools />} />
           <Route path="/tools/automation-roi" element={<AutomationROI />} />

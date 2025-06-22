@@ -487,7 +487,7 @@ export const integrations: Integration[] = [
     id: "xero",
     name: "Xero",
     slug: "xero",
-    logo: "/lovable-uploads/1ab91a6b-e3f8-43f8-9178-1fbd96d033d3.png",
+    logo: "/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png",
     category: "Accounting",
     description: "Xero is cloud-based accounting software designed for small and medium businesses, offering comprehensive financial management tools.",
     shortDescription: "Cloud accounting and financial management platform",
@@ -554,6 +554,222 @@ export const integrations: Integration[] = [
       "Build project management dashboard"
     ],
     useCase: "Perfect for teams managing complex projects and needing comprehensive workflow visibility."
+  },
+  {
+    id: "ortto",
+    name: "Ortto",
+    slug: "ortto",
+    logo: "/lovable-uploads/e75b7648-be7f-4dcd-836a-4e02c209286c.png",
+    category: "Marketing Automation",
+    description: "Ortto is a customer data and marketing automation platform that unifies customer data to create personalized marketing experiences.",
+    shortDescription: "Customer data platform and marketing automation",
+    keyBenefits: [
+      "Unified customer data analytics",
+      "Marketing automation insights",
+      "Customer journey tracking",
+      "Personalization effectiveness"
+    ],
+    metrics: [
+      "Customer engagement scores",
+      "Journey completion rates",
+      "Automation performance",
+      "Personalization ROI",
+      "Segmentation analytics",
+      "Revenue attribution"
+    ],
+    features: [
+      "Customer data unification",
+      "Journey analytics",
+      "Automation tracking",
+      "Segmentation insights"
+    ],
+    setupSteps: [
+      "Connect Ortto account",
+      "Configure data sources",
+      "Map customer journeys",
+      "Build marketing analytics dashboard"
+    ],
+    useCase: "Perfect for marketing teams needing unified customer data and sophisticated automation analytics."
+  },
+  {
+    id: "calendly",
+    name: "Calendly",
+    slug: "calendly",
+    logo: "/lovable-uploads/4c6038a0-a9a6-4643-b7c5-aa8a4acb59d1.png",
+    category: "Scheduling",
+    description: "Calendly is a scheduling automation platform that eliminates the back-and-forth emails to find the perfect time for meetings.",
+    shortDescription: "Automated scheduling and meeting coordination platform",
+    keyBenefits: [
+      "Meeting booking analytics",
+      "Schedule optimization insights",
+      "Conversion tracking",
+      "Time efficiency metrics"
+    ],
+    metrics: [
+      "Meeting bookings",
+      "Booking conversion rates",
+      "No-show rates",
+      "Popular time slots",
+      "Meeting duration analytics",
+      "Lead qualification scores"
+    ],
+    features: [
+      "Booking analytics",
+      "Schedule optimization",
+      "Conversion tracking",
+      "Availability insights"
+    ],
+    setupSteps: [
+      "Connect Calendly account",
+      "Configure event types",
+      "Set up tracking parameters",
+      "Create scheduling analytics dashboard"
+    ],
+    useCase: "Essential for sales teams and professionals tracking meeting effectiveness and scheduling optimization."
+  },
+  {
+    id: "zoho",
+    name: "Zoho",
+    slug: "zoho",
+    logo: "/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png",
+    category: "Business Suite",
+    description: "Zoho is a comprehensive business software suite offering CRM, project management, accounting, and productivity tools for businesses.",
+    shortDescription: "Complete business software suite and productivity platform",
+    keyBenefits: [
+      "Unified business analytics",
+      "Cross-platform data insights",
+      "Productivity metrics",
+      "Business process optimization"
+    ],
+    metrics: [
+      "Sales performance",
+      "Project completion rates",
+      "Financial health scores",
+      "Team productivity",
+      "Customer satisfaction",
+      "Process efficiency"
+    ],
+    features: [
+      "Multi-app integration",
+      "Unified reporting",
+      "Cross-platform analytics",
+      "Business intelligence"
+    ],
+    setupSteps: [
+      "Connect Zoho applications",
+      "Configure cross-app permissions",
+      "Map business processes",
+      "Build comprehensive business dashboard"
+    ],
+    useCase: "Ideal for businesses using multiple Zoho applications and needing unified analytics across all business functions."
+  },
+  {
+    id: "clickup",
+    name: "ClickUp",
+    slug: "clickup",
+    logo: "/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png",
+    category: "Project Management",
+    description: "ClickUp is an all-in-one workspace that combines project management, docs, goals, and chat in one platform.",
+    shortDescription: "All-in-one workspace and project management platform",
+    keyBenefits: [
+      "Comprehensive project analytics",
+      "Goal tracking and progress",
+      "Team productivity insights",
+      "Resource utilization optimization"
+    ],
+    metrics: [
+      "Task completion velocity",
+      "Goal achievement rates",
+      "Team workload distribution",
+      "Project timeline accuracy",
+      "Resource allocation",
+      "Productivity scores"
+    ],
+    features: [
+      "Multi-workspace analytics",
+      "Goal tracking",
+      "Time tracking insights",
+      "Team performance monitoring"
+    ],
+    setupSteps: [
+      "Connect ClickUp workspace",
+      "Configure space permissions",
+      "Set up goal tracking",
+      "Create comprehensive project dashboard"
+    ],
+    useCase: "Perfect for teams managing complex projects across multiple workspaces and needing unified productivity analytics."
+  },
+  {
+    id: "funnel",
+    name: "Funnel",
+    slug: "funnel",
+    logo: "/lovable-uploads/e75b7648-be7f-4dcd-836a-4e02c209286c.png",
+    category: "Marketing Analytics",
+    description: "Funnel is a marketing data platform that automatically collects, cleans, and prepares marketing data for analysis and reporting.",
+    shortDescription: "Marketing data integration and analytics platform",
+    keyBenefits: [
+      "Unified marketing data view",
+      "Cross-channel attribution",
+      "ROI optimization insights",
+      "Campaign performance tracking"
+    ],
+    metrics: [
+      "Marketing ROI",
+      "Cross-channel attribution",
+      "Campaign performance",
+      "Cost per acquisition",
+      "Customer lifetime value",
+      "Channel effectiveness"
+    ],
+    features: [
+      "Marketing data aggregation",
+      "Attribution modeling",
+      "Performance tracking",
+      "ROI optimization"
+    ],
+    setupSteps: [
+      "Connect marketing data sources",
+      "Configure attribution models",
+      "Set up campaign tracking",
+      "Build marketing performance dashboard"
+    ],
+    useCase: "Essential for marketing teams running multi-channel campaigns and needing unified attribution and ROI analytics."
+  },
+  {
+    id: "microsoft-excel",
+    name: "Microsoft Excel",
+    slug: "microsoft-excel",
+    logo: "/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png",
+    category: "Data & Spreadsheets",
+    description: "Microsoft Excel is the world's leading spreadsheet application, enabling data analysis, visualization, and business intelligence.",
+    shortDescription: "Advanced spreadsheet and data analysis platform",
+    keyBenefits: [
+      "Spreadsheet data visualization",
+      "Formula and calculation tracking",
+      "Data analysis automation",
+      "Business intelligence enhancement"
+    ],
+    metrics: [
+      "Data accuracy scores",
+      "Calculation efficiency",
+      "Formula complexity",
+      "Data update frequency",
+      "Version control",
+      "Collaboration metrics"
+    ],
+    features: [
+      "Spreadsheet integration",
+      "Formula analysis",
+      "Data validation",
+      "Automated reporting"
+    ],
+    setupSteps: [
+      "Connect Excel files",
+      "Configure data ranges",
+      "Set up automated imports",
+      "Create enhanced visualization dashboard"
+    ],
+    useCase: "Perfect for businesses relying on Excel for data analysis and wanting enhanced visualization and automated reporting capabilities."
   }
 ];
 
@@ -570,7 +786,12 @@ export const integrationCategories = [
   "Email Marketing",
   "Project Management",
   "Customer Support",
-  "Payments"
+  "Payments",
+  "Marketing Automation",
+  "Scheduling",
+  "Business Suite",
+  "Marketing Analytics",
+  "Data & Spreadsheets"
 ];
 
 export function getIntegrationBySlug(slug: string): Integration | undefined {
