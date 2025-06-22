@@ -9,11 +9,11 @@ const BlogTeaser = () => {
   const { data: blogPosts, isLoading, error } = useBlogPosts();
   const navigate = useNavigate();
 
-  console.log('🏠 BlogTeaser FRESH render:', {
+  console.log('🏠 BlogTeaser render:', {
     isLoading,
     error: error?.message || null,
     postsCount: blogPosts?.length || 0,
-    postsData: blogPosts
+    hasData: !!blogPosts
   });
 
   const createSlug = (title: string) => {
@@ -26,7 +26,7 @@ const BlogTeaser = () => {
   };
 
   const getExcerpt = (body: string | null, maxLength: number = 150) => {
-    if (!body) return 'Read more to discover the full content...';
+    if (!body || body.trim() === '') return 'Read more to discover the full content...';
     return body.length > maxLength ? body.substring(0, maxLength) + '...' : body;
   };
 
@@ -92,7 +92,7 @@ const BlogTeaser = () => {
               Unable to Load Posts
             </h3>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Error: {error.message}. Please try again later.
+              We're experiencing technical difficulties. Please try again later.
             </p>
             <Button 
               size="lg" 
@@ -107,9 +107,9 @@ const BlogTeaser = () => {
     );
   }
 
-  // Check for empty data - this should NOT happen now
+  // Handle empty data gracefully
   if (!blogPosts || blogPosts.length === 0) {
-    console.log('📭 BlogTeaser: No posts available - THIS SHOULD NOT HAPPEN!', { blogPosts });
+    console.log('📭 BlogTeaser: No valid posts available');
     return (
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -123,17 +123,17 @@ const BlogTeaser = () => {
           </div>
           <div className="text-center">
             <h3 className="text-2xl font-poppins font-bold text-navy mb-6">
-              Data Issue Detected
+              Coming Soon
             </h3>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              We found data in the database but it's not displaying properly. Please refresh the page.
+              We're working on bringing you valuable insights. Check back soon for our latest posts.
             </p>
             <Button 
               size="lg" 
               className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
-              onClick={() => window.location.reload()}
+              onClick={() => navigate('/blog')}
             >
-              Refresh Page
+              Book Your Free Assessment
             </Button>
           </div>
         </div>

@@ -19,9 +19,9 @@ interface BlogPost {
 
 export const useBlogPosts = () => {
   return useQuery({
-    queryKey: ['blog-posts', Date.now()], // Always fresh
+    queryKey: ['blog-posts'], // Fixed: removed Date.now() that caused infinite re-fetching
     queryFn: async () => {
-      console.log('🔄 Fresh fetch: Fetching blog posts from Supabase...');
+      console.log('🔄 Fetching blog posts from Supabase...');
       
       const { data, error } = await supabase
         .from('blog_posts')
@@ -36,16 +36,28 @@ export const useBlogPosts = () => {
       console.log('✅ Raw Supabase response:', data);
       console.log('📊 Posts count:', data?.length || 0);
       
-      if (data && data.length > 0) {
-        console.log('📝 Sample post:', data[0]);
+      // Filter out posts with missing critical data
+      const validPosts = (data || []).filter(post => 
+        post.title && 
+        post.title.trim() !== '' && 
+        post.title !== 'Untitled Post' &&
+        post.body && 
+        post.body.trim() !== '' && 
+        post.body !== 'Content coming soon...'
+      );
+
+      console.log('✅ Valid posts after filtering:', validPosts.length);
+      
+      if (validPosts.length > 0) {
+        console.log('📝 Sample post:', validPosts[0]);
       }
       
-      return (data as BlogPost[]) || [];
+      return validPosts as BlogPost[];
     },
-    staleTime: 0, // Always consider data stale
-    gcTime: 0, // Don't cache (renamed from cacheTime in v5)
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
+    staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
+    gcTime: 10 * 60 * 1000, // Keep in cache for 10 minutes
+    refetchOnMount: false, // Don't refetch on every mount
+    refetchOnWindowFocus: false, // Don't refetch on window focus
   });
 };
 
@@ -60,7 +72,7 @@ const createSlugFromTitle = (title: string) => {
 
 export const useBlogPost = (slug: string) => {
   return useQuery({
-    queryKey: ['blog-post', slug, Date.now()],
+    queryKey: ['blog-post', slug], // Fixed: removed Date.now()
     queryFn: async () => {
       console.log('🔍 Fetching blog post by slug:', slug);
       
@@ -89,7 +101,8 @@ export const useBlogPost = (slug: string) => {
       console.log('✅ Blog post found:', post.title);
       return post as BlogPost;
     },
-    staleTime: 0,
-    gcTime: 0, // Don't cache (renamed from cacheTime in v5)
+    staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
+    gcTime: 10 * 60 * 1000, // Keep in cache for 10 minutes
+    enabled: !!slug, // Only run query if slug exists
   });
 };
