@@ -67,7 +67,11 @@ const Blog = () => {
             <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed animate-fade-in">
               Real stories from real businesses. Discover how automation, AI, and smart IT strategies are transforming companies just like yours.
             </p>
-            <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300 animate-fade-in">
+            <Button 
+              size="lg" 
+              className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300 animate-fade-in"
+              onClick={() => window.open('https://your-booking-system.com', '_blank')}
+            >
               Book Your Free Assessment
             </Button>
           </div>
@@ -175,13 +179,16 @@ const Blog = () => {
           {blogPosts && blogPosts.length === 0 && (
             <div className="text-center">
               <h2 className="text-3xl font-poppins font-bold text-navy mb-6 animate-fade-in">
-                Coming Soon
+                No Posts Available
               </h2>
               <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto font-inter animate-fade-in">
-                We're working on bringing you valuable insights on IT automation, cybersecurity, 
-                and business growth strategies. Check back soon for our latest posts.
+                We're working on bringing you valuable insights. Check back soon for our latest posts.
               </p>
-              <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300 animate-fade-in">
+              <Button 
+                size="lg" 
+                className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300 animate-fade-in"
+                onClick={() => window.open('https://your-booking-system.com', '_blank')}
+              >
                 Book Your Free Assessment
               </Button>
             </div>
