@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
@@ -35,7 +36,7 @@ const integrations = [
   },
   {
     name: "NetSuite",
-    src: "/lovable-uploads/76149f2e-0b85-4889-9a76-c7f2a3926d7c.png",
+    src: "/lovable-uploads/e75b7648-be7f-4dcd-836a-4e02c209286c.png",
   },
   {
     name: "FreshBooks",
