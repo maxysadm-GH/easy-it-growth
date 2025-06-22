@@ -9,13 +9,15 @@ const BlogTeaser = () => {
   const { data: blogPosts, isLoading, error } = useBlogPosts();
   const navigate = useNavigate();
 
+  console.log('🏠 BlogTeaser render - isLoading:', isLoading, 'error:', error, 'posts:', blogPosts?.length || 0);
+
   const createSlug = (title: string) => {
     return title
       .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
-      .replace(/\s+/g, '-') // Replace spaces with hyphens
-      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
-      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
   };
 
   const getExcerpt = (body: string | null, maxLength: number = 150) => {
@@ -34,15 +36,18 @@ const BlogTeaser = () => {
 
   const handleCardClick = (title: string) => {
     const slug = createSlug(title);
+    console.log('🔗 Navigating to blog post:', slug);
     navigate(`/blog/${slug}`);
   };
 
   const handleViewAllClick = () => {
+    console.log('📚 Navigating to blog page');
     navigate('/blog');
   };
 
   // Show loading state
   if (isLoading) {
+    console.log('⏳ BlogTeaser showing loading state');
     return (
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -63,8 +68,43 @@ const BlogTeaser = () => {
     );
   }
 
-  // Show error state or no posts
-  if (error || !blogPosts || blogPosts.length === 0) {
+  // Show error state
+  if (error) {
+    console.log('❌ BlogTeaser showing error state:', error);
+    return (
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-6">
+              Latest Insights & Success Stories
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Stay ahead with expert IT insights, automation strategies, and real client success stories.
+            </p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-2xl font-poppins font-bold text-navy mb-6">
+              Unable to Load Posts
+            </h3>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              We're experiencing technical difficulties. Please try again later.
+            </p>
+            <Button 
+              size="lg" 
+              className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
+              onClick={() => window.location.reload()}
+            >
+              Retry Loading Posts
+            </Button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Show no posts state
+  if (!blogPosts || blogPosts.length === 0) {
+    console.log('📭 BlogTeaser showing no posts state');
     return (
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -95,6 +135,7 @@ const BlogTeaser = () => {
 
   // Show the first 3 blog posts
   const displayPosts = blogPosts.slice(0, 3);
+  console.log('📝 BlogTeaser showing posts:', displayPosts.length);
 
   return (
     <section className="py-20 bg-gray-50">
