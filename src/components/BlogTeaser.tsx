@@ -9,7 +9,12 @@ const BlogTeaser = () => {
   const { data: blogPosts, isLoading, error } = useBlogPosts();
   const navigate = useNavigate();
 
-  console.log('🏠 BlogTeaser render - isLoading:', isLoading, 'error:', error, 'posts:', blogPosts?.length || 0);
+  console.log('🏠 BlogTeaser render state:', {
+    isLoading,
+    error: error?.message || null,
+    postsCount: blogPosts?.length || 0,
+    posts: blogPosts
+  });
 
   const createSlug = (title: string) => {
     return title
@@ -87,7 +92,7 @@ const BlogTeaser = () => {
               Unable to Load Posts
             </h3>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              We're experiencing technical difficulties. Please try again later.
+              Error: {error.message}. Please try again later.
             </p>
             <Button 
               size="lg" 
@@ -102,9 +107,9 @@ const BlogTeaser = () => {
     );
   }
 
-  // Show no posts state
+  // Check for empty or undefined data
   if (!blogPosts || blogPosts.length === 0) {
-    console.log('📭 BlogTeaser showing no posts state');
+    console.log('📭 BlogTeaser: No posts available', { blogPosts });
     return (
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -135,7 +140,7 @@ const BlogTeaser = () => {
 
   // Show the first 3 blog posts
   const displayPosts = blogPosts.slice(0, 3);
-  console.log('📝 BlogTeaser showing posts:', displayPosts.length);
+  console.log('📝 BlogTeaser displaying posts:', displayPosts.map(p => ({ id: p.id, title: p.title })));
 
   return (
     <section className="py-20 bg-gray-50">
