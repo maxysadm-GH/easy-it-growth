@@ -2,38 +2,100 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Calendar, Tag } from 'lucide-react';
-
-const blogPosts = [
-  {
-    title: "How Smart SMBs Are Using AI to Streamline IT Operations",
-    excerpt: "If you're still waiting on reports or solving the same support issues week after week—there's a better way. Learn how AI workflows can reclaim hours of lost productivity.",
-    category: "AI & Automation",
-    date: "December 15, 2024",
-    readTime: "5 min read",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=300&fit=crop&auto=format&q=80"
-  },
-  {
-    title: "5 Critical Cybersecurity Mistakes Small Manufacturers Make",
-    excerpt: "These common security vulnerabilities could cost your business everything. Discover the blind spots that hackers exploit and how to protect yourself.",
-    category: "Cybersecurity",
-    date: "December 10, 2024",
-    readTime: "7 min read",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=300&fit=crop&auto=format&q=80"
-  },
-  {
-    title: "The Hidden Cost of IT Downtime: What Every CEO Should Know",
-    excerpt: "One hour of downtime could cost your business thousands. See the shocking numbers and learn how to bulletproof your operations.",
-    category: "Business Strategy",
-    date: "December 8, 2024",
-    readTime: "6 min read",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=300&fit=crop&auto=format&q=80"
-  }
-];
+import { useBlogPosts } from '../hooks/useBlogPosts';
+import { useNavigate } from 'react-router-dom';
 
 const BlogTeaser = () => {
+  const { data: blogPosts, isLoading, error } = useBlogPosts();
+  const navigate = useNavigate();
+
+  const createSlug = (title: string) => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  };
+
+  const getExcerpt = (body: string | null, maxLength: number = 150) => {
+    if (!body) return 'Read more to discover the full content...';
+    return body.length > maxLength ? body.substring(0, maxLength) + '...' : body;
+  };
+
+  const formatDate = (dateString: string | null, createdAt: string) => {
+    const date = dateString || createdAt;
+    return new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  const handleCardClick = (title: string) => {
+    const slug = createSlug(title);
+    navigate(`/blog/${slug}`);
+  };
+
+  const handleViewAllClick = () => {
+    navigate('/blog');
+  };
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-6">
+              Latest Insights & Success Stories
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Stay ahead with expert IT insights, automation strategies, and real client success stories.
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading latest insights...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Show error state or no posts
+  if (error || !blogPosts || blogPosts.length === 0) {
+    return (
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-6">
+              Latest Insights & Success Stories
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Stay ahead with expert IT insights, automation strategies, and real client success stories.
+            </p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-2xl font-poppins font-bold text-navy mb-6">
+              Coming Soon
+            </h3>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              We're working on bringing you valuable insights on IT automation, cybersecurity, 
+              and business growth strategies. Check back soon for our latest posts.
+            </p>
+            <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
+              Book Your Free Assessment
+            </Button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Show the first 3 blog posts
+  const displayPosts = blogPosts.slice(0, 3);
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -47,12 +109,16 @@ const BlogTeaser = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
-          {blogPosts.map((post, index) => (
-            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden">
+          {displayPosts.map((post, index) => (
+            <Card 
+              key={post.id} 
+              className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/20 bg-white overflow-hidden cursor-pointer"
+              onClick={() => handleCardClick(post.title)}
+            >
               {/* Image */}
               <div className="relative overflow-hidden h-48">
                 <img
-                  src={post.image}
+                  src={post.hero_image_url || `https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`}
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -61,13 +127,15 @@ const BlogTeaser = () => {
 
               <CardHeader className="relative">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium">
-                    <Tag className="w-3 h-3" />
-                    {post.category}
-                  </span>
+                  {post.seo_keyword && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium">
+                      <Tag className="w-3 h-3" />
+                      {post.seo_keyword}
+                    </span>
+                  )}
                   <span className="inline-flex items-center gap-1 text-muted-foreground text-sm">
                     <Calendar className="w-3 h-3" />
-                    {post.date}
+                    {formatDate(post.date, post.created_at)}
                   </span>
                 </div>
                 <CardTitle className="text-xl font-poppins font-bold text-navy group-hover:text-accent transition-colors duration-300">
@@ -77,11 +145,13 @@ const BlogTeaser = () => {
 
               <CardContent className="relative">
                 <p className="text-muted-foreground leading-relaxed mb-6 text-base">
-                  {post.excerpt}
+                  {getExcerpt(post.body)}
                 </p>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">{post.readTime}</span>
+                  <span className="text-sm text-muted-foreground">
+                    {post.author || 'MBACIO Team'}
+                  </span>
                   <Button variant="outline" className="border-navy text-navy font-semibold hover:bg-navy hover:text-white transition-all duration-300 group/btn">
                     Read More
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -93,7 +163,11 @@ const BlogTeaser = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-navy text-white hover:bg-deep-blue font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105">
+          <Button 
+            size="lg" 
+            className="bg-navy text-white hover:bg-deep-blue font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
+            onClick={handleViewAllClick}
+          >
             View All Articles
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>

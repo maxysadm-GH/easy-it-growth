@@ -2,6 +2,7 @@
 import { useParams, Navigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import BlogSubscription from '../components/BlogSubscription';
 import { Button } from '@/components/ui/button';
 import { useBlogPost } from '../hooks/useBlogPosts';
 import { Calendar, User, Tag } from 'lucide-react';
@@ -141,7 +142,7 @@ const BlogPost = () => {
       </section>
 
       {/* Content Section */}
-      <section className="pb-20">
+      <section className="pb-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 animate-fade-in">
@@ -178,6 +179,15 @@ const BlogPost = () => {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Subscription Section */}
+      <section className="pb-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <BlogSubscription />
           </div>
         </div>
       </section>
