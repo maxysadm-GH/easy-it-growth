@@ -28,7 +28,7 @@ const integrations = [
   },
   { 
     name: "Fishbowl Inventory", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/databricks.svg"
+    logo: "/lovable-uploads/31fd0b08-30e1-4290-93b6-8547b1d4cfb5.png"
   },
   { 
     name: "Google Analytics", 
@@ -40,7 +40,7 @@ const integrations = [
   },
   { 
     name: "NetSuite", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/oracle.svg"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/netsuite.svg"
   },
   { 
     name: "Sage", 
@@ -56,7 +56,7 @@ const integrations = [
   },
   { 
     name: "monday.com", 
-    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/monday.svg"
+    logo: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mondaydotcom.svg"
   },
   { 
     name: "Asana", 
@@ -95,9 +95,9 @@ const Integrations = () => {
           </p>
         </div>
         
-        {/* Static Grid Layout - 4 columns desktop, 2 mobile */}
+        {/* Static Grid Layout - 5 columns desktop, 3 mobile */}
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-8 justify-items-center">
             {integrations.map((integration, i) => (
               <a
                 key={integration.name}
@@ -109,7 +109,11 @@ const Integrations = () => {
                     src={integration.logo}
                     alt={integration.name + " integration logo"}
                     className="w-full h-full object-contain"
-                    style={{ width: '72px', height: '72px', filter: 'brightness(0) saturate(100%)' }}
+                    style={{ 
+                      width: '72px', 
+                      height: '72px', 
+                      filter: integration.name === 'Fishbowl Inventory' ? 'none' : 'brightness(0) saturate(100%)' 
+                    }}
                     draggable={false}
                     onError={handleLogoError}
                   />
@@ -119,22 +123,6 @@ const Integrations = () => {
                 </span>
               </a>
             ))}
-            
-            {/* Center MBACIO Logo */}
-            <div className="group flex flex-col items-center transition-all duration-300 hover:scale-110">
-              <div className="w-18 h-18 bg-gradient-yellow rounded-xl p-3 shadow-lg border-2 border-transparent group-hover:border-accent transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
-                <img
-                  src="/lovable-uploads/9047d06d-8e00-44f9-a949-19b842c87735.png"
-                  alt="MBACIO Dashboard Solutions"
-                  className="w-full h-full object-contain"
-                  style={{ width: '72px', height: '72px' }}
-                  draggable={false}
-                />
-              </div>
-              <span className="mt-3 text-sm font-medium text-accent text-center group-hover:text-white transition-colors duration-300">
-                MBACIO Dashboards
-              </span>
-            </div>
           </div>
         </div>
         

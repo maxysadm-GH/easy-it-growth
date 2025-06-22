@@ -1,8 +1,7 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-// Updated integrations list with Simple Icons CDN
+// Updated integrations list with correct logos
 const integrations = [
   {
     name: "QuickBooks Online",
