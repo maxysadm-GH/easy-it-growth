@@ -19,7 +19,7 @@ interface BlogPost {
 
 export const useBlogPosts = () => {
   return useQuery({
-    queryKey: ['blog-posts'],
+    queryKey: ['blog-posts-v2'], // Changed query key to force cache bust
     queryFn: async () => {
       console.log('Fetching blog posts from Supabase...');
       
@@ -35,8 +35,11 @@ export const useBlogPosts = () => {
       }
 
       console.log('Blog posts loaded from Supabase:', data);
+      console.log('Number of posts found:', data?.length || 0);
       return data as BlogPost[];
     },
+    staleTime: 0, // Always refetch
+    gcTime: 0, // Don't cache results
   });
 };
 
@@ -51,7 +54,7 @@ const createSlugFromTitle = (title: string) => {
 
 export const useBlogPost = (slug: string) => {
   return useQuery({
-    queryKey: ['blog-post', slug],
+    queryKey: ['blog-post-v2', slug], // Changed query key to force cache bust
     queryFn: async () => {
       console.log('Fetching blog post by slug:', slug);
       
@@ -65,9 +68,12 @@ export const useBlogPost = (slug: string) => {
         throw error;
       }
 
+      console.log('All posts for slug matching:', allPosts?.length || 0);
+
       // Find post by matching generated slug
       const post = allPosts?.find(post => {
         const generatedSlug = createSlugFromTitle(post.title);
+        console.log('Comparing slugs:', generatedSlug, 'vs', slug);
         return generatedSlug === slug;
       });
 
@@ -76,8 +82,10 @@ export const useBlogPost = (slug: string) => {
         throw new Error('Post not found');
       }
 
-      console.log('Blog post found:', post);
+      console.log('Blog post found:', post.title);
       return post as BlogPost;
     },
+    staleTime: 0, // Always refetch
+    gcTime: 0, // Don't cache results
   });
 };
