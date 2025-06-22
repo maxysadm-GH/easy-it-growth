@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
@@ -29,6 +28,10 @@ const integrations = [
   {
     name: "Shopify",
     src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/shopify.svg",
+  },
+  {
+    name: "Fishbowl Inventory",
+    src: "/lovable-uploads/1d9f3afd-8528-4663-b663-8ca0cf42bb4c.png",
   }
 ];
 

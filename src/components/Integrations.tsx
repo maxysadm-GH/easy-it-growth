@@ -29,7 +29,7 @@ const integrations = [
   },
   { 
     name: "Fishbowl Inventory", 
-    logo: "/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png"
+    logo: "/lovable-uploads/1d9f3afd-8528-4663-b663-8ca0cf42bb4c.png"
   },
   { 
     name: "Google Analytics", 
