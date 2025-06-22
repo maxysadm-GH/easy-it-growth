@@ -366,7 +366,7 @@ export const otherIntegrations: Integration[] = [
     id: "zoho",
     name: "Zoho",
     slug: "zoho",
-    logo: "/lovable-uploads/9047d06d-8e00-44f9-a949-19b842c87735.png",
+    logo: "/lovable-uploads/0c67f170-1420-4911-a0f4-88f846ec89b2.png",
     category: "Business Suite",
     description: "Zoho is a comprehensive business software suite offering CRM, project management, accounting, and productivity tools for businesses.",
     shortDescription: "Complete business software suite and productivity platform",
@@ -399,40 +399,40 @@ export const otherIntegrations: Integration[] = [
     useCase: "Ideal for businesses using multiple Zoho applications and needing unified analytics across all business functions."
   },
   {
-    id: "funnel",
-    name: "Funnel",
-    slug: "funnel",
-    logo: "/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png",
-    category: "Marketing Analytics",
-    description: "Funnel is a marketing data platform that automatically collects, cleans, and prepares marketing data for analysis and reporting.",
-    shortDescription: "Marketing data integration and analytics platform",
+    id: "freshsales",
+    name: "Freshsales",
+    slug: "freshsales",
+    logo: "/lovable-uploads/a377856b-1e04-4820-8359-724542e579de.png",
+    category: "CRM",
+    description: "Freshsales is a full-featured CRM solution that helps businesses manage leads, contacts, and deals with powerful automation and analytics.",
+    shortDescription: "CRM and sales automation platform",
     keyBenefits: [
-      "Unified marketing data view",
-      "Cross-channel attribution",
-      "ROI optimization insights",
-      "Campaign performance tracking"
+      "Sales pipeline visibility",
+      "Lead conversion analytics",
+      "Deal tracking insights",
+      "Sales team performance"
     ],
     metrics: [
-      "Marketing ROI",
-      "Cross-channel attribution",
-      "Campaign performance",
-      "Cost per acquisition",
-      "Customer lifetime value",
-      "Channel effectiveness"
+      "Lead conversion rates",
+      "Deal pipeline value",
+      "Sales cycle length",
+      "Win/loss ratios",
+      "Sales rep performance",
+      "Revenue forecasting"
     ],
     features: [
-      "Marketing data aggregation",
-      "Attribution modeling",
-      "Performance tracking",
-      "ROI optimization"
+      "Pipeline analytics",
+      "Lead scoring",
+      "Sales automation tracking",
+      "Performance reporting"
     ],
     setupSteps: [
-      "Connect marketing data sources",
-      "Configure attribution models",
-      "Set up campaign tracking",
-      "Build marketing performance dashboard"
+      "Connect Freshsales account",
+      "Configure pipeline stages",
+      "Set up lead scoring",
+      "Build sales analytics dashboard"
     ],
-    useCase: "Essential for marketing teams running multi-channel campaigns and needing unified attribution and ROI analytics."
+    useCase: "Perfect for sales teams needing comprehensive CRM analytics and sales performance insights."
   },
   {
     id: "microsoft-excel",
