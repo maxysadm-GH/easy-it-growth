@@ -1,3 +1,4 @@
+
 import { Integration } from '../types/integration';
 
 export const otherIntegrations: Integration[] = [
@@ -41,7 +42,7 @@ export const otherIntegrations: Integration[] = [
     id: "fishbowl-inventory",
     name: "Fishbowl Inventory",
     slug: "fishbowl-inventory",
-    logo: "/lovable-uploads/ffe520da-678f-47c4-ae10-5aa2728c4b2e.png",
+    logo: "/lovable-uploads/7a81da02-7a89-49d6-bb4f-eca861e810b9.png",
     category: "Inventory",
     description: "Fishbowl is the leading inventory management solution that integrates with QuickBooks to provide advanced inventory tracking and manufacturing capabilities.",
     shortDescription: "Advanced inventory management and manufacturing platform",
@@ -149,7 +150,7 @@ export const otherIntegrations: Integration[] = [
     id: "google-analytics",
     name: "Google Analytics",
     slug: "google-analytics",
-    logo: "/lovable-uploads/494ff85e-e7cd-44ec-bc15-19691a2bc978.png",
+    logo: "/lovable-uploads/f1f6f28c-8f86-4f88-8d4c-b6d04db33ff9.png",
     category: "Analytics",
     description: "Google Analytics provides detailed insights into website traffic, user behavior, and conversion tracking for digital marketing optimization.",
     shortDescription: "Web analytics and traffic monitoring platform",
@@ -185,7 +186,7 @@ export const otherIntegrations: Integration[] = [
     id: "mailchimp",
     name: "Mailchimp",
     slug: "mailchimp",
-    logo: "/lovable-uploads/1d9f3afd-8528-4663-b663-8ca0cf42bb4c.png",
+    logo: "/lovable-uploads/4e32134d-7970-408a-9caf-27db1a6c1b51.png",
     category: "Email Marketing",
     description: "Mailchimp is an all-in-one email marketing platform that helps businesses create, send, and analyze email campaigns.",
     shortDescription: "Email marketing and automation platform",
@@ -221,7 +222,7 @@ export const otherIntegrations: Integration[] = [
     id: "zendesk",
     name: "Zendesk",
     slug: "zendesk",
-    logo: "/lovable-uploads/b96e5d58-1268-4350-90f9-e2f5f1b25c2f.png",
+    logo: "/lovable-uploads/b090386d-af4c-4f5b-8a64-790f1692b1af.png",
     category: "Customer Support",
     description: "Zendesk is a customer service platform that provides ticketing, live chat, and customer support analytics for better customer experiences.",
     shortDescription: "Customer support and service management platform",
@@ -329,7 +330,7 @@ export const otherIntegrations: Integration[] = [
     id: "calendly",
     name: "Calendly",
     slug: "calendly",
-    logo: "/lovable-uploads/e75b7648-be7f-4dcd-836a-4e02c209286c.png",
+    logo: "/lovable-uploads/a4e3152b-a59a-46bc-8501-73ff7ede0e88.png",
     category: "Scheduling",
     description: "Calendly is a scheduling automation platform that eliminates the back-and-forth emails to find the perfect time for meetings.",
     shortDescription: "Automated scheduling and meeting coordination platform",
