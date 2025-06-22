@@ -1,4 +1,3 @@
-
 import { Integration } from '../types/integration';
 
 export const projectManagementIntegrations: Integration[] = [
@@ -6,7 +5,7 @@ export const projectManagementIntegrations: Integration[] = [
     id: "asana",
     name: "Asana",
     slug: "asana",
-    logo: "/lovable-uploads/62d4d4ff-8c3e-4a9b-b2d5-345678901fed.png",
+    logo: "/lovable-uploads/4c6038a0-a9a6-4643-b7c5-aa8a4acb59d1.png",
     category: "Project Management",
     description: "Asana is a project management platform that helps teams organize, track, and manage their work and projects efficiently.",
     shortDescription: "Project management and team collaboration platform",
@@ -114,7 +113,7 @@ export const projectManagementIntegrations: Integration[] = [
     id: "clickup",
     name: "ClickUp",
     slug: "clickup",
-    logo: "/lovable-uploads/9bbd560f-2e5a-4b7c-c4f7-567890123456.png",
+    logo: "/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png",
     category: "Project Management",
     description: "ClickUp is an all-in-one workspace that combines project management, docs, goals, and chat in one platform.",
     shortDescription: "All-in-one workspace and project management platform",

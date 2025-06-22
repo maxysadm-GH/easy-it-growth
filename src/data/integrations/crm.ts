@@ -6,7 +6,7 @@ export const crmIntegrations: Integration[] = [
     id: "hubspot",
     name: "HubSpot",
     slug: "hubspot",
-    logo: "/lovable-uploads/36bfd09d-5f8b-4e9c-d5a8-678901234567.png",
+    logo: "/lovable-uploads/c529216b-8e7e-41e1-a770-a5fc7bf00c58.png",
     category: "CRM & Marketing",
     description: "HubSpot is an all-in-one CRM platform that helps businesses grow by providing tools for marketing, sales, customer service, and operations.",
     shortDescription: "All-in-one CRM and marketing automation platform",

@@ -42,7 +42,7 @@ export const accountingIntegrations: Integration[] = [
     id: "xero",
     name: "Xero",
     slug: "xero",
-    logo: "/lovable-uploads/1ab91a6b-e3f8-43f8-9178-1fbd96d033d3.png",
+    logo: "/lovable-uploads/31fd0b08-30e1-4290-93b6-8547b1d4cfb5.png",
     category: "Accounting",
     description: "Xero is cloud-based accounting software designed for small and medium businesses, offering comprehensive financial management tools.",
     shortDescription: "Cloud accounting and financial management platform",
