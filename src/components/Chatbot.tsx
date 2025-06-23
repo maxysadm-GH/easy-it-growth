@@ -1,24 +1,16 @@
 
-import React, { useState, useRef, useEffect } from "react";
-import { MessageCircle, X } from "lucide-react";
+import React, { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useChatEngagement } from "@/hooks/useChatEngagement";
-
-const assistantIconUrl = "/lovable-uploads/6c02622d-f929-4272-8fb2-56a68e33cc30.png";
-
-interface Message {
-  from: 'user' | 'bot';
-  text: string;
-  timestamp: Date;
-}
+import { Message } from "@/types/chat";
+import ChatButton from "./chat/ChatButton";
+import ChatWindow from "./chat/ChatWindow";
 
 const Chatbot = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hasInitialized, setHasInitialized] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   
   const { shouldAutoOpen, pageContext, markAsAutoOpened } = useChatEngagement();
 
@@ -53,14 +45,6 @@ const Chatbot = () => {
       setHasInitialized(true);
     }
   }, [open, hasInitialized, messages.length]);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   const sendMessageToAI = async (message: string): Promise<string> => {
     try {
@@ -111,8 +95,6 @@ const Chatbot = () => {
   };
 
   const handleQuickAction = async (action: string) => {
-    let message = "";
-    
     // Context-aware quick actions
     const contextualActions: Record<string, string> = {
       'Take IT Assessment': 'I want to take an IT assessment for my business',
@@ -148,152 +130,24 @@ const Chatbot = () => {
       'Use Tools': 'Show me your assessment tools'
     };
     
-    message = contextualActions[action] || action;
+    const message = contextualActions[action] || action;
     await handleSendMessage(message);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-    
-    const messageText = input.trim();
-    setInput("");
-    await handleSendMessage(messageText);
-  };
-
-  const currentQuickActions = messages.length <= 1 ? pageContext.quickActions : [];
-
   return (
     <>
-      {/* Enhanced Chat Button */}
-      <button
-        aria-label="Open chat"
-        className={`fixed bottom-7 right-7 z-40 transition-all duration-300 group ${
-          open ? 'scale-0' : 'scale-100 hover:scale-110'
-        }`}
-        onClick={() => setOpen(true)}
-      >
-        {/* Chat Bubble Design */}
-        <div className="relative bg-gradient-yellow text-navy rounded-2xl shadow-xl border-2 border-navy overflow-hidden">
-          {/* Pulse animation for attention */}
-          <div className="absolute inset-0 bg-gradient-yellow rounded-2xl animate-ping opacity-20"></div>
-          
-          {/* Main button content */}
-          <div className="relative flex items-center gap-3 px-4 py-3">
-            <MessageCircle className="w-6 h-6" />
-            <span className="font-bold text-sm whitespace-nowrap">Need Help?</span>
-          </div>
-          
-          {/* Chat bubble tail */}
-          <div className="absolute -bottom-1 right-4 w-3 h-3 bg-gradient-yellow border-r-2 border-b-2 border-navy transform rotate-45"></div>
-        </div>
-      </button>
+      <ChatButton onClick={() => setOpen(true)} isOpen={open} />
 
-      {/* Enhanced Chat Window */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-50 max-w-sm w-full bg-white rounded-2xl shadow-2xl border border-accent flex flex-col animate-fade-in">
-          {/* Header */}
-          <div className="flex items-center px-4 py-3 border-b bg-gradient-yellow text-navy rounded-t-2xl font-bold drop-shadow-header">
-            <img src={assistantIconUrl} className="w-8 h-8 mr-2" alt="Assistant Icon" />
-            <div className="flex-1">
-              <div className="font-bold">MBACIO Assistant</div>
-              <div className="text-xs font-normal opacity-75">Powered by AI • {pageContext.pageName}</div>
-            </div>
-            <img
-              src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
-              className="h-6 w-auto ml-2"
-              alt="MBACIO Logo"
-              draggable={false}
-            />
-            <button
-              className="ml-2 text-navy hover:text-red-500 text-xl font-bold"
-              onClick={() => setOpen(false)}
-              aria-label="Close Chat"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Messages */}
-          <div className="p-4 space-y-3 max-h-80 overflow-y-auto font-inter">
-            {messages.map((msg, i) => (
-              <div
-                key={i}
-                className={`mb-2 max-w-[85%] rounded-lg px-3 py-2 break-words ${
-                  msg.from === "bot"
-                    ? "bg-gradient-yellow/25 text-navy ml-0"
-                    : "bg-accent text-navy ml-auto mr-0"
-                }`}
-                style={
-                  msg.from === "bot"
-                    ? { borderLeft: "4px solid #FACF39" }
-                    : { borderRight: "4px solid #FACF39" }
-                }
-              >
-                <div className="whitespace-pre-wrap">{msg.text}</div>
-                <div className="text-xs opacity-60 mt-1">
-                  {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                </div>
-              </div>
-            ))}
-            
-            {isLoading && (
-              <div className="bg-gradient-yellow/25 text-navy ml-0 max-w-[85%] rounded-lg px-3 py-2" style={{ borderLeft: "4px solid #FACF39" }}>
-                <div className="flex items-center gap-1">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-navy rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                    <div className="w-2 h-2 bg-navy rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                    <div className="w-2 h-2 bg-navy rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                  </div>
-                  <span className="text-sm ml-2">Thinking...</span>
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Quick Actions & Input */}
-          <div className="px-4 pb-3">
-            {currentQuickActions.length > 0 && (
-              <div className="flex gap-2 mb-3 flex-wrap">
-                {currentQuickActions.map((action) => (
-                  <button
-                    key={action}
-                    className="bg-gradient-yellow text-navy px-3 py-1 rounded-xl text-xs font-semibold shadow hover:bg-navy hover:text-accent transition border border-navy disabled:opacity-50"
-                    onClick={() => handleQuickAction(action)}
-                    disabled={isLoading}
-                    aria-label={action}
-                  >
-                    {action}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="flex items-center gap-2">
-              <input
-                className="flex-1 border border-accent rounded-xl px-3 py-2 text-navy focus:outline-accent bg-white disabled:opacity-50"
-                placeholder="Type your message…"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                disabled={isLoading}
-                maxLength={500}
-              />
-              <button 
-                type="submit" 
-                className="text-accent hover:text-navy disabled:opacity-50" 
-                aria-label="Send"
-                disabled={isLoading || !input.trim()}
-              >
-                <span className="font-bold text-lg">➤</span>
-              </button>
-            </form>
-            
-            <div className="text-[10px] text-muted-foreground pt-1 pl-1">
-              AI-powered • Context-aware assistance
-            </div>
-          </div>
-        </div>
+        <ChatWindow
+          messages={messages}
+          isLoading={isLoading}
+          quickActions={pageContext.quickActions}
+          pageName={pageContext.pageName}
+          onClose={() => setOpen(false)}
+          onSendMessage={handleSendMessage}
+          onQuickAction={handleQuickAction}
+        />
       )}
     </>
   );
