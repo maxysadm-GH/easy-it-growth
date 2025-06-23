@@ -1,7 +1,7 @@
 
 import { CTA_CONFIGS } from '@/config/cta';
 
-interface CTAValidationResult {
+export interface CTAValidationResult {
   isValid: boolean;
   errors: string[];
   warnings: string[];

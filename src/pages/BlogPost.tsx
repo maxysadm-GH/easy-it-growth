@@ -1,3 +1,4 @@
+
 import { useParams, Navigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -43,14 +44,12 @@ const BlogPost = () => {
     });
   };
 
-  const imageUrl = getWorkingImageUrl(post.hero_image_url);
-
   const handleShare = async () => {
     try {
       // Check if Web Share API is available and we have permission
       if (navigator.share && navigator.canShare) {
         const shareData = {
-          title: post.title,
+          title: post?.title || 'Check out this article',
           url: window.location.href
         };
         
@@ -122,6 +121,9 @@ const BlogPost = () => {
       </div>
     );
   }
+
+  // Now we can safely access post properties since we've confirmed post exists
+  const imageUrl = getWorkingImageUrl(post.hero_image_url);
 
   return (
     <div className="min-h-screen bg-gray-50">
