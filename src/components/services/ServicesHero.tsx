@@ -24,6 +24,7 @@ const ServicesHero = () => {
               variant="yellow"
               size="lg"
               className="text-xl px-10 py-6"
+              forcePopup={true}
             />
             <CTAButton 
               customConfig={{

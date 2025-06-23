@@ -1,9 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { getCTAConfig, type CTAConfig } from '@/config/cta';
 import { cn } from '@/lib/utils';
+import BookingPopup from '@/components/BookingPopup';
 
 interface CTAButtonProps {
   ctaId?: string;
@@ -13,6 +14,7 @@ interface CTAButtonProps {
   className?: string;
   showIcon?: boolean;
   onClick?: () => void;
+  forcePopup?: boolean; // New prop to force popup behavior
 }
 
 const CTAButton: React.FC<CTAButtonProps> = ({
@@ -22,8 +24,11 @@ const CTAButton: React.FC<CTAButtonProps> = ({
   size = 'default',
   className,
   showIcon = true,
-  onClick
+  onClick,
+  forcePopup = false
 }) => {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
   // Get config from ID or use custom config
   const config = ctaId ? getCTAConfig(ctaId) : null;
   const finalConfig = config ? { ...config, ...customConfig } : customConfig;
@@ -39,7 +44,15 @@ const CTAButton: React.FC<CTAButtonProps> = ({
       return;
     }
 
-    if (finalConfig.type === 'external') {
+    // Check if this is a booking CTA or forcePopup is true
+    const isBookingCTA = ctaId === 'book-assessment' || 
+                        finalConfig.text.toLowerCase().includes('book') ||
+                        finalConfig.text.toLowerCase().includes('assessment') ||
+                        forcePopup;
+
+    if (isBookingCTA) {
+      setIsBookingOpen(true);
+    } else if (finalConfig.type === 'external') {
       window.open(finalConfig.url, '_blank');
     } else {
       window.location.href = finalConfig.url;
@@ -60,18 +73,26 @@ const CTAButton: React.FC<CTAButtonProps> = ({
   };
 
   return (
-    <Button
-      onClick={handleClick}
-      size={size}
-      className={cn(
-        getVariantClasses(),
-        'transition-all duration-300',
-        className
-      )}
-    >
-      {finalConfig.text}
-      {showIcon && <ArrowRight className="w-4 h-4 ml-2" />}
-    </Button>
+    <>
+      <Button
+        onClick={handleClick}
+        size={size}
+        className={cn(
+          getVariantClasses(),
+          'transition-all duration-300',
+          className
+        )}
+      >
+        {finalConfig.text}
+        {showIcon && <ArrowRight className="w-4 h-4 ml-2" />}
+      </Button>
+
+      {/* Booking Popup */}
+      <BookingPopup 
+        isOpen={isBookingOpen} 
+        onClose={() => setIsBookingOpen(false)} 
+      />
+    </>
   );
 };
 
