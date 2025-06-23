@@ -73,36 +73,83 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 
   return (
     <div 
-      className="fixed bottom-24 right-6 z-50 max-w-sm w-full backdrop-blur-md bg-white/90 border border-white/20 rounded-2xl shadow-2xl flex flex-col animate-fade-in"
+      className="fixed bottom-24 right-6 z-50 max-w-sm w-full flex flex-col animate-fade-in border border-white/30 rounded-2xl overflow-hidden"
       style={{ 
         maxHeight: getMaxHeight(),
-        backdropFilter: 'blur(16px) saturate(180%)',
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+        backdropFilter: 'blur(25px) saturate(180%)',
+        background: 'rgba(255, 255, 255, 0.12)',
+        boxShadow: `
+          0 25px 50px -12px rgba(0, 0, 0, 0.25),
+          0 0 0 1px rgba(255, 255, 255, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2)
+        `
       }}
     >
-      {/* Header with glass effect */}
-      <div className="relative flex items-center px-4 py-3 border-b border-white/20 rounded-t-2xl font-bold drop-shadow-header"
+      {/* Transparent Glass Header */}
+      <div className="relative flex items-center px-4 py-3 border-b border-white/20 font-bold"
            style={{
-             background: 'linear-gradient(135deg, rgba(250, 207, 57, 0.9), rgba(249, 195, 7, 0.9))',
-             backdropFilter: 'blur(8px) saturate(150%)'
+             backdropFilter: 'blur(20px) saturate(150%)',
+             background: `
+               linear-gradient(135deg, 
+                 rgba(17, 45, 78, 0.3) 0%,
+                 rgba(17, 45, 78, 0.2) 50%,
+                 rgba(250, 207, 57, 0.25) 100%
+               )
+             `,
+             borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
            }}>
+        
+        {/* Menu Button */}
         <button
-          className="mr-2 text-navy hover:text-deep-blue transition-colors"
+          className="mr-2 p-1 rounded-lg transition-all duration-200 hover:bg-white/20 backdrop-blur-sm"
+          style={{ color: 'rgba(17, 45, 78, 0.9)' }}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Open Menu"
         >
           <Menu className="w-5 h-5" />
         </button>
         
-        <img src={assistantIconUrl} className="w-8 h-8 mr-2" alt="Assistant Icon" />
-        <div className="flex-1">
-          <div className="font-bold text-navy">MBACIO Assistant</div>
-          <div className="text-xs font-normal text-navy/75">Powered by AI • {pageName}</div>
+        {/* Assistant Icon with better contrast background */}
+        <div className="relative mr-2">
+          <div 
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: 'rgba(255, 255, 255, 0.4)',
+              backdropFilter: 'blur(10px)'
+            }}
+          />
+          <img src={assistantIconUrl} className="relative w-8 h-8 rounded-full" alt="Assistant Icon" />
         </div>
         
+        {/* Title with enhanced contrast */}
+        <div className="flex-1">
+          <div 
+            className="font-bold text-sm"
+            style={{ 
+              color: 'rgba(17, 45, 78, 0.95)',
+              textShadow: '0 1px 2px rgba(255, 255, 255, 0.3)'
+            }}
+          >
+            MBACIO Assistant
+          </div>
+          <div 
+            className="text-xs font-normal"
+            style={{ 
+              color: 'rgba(17, 45, 78, 0.7)',
+              textShadow: '0 1px 1px rgba(255, 255, 255, 0.2)'
+            }}
+          >
+            Powered by AI • {pageName}
+          </div>
+        </div>
+        
+        {/* Engineer Button */}
         <button
-          className="mx-2 text-navy hover:text-deep-blue transition-colors p-1 rounded border border-navy/20 hover:bg-white/20 backdrop-blur-sm"
+          className="mx-2 p-1 rounded border border-white/30 transition-all duration-200 hover:bg-white/20 backdrop-blur-sm"
+          style={{ 
+            color: 'rgba(17, 45, 78, 0.9)',
+            background: 'rgba(255, 255, 255, 0.15)'
+          }}
           onClick={handleTalkWithEngineer}
           aria-label="Talk with Engineer"
           title="Talk with Engineer"
@@ -110,14 +157,28 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           <User className="w-4 h-4" />
         </button>
         
-        <img
-          src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
-          className="h-6 w-auto ml-2"
-          alt="MBACIO Logo"
-          draggable={false}
-        />
+        {/* Logo with enhanced contrast background */}
+        <div className="relative ml-2">
+          <div 
+            className="absolute inset-0 rounded"
+            style={{
+              background: 'rgba(255, 255, 255, 0.5)',
+              backdropFilter: 'blur(8px)',
+              transform: 'scale(1.1)'
+            }}
+          />
+          <img
+            src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
+            className="relative h-6 w-auto"
+            alt="MBACIO Logo"
+            draggable={false}
+          />
+        </div>
+        
+        {/* Close Button */}
         <button
-          className="ml-2 text-navy hover:text-red-500 text-xl font-bold transition-colors"
+          className="ml-2 p-1 rounded-lg transition-all duration-200 hover:bg-red-500/20 backdrop-blur-sm"
+          style={{ color: 'rgba(17, 45, 78, 0.9)' }}
           onClick={onClose}
           aria-label="Close Chat"
         >
@@ -132,8 +193,14 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         />
       </div>
 
-      {/* Messages with glass backdrop */}
-      <div className="flex-1 overflow-hidden backdrop-blur-sm">
+      {/* Messages with glass effect */}
+      <div 
+        className="flex-1 overflow-hidden"
+        style={{
+          backdropFilter: 'blur(15px)',
+          background: 'rgba(255, 255, 255, 0.08)'
+        }}
+      >
         <ChatMessages messages={messages} isLoading={isLoading} />
       </div>
 
@@ -144,8 +211,14 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         isVisible={shouldShowTips}
       />
 
-      {/* Quick Actions & Input with glass effect */}
-      <div className="px-4 pb-3 backdrop-blur-sm bg-white/5 rounded-b-2xl">
+      {/* Input Area with glass effect */}
+      <div 
+        className="px-4 pb-3 border-t border-white/20"
+        style={{
+          backdropFilter: 'blur(20px)',
+          background: 'rgba(255, 255, 255, 0.1)'
+        }}
+      >
         <QuickActions 
           actions={currentQuickActions}
           onActionClick={onQuickAction}
@@ -154,7 +227,13 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 
         <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
         
-        <div className="text-[10px] text-navy/60 pt-1 pl-1 font-medium">
+        <div 
+          className="text-[10px] pt-1 pl-1 font-medium"
+          style={{ 
+            color: 'rgba(17, 45, 78, 0.7)',
+            textShadow: '0 1px 1px rgba(255, 255, 255, 0.3)'
+          }}
+        >
           Innovation isn't a luxury. It's a necessity. MBACIO brings affordable tech breakthroughs to mid-market businesses.
         </div>
       </div>

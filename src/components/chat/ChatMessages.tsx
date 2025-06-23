@@ -23,7 +23,7 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
       {messages.map((msg, i) => (
         <div
           key={i}
-          className={`mb-2 max-w-[85%] rounded-lg px-3 py-2 break-words backdrop-blur-sm ${
+          className={`mb-2 max-w-[85%] rounded-lg px-3 py-2 break-words border ${
             msg.from === "bot"
               ? "ml-0"
               : "ml-auto mr-0"
@@ -31,22 +31,33 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
           style={
             msg.from === "bot"
               ? { 
-                  borderLeft: "4px solid #FACF39",
-                  background: 'linear-gradient(135deg, rgba(250, 207, 57, 0.25), rgba(249, 195, 7, 0.15))',
-                  backdropFilter: 'blur(8px)',
-                  color: '#112d4e'
+                  borderLeft: "3px solid rgba(250, 207, 57, 0.8)",
+                  border: "1px solid rgba(250, 207, 57, 0.3)",
+                  background: 'rgba(250, 207, 57, 0.15)',
+                  backdropFilter: 'blur(15px) saturate(150%)',
+                  color: 'rgba(17, 45, 78, 0.95)',
+                  textShadow: '0 1px 2px rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                 }
               : { 
-                  borderRight: "4px solid #FACF39",
-                  background: 'rgba(250, 207, 57, 0.9)',
-                  backdropFilter: 'blur(8px)',
-                  color: '#112d4e',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                  borderRight: "3px solid rgba(17, 45, 78, 0.6)",
+                  border: "1px solid rgba(17, 45, 78, 0.3)",
+                  background: 'rgba(17, 45, 78, 0.15)',
+                  backdropFilter: 'blur(15px) saturate(150%)',
+                  color: 'rgba(17, 45, 78, 0.95)',
+                  textShadow: '0 1px 2px rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                 }
           }
         >
           <div className="whitespace-pre-wrap">{msg.text}</div>
-          <div className="text-xs opacity-60 mt-1">
+          <div 
+            className="text-xs mt-1"
+            style={{ 
+              color: 'rgba(17, 45, 78, 0.6)',
+              textShadow: '0 1px 1px rgba(255, 255, 255, 0.2)'
+            }}
+          >
             {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </div>
         </div>
@@ -54,19 +65,40 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
       
       {isLoading && (
         <div 
-          className="ml-0 max-w-[85%] rounded-lg px-3 py-2 backdrop-blur-sm" 
+          className="ml-0 max-w-[85%] rounded-lg px-3 py-2 border"
           style={{ 
-            borderLeft: "4px solid #FACF39",
-            background: 'linear-gradient(135deg, rgba(250, 207, 57, 0.25), rgba(249, 195, 7, 0.15))',
-            backdropFilter: 'blur(8px)',
-            color: '#112d4e'
+            borderLeft: "3px solid rgba(250, 207, 57, 0.8)",
+            border: "1px solid rgba(250, 207, 57, 0.3)",
+            background: 'rgba(250, 207, 57, 0.15)',
+            backdropFilter: 'blur(15px) saturate(150%)',
+            color: 'rgba(17, 45, 78, 0.95)',
+            textShadow: '0 1px 2px rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
           }}
         >
           <div className="flex items-center gap-1">
             <div className="flex gap-1">
-              <div className="w-2 h-2 bg-navy rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-              <div className="w-2 h-2 bg-navy rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-              <div className="w-2 h-2 bg-navy rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+              <div 
+                className="w-2 h-2 rounded-full animate-bounce" 
+                style={{ 
+                  backgroundColor: 'rgba(17, 45, 78, 0.7)',
+                  animationDelay: '0ms' 
+                }}
+              ></div>
+              <div 
+                className="w-2 h-2 rounded-full animate-bounce" 
+                style={{ 
+                  backgroundColor: 'rgba(17, 45, 78, 0.7)',
+                  animationDelay: '150ms' 
+                }}
+              ></div>
+              <div 
+                className="w-2 h-2 rounded-full animate-bounce" 
+                style={{ 
+                  backgroundColor: 'rgba(17, 45, 78, 0.7)',
+                  animationDelay: '300ms' 
+                }}
+              ></div>
             </div>
             <span className="text-sm ml-2">Thinking...</span>
           </div>

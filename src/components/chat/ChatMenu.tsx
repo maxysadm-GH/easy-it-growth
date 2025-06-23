@@ -29,11 +29,15 @@ const ChatMenu: React.FC<ChatMenuProps> = ({ isOpen, onToggle, onMenuAction, onC
 
   return (
     <div 
-      className="absolute top-12 left-0 right-0 mx-2 z-50 backdrop-blur-md border border-white/20 rounded-lg shadow-xl"
+      className="absolute top-12 left-0 right-0 mx-2 z-50 border border-white/30 rounded-lg overflow-hidden"
       style={{
-        backdropFilter: 'blur(16px) saturate(180%)',
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+        backdropFilter: 'blur(25px) saturate(180%)',
+        background: 'rgba(255, 255, 255, 0.15)',
+        boxShadow: `
+          0 20px 25px -5px rgba(0, 0, 0, 0.15), 
+          0 10px 10px -5px rgba(0, 0, 0, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2)
+        `
       }}
     >
       <div className="py-2">
@@ -42,7 +46,11 @@ const ChatMenu: React.FC<ChatMenuProps> = ({ isOpen, onToggle, onMenuAction, onC
           return (
             <button
               key={item.action}
-              className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gradient-yellow/30 transition-all duration-200 text-navy backdrop-blur-sm"
+              className="w-full flex items-center gap-3 px-4 py-3 text-left transition-all duration-200 backdrop-blur-sm hover:bg-white/20"
+              style={{ 
+                color: 'rgba(17, 45, 78, 0.9)',
+                textShadow: '0 1px 1px rgba(255, 255, 255, 0.2)'
+              }}
               onClick={() => handleMenuClick(item.action)}
             >
               <IconComponent className="w-4 h-4" />
