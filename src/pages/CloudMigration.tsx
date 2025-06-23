@@ -38,6 +38,10 @@ const CloudMigration = () => {
     });
   };
 
+  const handleGetMigrationPlan = () => {
+    window.location.href = '/assessment-automation';
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -185,7 +189,11 @@ const CloudMigration = () => {
                 <div className="text-center">
                   <h4 className="text-xl font-bold text-navy mb-4">Ready to Migrate to the Cloud?</h4>
                   <p className="text-gray-600 mb-6">Our cloud experts can help you achieve these results with a smooth migration.</p>
-                  <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6">
+                  <Button 
+                    onClick={handleGetMigrationPlan}
+                    size="lg" 
+                    className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6"
+                  >
                     Get Migration Plan
                   </Button>
                 </div>

@@ -4,11 +4,14 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, ArrowRight, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 const BlogSubscription = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,12 +19,50 @@ const BlogSubscription = () => {
 
     setIsLoading(true);
     
-    // Simulate subscription process (replace with actual implementation)
-    setTimeout(() => {
-      setIsSubscribed(true);
-      setIsLoading(false);
+    try {
+      // Get the current page path as source
+      const source = window.location.pathname;
+      
+      const { error } = await supabase
+        .from('newsletter_subscribers')
+        .insert([{ 
+          email: email.toLowerCase().trim(),
+          source: source
+        }]);
+
+      if (error) {
+        if (error.code === '23505') { // Unique constraint violation
+          toast({
+            title: "Already Subscribed",
+            description: "This email is already subscribed to our newsletter.",
+            variant: "default"
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        setIsSubscribed(true);
+        toast({
+          title: "Successfully Subscribed!",
+          description: "Welcome to our community. You'll receive our latest insights soon.",
+          variant: "default"
+        });
+      }
       setEmail('');
-    }, 1000);
+    } catch (error) {
+      console.error('Subscription error:', error);
+      toast({
+        title: "Subscription Failed",
+        description: "There was an error subscribing. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleBookAssessment = () => {
+    window.open('https://outlook.office365.com/owa/calendar/MBACIOFreeAssessment@mbacio.com/bookings/', '_blank');
   };
 
   if (isSubscribed) {
@@ -36,6 +77,7 @@ const BlogSubscription = () => {
             You're now subscribed to receive our latest insights on IT automation, cybersecurity, and business growth strategies.
           </p>
           <Button 
+            onClick={handleBookAssessment}
             size="lg"
             className="bg-gradient-yellow text-navy font-bold text-lg px-8 py-4 hover:scale-105 transition-transform duration-300"
           >

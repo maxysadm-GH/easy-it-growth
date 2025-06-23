@@ -25,7 +25,7 @@ const Footer = () => {
   };
 
   const handleBookAssessment = () => {
-    window.open('https://calendly.com/mbacio/free-assessment', '_blank');
+    window.open('https://outlook.office365.com/owa/calendar/MBACIOFreeAssessment@mbacio.com/bookings/', '_blank');
   };
   
   return (

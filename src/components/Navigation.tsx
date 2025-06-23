@@ -22,7 +22,7 @@ const Navigation = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const handleBookAssessment = () => {
-    setIsBookingOpen(true);
+    window.open('https://outlook.office365.com/owa/calendar/MBACIOFreeAssessment@mbacio.com/bookings/', '_blank');
   };
 
   return (

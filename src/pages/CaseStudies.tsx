@@ -6,6 +6,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { TrendingUp, Clock, BarChart } from 'lucide-react';
 
 const CaseStudies = () => {
+  const handleBookAssessment = () => {
+    window.open('https://outlook.office365.com/owa/calendar/MBACIOFreeAssessment@mbacio.com/bookings/', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* SEO Meta Tags */}
@@ -24,7 +28,11 @@ const CaseStudies = () => {
             <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
               See how MBACIO helped clients cut IT operations costs, automate workflows, and streamline operations with dashboard insights. Serving Bannockburn & Chicagoland.
             </p>
-            <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
+            <Button 
+              onClick={handleBookAssessment}
+              size="lg" 
+              className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
+            >
               Book Your Free Assessment
             </Button>
           </div>
@@ -94,7 +102,11 @@ const CaseStudies = () => {
             Let's discuss how we can transform your IT operations and deliver 
             measurable ROI for your business with automation and dashboard solutions.
           </p>
-          <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
+          <Button 
+            onClick={handleBookAssessment}
+            size="lg" 
+            className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
+          >
             Book Your Free Assessment
           </Button>
         </div>
