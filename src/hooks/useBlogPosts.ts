@@ -1,4 +1,3 @@
-
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -22,7 +21,6 @@ export const useBlogPosts = () => {
     queryKey: ['blog-posts'],
     queryFn: async () => {
       console.log('🔄 Starting blog posts fetch from Supabase...');
-      console.log('📡 Supabase client configured with URL:', supabase.supabaseUrl);
       
       try {
         // First, let's check if we can connect to Supabase at all
