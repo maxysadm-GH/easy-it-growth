@@ -11,13 +11,24 @@ const BlogTeaser = () => {
   const { data: blogPosts, isLoading, error } = useBlogPosts();
   const navigate = useNavigate();
 
-  console.log('🏠 BlogTeaser render:', {
+  console.log('🏠 BlogTeaser render state:', {
     isLoading,
-    error: error?.message || null,
+    hasError: !!error,
+    errorMessage: error?.message || null,
     postsCount: blogPosts?.length || 0,
     hasData: !!blogPosts,
     posts: blogPosts?.map(p => ({ id: p.id, title: p.title })) || []
   });
+
+  // Additional debugging for the exact data received
+  if (blogPosts) {
+    console.log('🔍 BlogTeaser received posts:', {
+      totalReceived: blogPosts.length,
+      postsWithTitles: blogPosts.filter(p => p.title && p.title.trim()).length,
+      firstPost: blogPosts[0] || null,
+      allTitles: blogPosts.map(p => p.title || '[NO TITLE]')
+    });
+  }
 
   const createSlug = (title: string) => {
     if (!title || title.trim() === '') {
@@ -50,7 +61,7 @@ const BlogTeaser = () => {
 
   // Show error state
   if (error) {
-    console.log('❌ BlogTeaser error:', error.message);
+    console.log('❌ BlogTeaser error state:', error.message);
     return (
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -77,17 +88,19 @@ const BlogTeaser = () => {
     );
   }
 
-  // Show posts - Display all posts that have at least a title
-  const displayPosts = (blogPosts || [])
-    .filter(post => post.title && post.title.trim() !== '')
-    .slice(0, 3);
+  // Show posts - Display all posts (remove filtering for now to debug)
+  const displayPosts = (blogPosts || []).slice(0, 3);
   
-  console.log('📝 BlogTeaser displaying posts:', displayPosts.map(p => ({ 
-    id: p.id, 
-    title: p.title,
-    hasBody: !!(p.body && p.body.trim()),
-    bodyLength: p.body ? p.body.length : 0
-  })));
+  console.log('📝 BlogTeaser final display posts:', {
+    originalCount: blogPosts?.length || 0,
+    displayCount: displayPosts.length,
+    displayPosts: displayPosts.map(p => ({ 
+      id: p.id, 
+      title: p.title,
+      hasTitle: !!(p.title && p.title.trim()),
+      hasBody: !!(p.body && p.body.trim())
+    }))
+  });
 
   return (
     <section className="py-20 bg-gray-50">
@@ -128,6 +141,15 @@ const BlogTeaser = () => {
             <p className="text-sm text-gray-500 mb-4">
               Total posts in database: {blogPosts?.length || 0}
             </p>
+            <div className="bg-gray-100 p-4 rounded-lg mb-4 text-left max-w-2xl mx-auto">
+              <p className="text-sm font-mono">
+                Debug Info:<br/>
+                - Data received: {blogPosts ? 'Yes' : 'No'}<br/>
+                - Is array: {Array.isArray(blogPosts) ? 'Yes' : 'No'}<br/>
+                - Length: {blogPosts?.length || 0}<br/>
+                - Raw data: {JSON.stringify(blogPosts, null, 2)}
+              </p>
+            </div>
             <Button 
               onClick={() => window.location.reload()}
               className="bg-accent text-navy font-bold px-6 py-3"

@@ -21,42 +21,67 @@ export const useBlogPosts = () => {
   return useQuery({
     queryKey: ['blog-posts'],
     queryFn: async () => {
-      console.log('🔄 Fetching blog posts from Supabase...');
+      console.log('🔄 Starting blog posts fetch from Supabase...');
+      console.log('📡 Supabase client configured with URL:', supabase.supabaseUrl);
       
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .order('created_at', { ascending: false });
+      try {
+        // First, let's check if we can connect to Supabase at all
+        console.log('🔍 Testing Supabase connection...');
+        
+        const { data, error, count } = await supabase
+          .from('blog_posts')
+          .select('*', { count: 'exact' })
+          .order('created_at', { ascending: false });
 
-      if (error) {
-        console.error('❌ Supabase error:', error);
-        throw error;
-      }
-
-      console.log('✅ Raw Supabase response:', data);
-      console.log('📊 Posts count:', data?.length || 0);
-      
-      // Log each post's details for debugging
-      if (data) {
-        data.forEach((post, index) => {
-          console.log(`📝 Post ${index + 1}:`, {
-            id: post.id,
-            title: post.title || '[No Title]',
-            author: post.author || '[No Author]',
-            hasBody: !!(post.body && post.body.trim()),
-            bodyLength: post.body ? post.body.length : 0,
-            created_at: post.created_at
-          });
+        console.log('📊 Supabase response details:', {
+          data: data,
+          dataLength: data?.length || 0,
+          error: error,
+          count: count,
+          hasData: !!data,
+          isArray: Array.isArray(data)
         });
+
+        if (error) {
+          console.error('❌ Supabase query error:', {
+            message: error.message,
+            details: error.details,
+            hint: error.hint,
+            code: error.code
+          });
+          throw error;
+        }
+
+        // Log each individual post for debugging
+        if (data && data.length > 0) {
+          console.log('✅ Found blog posts:', data.length);
+          data.forEach((post, index) => {
+            console.log(`📝 Post ${index + 1}:`, {
+              id: post.id,
+              title: post.title || '[No Title]',
+              author: post.author || '[No Author]',
+              created_at: post.created_at,
+              hasBody: !!(post.body && post.body.trim()),
+              bodyPreview: post.body ? post.body.substring(0, 50) + '...' : '[No Body]'
+            });
+          });
+        } else {
+          console.log('⚠️ No blog posts found in database');
+          console.log('🔍 Raw data from Supabase:', data);
+        }
+        
+        return (data || []) as BlogPost[];
+      } catch (fetchError) {
+        console.error('💥 Blog posts fetch failed:', fetchError);
+        throw fetchError;
       }
-      
-      // Return all posts without filtering - let the UI handle display logic
-      return (data || []) as BlogPost[];
     },
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
-    refetchOnMount: true, // Force refetch on mount to get fresh data
+    refetchOnMount: true,
     refetchOnWindowFocus: false,
+    retry: 3,
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
 };
 
@@ -89,7 +114,6 @@ export const useBlogPost = (slug: string) => {
 
       console.log('📚 All posts for slug matching:', allPosts?.length || 0);
 
-      // Find the post that matches the slug
       const post = allPosts?.find(post => {
         if (!post.title) return false;
         const generatedSlug = createSlugFromTitle(post.title);
