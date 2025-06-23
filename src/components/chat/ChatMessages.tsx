@@ -19,7 +19,7 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
   }, [messages]);
 
   return (
-    <div className="p-4 space-y-3 max-h-80 overflow-y-auto font-inter">
+    <div className="p-4 space-y-3 overflow-y-auto font-inter h-full">
       {messages.map((msg, i) => (
         <div
           key={i}

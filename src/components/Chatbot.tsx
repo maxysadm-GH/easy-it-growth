@@ -60,13 +60,13 @@ const Chatbot = () => {
 
       if (error) {
         console.error('Supabase function error:', error);
-        return "I'm having trouble connecting right now. Please call (773) 657-2300 for immediate assistance.";
+        return "I'm having trouble connecting right now. Please call (773) 657-2300 for immediate assistance, or use the 'Talk with Engineer' button for human help.";
       }
 
       return data?.reply || "I didn't understand that. Could you please rephrase your question?";
     } catch (error) {
       console.error('Error calling chat assistant:', error);
-      return "I'm experiencing technical difficulties. Please call (773) 657-2300 or email info@mbacio.com for help.";
+      return "I'm experiencing technical difficulties. Please call (773) 657-2300 or email info@mbacio.com for help, or click 'Talk with Engineer' for immediate assistance.";
     }
   };
 

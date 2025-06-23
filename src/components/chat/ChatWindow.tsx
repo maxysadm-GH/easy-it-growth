@@ -1,10 +1,13 @@
 
-import React from 'react';
-import { X } from "lucide-react";
+import React, { useState } from 'react';
+import { X, Menu, User } from "lucide-react";
 import ChatMessages from './ChatMessages';
 import ChatInput from './ChatInput';
 import QuickActions from './QuickActions';
+import ChatMenu from './ChatMenu';
+import SmartTips from './SmartTips';
 import { Message } from '@/types/chat';
+import { getContextualTips, SmartTip } from '@/data/smartTips';
 
 const assistantIconUrl = "/lovable-uploads/6c02622d-f929-4272-8fb2-56a68e33cc30.png";
 
@@ -27,17 +30,77 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   onSendMessage,
   onQuickAction
 }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showTips, setShowTips] = useState(true);
+  
   const currentQuickActions = messages.length <= 1 ? quickActions : [];
+  const contextualTips = getContextualTips(pageName.toLowerCase(), messages.length);
+  const shouldShowTips = showTips && messages.length > 1 && messages.length % 3 === 0;
+
+  const handleMenuAction = async (action: string) => {
+    setIsMenuOpen(false);
+    
+    const menuActions: Record<string, string> = {
+      'main_menu': 'Show me the main menu of services',
+      'talk_engineer': 'I would like to talk with a human engineer',
+      'assessment_tools': 'Show me your assessment tools',
+      'schedule_consultation': 'I want to schedule a consultation',
+      'it_tips': 'Give me some IT tips and insights',
+      'common_questions': 'What are some common questions about your services?',
+      'restart_conversation': 'Let\'s start over - tell me about MBACIO services'
+    };
+    
+    const message = menuActions[action] || action;
+    await onSendMessage(message);
+  };
+
+  const handleTipClick = async (tip: SmartTip) => {
+    setShowTips(false);
+    await onSendMessage(tip.content);
+  };
+
+  const handleTalkWithEngineer = async () => {
+    await onSendMessage('I would like to talk with a human engineer. Please connect me or provide contact information.');
+  };
+
+  // Calculate dynamic height based on message count
+  const getMaxHeight = () => {
+    const baseHeight = 400; // Base height
+    const messageHeight = 60; // Approximate height per message
+    const calculatedHeight = Math.min(baseHeight + (messages.length * messageHeight), window.innerHeight * 0.8);
+    return `${calculatedHeight}px`;
+  };
 
   return (
-    <div className="fixed bottom-24 right-6 z-50 max-w-sm w-full bg-white rounded-2xl shadow-2xl border border-accent flex flex-col animate-fade-in">
+    <div 
+      className="fixed bottom-24 right-6 z-50 max-w-sm w-full bg-white rounded-2xl shadow-2xl border border-accent flex flex-col animate-fade-in"
+      style={{ maxHeight: getMaxHeight() }}
+    >
       {/* Header */}
-      <div className="flex items-center px-4 py-3 border-b bg-gradient-yellow text-navy rounded-t-2xl font-bold drop-shadow-header">
+      <div className="relative flex items-center px-4 py-3 border-b bg-gradient-yellow text-navy rounded-t-2xl font-bold drop-shadow-header">
+        <button
+          className="mr-2 text-navy hover:text-deep-blue transition-colors"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Open Menu"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+        
         <img src={assistantIconUrl} className="w-8 h-8 mr-2" alt="Assistant Icon" />
         <div className="flex-1">
           <div className="font-bold">MBACIO Assistant</div>
           <div className="text-xs font-normal opacity-75">Powered by AI • {pageName}</div>
         </div>
+        
+        <button
+          className="mx-2 text-navy hover:text-deep-blue transition-colors p-1 rounded border border-navy/20 hover:bg-white/20"
+          onClick={handleTalkWithEngineer}
+          aria-label="Talk with Engineer"
+          title="Talk with Engineer"
+        >
+          <User className="w-4 h-4" />
+        </button>
+        
         <img
           src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
           className="h-6 w-auto ml-2"
@@ -51,10 +114,26 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         >
           <X className="w-5 h-5" />
         </button>
+
+        <ChatMenu 
+          isOpen={isMenuOpen}
+          onToggle={() => setIsMenuOpen(!isMenuOpen)}
+          onMenuAction={handleMenuAction}
+          onClose={() => setIsMenuOpen(false)}
+        />
       </div>
 
-      {/* Messages */}
-      <ChatMessages messages={messages} isLoading={isLoading} />
+      {/* Messages - Now with flex-1 to grow */}
+      <div className="flex-1 overflow-hidden">
+        <ChatMessages messages={messages} isLoading={isLoading} />
+      </div>
+
+      {/* Smart Tips */}
+      <SmartTips 
+        tips={contextualTips}
+        onTipClick={handleTipClick}
+        isVisible={shouldShowTips}
+      />
 
       {/* Quick Actions & Input */}
       <div className="px-4 pb-3">
@@ -67,7 +146,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
         
         <div className="text-[10px] text-muted-foreground pt-1 pl-1">
-          AI-powered • Context-aware assistance
+          Innovation isn't a luxury. It's a necessity. MBACIO brings affordable tech breakthroughs to mid-market businesses.
         </div>
       </div>
     </div>
