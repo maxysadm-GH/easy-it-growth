@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useBackgroundDetection } from '@/hooks/useBackgroundDetection';
 import CTAButton from '@/components/ui/cta-button';
@@ -28,6 +27,8 @@ const EnhancedQuickActions: React.FC<EnhancedQuickActionsProps> = ({
       'Book Assessment': 'book-assessment',
       'Get Service Pricing': 'book-assessment',
       'Schedule Demo': 'book-assessment',
+      'Book Your Free Assessment': 'book-assessment',
+      'Talk with Engineer': 'book-assessment',
     };
     
     return actionMap[action] || null;
@@ -36,7 +37,11 @@ const EnhancedQuickActions: React.FC<EnhancedQuickActionsProps> = ({
   const handleActionClick = async (action: string) => {
     const ctaId = getCTAForAction(action);
     
-    if (ctaId) {
+    // Always prioritize booking actions - they work without AI
+    if (ctaId === 'book-assessment' || action.toLowerCase().includes('book') || 
+        action.toLowerCase().includes('schedule') || action.toLowerCase().includes('consultation')) {
+      onDirectCTA(ctaId || 'book-assessment');
+    } else if (ctaId) {
       onDirectCTA(ctaId);
     } else {
       await onActionClick(action);
@@ -48,6 +53,23 @@ const EnhancedQuickActions: React.FC<EnhancedQuickActionsProps> = ({
       {actions.map((action) => {
         const ctaId = getCTAForAction(action);
         
+        // Prioritize booking/consultation actions with CTAButton
+        if (ctaId === 'book-assessment' || action.toLowerCase().includes('book') || 
+            action.toLowerCase().includes('schedule') || action.toLowerCase().includes('consultation')) {
+          return (
+            <CTAButton
+              key={action}
+              ctaId="book-assessment"
+              variant="yellow"
+              size="sm"
+              showIcon={false}
+              className="px-3 py-1 text-xs font-semibold"
+              customConfig={{ text: action }}
+            />
+          );
+        }
+
+        // Other CTA actions
         if (ctaId) {
           return (
             <CTAButton
@@ -61,6 +83,7 @@ const EnhancedQuickActions: React.FC<EnhancedQuickActionsProps> = ({
           );
         }
 
+        // Regular action buttons
         return (
           <button
             key={action}

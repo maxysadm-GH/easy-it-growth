@@ -78,13 +78,27 @@ serve(async (req) => {
   try {
     const { message, pageContext } = await req.json();
     
+    // Health check endpoint
+    if (message === 'health check') {
+      return new Response(
+        JSON.stringify({ status: 'healthy', timestamp: new Date().toISOString() }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+    
     if (!message) {
       throw new Error('Message is required');
     }
 
     const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
     if (!openAIApiKey) {
-      throw new Error('OpenAI API key not configured');
+      // Return booking-focused fallback when API key is missing
+      return new Response(
+        JSON.stringify({ 
+          reply: "I'm currently unavailable, but you can easily book your free IT assessment using the 'Book Assessment' button below, or call us directly at (773) 657-2300. Our team is ready to help transform your business with IT automation and consulting services!"
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
     const pageGuidance = getPageSpecificContext(pageContext || 'Homepage');
@@ -121,6 +135,7 @@ INSTRUCTIONS:
 - Actively suggest relevant assessment tools when discussing potential problems or improvements
 - Guide conversations toward pain point discovery and solution matching
 - When users show interest, proactively suggest scheduling consultations
+- ALWAYS end responses with booking encouragement when appropriate
 
 ASSESSMENT TOOLS PROMOTION:
 - Mention specific calculators when relevant (ROI, downtime cost, vendor consolidation, etc.)
@@ -132,6 +147,12 @@ LEAD QUALIFICATION:
 - Identify automation opportunities and pain points
 - Suggest relevant services based on their responses
 - Guide toward scheduling when users show qualified interest
+
+BOOKING PRIORITY:
+- Always prioritize getting users to book assessments
+- Make booking suggestions natural and helpful
+- Emphasize the free, no-obligation nature of consultations
+- Mention immediate availability and bilingual support
 
 SOURCE ATTRIBUTION:
 When providing information, you can reference "According to MBACIO's service offerings..." or "Based on MBACIO's expertise..." to show knowledge source.`
@@ -148,7 +169,15 @@ When providing information, you can reference "According to MBACIO's service off
 
     if (!response.ok) {
       const error = await response.text();
-      throw new Error(`OpenAI API error: ${error}`);
+      console.error('OpenAI API error:', error);
+      
+      // Return booking-focused fallback for API errors
+      return new Response(
+        JSON.stringify({ 
+          reply: "I'm experiencing some technical difficulties right now, but don't let that stop you! You can still book your free IT assessment using the booking button, or call us directly at (773) 657-2300. Our experts are standing by to help you with automation, cybersecurity, and IT consulting needs."
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
     const data = await response.json();
@@ -167,12 +196,14 @@ When providing information, you can reference "According to MBACIO's service off
 
   } catch (error) {
     console.error('Error in chat-assistant function:', error);
+    
+    // Return booking-focused fallback for any errors
     return new Response(
       JSON.stringify({ 
-        error: 'Sorry, I encountered an error. Please try again or call (773) 657-2300 for immediate assistance.' 
+        reply: "I'm having some technical issues, but you can still get help! Book your free IT assessment using the button below, or call (773) 657-2300 for immediate assistance. Our bilingual team is ready to discuss your automation and IT consulting needs!"
       }),
       {
-        status: 500,
+        status: 200, // Return 200 to avoid frontend errors
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );

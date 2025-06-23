@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { X, Menu, User } from "lucide-react";
 import ChatMessages from './ChatMessages';
@@ -10,6 +9,10 @@ import BookingPopup from '@/components/BookingPopup';
 import { Message } from '@/types/chat';
 import { getContextualTips, SmartTip } from '@/data/smartTips';
 import { useBackgroundDetection } from '@/hooks/useBackgroundDetection';
+import ChatHealthMonitor from '@/components/ChatHealthMonitor';
+import OfflineWelcome from '@/components/OfflineWelcome';
+import DirectBookingActions from '@/components/DirectBookingActions';
+import EnhancedQuickActions from '@/components/EnhancedQuickActions';
 
 const assistantIconUrl = "/lovable-uploads/6c02622d-f929-4272-8fb2-56a68e33cc30.png";
 
@@ -35,11 +38,15 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showTips, setShowTips] = useState(true);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isAIHealthy, setIsAIHealthy] = useState(true);
   const backgroundContext = useBackgroundDetection();
   
   const currentQuickActions = messages.length <= 1 ? quickActions : [];
   const contextualTips = getContextualTips(pageName.toLowerCase(), messages.length);
   const shouldShowTips = showTips && messages.length > 1 && messages.length % 3 === 0;
+
+  // Show offline welcome if AI is down and no messages yet
+  const showOfflineWelcome = !isAIHealthy && messages.length <= 1;
 
   const handleMenuAction = async (action: string) => {
     setIsMenuOpen(false);
@@ -73,6 +80,10 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 
   const handleTalkWithEngineer = () => {
     setIsBookingOpen(true);
+  };
+
+  const handleAIHealthChange = (healthy: boolean) => {
+    setIsAIHealthy(healthy);
   };
 
   // Enhanced height calculation for better expansion
@@ -136,16 +147,17 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             <img src={assistantIconUrl} className="relative w-8 h-8 rounded-full" alt="Assistant Icon" />
           </div>
           
-          {/* Title */}
+          {/* Title with AI Health Status */}
           <div className="flex-1">
-            <div 
-              className="font-bold text-sm transition-all duration-300"
-              style={{ 
-                color: backgroundContext.adaptiveColors.textColor,
-                textShadow: backgroundContext.adaptiveColors.textShadow
-              }}
-            >
-              MBACIO Assistant
+            <div className="flex items-center gap-2">
+              <div className="font-bold text-sm transition-all duration-300"
+                   style={{ 
+                     color: backgroundContext.adaptiveColors.textColor,
+                     textShadow: backgroundContext.adaptiveColors.textShadow
+                   }}>
+                MBACIO Assistant
+              </div>
+              <ChatHealthMonitor onHealthChange={handleAIHealthChange} />
             </div>
             <div 
               className="text-xs font-normal transition-all duration-300"
@@ -156,11 +168,11 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
                 textShadow: backgroundContext.adaptiveColors.textShadow
               }}
             >
-              Powered by AI • {pageName}
+              {isAIHealthy ? `Powered by AI • ${pageName}` : `Always Available • ${pageName}`}
             </div>
           </div>
           
-          {/* Talk with Engineer Button */}
+          {/* Talk with Engineer Button - Always Available */}
           <button
             className="mx-2 p-1 rounded border transition-all duration-200 hover:bg-white/25 backdrop-blur-sm"
             style={{ 
@@ -223,54 +235,69 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           />
         </div>
 
-        {/* Messages Area - Now properly scrollable */}
+        {/* Messages Area or Offline Welcome */}
         <div className="flex-1 min-h-0 overflow-hidden">
-          <ChatMessages messages={messages} isLoading={isLoading} />
+          {showOfflineWelcome ? (
+            <OfflineWelcome onBookingClick={() => setIsBookingOpen(true)} />
+          ) : (
+            <ChatMessages messages={messages} isLoading={isLoading} />
+          )}
         </div>
 
         {/* Smart Tips */}
-        <SmartTips 
-          tips={contextualTips}
-          onTipClick={handleTipClick}
-          isVisible={shouldShowTips}
-        />
+        {!showOfflineWelcome && (
+          <SmartTips 
+            tips={contextualTips}
+            onTipClick={handleTipClick}
+            isVisible={shouldShowTips}
+          />
+        )}
 
         {/* Input Area */}
-        <div 
-          className="px-4 pb-3 border-t border-white/30 flex-shrink-0"
-          style={{
-            backdropFilter: 'blur(20px)',
-            background: backgroundContext.adaptiveColors.footerBackground
-          }}
-        >
-          <QuickActions 
-            actions={currentQuickActions}
-            onActionClick={onQuickAction}
-            isLoading={isLoading}
-          />
+        {!showOfflineWelcome && (
+          <div className="px-4 pb-3 border-t border-white/30 flex-shrink-0"
+               style={{
+                 backdropFilter: 'blur(20px)',
+                 background: backgroundContext.adaptiveColors.footerBackground
+               }}>
+            
+            {/* Always show direct booking for critical actions */}
+            {!isAIHealthy && (
+              <DirectBookingActions onBookingClick={() => setIsBookingOpen(true)} variant="compact" />
+            )}
+            
+            <EnhancedQuickActions 
+              actions={currentQuickActions}
+              onActionClick={onQuickAction}
+              onDirectCTA={() => setIsBookingOpen(true)}
+              isLoading={isLoading}
+            />
 
-          <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
-          
-          {/* Footer */}
-          <div 
-            className="text-[10px] pt-2 pl-1 font-medium transition-all duration-300 px-2 py-1 rounded-md mt-1"
-            style={{ 
-              color: backgroundContext.adaptiveColors.footerTextColor,
-              textShadow: backgroundContext.adaptiveColors.textShadow,
-              background: backgroundContext.isBlueBackground 
-                ? 'rgba(17, 45, 78, 0.4)' 
-                : 'rgba(255, 255, 255, 0.5)',
-              backdropFilter: 'blur(10px)',
-              border: `1px solid ${backgroundContext.isBlueBackground ? 'rgba(250, 207, 57, 0.3)' : 'rgba(17, 45, 78, 0.2)'}`,
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            Innovation isn't a luxury. It's a necessity. MBACIO brings affordable tech breakthroughs to mid-market businesses.
+            {isAIHealthy && (
+              <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
+            )}
+            
+            {/* Footer */}
+            <div 
+              className="text-[10px] pt-2 pl-1 font-medium transition-all duration-300 px-2 py-1 rounded-md mt-1"
+              style={{ 
+                color: backgroundContext.adaptiveColors.footerTextColor,
+                textShadow: backgroundContext.adaptiveColors.textShadow,
+                background: backgroundContext.isBlueBackground 
+                  ? 'rgba(17, 45, 78, 0.4)' 
+                  : 'rgba(255, 255, 255, 0.5)',
+                backdropFilter: 'blur(10px)',
+                border: `1px solid ${backgroundContext.isBlueBackground ? 'rgba(250, 207, 57, 0.3)' : 'rgba(17, 45, 78, 0.2)'}`,
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              Innovation isn't a luxury. It's a necessity. MBACIO brings affordable tech breakthroughs to mid-market businesses.
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* Booking Popup */}
+      {/* Booking Popup - Always Available */}
       <BookingPopup 
         isOpen={isBookingOpen} 
         onClose={() => setIsBookingOpen(false)} 
