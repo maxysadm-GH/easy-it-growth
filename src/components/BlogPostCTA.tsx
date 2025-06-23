@@ -1,7 +1,22 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { BlogPost } from '@/integrations/supabase/types';
+
+// Define the BlogPost type locally to match what we expect
+interface BlogPost {
+  id: string;
+  title: string;
+  author: string | null;
+  date: string | null;
+  created_at: string;
+  seo_keyword: string | null;
+  body: string | null;
+  hero_image_url: string | null;
+  embedded_c: string | null;
+  cta_text: string | null;
+  cta_link: string | null;
+  slug?: string;
+}
 
 interface BlogPostCTAProps {
   post: BlogPost;
