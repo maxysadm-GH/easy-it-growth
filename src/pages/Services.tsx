@@ -1,4 +1,3 @@
-
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import CTAButton from '@/components/ui/cta-button';
@@ -105,14 +104,14 @@ const industryFocus = [
     description: "ERP/MRP integration specialists with IoT data management and supply chain visibility.",
     caseStudy: "How We Helped a Food Manufacturer Reduce Downtime by 40%",
     features: ["ERP/MRP Integration", "IoT Sensor Management", "Supply Chain Dashboards", "Bilingual Production Reports"],
-    link: "/erp-mrp-client"
+    link: "/ideal-client/erp-mrp"
   },
   {
     title: "CPA & Professional Services",
     description: "QuickBooks integration, document automation, and client portals with bilingual interfaces.",
     caseStudy: "From Paper to Profit: A Chicago CPA Firm's Digital Transformation",
     features: ["Practice Management Integration", "Document Automation", "Bilingual Client Portals", "Compliance Tracking"],
-    link: "/cpa-law-client"
+    link: "/ideal-client/cpa-law"
   }
 ];
 
