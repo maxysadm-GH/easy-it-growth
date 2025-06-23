@@ -56,19 +56,7 @@ const EnhancedQuickActions: React.FC<EnhancedQuickActionsProps> = ({
               variant="outline"
               size="sm"
               showIcon={false}
-              className="px-3 py-1 text-xs font-semibold"
-              style={{
-                background: backgroundContext.isBlueBackground 
-                  ? 'rgba(250, 207, 57, 0.3)' 
-                  : 'rgba(250, 207, 57, 0.25)',
-                backdropFilter: 'blur(15px) saturate(150%)',
-                border: backgroundContext.isBlueBackground 
-                  ? '1px solid rgba(250, 207, 57, 0.5)' 
-                  : '1px solid rgba(250, 207, 57, 0.4)',
-                color: backgroundContext.isBlueBackground 
-                  ? 'rgba(17, 45, 78, 0.98)' 
-                  : 'rgba(17, 45, 78, 0.95)',
-              }}
+              className="px-3 py-1 text-xs font-semibold border transition-all duration-200"
             />
           );
         }
