@@ -10,13 +10,45 @@ const corsHeaders = {
 const MBACIO_KNOWLEDGE = `
 MBACIO is a bilingual IT consulting company based in Bannockburn, Illinois, serving businesses nationwide.
 
-CORE SERVICES:
-- IT Consulting & Strategy
-- Managed IT & Cybersecurity  
-- Automation & AI Solutions
-- ERP/MRP Integration (Fishbowl, Acumatica, QuickBooks)
-- Cloud Migrations & Infrastructure
-- Dashboard Solutions & Business Intelligence
+CORE SERVICES WITH SPECIFIC LINKS:
+
+1. **IT Consulting & Strategy** - We help align your technology with business goals
+   - Learn more: /services (Services page)
+   - Assessment: /tools/automation-roi (ROI Calculator)
+   - Case study: Our chocolate manufacturer client reduced IT tickets by 70%
+
+2. **Managed IT & Cybersecurity** - Complete protection and support
+   - Learn more: /services (Services page) 
+   - Risk assessment: /tools/cyber-risk (Security Risk Assessment)
+   - Real results: 24/7 monitoring prevented major downtime for manufacturing clients
+
+3. **Automation & AI Solutions** - Streamline processes and reduce costs
+   - Learn more: /services (Services page)
+   - Calculate savings: /tools/automation-roi (Automation ROI Calculator)
+   - Success story: 6+ admin hours reclaimed per week through automation
+
+4. **ERP/MRP Integration** - Seamless integration with Fishbowl, Acumatica, QuickBooks
+   - Learn more: /services (Services page)
+   - For manufacturers: We specialize in food & beverage operations
+   - Case study: /case-studies (Real client transformations)
+
+5. **Cloud Migrations & Infrastructure** - Scalable, flexible cloud solutions
+   - Learn more: /services (Services page)
+   - Migration planning: /tools/cloud-migration (Cloud Migration Calculator)
+   - Vendor savings: /tools/vendor-consolidation (Consolidation Calculator)
+
+6. **Dashboard Solutions & Business Intelligence** - Data-driven decision making
+   - Learn more: /services (Services page)
+   - Productivity gains: /tools/staff-productivity (Staff Productivity Analyzer)
+   - Live dashboards: 24/7 monitoring across production & finance operations
+
+ASSESSMENT TOOLS:
+- Automation ROI Calculator: /tools/automation-roi
+- Cybersecurity Risk Assessment: /tools/cyber-risk  
+- Cloud Migration Calculator: /tools/cloud-migration
+- Downtime Cost Calculator: /tools/downtime-cost
+- Vendor Consolidation Tool: /tools/vendor-consolidation
+- Staff Productivity Analyzer: /tools/staff-productivity
 
 SPECIALIZATIONS:
 - Manufacturing companies (especially food & beverage)
@@ -26,18 +58,11 @@ SPECIALIZATIONS:
 
 KEY DIFFERENTIATORS:
 - 100% Bilingual support (English/Spanish)
-- Real-world experience with every tool they recommend
+- Real-world experience with every tool we recommend
 - Agile methodology approach
 - 60-day satisfaction warranty
 - 24/7 support and monitoring
 - Nationwide service from Chicago/Bannockburn base
-
-ASSESSMENT TOOLS:
-- Automation ROI Calculator: Helps calculate potential savings from automation
-- Downtime Cost Calculator: Estimates the cost of IT downtime
-- Vendor Consolidation Tool: Analyzes potential savings from consolidating vendors
-- Cloud Migration Calculator: Estimates cloud migration benefits
-- Staff Productivity Analyzer: Measures productivity gains from IT improvements
 
 GUARANTEES:
 - ROI guaranteed in 6 weeks
@@ -53,21 +78,21 @@ CONTACT INFO:
 - Emergency Support: 24/7
 
 BOOKING:
-Direct users to book free assessments through the website's booking popup or by calling.
+Direct users to use the floating booking widget on the left side of their screen for immediate booking access.
 `;
 
 const getPageSpecificContext = (pageContext: string): string => {
   const contextMap: Record<string, string> = {
-    'Homepage': 'Focus on introducing MBACIO services, assessment tools, and encouraging free consultations.',
-    'Services': 'Emphasize specific service details, pricing discussions, and matching solutions to user needs.',
-    'Why Us': 'Highlight unique differentiators, guarantees, bilingual support, and real-world experience.',
-    'Assessment Tools': 'Help users understand and use assessment tools, interpret results, and suggest next steps.',
-    'Blog': 'Connect blog content to user\'s potential needs and suggest relevant services or tools.',
-    'Case Studies': 'Find parallels between case studies and user\'s business, discuss similar opportunities.',
-    'Specific Tool': 'Help interpret assessment tool results and translate findings into actionable recommendations.'
+    'Homepage': 'Focus on introducing MBACIO services with specific links, assessment tools, and encouraging free consultations. Mention the booking widget.',
+    'Services': 'Emphasize specific service details with direct links, pricing discussions, and matching solutions to user needs.',
+    'Why Us': 'Highlight unique differentiators, guarantees, bilingual support, and real-world experience with specific examples.',
+    'Assessment Tools': 'Help users understand and use assessment tools, interpret results, and suggest next steps. Link to relevant services.',
+    'Blog': 'Connect blog content to user\'s potential needs and suggest relevant services or tools with specific links.',
+    'Case Studies': 'Reference the chocolate manufacturer case study and discuss similar opportunities. Link to relevant assessment tools.',
+    'Specific Tool': 'Help interpret assessment tool results and translate findings into actionable recommendations with service links.'
   };
   
-  return contextMap[pageContext] || 'Provide helpful information about MBACIO services and guide toward relevant solutions.';
+  return contextMap[pageContext] || 'Provide helpful information about MBACIO services with specific links and guide toward relevant solutions.';
 };
 
 serve(async (req) => {
@@ -92,10 +117,9 @@ serve(async (req) => {
 
     const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
     if (!openAIApiKey) {
-      // Return booking-focused fallback when API key is missing
       return new Response(
         JSON.stringify({ 
-          reply: "I'm currently unavailable, but you can easily book your free IT assessment using the 'Book Assessment' button below, or call us directly at (773) 657-2300. Our team is ready to help transform your business with IT automation and consulting services!"
+          reply: "I'm currently unavailable, but you can easily book your free IT assessment using the yellow booking widget on the left side of your screen, or call us directly at (773) 657-2300. Our team is ready to help transform your business with IT automation and consulting services!"
         }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
@@ -122,47 +146,48 @@ ${MBACIO_KNOWLEDGE}
 PAGE CONTEXT GUIDANCE:
 ${pageGuidance}
 
+RESPONSE STYLE INSTRUCTIONS:
+- Write in a conversational, engaging tone - avoid robotic bullet points
+- Instead of "Here's a summary of our services:", use phrases like "I'd love to tell you about how we can help your business thrive"
+- Focus on benefits and outcomes, not just features
+- Include specific links using the format: "You can learn more at [page description](link)"
+- Reference real results and case studies when relevant
+- End with clear, actionable next steps
+
+SERVICE RESPONSE FORMAT:
+When discussing services, use this natural, benefit-focused approach:
+
+"Great question! MBACIO specializes in helping businesses like yours overcome IT challenges and unlock growth opportunities.
+
+**IT Consulting & Strategy** helps you align technology with your business goals. We've helped clients like our chocolate manufacturer reduce IT support tickets by 70% in just 90 days. [Explore our services](/services) or [calculate your potential ROI](/tools/automation-roi).
+
+**Automation & AI Solutions** can transform your operations - imagine reclaiming 6+ hours per week from manual tasks! [See real automation results](/case-studies) or [try our ROI calculator](/tools/automation-roi).
+
+**Cybersecurity & Managed IT** provides 24/7 protection and support. [Assess your current security risk](/tools/cyber-risk) or [learn about our comprehensive approach](/services).
+
+The best part? We guarantee ROI in 6 weeks with our 60-day satisfaction warranty. Ready to see what's possible for your business?"
+
 INSTRUCTIONS:
 - Always be helpful, professional, and knowledgeable about MBACIO's services
-- Provide specific, actionable information about IT solutions
-- When discussing services, mention relevant benefits and differentiators
-- If asked about pricing, explain that it varies by project and suggest a free assessment
-- Always offer to help users book a free consultation when appropriate
-- Mention the 60-day satisfaction warranty when relevant
-- Be concise but informative - aim for responses under 150 words unless complex explanations are needed
-- If you don't know something specific, be honest and offer to connect them with a human
-- Remember that MBACIO serves businesses nationwide with bilingual support
-- Actively suggest relevant assessment tools when discussing potential problems or improvements
-- Guide conversations toward pain point discovery and solution matching
-- When users show interest, proactively suggest scheduling consultations
-- ALWAYS end responses with booking encouragement when appropriate
-
-ASSESSMENT TOOLS PROMOTION:
-- Mention specific calculators when relevant (ROI, downtime cost, vendor consolidation, etc.)
-- Explain how tools help identify opportunities and quantify benefits
-- Suggest using multiple tools for comprehensive analysis
-
-LEAD QUALIFICATION:
-- Ask about business size, industry, current IT challenges
-- Identify automation opportunities and pain points
-- Suggest relevant services based on their responses
-- Guide toward scheduling when users show qualified interest
+- Provide specific, actionable information with relevant links
+- When discussing services, mention relevant benefits, tools, and case studies
+- Guide users to use the booking widget on the left side of their screen for immediate assistance
+- Be concise but informative - aim for responses under 200 words unless complex explanations are needed
+- Always end with encouragement to take the next step (booking, assessment, etc.)
+- Reference specific case studies and results when relevant
+- Mention the bilingual support and nationwide service when appropriate
 
 BOOKING PRIORITY:
-- Always prioritize getting users to book assessments
-- Make booking suggestions natural and helpful
+- Always mention the booking widget on the left side of the screen
 - Emphasize the free, no-obligation nature of consultations
-- Mention immediate availability and bilingual support
-
-SOURCE ATTRIBUTION:
-When providing information, you can reference "According to MBACIO's service offerings..." or "Based on MBACIO's expertise..." to show knowledge source.`
+- Highlight immediate availability and expert support`
           },
           {
             role: 'user',
             content: message
           }
         ],
-        max_tokens: 400,
+        max_tokens: 500,
         temperature: 0.7,
       }),
     });
@@ -171,10 +196,9 @@ When providing information, you can reference "According to MBACIO's service off
       const error = await response.text();
       console.error('OpenAI API error:', error);
       
-      // Return booking-focused fallback for API errors
       return new Response(
         JSON.stringify({ 
-          reply: "I'm experiencing some technical difficulties right now, but don't let that stop you! You can still book your free IT assessment using the booking button, or call us directly at (773) 657-2300. Our experts are standing by to help you with automation, cybersecurity, and IT consulting needs."
+          reply: "I'm experiencing some technical difficulties right now, but don't let that stop you! You can still book your free IT assessment using the yellow booking widget on the left side of your screen, or call us directly at (773) 657-2300. Our experts are standing by to help you with automation, cybersecurity, and IT consulting needs."
         }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
@@ -197,13 +221,12 @@ When providing information, you can reference "According to MBACIO's service off
   } catch (error) {
     console.error('Error in chat-assistant function:', error);
     
-    // Return booking-focused fallback for any errors
     return new Response(
       JSON.stringify({ 
-        reply: "I'm having some technical issues, but you can still get help! Book your free IT assessment using the button below, or call (773) 657-2300 for immediate assistance. Our bilingual team is ready to discuss your automation and IT consulting needs!"
+        reply: "I'm having some technical issues, but you can still get help! Use the yellow booking widget on the left side of your screen to book your free IT assessment, or call (773) 657-2300 for immediate assistance. Our bilingual team is ready to discuss your automation and IT consulting needs!"
       }),
       {
-        status: 200, // Return 200 to avoid frontend errors
+        status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );

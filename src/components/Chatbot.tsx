@@ -6,6 +6,7 @@ import { useBackgroundDetection } from "@/hooks/useBackgroundDetection";
 import { Message } from "@/types/chat";
 import ChatButton from "./chat/ChatButton";
 import ChatWindow from "./chat/ChatWindow";
+import FloatingBookingWidget from "./FloatingBookingWidget";
 
 const Chatbot = () => {
   const [open, setOpen] = useState(false);
@@ -151,6 +152,8 @@ const Chatbot = () => {
           onQuickAction={handleQuickAction}
         />
       )}
+
+      <FloatingBookingWidget />
     </>
   );
 };

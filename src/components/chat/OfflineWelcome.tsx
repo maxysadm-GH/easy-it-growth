@@ -1,14 +1,9 @@
 
 import React from 'react';
-import { Bot, Calendar, AlertCircle } from 'lucide-react';
+import { Bot, AlertCircle } from 'lucide-react';
 import { useBackgroundDetection } from '@/hooks/useBackgroundDetection';
-import CTAButton from '@/components/ui/cta-button';
 
-interface OfflineWelcomeProps {
-  onBookingClick: () => void;
-}
-
-const OfflineWelcome: React.FC<OfflineWelcomeProps> = ({ onBookingClick }) => {
+const OfflineWelcome: React.FC = () => {
   const backgroundContext = useBackgroundDetection();
 
   return (
@@ -35,39 +30,16 @@ const OfflineWelcome: React.FC<OfflineWelcomeProps> = ({ onBookingClick }) => {
           className="text-xs leading-relaxed mb-3"
           style={{ color: backgroundContext.adaptiveColors.textColor, opacity: 0.95 }}
         >
-          Our AI assistant is temporarily busy, but you can still get immediate help! Book your free IT assessment or call us directly.
+          Our AI assistant is temporarily busy, but you can still get immediate help! Use the booking widget on the left side of your screen to book your free IT assessment or call us directly.
         </p>
         
-        <CTAButton
-          ctaId="book-assessment"
-          variant="yellow"
-          size="sm"
-          showIcon={true}
-          className="w-full mb-2"
-          customConfig={{ text: 'Book Free IT Assessment' }}
-        />
-        
-        <div className="flex gap-2 text-xs">
-          <a
-            href="tel:+17736572300"
-            className="flex-1 text-center py-2 px-3 rounded border transition-all duration-200 hover:bg-white/20"
-            style={{ 
-              color: backgroundContext.adaptiveColors.textColor,
-              borderColor: backgroundContext.isBlueBackground ? 'rgba(250, 207, 57, 0.3)' : 'rgba(250, 207, 57, 0.2)'
-            }}
-          >
-            📞 (773) 657-2300
-          </a>
-          <a
-            href="mailto:info@mbacio.com"
-            className="flex-1 text-center py-2 px-3 rounded border transition-all duration-200 hover:bg-white/20"
-            style={{ 
-              color: backgroundContext.adaptiveColors.textColor,
-              borderColor: backgroundContext.isBlueBackground ? 'rgba(250, 207, 57, 0.3)' : 'rgba(250, 207, 57, 0.2)'
-            }}
-          >
-            ✉️ Email
-          </a>
+        <div className="flex items-center gap-2 text-xs p-2 rounded"
+             style={{ 
+               background: 'rgba(255, 165, 0, 0.1)',
+               color: 'rgba(255, 165, 0, 0.9)'
+             }}>
+          <AlertCircle className="w-4 h-4" />
+          <span>Check the yellow booking widget on the bottom left for immediate assistance!</span>
         </div>
       </div>
     </div>
