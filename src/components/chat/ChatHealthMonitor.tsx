@@ -22,7 +22,8 @@ const ChatHealthMonitor: React.FC<ChatHealthMonitorProps> = ({ onHealthChange })
         body: { message: 'health check' }
       });
 
-      const healthy = !error && data?.reply;
+      // Fix: Check for status === 'healthy' instead of just data?.reply
+      const healthy = !error && data?.status === 'healthy';
       console.log('AI Health Check:', { healthy, error, data });
       return healthy;
     } catch (error) {
