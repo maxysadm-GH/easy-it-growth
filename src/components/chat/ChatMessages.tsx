@@ -23,15 +23,26 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
       {messages.map((msg, i) => (
         <div
           key={i}
-          className={`mb-2 max-w-[85%] rounded-lg px-3 py-2 break-words ${
+          className={`mb-2 max-w-[85%] rounded-lg px-3 py-2 break-words backdrop-blur-sm ${
             msg.from === "bot"
-              ? "bg-gradient-yellow/25 text-navy ml-0"
-              : "bg-accent text-navy ml-auto mr-0"
+              ? "ml-0"
+              : "ml-auto mr-0"
           }`}
           style={
             msg.from === "bot"
-              ? { borderLeft: "4px solid #FACF39" }
-              : { borderRight: "4px solid #FACF39" }
+              ? { 
+                  borderLeft: "4px solid #FACF39",
+                  background: 'linear-gradient(135deg, rgba(250, 207, 57, 0.25), rgba(249, 195, 7, 0.15))',
+                  backdropFilter: 'blur(8px)',
+                  color: '#112d4e'
+                }
+              : { 
+                  borderRight: "4px solid #FACF39",
+                  background: 'rgba(250, 207, 57, 0.9)',
+                  backdropFilter: 'blur(8px)',
+                  color: '#112d4e',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                }
           }
         >
           <div className="whitespace-pre-wrap">{msg.text}</div>
@@ -42,7 +53,15 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
       ))}
       
       {isLoading && (
-        <div className="bg-gradient-yellow/25 text-navy ml-0 max-w-[85%] rounded-lg px-3 py-2" style={{ borderLeft: "4px solid #FACF39" }}>
+        <div 
+          className="ml-0 max-w-[85%] rounded-lg px-3 py-2 backdrop-blur-sm" 
+          style={{ 
+            borderLeft: "4px solid #FACF39",
+            background: 'linear-gradient(135deg, rgba(250, 207, 57, 0.25), rgba(249, 195, 7, 0.15))',
+            backdropFilter: 'blur(8px)',
+            color: '#112d4e'
+          }}
+        >
           <div className="flex items-center gap-1">
             <div className="flex gap-1">
               <div className="w-2 h-2 bg-navy rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>

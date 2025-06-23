@@ -28,14 +28,21 @@ const ChatMenu: React.FC<ChatMenuProps> = ({ isOpen, onToggle, onMenuAction, onC
   if (!isOpen) return null;
 
   return (
-    <div className="absolute top-12 left-0 right-0 bg-white border border-accent rounded-lg shadow-xl z-50 mx-2">
+    <div 
+      className="absolute top-12 left-0 right-0 mx-2 z-50 backdrop-blur-md border border-white/20 rounded-lg shadow-xl"
+      style={{
+        backdropFilter: 'blur(16px) saturate(180%)',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+      }}
+    >
       <div className="py-2">
         {menuItems.map((item) => {
           const IconComponent = item.icon;
           return (
             <button
               key={item.action}
-              className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gradient-yellow/20 transition-colors text-navy"
+              className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gradient-yellow/30 transition-all duration-200 text-navy backdrop-blur-sm"
               onClick={() => handleMenuClick(item.action)}
             >
               <IconComponent className="w-4 h-4" />

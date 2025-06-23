@@ -73,11 +73,20 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 
   return (
     <div 
-      className="fixed bottom-24 right-6 z-50 max-w-sm w-full bg-white rounded-2xl shadow-2xl border border-accent flex flex-col animate-fade-in"
-      style={{ maxHeight: getMaxHeight() }}
+      className="fixed bottom-24 right-6 z-50 max-w-sm w-full backdrop-blur-md bg-white/90 border border-white/20 rounded-2xl shadow-2xl flex flex-col animate-fade-in"
+      style={{ 
+        maxHeight: getMaxHeight(),
+        backdropFilter: 'blur(16px) saturate(180%)',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+      }}
     >
-      {/* Header */}
-      <div className="relative flex items-center px-4 py-3 border-b bg-gradient-yellow text-navy rounded-t-2xl font-bold drop-shadow-header">
+      {/* Header with glass effect */}
+      <div className="relative flex items-center px-4 py-3 border-b border-white/20 rounded-t-2xl font-bold drop-shadow-header"
+           style={{
+             background: 'linear-gradient(135deg, rgba(250, 207, 57, 0.9), rgba(249, 195, 7, 0.9))',
+             backdropFilter: 'blur(8px) saturate(150%)'
+           }}>
         <button
           className="mr-2 text-navy hover:text-deep-blue transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -88,12 +97,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         
         <img src={assistantIconUrl} className="w-8 h-8 mr-2" alt="Assistant Icon" />
         <div className="flex-1">
-          <div className="font-bold">MBACIO Assistant</div>
-          <div className="text-xs font-normal opacity-75">Powered by AI • {pageName}</div>
+          <div className="font-bold text-navy">MBACIO Assistant</div>
+          <div className="text-xs font-normal text-navy/75">Powered by AI • {pageName}</div>
         </div>
         
         <button
-          className="mx-2 text-navy hover:text-deep-blue transition-colors p-1 rounded border border-navy/20 hover:bg-white/20"
+          className="mx-2 text-navy hover:text-deep-blue transition-colors p-1 rounded border border-navy/20 hover:bg-white/20 backdrop-blur-sm"
           onClick={handleTalkWithEngineer}
           aria-label="Talk with Engineer"
           title="Talk with Engineer"
@@ -108,7 +117,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           draggable={false}
         />
         <button
-          className="ml-2 text-navy hover:text-red-500 text-xl font-bold"
+          className="ml-2 text-navy hover:text-red-500 text-xl font-bold transition-colors"
           onClick={onClose}
           aria-label="Close Chat"
         >
@@ -123,20 +132,20 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         />
       </div>
 
-      {/* Messages - Now with flex-1 to grow */}
-      <div className="flex-1 overflow-hidden">
+      {/* Messages with glass backdrop */}
+      <div className="flex-1 overflow-hidden backdrop-blur-sm">
         <ChatMessages messages={messages} isLoading={isLoading} />
       </div>
 
-      {/* Smart Tips */}
+      {/* Smart Tips with glass effect */}
       <SmartTips 
         tips={contextualTips}
         onTipClick={handleTipClick}
         isVisible={shouldShowTips}
       />
 
-      {/* Quick Actions & Input */}
-      <div className="px-4 pb-3">
+      {/* Quick Actions & Input with glass effect */}
+      <div className="px-4 pb-3 backdrop-blur-sm bg-white/5 rounded-b-2xl">
         <QuickActions 
           actions={currentQuickActions}
           onActionClick={onQuickAction}
@@ -145,7 +154,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 
         <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
         
-        <div className="text-[10px] text-muted-foreground pt-1 pl-1">
+        <div className="text-[10px] text-navy/60 pt-1 pl-1 font-medium">
           Innovation isn't a luxury. It's a necessity. MBACIO brings affordable tech breakthroughs to mid-market businesses.
         </div>
       </div>
