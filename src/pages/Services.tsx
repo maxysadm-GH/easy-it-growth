@@ -38,7 +38,7 @@ const services = [
     icon: Cloud,
     title: "Cloud Migration & Microsoft 365",
     description: "Zero-downtime migration, management, and optimization using our Agile methodology - we've done our own 3 times!",
-    superpower: "Dogfooding Philosophy",
+    superpower: "Real-World Experience",
     features: ["Zero-Downtime Migrations", "Agile Implementation", "Proven Experience", "Multi-Language Support"]
   },
   {
@@ -93,9 +93,9 @@ const superpowers = [
   },
   {
     icon: Award,
-    title: "Dogfooding Philosophy",
+    title: "Real-World Experience",
     description: "We use every tool we recommend, ensuring authentic experience and understanding of your challenges.",
-    highlight: "Real-World Testing"
+    highlight: "Battle-Tested Solutions"
   }
 ];
 
@@ -104,13 +104,15 @@ const industryFocus = [
     title: "Manufacturing Excellence",
     description: "ERP/MRP integration specialists with IoT data management and supply chain visibility.",
     caseStudy: "How We Helped a Food Manufacturer Reduce Downtime by 40%",
-    features: ["ERP/MRP Integration", "IoT Sensor Management", "Supply Chain Dashboards", "Bilingual Production Reports"]
+    features: ["ERP/MRP Integration", "IoT Sensor Management", "Supply Chain Dashboards", "Bilingual Production Reports"],
+    link: "/erp-mrp-client"
   },
   {
     title: "CPA & Professional Services",
     description: "QuickBooks integration, document automation, and client portals with bilingual interfaces.",
     caseStudy: "From Paper to Profit: A Chicago CPA Firm's Digital Transformation",
-    features: ["Practice Management Integration", "Document Automation", "Bilingual Client Portals", "Compliance Tracking"]
+    features: ["Practice Management Integration", "Document Automation", "Bilingual Client Portals", "Compliance Tracking"],
+    link: "/cpa-law-client"
   }
 ];
 
@@ -175,13 +177,13 @@ const Services = () => {
               return (
                 <Card
                   key={superpower.title}
-                  className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-gradient-yellow-end to-white border-2 border-accent/20"
+                  className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white border-2 border-accent/20"
                 >
                   <CardContent className="p-8 text-center">
                     <div className="w-20 h-20 bg-navy rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-10 h-10 text-gradient-yellow-end" />
                     </div>
-                    <Badge className="mb-4 bg-accent text-white font-bold">
+                    <Badge className="mb-4 bg-navy text-white font-bold">
                       {superpower.highlight}
                     </Badge>
                     <h3 className="text-2xl font-poppins font-bold text-navy mb-4">
@@ -271,9 +273,12 @@ const Services = () => {
                     <div className="w-16 h-16 bg-navy rounded-xl flex items-center justify-center">
                       <TrendingUp className="w-8 h-8 text-gradient-yellow-end" />
                     </div>
-                    <h3 className="text-2xl font-poppins font-bold text-navy">
+                    <a 
+                      href={industry.link}
+                      className="text-2xl font-poppins font-bold text-navy hover:text-accent transition-colors cursor-pointer"
+                    >
                       {industry.title}
-                    </h3>
+                    </a>
                   </div>
                   
                   <p className="text-gray-700 font-inter leading-relaxed mb-6">
