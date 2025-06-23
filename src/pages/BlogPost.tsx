@@ -3,88 +3,21 @@ import { useParams, Navigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import BlogSubscription from '../components/BlogSubscription';
-import BlogContentParser from '../components/BlogContentParser';
+import BlogPostHeader from '../components/BlogPostHeader';
+import BlogPostContent from '../components/BlogPostContent';
+import BlogPostCTA from '../components/BlogPostCTA';
 import { Button } from '@/components/ui/button';
 import { useBlogPost } from '../hooks/useBlogPosts';
-import { Calendar, User, Tag, Share2 } from 'lucide-react';
-import { useState } from 'react';
+import { Toaster } from '@/components/ui/toaster';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [imageError, setImageError] = useState(false);
-  const [shareStatus, setShareStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
   if (!slug) {
     return <Navigate to="/blog" replace />;
   }
 
   const { data: post, isLoading, error } = useBlogPost(slug);
-
-  const getWorkingImageUrl = (originalUrl: string | null) => {
-    if (imageError || !originalUrl) {
-      // Different fallback images based on content
-      if (slug?.includes('cyberattack') || slug?.includes('security')) {
-        return `https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80`;
-      }
-      return `https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80`;
-    }
-    
-    if (originalUrl.includes('unsplash.com') && !originalUrl.startsWith('http')) {
-      return `https://images.${originalUrl}`;
-    }
-    
-    return originalUrl;
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
-
-  const handleShare = async () => {
-    try {
-      // Check if Web Share API is available and we have permission
-      if (navigator.share && navigator.canShare) {
-        const shareData = {
-          title: post?.title || 'Check out this article',
-          url: window.location.href
-        };
-        
-        if (navigator.canShare(shareData)) {
-          await navigator.share(shareData);
-          setShareStatus('success');
-          return;
-        }
-      }
-      
-      // Fallback to clipboard API
-      await navigator.clipboard.writeText(window.location.href);
-      setShareStatus('success');
-      
-      // Reset status after 2 seconds
-      setTimeout(() => setShareStatus('idle'), 2000);
-    } catch (error) {
-      console.error('Share failed:', error);
-      setShareStatus('error');
-      
-      // Reset status after 2 seconds
-      setTimeout(() => setShareStatus('idle'), 2000);
-    }
-  };
-
-  const getShareButtonText = () => {
-    switch (shareStatus) {
-      case 'success':
-        return 'Copied!';
-      case 'error':
-        return 'Failed';
-      default:
-        return 'Share';
-    }
-  };
 
   if (isLoading) {
     return (
@@ -122,122 +55,22 @@ const BlogPost = () => {
     );
   }
 
-  // Now we can safely access post properties since we've confirmed post exists
-  const imageUrl = getWorkingImageUrl(post.hero_image_url);
-
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
       
-      {/* Enhanced Hero Section */}
-      <section className="pt-32 pb-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            {/* Hero Image with enhanced styling */}
-            <div className="mb-8 rounded-xl overflow-hidden shadow-2xl animate-fade-in bg-gray-200 relative">
-              <img
-                src={imageUrl}
-                alt={post.title}
-                className="w-full h-64 md:h-96 object-cover"
-                onError={() => setImageError(true)}
-                loading="eager"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent"></div>
-            </div>
+      {/* Header Section with Hero Image and Meta */}
+      <BlogPostHeader post={post} />
 
-            {/* Enhanced Post Meta */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-              <div className="flex flex-wrap items-center gap-4 text-gray-600">
-                {post.author && (
-                  <div className="flex items-center gap-2">
-                    <User className="w-4 h-4" />
-                    <span className="font-inter font-medium">{post.author}</span>
-                  </div>
-                )}
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span className="font-inter">{formatDate(post.date || post.created_at)}</span>
-                </div>
-                {post.seo_keyword && (
-                  <div className="flex items-center gap-2">
-                    <Tag className="w-4 h-4" />
-                    <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium font-inter">
-                      {post.seo_keyword}
-                    </span>
-                  </div>
-                )}
-              </div>
-              
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleShare}
-                disabled={shareStatus !== 'idle'}
-                className={`border-navy text-navy hover:bg-navy hover:text-white transition-colors ${
-                  shareStatus === 'success' ? 'bg-green-50 border-green-500 text-green-600' : ''
-                } ${
-                  shareStatus === 'error' ? 'bg-red-50 border-red-500 text-red-600' : ''
-                }`}
-              >
-                <Share2 className="w-4 h-4 mr-2" />
-                {getShareButtonText()}
-              </Button>
-            </div>
+      {/* Content Section */}
+      <BlogPostContent post={post} />
 
-            {/* Enhanced Title */}
-            <h1 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-8 animate-fade-in leading-tight">
-              {post.title}
-            </h1>
-          </div>
-        </div>
-      </section>
-
-      {/* Enhanced Content Section */}
+      {/* CTA Section */}
       <section className="pb-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 animate-fade-in">
-              {/* Use our enhanced content parser */}
-              <BlogContentParser 
-                content={post.body || ''} 
-                seoKeyword={post.seo_keyword}
-                title={post.title}
-              />
-
-              {/* Embedded content */}
-              {post.embedded_c && (
-                <div className="my-12 animate-fade-in">
-                  <div 
-                    className="bg-gradient-to-r from-accent/5 to-transparent p-6 rounded-lg border-l-4 border-accent"
-                    dangerouslySetInnerHTML={{ __html: post.embedded_c }}
-                  />
-                </div>
-              )}
-
-              {/* Enhanced CTA Section */}
-              {post.cta_text && post.cta_link && (
-                <div className="mt-12 pt-8 border-t border-gray-200 text-center animate-fade-in">
-                  <div className="bg-gradient-to-br from-navy to-deep-blue p-8 rounded-xl text-white">
-                    <h3 className="text-2xl font-poppins font-bold mb-4">Ready to Transform Your Business?</h3>
-                    <p className="text-lg mb-6 font-inter opacity-90">
-                      Don't wait for a crisis to act. Let's discuss how we can protect and optimize your operations.
-                    </p>
-                    <Button 
-                      size="lg"
-                      className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
-                      onClick={() => {
-                        if (post.cta_link!.startsWith('http')) {
-                          window.open(post.cta_link!, '_blank');
-                        } else {
-                          window.location.href = post.cta_link!;
-                        }
-                      }}
-                    >
-                      {post.cta_text}
-                    </Button>
-                  </div>
-                </div>
-              )}
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+              <BlogPostCTA post={post} />
             </div>
           </div>
         </div>
@@ -253,6 +86,7 @@ const BlogPost = () => {
       </section>
 
       <Footer />
+      <Toaster />
     </div>
   );
 };
