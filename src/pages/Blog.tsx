@@ -1,7 +1,7 @@
 
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import BlogTeaser from '../components/BlogTeaser';
+import BlogGrid from '../components/BlogGrid';
 import CTAButton from '@/components/ui/cta-button';
 
 const Blog = () => {
@@ -33,8 +33,12 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Blog Content - This will show all blog posts */}
-      <BlogTeaser />
+      {/* Blog Content - Now shows ALL blog posts with pagination */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <BlogGrid />
+        </div>
+      </section>
 
       <Footer />
     </div>
