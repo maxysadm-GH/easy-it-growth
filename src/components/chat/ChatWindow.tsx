@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { X, Menu, User } from "lucide-react";
 import ChatMessages from './ChatMessages';
@@ -46,13 +45,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   const contextualTips = getContextualTips(pageName.toLowerCase(), messages.length);
   const shouldShowTips = showTips && messages.length > 1 && messages.length % 3 === 0;
 
-  // Show offline welcome if AI is down and no messages yet
+  // Show offline welcome only if AI is down AND no conversation has started
   const showOfflineWelcome = !isAIHealthy && messages.length <= 1;
 
   const handleMenuAction = async (action: string) => {
     setIsMenuOpen(false);
     
-    // Direct CTA actions for better conversion
     if (action === 'schedule_consultation' || action === 'talk_engineer') {
       setIsBookingOpen(true);
       return;
@@ -87,13 +85,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
     setIsAIHealthy(healthy);
   };
 
-  // Enhanced height calculation for better expansion
   const getMaxHeight = () => {
     const viewportHeight = window.innerHeight;
-    const baseHeight = Math.min(500, viewportHeight * 0.75); // 75% of viewport or 500px max
+    const baseHeight = Math.min(500, viewportHeight * 0.75);
     const messageHeight = 60;
     const calculatedHeight = Math.min(baseHeight + (messages.length * messageHeight * 0.5), viewportHeight * 0.85);
-    return `${Math.max(calculatedHeight, 400)}px`; // Minimum 400px height
+    return `${Math.max(calculatedHeight, 400)}px`;
   };
 
   return (
@@ -173,7 +170,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             </div>
           </div>
           
-          {/* Talk with Engineer Button - Always Available */}
+          {/* Talk with Engineer Button */}
           <button
             className="mx-2 p-1 rounded border transition-all duration-200 hover:bg-white/25 backdrop-blur-sm"
             style={{ 
@@ -262,7 +259,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
                  background: backgroundContext.adaptiveColors.footerBackground
                }}>
             
-            {/* Always show direct booking for critical actions */}
+            {/* Show booking actions when AI is down */}
             {!isAIHealthy && (
               <DirectBookingActions onBookingClick={() => setIsBookingOpen(true)} variant="compact" />
             )}
@@ -274,8 +271,20 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
               isLoading={isLoading}
             />
 
-            {isAIHealthy && (
-              <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
+            {/* Always show chat input, but with warning if AI is down */}
+            <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
+            
+            {/* AI Status Warning */}
+            {!isAIHealthy && (
+              <div 
+                className="text-xs text-center mt-1 p-1 rounded"
+                style={{ 
+                  color: 'rgba(255, 165, 0, 0.9)',
+                  background: 'rgba(255, 165, 0, 0.1)'
+                }}
+              >
+                AI responses may be delayed. For immediate help, use booking above.
+              </div>
             )}
             
             {/* Footer */}

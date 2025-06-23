@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { AlertTriangle, Wifi, WifiOff } from 'lucide-react';
 import { useBackgroundDetection } from '@/hooks/useBackgroundDetection';
+import { supabase } from '@/integrations/supabase/client';
 
 interface ChatHealthMonitorProps {
   onHealthChange: (isHealthy: boolean) => void;
@@ -9,64 +10,64 @@ interface ChatHealthMonitorProps {
 
 const ChatHealthMonitor: React.FC<ChatHealthMonitorProps> = ({ onHealthChange }) => {
   const [isHealthy, setIsHealthy] = useState(true);
-  const [lastCheck, setLastCheck] = useState<Date>(new Date());
+  const [isChecking, setIsChecking] = useState(false);
   const backgroundContext = useBackgroundDetection();
 
   const checkAIHealth = async (): Promise<boolean> => {
+    if (isChecking) return isHealthy;
+    
+    setIsChecking(true);
     try {
-      const response = await fetch('/api/health-check', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: 'health check' })
+      const { data, error } = await supabase.functions.invoke('chat-assistant', {
+        body: { message: 'health check' }
       });
-      
-      return response.ok;
+
+      const healthy = !error && data?.reply;
+      console.log('AI Health Check:', { healthy, error, data });
+      return healthy;
     } catch (error) {
       console.error('AI health check failed:', error);
       return false;
+    } finally {
+      setIsChecking(false);
     }
   };
 
   useEffect(() => {
     const performHealthCheck = async () => {
       const healthy = await checkAIHealth();
-      setIsHealthy(healthy);
-      setLastCheck(new Date());
-      onHealthChange(healthy);
+      if (healthy !== isHealthy) {
+        setIsHealthy(healthy);
+        onHealthChange(healthy);
+      }
     };
 
-    // Initial check
-    performHealthCheck();
+    // Initial check after a brief delay
+    const initialTimer = setTimeout(performHealthCheck, 2000);
 
-    // Check every 30 seconds
-    const interval = setInterval(performHealthCheck, 30000);
+    // Check every 60 seconds (less frequent to avoid spam)
+    const interval = setInterval(performHealthCheck, 60000);
 
-    return () => clearInterval(interval);
-  }, [onHealthChange]);
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(interval);
+    };
+  }, [onHealthChange, isHealthy]);
 
-  if (isHealthy) {
-    return (
-      <div className="flex items-center gap-1 text-xs opacity-75">
-        <Wifi className="w-3 h-3 text-green-500" />
-        <span style={{ color: backgroundContext.adaptiveColors.textColor }}>AI Online</span>
-      </div>
-    );
-  }
-
+  // Simple, unobtrusive indicator
   return (
-    <div 
-      className="flex items-center gap-2 p-2 rounded border-l-3 mb-2"
-      style={{
-        background: 'rgba(255, 165, 0, 0.1)',
-        borderColor: 'rgba(255, 165, 0, 0.5)',
-        color: backgroundContext.adaptiveColors.textColor
-      }}
-    >
-      <AlertTriangle className="w-4 h-4 text-orange-500" />
-      <div>
-        <div className="text-xs font-medium">AI Temporarily Unavailable</div>
-        <div className="text-xs opacity-75">Direct booking still available below</div>
-      </div>
+    <div className="flex items-center gap-1 text-xs">
+      {isHealthy ? (
+        <Wifi className="w-3 h-3 text-green-500" />
+      ) : (
+        <WifiOff className="w-3 h-3 text-orange-500" />
+      )}
+      <span 
+        className="text-xs opacity-75"
+        style={{ color: backgroundContext.adaptiveColors.textColor }}
+      >
+        {isHealthy ? 'AI' : 'Offline'}
+      </span>
     </div>
   );
 };
