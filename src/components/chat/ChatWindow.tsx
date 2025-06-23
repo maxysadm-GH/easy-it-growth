@@ -8,6 +8,7 @@ import ChatMenu from './ChatMenu';
 import SmartTips from './SmartTips';
 import { Message } from '@/types/chat';
 import { getContextualTips, SmartTip } from '@/data/smartTips';
+import { useBackgroundDetection } from '@/hooks/useBackgroundDetection';
 
 const assistantIconUrl = "/lovable-uploads/6c02622d-f929-4272-8fb2-56a68e33cc30.png";
 
@@ -32,6 +33,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showTips, setShowTips] = useState(true);
+  const backgroundContext = useBackgroundDetection();
   
   const currentQuickActions = messages.length <= 1 ? quickActions : [];
   const contextualTips = getContextualTips(pageName.toLowerCase(), messages.length);
@@ -85,58 +87,58 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         `
       }}
     >
-      {/* Transparent Glass Header */}
-      <div className="relative flex items-center px-4 py-3 border-b border-white/20 font-bold"
+      {/* Dynamic Background-Aware Header */}
+      <div className="relative flex items-center px-4 py-3 border-b border-white/20 font-bold transition-all duration-300"
            style={{
-             backdropFilter: 'blur(20px) saturate(150%)',
-             background: `
-               linear-gradient(135deg, 
-                 rgba(17, 45, 78, 0.3) 0%,
-                 rgba(17, 45, 78, 0.2) 50%,
-                 rgba(250, 207, 57, 0.25) 100%
-               )
-             `,
+             backdropFilter: 'blur(25px) saturate(150%)',
+             background: backgroundContext.adaptiveColors.headerBackground,
              borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
            }}>
         
         {/* Menu Button */}
         <button
           className="mr-2 p-1 rounded-lg transition-all duration-200 hover:bg-white/20 backdrop-blur-sm"
-          style={{ color: 'rgba(17, 45, 78, 0.9)' }}
+          style={{ color: backgroundContext.adaptiveColors.textColor }}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Open Menu"
         >
           <Menu className="w-5 h-5" />
         </button>
         
-        {/* Assistant Icon with better contrast background */}
+        {/* Enhanced Assistant Icon with Dynamic Background */}
         <div className="relative mr-2">
           <div 
-            className="absolute inset-0 rounded-full"
+            className="absolute inset-0 rounded-full transition-all duration-300"
             style={{
-              background: 'rgba(255, 255, 255, 0.4)',
-              backdropFilter: 'blur(10px)'
+              background: backgroundContext.adaptiveColors.logoBackground,
+              backdropFilter: 'blur(15px) saturate(180%)',
+              transform: 'scale(1.1)',
+              boxShadow: backgroundContext.isBlueBackground 
+                ? '0 0 15px rgba(250, 207, 57, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
+                : '0 0 10px rgba(17, 45, 78, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
             }}
           />
           <img src={assistantIconUrl} className="relative w-8 h-8 rounded-full" alt="Assistant Icon" />
         </div>
         
-        {/* Title with enhanced contrast */}
+        {/* Enhanced Title with Dynamic Colors */}
         <div className="flex-1">
           <div 
-            className="font-bold text-sm"
+            className="font-bold text-sm transition-all duration-300"
             style={{ 
-              color: 'rgba(17, 45, 78, 0.95)',
-              textShadow: '0 1px 2px rgba(255, 255, 255, 0.3)'
+              color: backgroundContext.adaptiveColors.textColor,
+              textShadow: backgroundContext.adaptiveColors.textShadow
             }}
           >
             MBACIO Assistant
           </div>
           <div 
-            className="text-xs font-normal"
+            className="text-xs font-normal transition-all duration-300"
             style={{ 
-              color: 'rgba(17, 45, 78, 0.7)',
-              textShadow: '0 1px 1px rgba(255, 255, 255, 0.2)'
+              color: backgroundContext.isBlueBackground 
+                ? 'rgba(250, 207, 57, 0.8)' 
+                : backgroundContext.adaptiveColors.textColor.replace('0.95', '0.7'),
+              textShadow: backgroundContext.adaptiveColors.textShadow
             }}
           >
             Powered by AI • {pageName}
@@ -147,8 +149,9 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         <button
           className="mx-2 p-1 rounded border border-white/30 transition-all duration-200 hover:bg-white/20 backdrop-blur-sm"
           style={{ 
-            color: 'rgba(17, 45, 78, 0.9)',
-            background: 'rgba(255, 255, 255, 0.15)'
+            color: backgroundContext.adaptiveColors.textColor,
+            background: 'rgba(255, 255, 255, 0.15)',
+            borderColor: backgroundContext.isBlueBackground ? 'rgba(250, 207, 57, 0.4)' : 'rgba(255, 255, 255, 0.3)'
           }}
           onClick={handleTalkWithEngineer}
           aria-label="Talk with Engineer"
@@ -157,28 +160,36 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           <User className="w-4 h-4" />
         </button>
         
-        {/* Logo with enhanced contrast background */}
+        {/* Enhanced Logo with Dynamic Background */}
         <div className="relative ml-2">
           <div 
-            className="absolute inset-0 rounded"
+            className="absolute inset-0 rounded transition-all duration-300"
             style={{
-              background: 'rgba(255, 255, 255, 0.5)',
-              backdropFilter: 'blur(8px)',
-              transform: 'scale(1.1)'
+              background: backgroundContext.adaptiveColors.logoBackground,
+              backdropFilter: 'blur(15px) saturate(180%)',
+              transform: 'scale(1.15)',
+              boxShadow: backgroundContext.isBlueBackground 
+                ? '0 0 20px rgba(250, 207, 57, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5)'
+                : '0 0 15px rgba(17, 45, 78, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5)'
             }}
           />
           <img
             src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
-            className="relative h-6 w-auto"
+            className="relative h-6 w-auto transition-all duration-300"
             alt="MBACIO Logo"
             draggable={false}
+            style={{
+              filter: backgroundContext.isBlueBackground 
+                ? 'drop-shadow(0 0 8px rgba(250, 207, 57, 0.6)) brightness(1.1)'
+                : 'drop-shadow(0 0 6px rgba(17, 45, 78, 0.4)) brightness(1.05)'
+            }}
           />
         </div>
         
         {/* Close Button */}
         <button
           className="ml-2 p-1 rounded-lg transition-all duration-200 hover:bg-red-500/20 backdrop-blur-sm"
-          style={{ color: 'rgba(17, 45, 78, 0.9)' }}
+          style={{ color: backgroundContext.adaptiveColors.textColor }}
           onClick={onClose}
           aria-label="Close Chat"
         >
@@ -228,10 +239,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
         
         <div 
-          className="text-[10px] pt-1 pl-1 font-medium"
+          className="text-[10px] pt-1 pl-1 font-medium transition-all duration-300"
           style={{ 
-            color: 'rgba(17, 45, 78, 0.7)',
-            textShadow: '0 1px 1px rgba(255, 255, 255, 0.3)'
+            color: backgroundContext.isBlueBackground 
+              ? 'rgba(250, 207, 57, 0.8)' 
+              : 'rgba(17, 45, 78, 0.7)',
+            textShadow: backgroundContext.adaptiveColors.textShadow
           }}
         >
           Innovation isn't a luxury. It's a necessity. MBACIO brings affordable tech breakthroughs to mid-market businesses.

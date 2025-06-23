@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useChatEngagement } from "@/hooks/useChatEngagement";
+import { useBackgroundDetection } from "@/hooks/useBackgroundDetection";
 import { Message } from "@/types/chat";
 import ChatButton from "./chat/ChatButton";
 import ChatWindow from "./chat/ChatWindow";
@@ -13,6 +14,7 @@ const Chatbot = () => {
   const [hasInitialized, setHasInitialized] = useState(false);
   
   const { shouldAutoOpen, pageContext, markAsAutoOpened } = useChatEngagement();
+  const backgroundContext = useBackgroundDetection();
 
   // Handle auto-open functionality
   useEffect(() => {
