@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import BookingPopup from './BookingPopup';
+import CTAButton from '@/components/ui/cta-button';
 
 const Logo = () => (
   <a href="/" className="flex items-center h-full py-2">
@@ -20,10 +21,6 @@ const navLinkClass = "text-white font-poppins font-bold text-lg md:text-xl hover
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-
-  const handleBookAssessment = () => {
-    window.open('https://outlook.office365.com/owa/calendar/MBACIOFreeAssessment@mbacio.com/bookings/', '_blank');
-  };
 
   return (
     <>
@@ -97,12 +94,11 @@ const Navigation = () => {
                 </div>
               </div>
               
-              <Button 
-                onClick={handleBookAssessment}
-                className="ml-4 bg-gradient-yellow text-navy px-6 py-2.5 rounded-lg font-bold font-poppins text-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:opacity-90 hover:shadow-accent/20"
-              >
-                Book Your Free Assessment
-              </Button>
+              <CTAButton 
+                ctaId="book-assessment"
+                variant="yellow"
+                className="ml-4 px-6 py-2.5 rounded-lg text-lg shadow-lg hover:shadow-xl hover:shadow-accent/20"
+              />
             </div>
 
             {/* Mobile Menu Button */}
@@ -137,12 +133,11 @@ const Navigation = () => {
                   <a href="/tools/cloud-migration" className={navLinkClass + " text-base"}>☁️ Cloud Migration ROI</a>
                   <a href="/tools/staff-productivity" className={navLinkClass + " text-base"}>📈 IT Staff Productivity Calculator</a>
                 </div>
-                <Button 
-                  onClick={handleBookAssessment}
-                  className="bg-gradient-yellow text-navy px-6 py-3 rounded-lg font-bold font-poppins text-lg shadow-lg"
-                >
-                  Book Your Free Assessment
-                </Button>
+                <CTAButton 
+                  ctaId="book-assessment"
+                  variant="yellow"
+                  className="px-6 py-3 rounded-lg text-lg shadow-lg"
+                />
               </div>
             </div>
           )}

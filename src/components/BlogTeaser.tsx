@@ -1,10 +1,10 @@
-
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useBlogPosts } from '../hooks/useBlogPosts';
 import { useNavigate } from 'react-router-dom';
 import BlogCard from './BlogCard';
 import BlogLoadingState from './BlogLoadingState';
+import CTAButton from '@/components/ui/cta-button';
 
 const BlogTeaser = () => {
   const { data: blogPosts, isLoading, error } = useBlogPosts();
@@ -100,14 +100,12 @@ const BlogTeaser = () => {
             </div>
 
             <div className="text-center">
-              <Button 
-                size="lg" 
-                className="bg-navy text-white hover:bg-deep-blue font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
-                onClick={handleViewAllClick}
-              >
-                View All Articles
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <CTAButton 
+                ctaId="view-blog"
+                variant="secondary"
+                size="lg"
+                className="px-8 py-4 text-lg"
+              />
             </div>
           </>
         ) : (

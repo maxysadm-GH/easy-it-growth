@@ -186,7 +186,13 @@ const BlogPost = () => {
                     <Button 
                       size="lg"
                       className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
-                      onClick={() => window.open(post.cta_link!, '_blank')}
+                      onClick={() => {
+                        if (post.cta_link!.startsWith('http')) {
+                          window.open(post.cta_link!, '_blank');
+                        } else {
+                          window.location.href = post.cta_link!;
+                        }
+                      }}
                     >
                       {post.cta_text}
                     </Button>
