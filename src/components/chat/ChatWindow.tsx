@@ -75,29 +75,29 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 
   return (
     <div 
-      className="fixed bottom-24 right-6 z-50 max-w-sm w-full flex flex-col animate-fade-in border border-white/30 rounded-2xl overflow-hidden"
+      className="fixed bottom-24 right-6 z-50 max-w-sm w-full flex flex-col animate-fade-in border border-white/40 rounded-2xl overflow-hidden"
       style={{ 
         maxHeight: getMaxHeight(),
-        backdropFilter: 'blur(25px) saturate(180%)',
-        background: 'rgba(255, 255, 255, 0.12)',
+        backdropFilter: 'blur(20px) saturate(150%)',
+        background: 'rgba(255, 255, 255, 0.18)',
         boxShadow: `
-          0 25px 50px -12px rgba(0, 0, 0, 0.25),
-          0 0 0 1px rgba(255, 255, 255, 0.15),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2)
+          0 25px 50px -12px rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3)
         `
       }}
     >
-      {/* Dynamic Background-Aware Header */}
-      <div className="relative flex items-center px-4 py-3 border-b border-white/20 font-bold transition-all duration-300"
+      {/* Enhanced Dynamic Background-Aware Header */}
+      <div className="relative flex items-center px-4 py-3 border-b border-white/30 font-bold transition-all duration-300"
            style={{
-             backdropFilter: 'blur(25px) saturate(150%)',
+             backdropFilter: 'blur(20px) saturate(150%)',
              background: backgroundContext.adaptiveColors.headerBackground,
-             borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
+             borderBottom: '1px solid rgba(255, 255, 255, 0.3)'
            }}>
         
         {/* Menu Button */}
         <button
-          className="mr-2 p-1 rounded-lg transition-all duration-200 hover:bg-white/20 backdrop-blur-sm"
+          className="mr-2 p-1 rounded-lg transition-all duration-200 hover:bg-white/25 backdrop-blur-sm"
           style={{ color: backgroundContext.adaptiveColors.textColor }}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Open Menu"
@@ -105,23 +105,26 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           <Menu className="w-5 h-5" />
         </button>
         
-        {/* Enhanced Assistant Icon with Dynamic Background */}
+        {/* Enhanced Assistant Icon with Stronger Background */}
         <div className="relative mr-2">
           <div 
             className="absolute inset-0 rounded-full transition-all duration-300"
             style={{
               background: backgroundContext.adaptiveColors.logoBackground,
               backdropFilter: 'blur(15px) saturate(180%)',
-              transform: 'scale(1.1)',
+              transform: 'scale(1.15)',
               boxShadow: backgroundContext.isBlueBackground 
-                ? '0 0 15px rgba(250, 207, 57, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
-                : '0 0 10px rgba(17, 45, 78, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
+                ? '0 0 20px rgba(250, 207, 57, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.6)'
+                : '0 0 15px rgba(17, 45, 78, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6)',
+              border: backgroundContext.isBlueBackground 
+                ? '1px solid rgba(250, 207, 57, 0.4)'
+                : '1px solid rgba(17, 45, 78, 0.3)'
             }}
           />
           <img src={assistantIconUrl} className="relative w-8 h-8 rounded-full" alt="Assistant Icon" />
         </div>
         
-        {/* Enhanced Title with Dynamic Colors */}
+        {/* Enhanced Title with Better Contrast */}
         <div className="flex-1">
           <div 
             className="font-bold text-sm transition-all duration-300"
@@ -136,8 +139,8 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             className="text-xs font-normal transition-all duration-300"
             style={{ 
               color: backgroundContext.isBlueBackground 
-                ? 'rgba(250, 207, 57, 0.8)' 
-                : backgroundContext.adaptiveColors.textColor.replace('0.95', '0.7'),
+                ? 'rgba(250, 207, 57, 0.9)' 
+                : backgroundContext.adaptiveColors.textColor.replace('0.98', '0.8'),
               textShadow: backgroundContext.adaptiveColors.textShadow
             }}
           >
@@ -145,13 +148,14 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           </div>
         </div>
         
-        {/* Engineer Button */}
+        {/* Enhanced Engineer Button */}
         <button
-          className="mx-2 p-1 rounded border border-white/30 transition-all duration-200 hover:bg-white/20 backdrop-blur-sm"
+          className="mx-2 p-1 rounded border transition-all duration-200 hover:bg-white/25 backdrop-blur-sm"
           style={{ 
             color: backgroundContext.adaptiveColors.textColor,
-            background: 'rgba(255, 255, 255, 0.15)',
-            borderColor: backgroundContext.isBlueBackground ? 'rgba(250, 207, 57, 0.4)' : 'rgba(255, 255, 255, 0.3)'
+            background: 'rgba(255, 255, 255, 0.2)',
+            borderColor: backgroundContext.isBlueBackground ? 'rgba(250, 207, 57, 0.5)' : 'rgba(255, 255, 255, 0.4)',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
           }}
           onClick={handleTalkWithEngineer}
           aria-label="Talk with Engineer"
@@ -160,17 +164,20 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           <User className="w-4 h-4" />
         </button>
         
-        {/* Enhanced Logo with Dynamic Background */}
+        {/* Enhanced Logo with Stronger Background */}
         <div className="relative ml-2">
           <div 
             className="absolute inset-0 rounded transition-all duration-300"
             style={{
               background: backgroundContext.adaptiveColors.logoBackground,
               backdropFilter: 'blur(15px) saturate(180%)',
-              transform: 'scale(1.15)',
+              transform: 'scale(1.2)',
               boxShadow: backgroundContext.isBlueBackground 
-                ? '0 0 20px rgba(250, 207, 57, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5)'
-                : '0 0 15px rgba(17, 45, 78, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5)'
+                ? '0 0 25px rgba(250, 207, 57, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.7)'
+                : '0 0 20px rgba(17, 45, 78, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7)',
+              border: backgroundContext.isBlueBackground 
+                ? '1px solid rgba(250, 207, 57, 0.6)'
+                : '1px solid rgba(17, 45, 78, 0.4)'
             }}
           />
           <img
@@ -180,15 +187,15 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             draggable={false}
             style={{
               filter: backgroundContext.isBlueBackground 
-                ? 'drop-shadow(0 0 8px rgba(250, 207, 57, 0.6)) brightness(1.1)'
-                : 'drop-shadow(0 0 6px rgba(17, 45, 78, 0.4)) brightness(1.05)'
+                ? 'drop-shadow(0 0 12px rgba(250, 207, 57, 0.8)) brightness(1.2) contrast(1.1)'
+                : 'drop-shadow(0 0 8px rgba(17, 45, 78, 0.6)) brightness(1.1) contrast(1.05)'
             }}
           />
         </div>
         
         {/* Close Button */}
         <button
-          className="ml-2 p-1 rounded-lg transition-all duration-200 hover:bg-red-500/20 backdrop-blur-sm"
+          className="ml-2 p-1 rounded-lg transition-all duration-200 hover:bg-red-500/25 backdrop-blur-sm"
           style={{ color: backgroundContext.adaptiveColors.textColor }}
           onClick={onClose}
           aria-label="Close Chat"
@@ -204,30 +211,30 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         />
       </div>
 
-      {/* Messages with glass effect */}
+      {/* Messages with enhanced readability */}
       <div 
         className="flex-1 overflow-hidden"
         style={{
           backdropFilter: 'blur(15px)',
-          background: 'rgba(255, 255, 255, 0.08)'
+          background: backgroundContext.adaptiveColors.messageBackground
         }}
       >
         <ChatMessages messages={messages} isLoading={isLoading} />
       </div>
 
-      {/* Smart Tips with glass effect */}
+      {/* Smart Tips with enhanced readability */}
       <SmartTips 
         tips={contextualTips}
         onTipClick={handleTipClick}
         isVisible={shouldShowTips}
       />
 
-      {/* Input Area with glass effect */}
+      {/* Input Area with enhanced readability */}
       <div 
-        className="px-4 pb-3 border-t border-white/20"
+        className="px-4 pb-3 border-t border-white/30"
         style={{
           backdropFilter: 'blur(20px)',
-          background: 'rgba(255, 255, 255, 0.1)'
+          background: backgroundContext.adaptiveColors.footerBackground
         }}
       >
         <QuickActions 
@@ -238,13 +245,18 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 
         <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
         
+        {/* Enhanced Footer Text with Strong Readability */}
         <div 
-          className="text-[10px] pt-1 pl-1 font-medium transition-all duration-300"
+          className="text-[10px] pt-2 pl-1 font-medium transition-all duration-300 px-2 py-1 rounded-md mt-1"
           style={{ 
-            color: backgroundContext.isBlueBackground 
-              ? 'rgba(250, 207, 57, 0.8)' 
-              : 'rgba(17, 45, 78, 0.7)',
-            textShadow: backgroundContext.adaptiveColors.textShadow
+            color: backgroundContext.adaptiveColors.footerTextColor,
+            textShadow: backgroundContext.adaptiveColors.textShadow,
+            background: backgroundContext.isBlueBackground 
+              ? 'rgba(17, 45, 78, 0.4)' 
+              : 'rgba(255, 255, 255, 0.5)',
+            backdropFilter: 'blur(10px)',
+            border: `1px solid ${backgroundContext.isBlueBackground ? 'rgba(250, 207, 57, 0.3)' : 'rgba(17, 45, 78, 0.2)'}`,
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
           }}
         >
           Innovation isn't a luxury. It's a necessity. MBACIO brings affordable tech breakthroughs to mid-market businesses.
