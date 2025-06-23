@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { X, Menu, User } from "lucide-react";
 import ChatMessages from './ChatMessages';
@@ -9,10 +10,10 @@ import BookingPopup from '@/components/BookingPopup';
 import { Message } from '@/types/chat';
 import { getContextualTips, SmartTip } from '@/data/smartTips';
 import { useBackgroundDetection } from '@/hooks/useBackgroundDetection';
-import ChatHealthMonitor from '@/components/ChatHealthMonitor';
-import OfflineWelcome from '@/components/OfflineWelcome';
-import DirectBookingActions from '@/components/DirectBookingActions';
-import EnhancedQuickActions from '@/components/EnhancedQuickActions';
+import ChatHealthMonitor from './ChatHealthMonitor';
+import OfflineWelcome from './OfflineWelcome';
+import DirectBookingActions from './DirectBookingActions';
+import EnhancedQuickActions from './EnhancedQuickActions';
 
 const assistantIconUrl = "/lovable-uploads/6c02622d-f929-4272-8fb2-56a68e33cc30.png";
 
