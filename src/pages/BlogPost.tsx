@@ -11,6 +11,7 @@ import { useState } from 'react';
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const [imageError, setImageError] = useState(false);
+  const [shareStatus, setShareStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
   if (!slug) {
     return <Navigate to="/blog" replace />;
@@ -32,6 +33,58 @@ const BlogPost = () => {
     }
     
     return originalUrl;
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  const imageUrl = getWorkingImageUrl(post.hero_image_url);
+
+  const handleShare = async () => {
+    try {
+      // Check if Web Share API is available and we have permission
+      if (navigator.share && navigator.canShare) {
+        const shareData = {
+          title: post.title,
+          url: window.location.href
+        };
+        
+        if (navigator.canShare(shareData)) {
+          await navigator.share(shareData);
+          setShareStatus('success');
+          return;
+        }
+      }
+      
+      // Fallback to clipboard API
+      await navigator.clipboard.writeText(window.location.href);
+      setShareStatus('success');
+      
+      // Reset status after 2 seconds
+      setTimeout(() => setShareStatus('idle'), 2000);
+    } catch (error) {
+      console.error('Share failed:', error);
+      setShareStatus('error');
+      
+      // Reset status after 2 seconds
+      setTimeout(() => setShareStatus('idle'), 2000);
+    }
+  };
+
+  const getShareButtonText = () => {
+    switch (shareStatus) {
+      case 'success':
+        return 'Copied!';
+      case 'error':
+        return 'Failed';
+      default:
+        return 'Share';
+    }
   };
 
   if (isLoading) {
@@ -69,27 +122,6 @@ const BlogPost = () => {
       </div>
     );
   }
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
-
-  const imageUrl = getWorkingImageUrl(post.hero_image_url);
-
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: post.title,
-        url: window.location.href
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -138,10 +170,15 @@ const BlogPost = () => {
                 variant="outline"
                 size="sm"
                 onClick={handleShare}
-                className="border-navy text-navy hover:bg-navy hover:text-white"
+                disabled={shareStatus !== 'idle'}
+                className={`border-navy text-navy hover:bg-navy hover:text-white transition-colors ${
+                  shareStatus === 'success' ? 'bg-green-50 border-green-500 text-green-600' : ''
+                } ${
+                  shareStatus === 'error' ? 'bg-red-50 border-red-500 text-red-600' : ''
+                }`}
               >
                 <Share2 className="w-4 h-4 mr-2" />
-                Share
+                {getShareButtonText()}
               </Button>
             </div>
 

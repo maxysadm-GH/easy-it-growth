@@ -9,11 +9,11 @@ export interface CTAConfig {
 }
 
 export const CTA_CONFIGS: Record<string, CTAConfig> = {
-  // Booking CTAs
+  // Booking CTAs - Updated with corrected Microsoft Bookings URL
   'book-assessment': {
     id: 'book-assessment',
     text: 'Book Your Free Assessment',
-    url: 'https://outlook.office365.com/owa/calendar/MBACIOFreeAssessment@mbacio.com/bookings/',
+    url: 'https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/',
     type: 'external',
     category: 'booking',
     description: 'Main booking CTA for free assessments'
