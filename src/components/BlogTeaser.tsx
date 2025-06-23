@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useBlogPosts } from '../hooks/useBlogPosts';
@@ -14,10 +15,14 @@ const BlogTeaser = () => {
     isLoading,
     error: error?.message || null,
     postsCount: blogPosts?.length || 0,
-    hasData: !!blogPosts
+    hasData: !!blogPosts,
+    posts: blogPosts?.map(p => ({ id: p.id, title: p.title })) || []
   });
 
   const createSlug = (title: string) => {
+    if (!title || title.trim() === '') {
+      return 'untitled-post';
+    }
     return title
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, '')
@@ -28,7 +33,7 @@ const BlogTeaser = () => {
 
   const handleCardClick = (title: string) => {
     const slug = createSlug(title);
-    console.log('🔗 Navigating to blog post:', slug);
+    console.log('🔗 Navigating to blog post:', slug, 'from title:', title);
     navigate(`/blog/${slug}`);
   };
 
@@ -59,6 +64,7 @@ const BlogTeaser = () => {
           </div>
           <div className="text-center">
             <p className="text-gray-600 mb-4">Unable to load blog posts at the moment.</p>
+            <p className="text-sm text-gray-500 mb-4">Error: {error.message}</p>
             <Button 
               onClick={() => window.location.reload()}
               className="bg-accent text-navy font-bold px-6 py-3"
@@ -71,9 +77,17 @@ const BlogTeaser = () => {
     );
   }
 
-  // Show posts (limit to 3 for teaser)
-  const displayPosts = (blogPosts || []).slice(0, 3);
-  console.log('📝 BlogTeaser displaying posts:', displayPosts.map(p => ({ id: p.id, title: p.title })));
+  // Show posts - Display all posts that have at least a title
+  const displayPosts = (blogPosts || [])
+    .filter(post => post.title && post.title.trim() !== '')
+    .slice(0, 3);
+  
+  console.log('📝 BlogTeaser displaying posts:', displayPosts.map(p => ({ 
+    id: p.id, 
+    title: p.title,
+    hasBody: !!(p.body && p.body.trim()),
+    bodyLength: p.body ? p.body.length : 0
+  })));
 
   return (
     <section className="py-20 bg-gray-50">
@@ -110,7 +124,16 @@ const BlogTeaser = () => {
           </>
         ) : (
           <div className="text-center">
-            <p className="text-gray-600 mb-4">No blog posts available at the moment.</p>
+            <p className="text-gray-600 mb-4">No blog posts available to display.</p>
+            <p className="text-sm text-gray-500 mb-4">
+              Total posts in database: {blogPosts?.length || 0}
+            </p>
+            <Button 
+              onClick={() => window.location.reload()}
+              className="bg-accent text-navy font-bold px-6 py-3"
+            >
+              Refresh
+            </Button>
           </div>
         )}
       </div>

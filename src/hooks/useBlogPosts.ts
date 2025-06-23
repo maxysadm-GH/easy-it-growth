@@ -1,3 +1,4 @@
+
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -35,31 +36,34 @@ export const useBlogPosts = () => {
       console.log('✅ Raw Supabase response:', data);
       console.log('📊 Posts count:', data?.length || 0);
       
-      // Only filter out completely empty posts (no title AND no body)
-      const validPosts = (data || []).filter(post => {
-        const hasTitle = post.title && post.title.trim() !== '';
-        const hasBody = post.body && post.body.trim() !== '';
-        
-        // Keep posts that have either a title OR body content
-        const isValid = hasTitle || hasBody;
-        
-        console.log(`📝 Post "${post.title}": hasTitle=${hasTitle}, hasBody=${hasBody}, isValid=${isValid}`);
-        
-        return isValid;
-      });
-
-      console.log('✅ Valid posts after filtering:', validPosts.length);
+      // Log each post's details for debugging
+      if (data) {
+        data.forEach((post, index) => {
+          console.log(`📝 Post ${index + 1}:`, {
+            id: post.id,
+            title: post.title || '[No Title]',
+            author: post.author || '[No Author]',
+            hasBody: !!(post.body && post.body.trim()),
+            bodyLength: post.body ? post.body.length : 0,
+            created_at: post.created_at
+          });
+        });
+      }
       
-      return validPosts as BlogPost[];
+      // Return all posts without filtering - let the UI handle display logic
+      return (data || []) as BlogPost[];
     },
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
-    refetchOnMount: false,
+    refetchOnMount: true, // Force refetch on mount to get fresh data
     refetchOnWindowFocus: false,
   });
 };
 
 const createSlugFromTitle = (title: string) => {
+  if (!title || title.trim() === '') {
+    return 'untitled-post';
+  }
   return title
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
@@ -87,6 +91,7 @@ export const useBlogPost = (slug: string) => {
 
       // Find the post that matches the slug
       const post = allPosts?.find(post => {
+        if (!post.title) return false;
         const generatedSlug = createSlugFromTitle(post.title);
         console.log('🔗 Comparing slugs:', generatedSlug, 'vs', slug);
         return generatedSlug === slug;

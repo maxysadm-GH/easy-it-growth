@@ -33,7 +33,7 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Blog Content */}
+      {/* Blog Content - This will show all blog posts */}
       <BlogTeaser />
 
       <Footer />
