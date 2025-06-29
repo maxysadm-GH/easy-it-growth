@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import CTAButton from '@/components/ui/cta-button';
 
 const WhyMBACIO = () => {
   const benefits = [
@@ -85,12 +85,16 @@ const WhyMBACIO = () => {
         </div>
 
         <div className="text-center">
-          <Button 
-            size="lg" 
-            className="bg-gradient-yellow text-navy hover:opacity-90 font-semibold text-lg px-8 py-6"
-          >
-            Partner With Us for Strategic Growth
-          </Button>
+          <CTAButton 
+            ctaId="book-assessment"
+            variant="yellow"
+            size="lg"
+            className="px-8 py-6 text-lg"
+            customConfig={{
+              text: "Partner With Us for Strategic Growth"
+            }}
+            forcePopup={true}
+          />
         </div>
       </div>
     </section>

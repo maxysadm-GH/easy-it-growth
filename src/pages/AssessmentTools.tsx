@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import CTAButton from '@/components/ui/cta-button';
 import { ArrowRight, Bot, TrendingUp, DollarSign, Shield, Cloud, Users, AlertTriangle } from 'lucide-react';
 
 const tools = [
@@ -130,13 +131,13 @@ const AssessmentTools = () => {
           <p className="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
             Get a personalized consultation with our experts to discuss your specific needs and challenges.
           </p>
-          <Link 
-            to="/"
-            className="inline-flex items-center gap-2 bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 rounded-lg hover:scale-105 transition-transform duration-300"
-          >
-            Book Your Free Assessment
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+          <CTAButton 
+            ctaId="book-assessment"
+            variant="yellow"
+            size="lg"
+            className="text-xl px-10 py-6"
+            forcePopup={true}
+          />
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Button } from '@/components/ui/button';
+import CTAButton from '@/components/ui/cta-button';
 import { Shield, Zap, Users, Award, TrendingUp, Clock } from 'lucide-react';
 
 const benefits = [
@@ -59,9 +59,13 @@ const WhyUs = () => {
               Discover how MBACIO helps growing businesses modernize IT operations 
               with smarter systems, faster support, and measurable ROI.
             </p>
-            <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
-              Book Your Free Assessment
-            </Button>
+            <CTAButton 
+              ctaId="book-assessment"
+              variant="yellow"
+              size="lg"
+              className="text-xl px-10 py-6"
+              forcePopup={true}
+            />
           </div>
         </div>
       </section>
@@ -107,9 +111,13 @@ const WhyUs = () => {
             Join hundreds of businesses that have streamlined operations, enhanced security, 
             and accelerated growth with MBACIO's proven approach.
           </p>
-          <Button size="lg" className="bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
-            Book Your Free Assessment
-          </Button>
+          <CTAButton 
+            ctaId="book-assessment"
+            variant="yellow"
+            size="lg"
+            className="text-xl px-10 py-6"
+            forcePopup={true}
+          />
         </div>
       </section>
 
