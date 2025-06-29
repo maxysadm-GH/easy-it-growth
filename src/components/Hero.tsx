@@ -1,5 +1,6 @@
 
 import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useState } from 'react';
 import BookingPopup from './BookingPopup';
 
@@ -89,12 +90,27 @@ const Hero = () => {
                 >
                   Book Your Free Assessment
                 </Button>
-                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
-                  <span className="text-2xl">🔒</span> 
-                  <p className="text-lg lg:text-xl text-gray-200 font-medium">
-                    Guaranteed Confidentiality
-                  </p>
-                </div>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10 cursor-help hover:bg-white/10 transition-all duration-300">
+                        <span className="text-2xl">🔒</span> 
+                        <p className="text-lg lg:text-xl text-gray-200 font-medium">
+                          Guaranteed Confidentiality
+                        </p>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent 
+                      side="top"
+                      className="max-w-sm bg-navy/95 border-accent/20 text-white p-4 rounded-lg shadow-xl"
+                    >
+                      <p className="text-sm leading-relaxed">
+                        Even if you currently have an IT partner, our free risk assessment ensures complete privacy and confidentiality. 
+                        <strong className="text-accent"> Make sure they're doing a good job before it's too late—for free!</strong>
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
             </div>
           </div>
