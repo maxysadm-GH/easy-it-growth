@@ -1,4 +1,5 @@
 
+
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useState } from 'react';
@@ -10,6 +11,22 @@ const Hero = () => {
   const handleBookAssessment = () => {
     setIsBookingOpen(true);
   };
+
+  // Trust indicators with tooltip content
+  const trustIndicators = [
+    {
+      text: "Guaranteed ROI in 6 weeks",
+      tooltip: "We're so confident in our IT optimization strategies that we guarantee you'll see measurable return on investment within 6 weeks, or we'll work for free until you do."
+    },
+    {
+      text: "60-Day Satisfaction Warranty", 
+      tooltip: "Not completely satisfied with our service? We offer a full 60-day satisfaction warranty. If we don't exceed expectations, we'll make it right or refund your investment."
+    },
+    {
+      text: "Nationwide Service",
+      tooltip: "From coast to coast, our expert IT team provides consistent, high-quality service wherever your business operates. Local expertise with national reach."
+    }
+  ];
 
   return (
     <>
@@ -61,25 +78,35 @@ const Hero = () => {
                 From manufacturers to professional firms—we simplify, automate, and modernize your IT operations so your team can focus on growth.
               </p>
               
-              {/* Trust Indicators with enhanced visibility */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-12 justify-center lg:justify-start">
-                {[
-                  "Guaranteed ROI in 6 weeks",
-                  "60-Day Satisfaction Warranty", 
-                  "Nationwide Service",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3 group bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                    <span className="w-8 h-8 bg-gradient-yellow rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
-                      <img
-                        src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png"
-                        alt="accent-icon"
-                        className="w-5 h-5"
-                      />
-                    </span>
-                    <span className="text-lg lg:text-xl text-white font-bold">{item}</span>
-                  </div>
-                ))}
-              </div>
+              {/* Trust Indicators with enhanced visibility and tooltips */}
+              <TooltipProvider>
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-12 justify-center lg:justify-start">
+                  {trustIndicators.map((item) => (
+                    <Tooltip key={item.text}>
+                      <TooltipTrigger asChild>
+                        <div className="flex items-center gap-3 group bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20 hover:bg-white/15 transition-all duration-300 cursor-help">
+                          <span className="w-8 h-8 bg-gradient-yellow rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
+                            <img
+                              src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png"
+                              alt="accent-icon"
+                              className="w-5 h-5"
+                            />
+                          </span>
+                          <span className="text-lg lg:text-xl text-white font-bold">{item.text}</span>
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent 
+                        side="top"
+                        className="max-w-sm bg-navy/95 border-accent/20 text-white p-4 rounded-lg shadow-xl"
+                      >
+                        <p className="text-sm leading-relaxed">
+                          {item.tooltip}
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  ))}
+                </div>
+              </TooltipProvider>
               
               {/* CTA Section with enhanced prominence */}
               <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
@@ -127,3 +154,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
