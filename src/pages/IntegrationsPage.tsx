@@ -155,12 +155,11 @@ const IntegrationsPage = () => {
               We're constantly adding new integrations. Let us know what tools you use, 
               and we'll help you connect them to your MBACIO dashboard.
             </p>
-            <Button 
-              onClick={handleBookAssessment}
-              className="bg-accent text-navy hover:bg-accent/90 font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300"
-            >
-              Request Custom Integration
-            </Button>
+            <Link to="/integrations/request">
+              <Button className="bg-accent text-navy hover:bg-accent/90 font-bold text-xl px-10 py-6 hover:scale-105 transition-transform duration-300">
+                Request Custom Integration
+              </Button>
+            </Link>
           </div>
         </section>
 
