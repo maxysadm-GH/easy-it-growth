@@ -5,8 +5,6 @@ import BookingPopup from './BookingPopup';
 
 const Hero = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const videoSrc = "https://img1.wsimg.com/isteam/videos/n4Wqzxp";
-  const fallbackImg = "/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png";
 
   const handleBookAssessment = () => {
     setIsBookingOpen(true);
@@ -15,15 +13,12 @@ const Hero = () => {
   return (
     <>
       <section className="relative min-h-screen bg-navy text-white pt-24 flex items-center overflow-hidden">
-        {/* Video Background */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none z-0"
-          src={videoSrc}
-          poster={fallbackImg}
+        {/* Professional Hero Background Image */}
+        <div
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`,
+          }}
         />
         
         {/* Stylish watermark background */}
@@ -45,8 +40,8 @@ const Hero = () => {
           </svg>
         </div>
         
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/85 to-deep-blue/75 z-20 pointer-events-none" />
+        {/* Enhanced gradient overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/98 via-navy/90 to-deep-blue/80 z-20 pointer-events-none" />
         
         <div className="container mx-auto px-4 relative z-30">
           <div className="max-w-3xl mx-auto lg:max-w-4xl lg:ml-0 lg:mr-auto text-center lg:text-left">
