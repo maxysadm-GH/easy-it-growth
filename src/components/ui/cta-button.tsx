@@ -14,7 +14,7 @@ interface CTAButtonProps {
   className?: string;
   showIcon?: boolean;
   onClick?: () => void;
-  forcePopup?: boolean; // New prop to force popup behavior
+  forcePopup?: boolean;
 }
 
 const CTAButton: React.FC<CTAButtonProps> = ({
@@ -39,22 +39,28 @@ const CTAButton: React.FC<CTAButtonProps> = ({
   }
 
   const handleClick = () => {
+    console.log('🔥 CTA Button clicked:', { ctaId, finalConfig, forcePopup });
+    
     if (onClick) {
       onClick();
       return;
     }
 
-    // Check if this is a booking CTA or forcePopup is true
+    // Always open booking popup for assessment CTAs or when forcePopup is true
     const isBookingCTA = ctaId === 'book-assessment' || 
                         finalConfig.text.toLowerCase().includes('book') ||
                         finalConfig.text.toLowerCase().includes('assessment') ||
                         forcePopup;
 
+    console.log('🎯 Should open booking popup:', isBookingCTA);
+
     if (isBookingCTA) {
       setIsBookingOpen(true);
     } else if (finalConfig.type === 'external') {
+      console.log('🌐 Opening external URL:', finalConfig.url);
       window.open(finalConfig.url, '_blank');
     } else {
+      console.log('🔗 Navigating to internal URL:', finalConfig.url);
       window.location.href = finalConfig.url;
     }
   };
@@ -79,7 +85,7 @@ const CTAButton: React.FC<CTAButtonProps> = ({
         size={size}
         className={cn(
           getVariantClasses(),
-          'transition-all duration-300',
+          'transition-all duration-300 cursor-pointer',
           className
         )}
       >
@@ -87,7 +93,6 @@ const CTAButton: React.FC<CTAButtonProps> = ({
         {showIcon && <ArrowRight className="w-4 h-4 ml-2" />}
       </Button>
 
-      {/* Booking Popup */}
       <BookingPopup 
         isOpen={isBookingOpen} 
         onClose={() => setIsBookingOpen(false)} 

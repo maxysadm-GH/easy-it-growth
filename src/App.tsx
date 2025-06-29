@@ -11,6 +11,7 @@ import AssessmentRisk from "./pages/AssessmentRisk";
 import AssessmentAutomation from "./pages/AssessmentAutomation";
 import AssessmentTools from "./pages/AssessmentTools";
 import AutomationROI from "./pages/AutomationROI";
+import AIReadinessAssessment from "./pages/AIReadinessAssessment";
 import DowntimeCost from "./pages/DowntimeCost";
 import VendorConsolidation from "./pages/VendorConsolidation";
 import CloudMigration from "./pages/CloudMigration";
@@ -56,6 +57,7 @@ const App = () => (
           <Route path="/logo-diagnostic" element={<LogoDiagnostic />} />
           <Route path="/tools" element={<AssessmentTools />} />
           <Route path="/tools/automation-roi" element={<AutomationROI />} />
+          <Route path="/tools/ai-readiness" element={<AIReadinessAssessment />} />
           <Route path="/tools/downtime-cost" element={<DowntimeCost />} />
           <Route path="/tools/vendor-consolidation" element={<VendorConsolidation />} />
           <Route path="/tools/cloud-migration" element={<CloudMigration />} />

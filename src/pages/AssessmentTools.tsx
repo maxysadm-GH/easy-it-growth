@@ -1,59 +1,64 @@
 
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import { ArrowRight, Bot, TrendingUp, DollarSign, Shield, Cloud, Users, AlertTriangle } from 'lucide-react';
 
 const tools = [
   {
-    iconClass: "icon-automation",
-    title: "IT Automation ROI Calculator",
-    description: "Calculate the return on investment for automating your business processes. See exactly how much time and money you'll save.",
-    path: "/tools/automation-roi",
-    status: "available"
+    title: "AI Readiness Assessment",
+    description: "Discover your business's AI potential and get a personalized roadmap for 2024. Based on current AI trends and adoption patterns.",
+    icon: Bot,
+    href: "/tools/ai-readiness",
+    color: "bg-gradient-to-br from-purple-500 to-blue-600",
+    badge: "🔥 Trending",
+    estimatedTime: "3 minutes"
   },
   {
-    iconClass: "icon-security",
-    title: "Cybersecurity Risk Assessment",
-    description: "Get your security risk score with our comprehensive assessment. Identify vulnerabilities before they become problems.",
-    path: "/tools/cyber-risk",
-    status: "coming-soon"
-  },
-  {
-    iconClass: "icon-downtime",
-    title: "IT Downtime Cost Calculator",
-    description: "Calculate the true cost of IT downtime for your business. Understand the financial impact of system outages.",
-    path: "/tools/downtime-cost",
-    status: "available"
-  },
-  {
-    iconClass: "icon-vendor",
-    title: "Vendor Consolidation Savings",
-    description: "Discover how much you could save by consolidating multiple IT vendors.",
-    path: "/tools/vendor-consolidation",
-    status: "available"
-  },
-  {
-    iconClass: "icon-cloud",
-    title: "Cloud Migration ROI",
-    description: "Evaluate the return on investment for migrating to the cloud.",
-    path: "/tools/cloud-migration",
-    status: "available"
-  },
-  {
-    iconClass: "icon-productivity",
     title: "IT Staff Productivity Calculator",
-    description: "Measure and optimize your IT team's productivity metrics.",
-    path: "/tools/staff-productivity",
-    status: "available"
+    description: "Measure your IT team's efficiency and identify improvement opportunities with actionable insights.",
+    icon: Users,
+    href: "/tools/staff-productivity",
+    color: "bg-gradient-to-br from-green-500 to-teal-600",
+    badge: "Popular",
+    estimatedTime: "2 minutes"
   },
   {
-    iconClass: "icon-compliance",
-    title: "Compliance Cost Calculator",
-    description: "Estimate the cost of meeting IT compliance requirements.",
-    path: "/tools/compliance-cost",
-    status: "coming-soon"
+    title: "Downtime Cost Calculator",
+    description: "Calculate the true cost of IT downtime on your business and understand the ROI of reliability investments.",
+    icon: AlertTriangle,
+    href: "/tools/downtime-cost",
+    color: "bg-gradient-to-br from-red-500 to-orange-600",
+    badge: "Essential",
+    estimatedTime: "2 minutes"
+  },
+  {
+    title: "Vendor Consolidation Savings",
+    description: "See how much you could save by consolidating IT vendors and streamlining your technology stack.",
+    icon: DollarSign,
+    href: "/tools/vendor-consolidation",
+    color: "bg-gradient-to-br from-blue-500 to-indigo-600",
+    badge: "ROI Focused",
+    estimatedTime: "3 minutes"
+  },
+  {
+    title: "Cloud Migration ROI",
+    description: "Evaluate the financial benefits and timeline for migrating your systems to the cloud.",
+    icon: Cloud,
+    href: "/tools/cloud-migration",
+    color: "bg-gradient-to-br from-cyan-500 to-blue-600",
+    badge: "Strategic",
+    estimatedTime: "4 minutes"
+  },
+  {
+    title: "Cybersecurity Risk Assessment",
+    description: "Identify potential security vulnerabilities and get recommendations to protect your business.",
+    icon: Shield,
+    href: "/tools/cyber-risk",
+    color: "bg-gradient-to-br from-red-600 to-pink-600",
+    badge: "Critical",
+    estimatedTime: "5 minutes"
   }
 ];
 
@@ -62,114 +67,16 @@ const AssessmentTools = () => {
     <div className="min-h-screen bg-gray-50">
       <Navigation />
       
-      {/* Professional Icon Styles */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        .professional-icon {
-          width: 60px;
-          height: 60px;
-          margin: 0 auto 1rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 12px;
-          background: linear-gradient(135deg, #facf39, #f9c307);
-          color: #112d4e;
-          font-size: 1.8rem;
-          font-weight: bold;
-          position: relative;
-        }
-
-        .icon-automation::before {
-          content: "AUTO";
-          font-size: 0.7rem;
-          font-weight: 700;
-        }
-
-        .icon-security {
-          background: linear-gradient(135deg, #facf39, #f9c307);
-        }
-        .icon-security::before {
-          content: "";
-          width: 24px;
-          height: 28px;
-          background: #112d4e;
-          clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-
-        .icon-downtime::before {
-          content: "!";
-          font-size: 2rem;
-          font-weight: 900;
-        }
-
-        .icon-vendor::before {
-          content: "VENDOR";
-          font-size: 0.6rem;
-          font-weight: 700;
-        }
-
-        .icon-cloud {
-          position: relative;
-        }
-        .icon-cloud::before {
-          content: "";
-          width: 30px;
-          height: 18px;
-          background: #112d4e;
-          border-radius: 18px;
-          position: absolute;
-        }
-        .icon-cloud::after {
-          content: "";
-          width: 20px;
-          height: 12px;
-          background: #112d4e;
-          border-radius: 12px;
-          position: absolute;
-          top: 18px;
-          left: 25px;
-        }
-
-        .icon-productivity {
-          background: linear-gradient(135deg, #facf39, #f9c307);
-        }
-        .icon-productivity::before {
-          content: "";
-          width: 6px;
-          height: 20px;
-          background: #112d4e;
-          box-shadow: 8px 0 0 #112d4e, 16px 0 0 #112d4e;
-          transform: translateY(2px);
-        }
-        .icon-productivity::after {
-          content: "";
-          width: 6px;
-          height: 15px;
-          background: #112d4e;
-          position: absolute;
-          left: 23px;
-          top: 27px;
-          box-shadow: 16px 0 0 #112d4e;
-        }
-
-        .icon-compliance::before {
-          content: "✓";
-          font-size: 2rem;
-          font-weight: 900;
-        }
-        `
-      }} />
-      
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-navy to-deep-blue text-white">
+      <section className="pt-32 pb-16 bg-gradient-to-br from-navy via-deep-blue to-charcoal text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8">
-              Free IT Assessment Tools
+            <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8 drop-shadow-header">
+              Free Assessment Tools
             </h1>
-            <p className="text-xl lg:text-2xl mb-12 leading-relaxed opacity-90">
-              Get instant insights into your IT operations with our professional assessment tools designed specifically for manufacturers and professional services.
+            <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
+              Get instant insights into your business with our collection of free assessment tools. 
+              Each tool provides personalized recommendations in just minutes.
             </p>
           </div>
         </div>
@@ -178,34 +85,38 @@ const AssessmentTools = () => {
       {/* Tools Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {tools.map((tool, idx) => (
-              <Card
-                key={tool.title}
-                className="group bg-white border border-gray-200 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                <CardContent className="p-8 text-center">
-                  <div className={`professional-icon ${tool.iconClass}`}></div>
-                  <h3 className="text-xl font-poppins font-bold text-navy mb-4">
-                    {tool.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    {tool.description}
-                  </p>
-                  {tool.status === "available" ? (
-                    <Link to={tool.path}>
-                      <Button className="w-full bg-accent text-navy hover:bg-accent/90 font-bold">
-                        Try Tool
-                      </Button>
-                    </Link>
-                  ) : (
-                    <Button disabled className="w-full">
-                      Coming Soon
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {tools.map((tool, index) => {
+              const Icon = tool.icon;
+              return (
+                <Card key={index} className="group hover:shadow-2xl transition-all duration-300 hover:scale-105 border-accent/20">
+                  <CardContent className="p-0">
+                    <div className={`${tool.color} p-6 text-white rounded-t-lg relative overflow-hidden`}>
+                      <div className="absolute top-2 right-2">
+                        <span className="bg-white/20 text-xs px-2 py-1 rounded-full backdrop-blur-sm">
+                          {tool.badge}
+                        </span>
+                      </div>
+                      <Icon className="w-12 h-12 mb-4" />
+                      <h3 className="text-xl font-poppins font-bold mb-2">{tool.title}</h3>
+                      <p className="text-sm opacity-90">{tool.estimatedTime}</p>
+                    </div>
+                    
+                    <div className="p-6">
+                      <p className="text-gray-600 mb-6 leading-relaxed">{tool.description}</p>
+                      
+                      <Link 
+                        to={tool.href}
+                        className="inline-flex items-center gap-2 bg-accent text-navy font-bold px-6 py-3 rounded-lg hover:bg-accent/90 transition-all duration-300 group-hover:scale-105"
+                      >
+                        Start Assessment
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -213,15 +124,19 @@ const AssessmentTools = () => {
       {/* CTA Section */}
       <section className="py-20 bg-navy text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-5xl font-poppins font-bold mb-8">
-            Ready to Transform Your IT Operations?
+          <h2 className="text-3xl lg:text-5xl font-poppins font-bold mb-8 text-accent">
+            Ready for a Comprehensive Assessment?
           </h2>
           <p className="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
-            Get personalized recommendations based on your assessment results.
+            Get a personalized consultation with our experts to discuss your specific needs and challenges.
           </p>
-          <Button size="lg" className="bg-accent text-navy hover:bg-accent/90 font-bold text-xl px-10 py-6">
+          <Link 
+            to="/"
+            className="inline-flex items-center gap-2 bg-gradient-yellow text-navy font-bold text-xl px-10 py-6 rounded-lg hover:scale-105 transition-transform duration-300"
+          >
             Book Your Free Assessment
-          </Button>
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </section>
 

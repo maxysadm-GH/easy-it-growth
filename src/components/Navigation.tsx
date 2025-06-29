@@ -66,13 +66,13 @@ const Navigation = () => {
                       <span className="mr-3">🛠️</span>
                       All Assessment Tools
                     </a>
-                    <a href="/tools/automation-roi" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
-                      <span className="mr-3">⚙️</span>
-                      Automation ROI Calculator
+                    <a href="/tools/ai-readiness" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                      <span className="mr-3">🤖</span>
+                      AI Readiness Assessment
                     </a>
-                    <a href="/tools/cyber-risk" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
-                      <span className="mr-3">🛡️</span>
-                      Cyber Risk Assessment
+                    <a href="/tools/staff-productivity" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                      <span className="mr-3">📈</span>
+                      IT Staff Productivity Calculator
                     </a>
                     <a href="/tools/downtime-cost" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">⚠️</span>
@@ -86,9 +86,9 @@ const Navigation = () => {
                       <span className="mr-3">☁️</span>
                       Cloud Migration ROI
                     </a>
-                    <a href="/tools/staff-productivity" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
-                      <span className="mr-3">📈</span>
-                      IT Staff Productivity Calculator
+                    <a href="/tools/cyber-risk" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                      <span className="mr-3">🛡️</span>
+                      Cyber Risk Assessment
                     </a>
                   </div>
                 </div>
@@ -126,12 +126,12 @@ const Navigation = () => {
                 <a href="/blog" className={navLinkClass}>Blog</a>
                 <div className="flex flex-col gap-2 pl-4">
                   <a href="/tools" className={navLinkClass + " text-base"}>🛠️ All Assessment Tools</a>
-                  <a href="/tools/automation-roi" className={navLinkClass + " text-base"}>⚙️ Automation ROI Calculator</a>
-                  <a href="/tools/cyber-risk" className={navLinkClass + " text-base"}>🛡️ Cyber Risk Assessment</a>
+                  <a href="/tools/ai-readiness" className={navLinkClass + " text-base"}>🤖 AI Readiness Assessment</a>
+                  <a href="/tools/staff-productivity" className={navLinkClass + " text-base"}>📈 IT Staff Productivity Calculator</a>
                   <a href="/tools/downtime-cost" className={navLinkClass + " text-base"}>⚠️ Downtime Cost Calculator</a>
                   <a href="/tools/vendor-consolidation" className={navLinkClass + " text-base"}>📊 Vendor Consolidation Savings</a>
                   <a href="/tools/cloud-migration" className={navLinkClass + " text-base"}>☁️ Cloud Migration ROI</a>
-                  <a href="/tools/staff-productivity" className={navLinkClass + " text-base"}>📈 IT Staff Productivity Calculator</a>
+                  <a href="/tools/cyber-risk" className={navLinkClass + " text-base"}>🛡️ Cyber Risk Assessment</a>
                 </div>
                 <CTAButton 
                   ctaId="book-assessment"

@@ -20,6 +20,14 @@ export const CTA_CONFIGS: Record<string, CTAConfig> = {
   },
   
   // Tool CTAs
+  'ai-readiness': {
+    id: 'ai-readiness',
+    text: 'Take AI Readiness Assessment',
+    url: '/tools/ai-readiness',
+    type: 'internal',
+    category: 'tool',
+    description: 'AI readiness assessment for business transformation'
+  },
   'automation-roi': {
     id: 'automation-roi',
     text: 'Calculate Your Automation ROI',
