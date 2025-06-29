@@ -27,7 +27,7 @@ const Hero = () => {
             width="60vw"
             height="60vw"
             viewBox="0 0 370 370"
-            className="opacity-5 hidden md:block animate-pulse"
+            className="opacity-3 hidden md:block animate-pulse"
             style={{ maxWidth: 600, maxHeight: 600 }}
           >
             <image
@@ -40,54 +40,62 @@ const Hero = () => {
           </svg>
         </div>
         
-        {/* Enhanced gradient overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-navy/98 via-navy/90 to-deep-blue/80 z-20 pointer-events-none" />
+        {/* Enhanced gradient overlay for maximum readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/85 to-deep-blue/90 z-20 pointer-events-none" />
         
+        {/* Content with enhanced contrast background */}
         <div className="container mx-auto px-4 relative z-30">
-          <div className="max-w-3xl mx-auto lg:max-w-4xl lg:ml-0 lg:mr-auto text-center lg:text-left">
-            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-poppins font-bold leading-tight mb-4 drop-shadow-header">
-              Making I.T. Easy
-            </h1>
-            
-            <p className="text-2xl lg:text-3xl xl:text-4xl font-poppins font-semibold text-accent mb-8 drop-shadow-header">
-              Smarter IT. Simpler Growth.
-            </p>
-            
-            <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed mb-10 drop-shadow-header max-w-4xl">
-              From manufacturers to professional firms—we simplify, automate, and modernize your IT operations so your team can focus on growth.
-            </p>
-            
-            <ul className="flex flex-col sm:flex-row gap-3 sm:gap-8 mb-12 justify-center lg:justify-start">
-              {[
-                "Guaranteed ROI in 6 weeks",
-                "60-Day Satisfaction Warranty", 
-                "Nationwide Service",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3 group">
-                  <span className="w-6 h-6 bg-accent rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
-                    <img
-                      src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png"
-                      alt="accent-icon"
-                      className="w-4 h-4"
-                    />
-                  </span>
-                  <span className="text-lg lg:text-xl text-white font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-            
-            <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-              <Button 
-                onClick={handleBookAssessment}
-                size="lg" 
-                className="bg-gradient-yellow text-navy font-poppins font-bold text-xl px-10 py-6 w-full sm:w-auto shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:opacity-90"
-              >
-                Book Your Free Assessment
-              </Button>
-              <p className="text-sm lg:text-base text-gray-300 pt-3 lg:pt-4 flex items-center gap-2">
-                <span className="text-accent">🔒</span> 
-                Guaranteed Confidentiality
+          <div className="max-w-4xl mx-auto lg:max-w-5xl lg:ml-0 lg:mr-auto text-center lg:text-left">
+            {/* Content Card with subtle background for better readability */}
+            <div className="bg-navy/30 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10 shadow-2xl">
+              <h1 className="text-5xl lg:text-7xl xl:text-8xl font-poppins font-bold leading-tight mb-6 text-white">
+                Making I.T. Easy
+              </h1>
+              
+              <p className="text-3xl lg:text-4xl xl:text-5xl font-poppins font-bold text-gradient-yellow-end mb-8 leading-tight">
+                Smarter IT. Simpler Growth.
               </p>
+              
+              <p className="text-xl lg:text-2xl xl:text-3xl text-gray-100 leading-relaxed mb-12 font-medium max-w-4xl">
+                From manufacturers to professional firms—we simplify, automate, and modernize your IT operations so your team can focus on growth.
+              </p>
+              
+              {/* Trust Indicators with enhanced visibility */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-12 justify-center lg:justify-start">
+                {[
+                  "Guaranteed ROI in 6 weeks",
+                  "60-Day Satisfaction Warranty", 
+                  "Nationwide Service",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3 group bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                    <span className="w-8 h-8 bg-gradient-yellow rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
+                      <img
+                        src="/lovable-uploads/ea466603-eb64-4dbb-be17-47a0e25c99e6.png"
+                        alt="accent-icon"
+                        className="w-5 h-5"
+                      />
+                    </span>
+                    <span className="text-lg lg:text-xl text-white font-bold">{item}</span>
+                  </div>
+                ))}
+              </div>
+              
+              {/* CTA Section with enhanced prominence */}
+              <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                <Button 
+                  onClick={handleBookAssessment}
+                  size="lg" 
+                  className="bg-gradient-yellow text-navy font-poppins font-bold text-2xl px-12 py-8 w-full sm:w-auto shadow-2xl hover:shadow-accent/30 transition-all duration-300 hover:scale-105 hover:opacity-95 border-2 border-gradient-yellow-end"
+                >
+                  Book Your Free Assessment
+                </Button>
+                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
+                  <span className="text-2xl">🔒</span> 
+                  <p className="text-lg lg:text-xl text-gray-200 font-medium">
+                    Guaranteed Confidentiality
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
