@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import BookingPopup from './BookingPopup';
-import CTAButton from '@/components/ui/cta-button';
 
 const Logo = () => (
   <a href="/" className="flex items-center h-full py-2">
@@ -21,6 +20,11 @@ const navLinkClass = "text-white font-poppins font-bold text-lg md:text-xl hover
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  const handleBookAssessment = () => {
+    console.log('📞 Navigation CTA clicked - opening booking popup');
+    setIsBookingOpen(true);
+  };
 
   return (
     <>
@@ -94,11 +98,12 @@ const Navigation = () => {
                 </div>
               </div>
               
-              <CTAButton 
-                ctaId="book-assessment"
-                variant="yellow"
-                className="ml-4 px-6 py-2.5 rounded-lg text-lg shadow-lg hover:shadow-xl hover:shadow-accent/20"
-              />
+              <Button 
+                onClick={handleBookAssessment}
+                className="bg-gradient-yellow text-navy font-bold text-lg px-6 py-2.5 rounded-lg shadow-lg hover:shadow-xl hover:shadow-accent/20 ml-4 hover:scale-105 transition-all duration-300"
+              >
+                Book Your Free Assessment
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -133,11 +138,12 @@ const Navigation = () => {
                   <a href="/tools/cloud-migration" className={navLinkClass + " text-base"}>☁️ Cloud Migration ROI</a>
                   <a href="/tools/cyber-risk" className={navLinkClass + " text-base"}>🛡️ Cyber Risk Assessment</a>
                 </div>
-                <CTAButton 
-                  ctaId="book-assessment"
-                  variant="yellow"
-                  className="px-6 py-3 rounded-lg text-lg shadow-lg"
-                />
+                <Button 
+                  onClick={handleBookAssessment}
+                  className="bg-gradient-yellow text-navy font-bold text-lg px-6 py-3 rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  Book Your Free Assessment
+                </Button>
               </div>
             </div>
           )}
