@@ -25,6 +25,8 @@ import FinanceLeadersClient from "./pages/FinanceLeadersClient";
 import AssessmentTools from "./pages/AssessmentTools";
 import AIReadinessAssessment from "./pages/AIReadinessAssessment";
 import ERPMRPClient from "./pages/ERPMRPClient";
+import PLImpactReport from "./pages/PLImpactReport";
+import PricingROI from "./pages/PricingROI";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -58,6 +60,9 @@ function App() {
               <Route path="/assessment-tools" element={<AssessmentTools />} />
               <Route path="/ai-readiness-assessment" element={<AIReadinessAssessment />} />
               <Route path="/erp-mrp-client" element={<ERPMRPClient />} />
+              <Route path="/tools/pl-impact-report" element={<PLImpactReport />} />
+              <Route path="/pricing" element={<PricingROI />} />
+              <Route path="/schedule" element={<Services />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>

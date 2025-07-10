@@ -1,3 +1,4 @@
+
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Button } from "@/components/ui/button";
@@ -17,12 +18,12 @@ const features = [
     icon: Brain,
     title: "Smart Alerts",
     description: "Automatic email or Slack notifications when key thresholds are crossed.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop&auto=format&q=80"
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=200&fit=crop&auto=format&q=80"
   },
   {
     icon: Smartphone,
     title: "Mobile Access",
-    description: "View dashboards on-the-go with our iOS & Android apps.",
+    description: "View dashboards on-the-go from any device, anywhere.",
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=200&fit=crop&auto=format&q=80"
   },
   {
@@ -60,13 +61,9 @@ const DashboardSolutions = () => {
     <>
       <div className="min-h-screen bg-gray-50">
         {/* SEO Meta Tags */}
-        <title>MBACIO Dashboard Solutions – Real-Time Insights & Automation | Bannockburn & Chicagoland</title>
-        <meta name="description" content="Turn raw data into actionable dashboards in minutes. MBACIO Dashboard Solutions offer pre-built metrics, real-time alerts, and 100+ integrations. Serving Bannockburn & Chicagoland." />
-        <meta name="keywords" content="dashboard software, BI dashboards, real-time metrics, Bannockburn IL, MBACIO, business intelligence" />
-        <meta name="geo.region" content="US-IL" />
-        <meta name="geo.placename" content="Bannockburn" />
-        <meta name="geo.position" content="42.1998;-87.8074" />
-        <meta name="ICBM" content="42.1998, -87.8074" />
+        <title>MBACIO Dashboard Solutions – Real-Time Insights & Automation | Chicagoland & Nationwide</title>
+        <meta name="description" content="Turn raw data into actionable dashboards in minutes. MBACIO Dashboard Solutions offer pre-built metrics, real-time alerts, and 100+ integrations. Serving Chicagoland & Nationwide." />
+        <meta name="keywords" content="dashboard software, BI dashboards, real-time metrics, MBACIO, business intelligence" />
         
         <Navigation />
         
@@ -195,20 +192,20 @@ const DashboardSolutions = () => {
                 <div className="bg-white rounded-lg p-6 shadow-lg">
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="text-center p-4 bg-accent/10 rounded-lg">
-                      <div className="text-3xl font-bold text-accent">150</div>
+                      <div className="text-3xl font-bold text-accent">65</div>
                       <div className="text-sm text-gray-600">Tickets/Day (Before)</div>
                     </div>
                     <div className="text-center p-4 bg-gradient-yellow rounded-lg">
-                      <div className="text-3xl font-bold text-navy">45</div>
+                      <div className="text-3xl font-bold text-navy">21</div>
                       <div className="text-sm text-gray-600">Tickets/Day (After)</div>
                     </div>
                     <div className="text-center p-4 bg-navy/10 rounded-lg">
-                      <div className="text-3xl font-bold text-navy">70%</div>
+                      <div className="text-3xl font-bold text-navy">68%</div>
                       <div className="text-sm text-gray-600">Reduction</div>
                     </div>
                   </div>
                   <p className="text-gray-700 text-lg">
-                    After implementing our dashboards, tickets dropped from 150/day to 45/day in 90 days.
+                    After implementing our dashboards, tickets dropped from 65/day to 21/day in 90 days.
                   </p>
                 </div>
               </div>

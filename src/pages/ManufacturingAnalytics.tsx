@@ -16,8 +16,8 @@ const ManufacturingAnalytics = () => {
   };
 
   const handleDownloadReport = () => {
-    // This would link to a downloadable P&L Impact Report
-    console.log('Download Sample P&L Impact Report');
+    // Navigate to P&L Impact Report page
+    window.location.href = '/tools/pl-impact-report';
   };
 
   return (
@@ -310,35 +310,35 @@ const ManufacturingAnalytics = () => {
                   <div className="grid lg:grid-cols-2 gap-8 items-center">
                     <div>
                       <Badge className="bg-accent text-navy font-bold px-3 py-1 mb-4">Client Result</Badge>
-                      <h3 className="text-2xl font-bold mb-4">Automotive Tier 2 Supplier - $45M Revenue</h3>
+                      <h3 className="text-2xl font-bold mb-4">Midwest Food Manufacturer - $42M Revenue</h3>
                       <p className="text-gray-200 mb-4">
-                        This supplier was experiencing 4.2% scrap rates and 68% OEE across three production lines. 
+                        This food manufacturer was experiencing 5.1% scrap rates and 65% OEE across two production lines. 
                         Our manufacturing analytics platform identified the root causes and provided the data 
                         needed to implement targeted improvements.
                       </p>
                       <div className="space-y-2 text-sm">
                         <div className="flex items-center gap-2">
                           <Target className="w-4 h-4 text-accent" />
-                          <span>OEE increased from 68% to 74% (6-point improvement)</span>
+                          <span>OEE increased from 65% to 72% (7-point improvement)</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Target className="w-4 h-4 text-accent" />
-                          <span>Scrap rate reduced from 4.2% to 2.8% (33% reduction)</span>
+                          <span>Scrap rate reduced from 5.1% to 3.2% (37% reduction)</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Target className="w-4 h-4 text-accent" />
-                          <span>Unplanned downtime decreased by 45%</span>
+                          <span>Unplanned downtime decreased by 52%</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Target className="w-4 h-4 text-accent" />
-                          <span>Annual savings: $340,000 (ROI achieved in 14 months)</span>
+                          <span>Annual savings: $385,000 (ROI achieved in 11 months)</span>
                         </div>
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-6xl font-bold text-accent mb-2">14 Months</div>
+                      <div className="text-6xl font-bold text-accent mb-2">11 Months</div>
                       <div className="text-lg text-gray-200">Payback Period</div>
-                      <div className="text-3xl font-bold text-white mt-4">$340,000</div>
+                      <div className="text-3xl font-bold text-white mt-4">$385,000</div>
                       <div className="text-sm text-gray-300">Annual Savings</div>
                     </div>
                   </div>
