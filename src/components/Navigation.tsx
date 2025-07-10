@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import BookingPopup from './BookingPopup';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Logo = () => (
   <a href="/" className="flex items-center h-full py-2">
@@ -20,20 +21,15 @@ const navLinkClass = "text-white font-poppins font-bold text-lg md:text-xl hover
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState('EN');
+  const { currentLanguage, setLanguage, t } = useLanguage();
 
   const handleBookAssessment = () => {
     console.log('📞 Navigation CTA clicked - opening booking popup');
     setIsBookingOpen(true);
   };
 
-  const handleLanguageSwitch = (lang: string) => {
-    setCurrentLanguage(lang);
-    if (lang === 'ES') {
-      // Show coming soon alert for Spanish
-      alert('Spanish version coming soon! / ¡Versión en español próximamente!');
-    }
-    console.log(`Language switched to: ${lang}`);
+  const handleLanguageSwitch = (lang: 'en' | 'es') => {
+    setLanguage(lang);
   };
 
   return (
@@ -48,7 +44,7 @@ const Navigation = () => {
               {/* Industries Dropdown */}
               <div className="relative group">
                 <button className={navLinkClass + " focus:outline-none flex items-center gap-1"}>
-                  Industries
+                  {t('nav.industries')}
                   <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
@@ -57,29 +53,29 @@ const Navigation = () => {
                   <div className="bg-charcoal/95 backdrop-blur-sm rounded-lg shadow-xl py-3 w-64 border border-accent/20">
                     <a href="/food-beverage-client" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">🏭</span>
-                      Food & Beverage Manufacturing
+                      {t('industry.foodBeverage')}
                     </a>
                     <a href="/cpa-law-client" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">⚖️</span>
-                      Law Firms
+                      {t('industry.lawFirms')}
                     </a>
                     <a href="/finance-leaders-client" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">📊</span>
-                      Accounting Firms
+                      {t('industry.accountingFirms')}
                     </a>
                   </div>
                 </div>
               </div>
 
               <a href="/services" className={navLinkClass}>
-                Services
+                {t('nav.services')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
 
               {/* Solutions Dropdown */}
               <div className="relative group">
                 <button className={navLinkClass + " focus:outline-none flex items-center gap-1"}>
-                  Solutions
+                  {t('nav.solutions')}
                   <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
@@ -88,62 +84,59 @@ const Navigation = () => {
                   <div className="bg-charcoal/95 backdrop-blur-sm rounded-lg shadow-xl py-3 w-64 border border-accent/20">
                     <a href="/solutions/manufacturing-analytics" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">🔗</span>
-                      ERP/MRP Integration
+                      {t('solution.erpIntegration')}
                     </a>
                     <a href="/data-ai" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">🤖</span>
-                      AI Workflow Automation
+                      {t('solution.aiAutomation')}
                     </a>
                     <a href="/dashboard-solutions" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">📱</span>
-                      Digital Business Operations
+                      {t('solution.digitalOperations')}
                     </a>
                   </div>
                 </div>
               </div>
 
               <a href="/case-studies" className={navLinkClass}>
-                Success Stories
+                {t('nav.successStories')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
               
-              {/* Free Tools & Blog Dropdown - Completely Redesigned */}
+              {/* Tools & Blog Dropdown */}
               <div className="relative group">
                 <button className={navLinkClass + " focus:outline-none flex items-center gap-1"}>
-                  Tools & Blog
+                  {t('nav.toolsBlog')}
                   <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </button>
                 <div className="absolute hidden group-hover:block pt-2 z-20 right-0">
                   <div className="bg-charcoal/95 backdrop-blur-sm rounded-lg shadow-xl py-3 w-72 border border-accent/20">
-                    <div className="px-4 py-2 border-b border-accent/20">
-                      <span className="text-accent font-bold text-sm uppercase tracking-wide">Free Assessment Tools</span>
-                    </div>
                     <a href="/assessment-tools" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">🛠️</span>
-                      All Assessment Tools
+                      {t('tools.allAssessment')}
                     </a>
                     <a href="/ai-readiness-assessment" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">🤖</span>
-                      AI Readiness Assessment
+                      {t('tools.aiReadiness')}
                     </a>
                     <a href="/tools/staff-productivity" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">📈</span>
-                      Staff Productivity Calculator
+                      {t('tools.staffProductivity')}
                     </a>
                     <a href="/tools/downtime-cost" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">⚠️</span>
-                      Downtime Cost Calculator
+                      {t('tools.downtimeCost')}
                     </a>
                     <a href="/tools/automation-roi" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">💰</span>
-                      Automation ROI Calculator
+                      {t('tools.automationROI')}
                     </a>
                     <div className="px-4 py-2 border-t border-accent/20">
                       <a href="/blog" className="flex items-center px-1 py-2 hover:bg-accent/10 text-white transition-all duration-200 rounded">
                         <span className="mr-3">📝</span>
-                        <span className="font-semibold">Industry Insights Blog</span>
+                        <span className="font-semibold">{t('tools.industryBlog')}</span>
                       </a>
                     </div>
                   </div>
@@ -151,16 +144,16 @@ const Navigation = () => {
               </div>
 
               <a href="/why-us" className={navLinkClass}>
-                About
+                {t('nav.about')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
 
-              {/* Language Switcher - Simplified */}
+              {/* Language Switcher */}
               <div className="flex items-center gap-1 ml-2">
                 <button 
-                  onClick={() => handleLanguageSwitch('EN')}
+                  onClick={() => handleLanguageSwitch('en')}
                   className={`text-sm px-2 py-1 rounded font-bold transition-all duration-200 ${
-                    currentLanguage === 'EN' 
+                    currentLanguage === 'en' 
                       ? 'bg-accent/20 text-accent' 
                       : 'text-white/70 hover:text-white'
                   }`}
@@ -169,9 +162,9 @@ const Navigation = () => {
                 </button>
                 <span className="text-white/30">|</span>
                 <button 
-                  onClick={() => handleLanguageSwitch('ES')}
+                  onClick={() => handleLanguageSwitch('es')}
                   className={`text-sm px-2 py-1 rounded font-bold transition-all duration-200 ${
-                    currentLanguage === 'ES' 
+                    currentLanguage === 'es' 
                       ? 'bg-accent/20 text-accent' 
                       : 'text-white/70 hover:text-white'
                   }`}
@@ -184,7 +177,7 @@ const Navigation = () => {
                 onClick={handleBookAssessment}
                 className="bg-gradient-yellow text-navy font-bold text-lg px-6 py-2.5 rounded-lg shadow-lg hover:shadow-xl hover:shadow-accent/20 ml-3 hover:scale-105 transition-all duration-300"
               >
-                Book Free Assessment
+                {t('nav.bookAssessment')}
               </Button>
             </div>
 
@@ -207,33 +200,33 @@ const Navigation = () => {
             <div className="md:hidden py-4 animate-fade-in">
               <div className="flex flex-col space-y-4 bg-navy/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-accent/20">
                 <div className="flex flex-col gap-2">
-                  <span className="text-accent font-bold text-sm uppercase tracking-wide">Industries</span>
-                  <a href="/food-beverage-client" className={navLinkClass + " text-base pl-4"}>🏭 Food & Beverage</a>
-                  <a href="/cpa-law-client" className={navLinkClass + " text-base pl-4"}>⚖️ Law Firms</a>
-                  <a href="/finance-leaders-client" className={navLinkClass + " text-base pl-4"}>📊 Accounting Firms</a>
+                  <span className="text-accent font-bold text-sm uppercase tracking-wide">{t('nav.industries')}</span>
+                  <a href="/food-beverage-client" className={navLinkClass + " text-base pl-4"}>🏭 {t('industry.foodBeverage')}</a>
+                  <a href="/cpa-law-client" className={navLinkClass + " text-base pl-4"}>⚖️ {t('industry.lawFirms')}</a>
+                  <a href="/finance-leaders-client" className={navLinkClass + " text-base pl-4"}>📊 {t('industry.accountingFirms')}</a>
                 </div>
-                <a href="/services" className={navLinkClass}>Services</a>
-                <a href="/case-studies" className={navLinkClass}>Success Stories</a>
+                <a href="/services" className={navLinkClass}>{t('nav.services')}</a>
+                <a href="/case-studies" className={navLinkClass}>{t('nav.successStories')}</a>
                 <div className="flex flex-col gap-2">
-                  <span className="text-accent font-bold text-sm uppercase tracking-wide">Tools & Blog</span>
-                  <a href="/assessment-tools" className={navLinkClass + " text-base pl-4"}>🛠️ All Assessment Tools</a>
-                  <a href="/blog" className={navLinkClass + " text-base pl-4"}>📝 Industry Blog</a>
+                  <span className="text-accent font-bold text-sm uppercase tracking-wide">{t('nav.toolsBlog')}</span>
+                  <a href="/assessment-tools" className={navLinkClass + " text-base pl-4"}>🛠️ {t('tools.allAssessment')}</a>
+                  <a href="/blog" className={navLinkClass + " text-base pl-4"}>📝 {t('tools.industryBlog')}</a>
                 </div>
-                <a href="/why-us" className={navLinkClass}>About</a>
+                <a href="/why-us" className={navLinkClass}>{t('nav.about')}</a>
                 <div className="flex items-center gap-4 pt-2">
-                  <span className="text-white font-medium">Language:</span>
+                  <span className="text-white font-medium">{t('common.language')}:</span>
                   <button 
-                    onClick={() => handleLanguageSwitch('EN')}
+                    onClick={() => handleLanguageSwitch('en')}
                     className={`text-sm px-3 py-1 rounded font-bold transition-all duration-200 ${
-                      currentLanguage === 'EN' ? 'bg-accent/20 text-accent' : 'text-white/70 hover:text-white'
+                      currentLanguage === 'en' ? 'bg-accent/20 text-accent' : 'text-white/70 hover:text-white'
                     }`}
                   >
                     EN
                   </button>
                   <button 
-                    onClick={() => handleLanguageSwitch('ES')}
+                    onClick={() => handleLanguageSwitch('es')}
                     className={`text-sm px-3 py-1 rounded font-bold transition-all duration-200 ${
-                      currentLanguage === 'ES' ? 'bg-accent/20 text-accent' : 'text-white/70 hover:text-white'
+                      currentLanguage === 'es' ? 'bg-accent/20 text-accent' : 'text-white/70 hover:text-white'
                     }`}
                   >
                     ES
@@ -243,7 +236,7 @@ const Navigation = () => {
                   onClick={handleBookAssessment}
                   className="bg-gradient-yellow text-navy font-bold text-lg px-6 py-3 rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
                 >
-                  Book Your Free Assessment
+                  {t('nav.bookYourAssessment')}
                 </Button>
               </div>
             </div>
