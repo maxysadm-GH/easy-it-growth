@@ -20,10 +20,17 @@ const navLinkClass = "text-white font-poppins font-bold text-lg md:text-xl hover
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState('EN');
 
   const handleBookAssessment = () => {
     console.log('📞 Navigation CTA clicked - opening booking popup');
     setIsBookingOpen(true);
+  };
+
+  const handleLanguageSwitch = (lang: string) => {
+    setCurrentLanguage(lang);
+    // TODO: Implement actual language switching functionality
+    console.log(`Language switched to: ${lang}`);
   };
 
   return (
@@ -97,10 +104,10 @@ const Navigation = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
               
-              {/* Free Tools & Blog Dropdown - Made Prominent */}
+              {/* Free Tools & Blog Dropdown - Redesigned */}
               <div className="relative group">
-                <button className={navLinkClass + " focus:outline-none flex items-center gap-1 text-gradient-yellow-end font-extrabold"}>
-                  Free Tools & Blog
+                <button className={navLinkClass + " focus:outline-none flex items-center gap-1 bg-gradient-to-r from-accent/20 to-accent/10 px-3 py-1 rounded-md border border-accent/30"}>
+                  <span className="text-gradient-yellow-end font-extrabold">Free Tools & Blog</span>
                   <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
@@ -127,6 +134,18 @@ const Navigation = () => {
                       <span className="mr-3">📝</span>
                       Industry Insights Blog
                     </a>
+                    <a href="/tools/automation-roi" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                      <span className="mr-3">💰</span>
+                      Automation ROI Calculator
+                    </a>
+                    <a href="/tools/assessment-risk" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                      <span className="mr-3">⚠️</span>
+                      Risk Assessment Tool
+                    </a>
+                    <a href="/tools/assessment-automation" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                      <span className="mr-3">⚙️</span>
+                      Automation Assessment
+                    </a>
                   </div>
                 </div>
               </div>
@@ -136,13 +155,27 @@ const Navigation = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
 
-              {/* Language Switcher */}
+              {/* Language Switcher - Fixed */}
               <div className="flex items-center gap-2 ml-4">
-                <button className="text-white font-bold text-sm px-2 py-1 rounded border border-white/30 hover:bg-white/10 transition-all duration-200">
+                <button 
+                  onClick={() => handleLanguageSwitch('EN')}
+                  className={`text-sm px-3 py-1 rounded border border-white/30 font-bold transition-all duration-200 ${
+                    currentLanguage === 'EN' 
+                      ? 'bg-white/20 text-white' 
+                      : 'text-white/70 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
                   EN
                 </button>
                 <span className="text-white/50">|</span>
-                <button className="text-white/70 font-bold text-sm px-2 py-1 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
+                <button 
+                  onClick={() => handleLanguageSwitch('ES')}
+                  className={`text-sm px-3 py-1 rounded border border-white/30 font-bold transition-all duration-200 ${
+                    currentLanguage === 'ES' 
+                      ? 'bg-white/20 text-white' 
+                      : 'text-white/70 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
                   ES
                 </button>
               </div>
@@ -189,8 +222,22 @@ const Navigation = () => {
                 <a href="/why-us" className={navLinkClass}>About</a>
                 <div className="flex items-center gap-4 pt-2">
                   <span className="text-white font-medium">Language:</span>
-                  <button className="text-white font-bold text-sm px-3 py-1 rounded border border-white/30 bg-white/10">EN</button>
-                  <button className="text-white/70 font-bold text-sm px-3 py-1 rounded hover:bg-white/10 hover:text-white transition-all duration-200">ES</button>
+                  <button 
+                    onClick={() => handleLanguageSwitch('EN')}
+                    className={`text-sm px-3 py-1 rounded border border-white/30 font-bold transition-all duration-200 ${
+                      currentLanguage === 'EN' ? 'bg-white/20 text-white' : 'text-white/70 hover:bg-white/10 hover:text-white'
+                    }`}
+                  >
+                    EN
+                  </button>
+                  <button 
+                    onClick={() => handleLanguageSwitch('ES')}
+                    className={`text-sm px-3 py-1 rounded border border-white/30 font-bold transition-all duration-200 ${
+                      currentLanguage === 'ES' ? 'bg-white/20 text-white' : 'text-white/70 hover:bg-white/10 hover:text-white'
+                    }`}
+                  >
+                    ES
+                  </button>
                 </div>
                 <Button 
                   onClick={handleBookAssessment}

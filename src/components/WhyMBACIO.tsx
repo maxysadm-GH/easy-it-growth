@@ -1,100 +1,108 @@
 
 import { Card, CardContent } from '@/components/ui/card';
-import CTAButton from '@/components/ui/cta-button';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  Target,
+  Award,
+  Globe,
+  ArrowRight
+} from "lucide-react";
+
+const features = [
+  {
+    icon: Target,
+    title: "Agile & EOS Methodology",
+    description: "Structured project delivery with clear milestones, quarterly reviews, and systematic business growth frameworks.",
+    highlight: "Proven Framework"
+  },
+  {
+    icon: Award,
+    title: "Real-World Experience",
+    description: "We use every tool we recommend in our own business, ensuring authentic experience and understanding of your challenges.",
+    highlight: "Battle-Tested Solutions"
+  },
+  {
+    icon: Globe,
+    title: "Bilingual Excellence",
+    description: "All our agents are fluent in English & Spanish, ensuring seamless communication with your diverse team and clients.",
+    highlight: "100% Bilingual Team"
+  }
+];
 
 const WhyMBACIO = () => {
-  const benefits = [
-    {
-      title: "Your Strategic IT Partners",
-      description: "We go beyond IT—we're your trusted allies in business development, crafting milestone-driven strategies for sustainable growth.",
-      metric: "Strategic Partnership"
-    },
-    {
-      title: "Vendor Consolidation", 
-      description: "Simplify your IT ecosystem with fewer vendors, clearer accountability, and streamlined support—all aligned with your business objectives.",
-      metric: "Single Point of Contact"
-    },
-    {
-      title: "Automation & AI Solutions",
-      description: "Deploy intelligent automation that handles routine tasks, freeing your team for strategic work that drives business forward.",
-      metric: "80% Less Manual Work"
-    },
-    {
-      title: "Cybersecurity & Compliance",
-      description: "Safeguard your business against cyber threats and stay compliant with industry regulations using cutting-edge technologies.",
-      metric: "24/7 Protection"
-    },
-    {
-      title: "Proactive Problem Resolution",
-      description: "We detect and resolve IT issues before they impact your operations—so you can rest easy while we handle the demanding back-end functions.",
-      metric: "99.9% Uptime"
-    },
-    {
-      title: "60-Day Satisfaction Warranty",
-      description: "Complete peace of mind with our comprehensive warranty—we stand behind every solution we deliver.",
-      metric: "Guaranteed Results"
-    }
-  ];
-
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-navy via-deep-blue to-navy text-white" id="why-mbacio">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-poppins font-bold mb-6">
-            What Makes Us Unique
+          <Badge className="mb-6 bg-navy text-white font-bold px-6 py-2 text-lg">
+            🎯 Why Choose MBACIO
+          </Badge>
+          <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-6">
+            The MBACIO Difference
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-            Your Strategic Partners for Business Growth Across Finance, Real Estate, and Manufacturing! 
-            We craft tailored solutions for networking, hardware, and software, aligning technology seamlessly with your business objectives.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            What sets us apart? We don't just provide IT services - we bring unique strengths 
+            that transform how your business operates.
           </p>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {benefits.map((benefit, index) => (
-            <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-poppins font-semibold mb-4 text-accent">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-300 mb-4 leading-relaxed">
-                  {benefit.description}
-                </p>
-                <div className="text-lg font-poppins font-bold text-white">
-                  {benefit.metric}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+          {features.map((feature, idx) => {
+            const Icon = feature.icon;
+            return (
+              <Card
+                key={feature.title}
+                className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white border-2 border-accent/20"
+              >
+                <CardContent className="p-8 text-center">
+                  <div className="w-20 h-20 bg-navy rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-10 h-10 text-gradient-yellow-end" />
+                  </div>
+                  <Badge className="mb-4 bg-gradient-yellow text-navy font-bold">
+                    {feature.highlight}
+                  </Badge>
+                  <h3 className="text-2xl font-poppins font-bold text-navy mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-700 font-inter leading-relaxed">
+                    {feature.description}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 mb-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-poppins font-bold mb-4 text-accent">Our Mission</h3>
-              <p className="text-gray-300 leading-relaxed">
+        {/* Mission and Vision Section - Fixed Alignment */}
+        <div className="bg-navy rounded-2xl p-8 md:p-12 text-white max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="text-left">
+              <h3 className="text-3xl font-poppins font-bold text-gradient-yellow-end mb-6">
+                Our Mission
+              </h3>
+              <p className="text-lg leading-relaxed text-white/90">
                 At MBACIO, we are dedicated to delivering affordable, high-touch solutions that enable our clients to streamline systems, protect their data, and drive their business forward. Leave the demanding back-end functions and infrastructure in our capable hands, so you can rest easy at night.
               </p>
             </div>
-            <div>
-              <h3 className="text-2xl font-poppins font-bold mb-4 text-accent">Our Vision</h3>
-              <p className="text-gray-300 leading-relaxed">
+            <div className="text-left">
+              <h3 className="text-3xl font-poppins font-bold text-gradient-yellow-end mb-6">
+                Our Vision
+              </h3>
+              <p className="text-lg leading-relaxed text-white/90">
                 To provide innovative and efficient solutions for businesses seeking to enhance their performance and profitability. We offer a one-stop destination for all your needs, helping you navigate challenges and drive your business to new heights.
               </p>
             </div>
           </div>
-        </div>
-
-        <div className="text-center">
-          <CTAButton 
-            ctaId="book-assessment"
-            variant="yellow"
-            size="lg"
-            className="px-8 py-6 text-lg"
-            customConfig={{
-              text: "Partner With Us for Strategic Growth"
-            }}
-            forcePopup={true}
-          />
+          
+          <div className="text-center mt-12">
+            <Button 
+              className="bg-gradient-yellow text-navy font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              Partner With Us for Strategic Growth
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </div>
         </div>
       </div>
     </section>
