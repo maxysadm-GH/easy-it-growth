@@ -39,8 +39,18 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ onBookAssessment 
       
       <ToolsBlogDropdown navLinkClass={navLinkClass} />
 
-      <a href="/why-us" className={navLinkClass}>
+      <a href="/about" className={navLinkClass}>
         {t('nav.about')}
+        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="/resources" className={navLinkClass}>
+        Resources
+        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="/contact" className={navLinkClass}>
+        Contact
         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
       </a>
       

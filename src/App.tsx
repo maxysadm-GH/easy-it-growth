@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -27,6 +26,10 @@ import AIReadinessAssessment from "./pages/AIReadinessAssessment";
 import ERPMRPClient from "./pages/ERPMRPClient";
 import PLImpactReport from "./pages/PLImpactReport";
 import PricingROI from "./pages/PricingROI";
+import Industries from './pages/Industries';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Resources from './pages/Resources';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -41,6 +44,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/industries" element={<Industries />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/resources" element={<Resources />} />
               <Route path="/case-studies" element={<CaseStudies />} />
               <Route path="/why-us" element={<WhyUs />} />
               <Route path="/blog" element={<Blog />} />

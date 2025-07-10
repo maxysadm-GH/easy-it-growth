@@ -50,7 +50,9 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
               <a href="/assessment-tools" className={navLinkClass + " text-sm pl-4"}>🛠️ {t('tools.allAssessment')}</a>
               <a href="/blog" className={navLinkClass + " text-sm pl-4"}>📝 {t('tools.industryBlog')}</a>
             </div>
-            <a href="/why-us" className={navLinkClass + " text-sm"}>{t('nav.about')}</a>
+            <a href="/about" className={navLinkClass + " text-sm"}>{t('nav.about')}</a>
+            <a href="/resources" className={navLinkClass + " text-sm"}>Resources</a>
+            <a href="/contact" className={navLinkClass + " text-sm"}>Contact</a>
             <Button 
               onClick={onBookAssessment}
               className="bg-gradient-yellow text-navy font-bold text-sm px-4 py-2 rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
