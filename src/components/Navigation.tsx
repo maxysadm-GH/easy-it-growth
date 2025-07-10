@@ -100,6 +100,11 @@ const Navigation = () => {
                 {t('nav.successStories')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
+
+              <a href="/pricing" className={navLinkClass}>
+                Pricing
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+              </a>
               
               {/* Tools & Blog Dropdown - Right aligned */}
               <div className="relative group">
@@ -190,6 +195,7 @@ const Navigation = () => {
                 </div>
                 <a href="/services" className={navLinkClass + " text-sm"}>{t('nav.services')}</a>
                 <a href="/case-studies" className={navLinkClass + " text-sm"}>{t('nav.successStories')}</a>
+                <a href="/pricing" className={navLinkClass + " text-sm"}>Pricing</a>
                 <div className="flex flex-col gap-2">
                   <span className="text-accent font-bold text-sm uppercase tracking-wide">{t('nav.toolsBlog')}</span>
                   <a href="/assessment-tools" className={navLinkClass + " text-sm pl-4"}>🛠️ {t('tools.allAssessment')}</a>

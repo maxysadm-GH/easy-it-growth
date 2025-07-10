@@ -100,7 +100,7 @@ const Footer = () => {
                 <li><a href="/services" className="hover:text-accent transition-colors">MRP & ERP Integration</a></li>
                 <li><a href="/services" className="hover:text-accent transition-colors">Cloud Migrations</a></li>
                 <li><a href="/dashboard-solutions" className="hover:text-accent transition-colors">Dashboard Solutions</a></li>
-                <li><a href="/service-plans" className="hover:text-accent transition-colors">Service Plans</a></li>
+                <li><a href="/pricing" className="hover:text-accent transition-colors">Pricing & ROI Planning</a></li>
               </ul>
             </div>
             
@@ -108,7 +108,7 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-poppins font-semibold mb-4 text-accent">Tools & Assessments</h3>
               <ul className="space-y-2 text-gray-300 text-sm">
-                <li><a href="/tools" className="hover:text-accent transition-colors">All Assessment Tools</a></li>
+                <li><a href="/assessment-tools" className="hover:text-accent transition-colors">All Assessment Tools</a></li>
                 <li><a href="/tools/automation-roi" className="hover:text-accent transition-colors">Automation ROI Calculator</a></li>
                 <li><a href="/tools/cyber-risk" className="hover:text-accent transition-colors">Cyber Risk Assessment</a></li>
                 <li><a href="/tools/downtime-cost" className="hover:text-accent transition-colors">Downtime Cost Calculator</a></li>
@@ -126,11 +126,11 @@ const Footer = () => {
               <div className="mb-4">
                 <h4 className="text-sm font-semibold mb-2 text-white">Industries We Serve</h4>
                 <ul className="space-y-1 text-gray-300 text-sm">
-                  <li><a href="/ideal-client/food-beverage" className="hover:text-accent transition-colors">Manufacturing</a></li>
+                  <li><a href="/food-beverage-client" className="hover:text-accent transition-colors">Manufacturing</a></li>
                   <li><a href="/services" className="hover:text-accent transition-colors">Professional Services</a></li>
-                  <li><a href="/ideal-client/cpa-law" className="hover:text-accent transition-colors">Legal & CPA Firms</a></li>
-                  <li><a href="/ideal-client/erp-mrp" className="hover:text-accent transition-colors">ERP/MRP Users</a></li>
-                  <li><a href="/ideal-client/finance-leaders" className="hover:text-accent transition-colors">Finance Leaders</a></li>
+                  <li><a href="/cpa-law-client" className="hover:text-accent transition-colors">Legal & CPA Firms</a></li>
+                  <li><a href="/erp-mrp-client" className="hover:text-accent transition-colors">ERP/MRP Users</a></li>
+                  <li><a href="/finance-leaders-client" className="hover:text-accent transition-colors">Finance Leaders</a></li>
                 </ul>
               </div>
               <div>
