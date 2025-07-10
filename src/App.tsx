@@ -53,8 +53,8 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/tools/staff-productivity" element={<StaffProductivity />} />
               <Route path="/tools/downtime-cost" element={<DowntimeCost />} />
-              <Route path="/solutions/manufacturing-analytics" element={<ManufacturingAnalytics />} />
               <Route path="/manufacturing-analytics" element={<ManufacturingAnalytics />} />
+              <Route path="/solutions/manufacturing-analytics" element={<ManufacturingAnalytics />} />
               <Route path="/data-ai" element={<DataAI />} />
               <Route path="/dashboard-solutions" element={<DashboardSolutions />} />
               <Route path="/tools/automation-roi" element={<AutomationROI />} />

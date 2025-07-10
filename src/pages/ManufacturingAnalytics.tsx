@@ -1,394 +1,177 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Factory, BarChart3, TrendingDown, Shield, AlertTriangle, Target, Clock, DollarSign, CheckCircle, Download, PhoneCall } from 'lucide-react';
-import BookingPopup from '../components/BookingPopup';
+import { TrendingUp, BarChart3, Settings, Shield, DollarSign, Clock } from 'lucide-react';
 
 const ManufacturingAnalytics = () => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-
-  const handleBookDiscoveryCall = () => {
-    setIsBookingOpen(true);
-  };
-
-  const handleDownloadReport = () => {
-    // Navigate to P&L Impact Report page
-    window.location.href = '/tools/pl-impact-report';
+  const handleBooking = () => {
+    window.open('https://outlook.office.com/book/MBACIOConsultation@mbacio.com/', '_blank');
   };
 
   return (
-    <>
-      <div className="min-h-screen bg-gray-50">
-        <Navigation />
-        
-        {/* Hero Section - Financial Pain Point */}
-        <section className="pt-32 pb-20 bg-gradient-to-br from-navy via-charcoal to-deep-blue text-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <Badge className="bg-red-600 text-white font-bold px-4 py-2 text-lg mb-6">
-                P&L Impact Alert
-              </Badge>
-              <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8">
-                Manufacturing Analytics That Drive Profitability
-              </h1>
-              <p className="text-xl lg:text-2xl text-gray-200 mb-8 leading-relaxed">
-                Every point of OEE you gain or scrap you reduce drops directly to your bottom line. 
-                We help you find those points by connecting machine data to clear financial impact 
-                on your P&L statement.
-              </p>
-              <div className="flex items-center justify-center gap-8 mb-12 text-lg">
-                <div className="flex items-center gap-2">
-                  <TrendingDown className="w-6 h-6 text-accent" />
-                  <span>3-7 Point OEE Improvement</span>
+    <div className="min-h-screen bg-gray-50">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section className="bg-navy text-white py-20 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Manufacturing Analytics & Intelligence</h1>
+          <p className="text-xl max-w-4xl mx-auto text-gray-300 mb-8">
+            Transform your manufacturing operations with real-time OEE tracking, scrap rate analysis, 
+            and cost of quality insights. Based in Chicago, serving manufacturers nationwide with 
+            enterprise-grade analytics solutions.
+          </p>
+          <Button 
+            onClick={handleBooking}
+            className="bg-gradient-yellow text-navy font-bold px-8 py-3 rounded-lg hover:scale-105 transition-all duration-300"
+          >
+            Schedule Manufacturing Assessment
+          </Button>
+        </div>
+      </section>
+
+      {/* Key Metrics Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center text-navy">Critical Manufacturing KPIs We Track</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="text-center">
+              <CardHeader>
+                <TrendingUp className="w-12 h-12 mx-auto text-accent mb-4" />
+                <CardTitle>Overall Equipment Effectiveness (OEE)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">Monitor availability, performance, and quality in real-time</p>
+                <div className="bg-accent/10 p-4 rounded-lg">
+                  <p className="text-2xl font-bold text-accent">85%+</p>
+                  <p className="text-sm text-gray-600">Average OEE improvement</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <DollarSign className="w-6 h-6 text-accent" />
-                  <span>10-20% Scrap Rate Reduction</span>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <BarChart3 className="w-12 h-12 mx-auto text-accent mb-4" />
+                <CardTitle>Scrap Rate Optimization</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">Track and reduce material waste across production lines</p>
+                <div className="bg-accent/10 p-4 rounded-lg">
+                  <p className="text-2xl font-bold text-accent">3-7%</p>
+                  <p className="text-sm text-gray-600">Typical scrap reduction</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-6 h-6 text-accent" />
-                  <span>15% Lower MRO Spend</span>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <DollarSign className="w-12 h-12 mx-auto text-accent mb-4" />
+                <CardTitle>Cost of Quality (COQ)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">Measure prevention, appraisal, and failure costs</p>
+                <div className="bg-accent/10 p-4 rounded-lg">
+                  <p className="text-2xl font-bold text-accent">$250K+</p>
+                  <p className="text-sm text-gray-600">Average annual savings</p>
                 </div>
-              </div>
-              <Button 
-                onClick={handleBookDiscoveryCall}
-                className="bg-gradient-yellow text-navy font-bold text-xl px-12 py-6 hover:scale-105 transition-transform duration-300 flex items-center gap-3 mx-auto"
-              >
-                <PhoneCall className="w-5 h-5" />
-                Book a 15-Min OEE Discovery Call
-              </Button>
-            </div>
+              </CardContent>
+            </Card>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Challenge Section - P&L Drags */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-center text-navy mb-16">
-                Common Drags on Your P&L
-              </h2>
-              <div className="grid lg:grid-cols-3 gap-8 mb-16">
-                <Card className="border-2 border-red-200 bg-red-50">
-                  <CardContent className="p-8">
-                    <AlertTriangle className="w-12 h-12 text-red-600 mb-6" />
-                    <h3 className="text-xl font-bold text-red-800 mb-4">Unexplained Variances in Cost-Per-Unit</h3>
-                    <p className="text-gray-700 mb-4">
-                      Your standard cost models say one thing, but your monthly P&L says another. 
-                      Hidden scrap, downtime, and waste create variances that erode your planned margins.
-                    </p>
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Actual throughput 15-25% below theoretical capacity</li>
-                      <li>• Material yield rates lower than engineering specifications</li>
-                      <li>• Labor efficiency calculations missing true downtime impact</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-orange-200 bg-orange-50">
-                  <CardContent className="p-8">
-                    <Shield className="w-12 h-12 text-orange-600 mb-6" />
-                    <h3 className="text-xl font-bold text-orange-800 mb-4">High Cost of Quality</h3>
-                    <p className="text-gray-700 mb-4">
-                      Every product recall, warranty claim, and returned shipment eats into your margin. 
-                      Reactive inspection catches problems after value has already been added.
-                    </p>
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Quality costs typically 8-15% of revenue in reactive environments</li>
-                      <li>• Warranty reserves growing faster than sales growth</li>
-                      <li>• Customer complaints tied to process variations</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-red-200 bg-red-50">
-                  <CardContent className="p-8">
-                    <Clock className="w-12 h-12 text-red-600 mb-6" />
-                    <h3 className="text-xl font-bold text-red-800 mb-4">Unplanned Maintenance Expenses</h3>
-                    <p className="text-gray-700 mb-4">
-                      Reactive maintenance costs 3-5x more than predictive approaches. 
-                      Emergency repairs disrupt schedules and create expedited shipping costs.
-                    </p>
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• MRO spending 15-20% above industry benchmarks</li>
-                      <li>• Rush orders increase procurement costs by 25-40%</li>
-                      <li>• Overtime premiums during breakdown recovery</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="text-center">
-                <p className="text-xl text-gray-700 mb-8">
-                  <strong>The Financial Reality:</strong> A typical $25M manufacturer loses $180,000-$400,000 
-                  annually to these operational inefficiencies. The data to prevent this already exists 
-                  in your equipment—it just needs to be connected and analyzed properly.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Solution Section - Our Approach */}
-        <section className="py-20 bg-navy text-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center mb-16">
-              <Factory className="w-16 h-16 text-accent mx-auto mb-6" />
-              <h2 className="text-3xl lg:text-5xl font-poppins font-bold mb-8">
-                Our Approach: From Machine Data to Boardroom Clarity
-              </h2>
-              <p className="text-xl text-gray-200 leading-relaxed">
-                From our roots in Chicago's industrial heartland to clients across the nation, 
-                we turn machine-level data into executive-ready financial insights that directly 
-                impact your P&L performance.
-              </p>
-            </div>
-
-            <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto mb-16">
-              <div className="text-center">
-                <div className="bg-accent text-navy rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
-                <h3 className="text-2xl font-bold text-accent mb-6">Connect & Capture</h3>
-                <p className="text-gray-200 leading-relaxed">
-                  We integrate with your existing PLCs, SCADA systems, and sensors to capture 
-                  real-time production data. No disruption to operations—we work with what you have 
-                  to create a unified data foundation for calculating true OEE and throughput metrics.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="bg-accent text-navy rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
-                <h3 className="text-2xl font-bold text-accent mb-6">Analyze & Diagnose</h3>
-                <p className="text-gray-200 leading-relaxed">
-                  Our algorithms identify the biggest contributors to low OEE, calculate true scrap rates, 
-                  and correlate quality issues with process parameters. We trace problems to their root 
-                  causes—whether it's material variability, equipment drift, or operator techniques.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="bg-accent text-navy rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
-                <h3 className="text-2xl font-bold text-accent mb-6">Report & Recommend</h3>
-                <p className="text-gray-200 leading-relaxed">
-                  Executive dashboards show OEE trends, cost-per-unit variances, and predicted 
-                  maintenance needs. Every metric ties back to financial impact—so you can prioritize 
-                  improvements based on ROI and present clear business cases for capital investments.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-deep-blue/50 rounded-lg p-8 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-accent mb-4 text-center">Key Metrics We Track</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <ul className="space-y-3 text-gray-200">
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span><strong>Overall Equipment Effectiveness (OEE)</strong> by line and shift</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span><strong>Scrap Rate</strong> with cost impact and trend analysis</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span><strong>Cost of Quality</strong> including prevention, appraisal, and failure costs</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span><strong>Predictive Maintenance</strong> alerts with cost-benefit analysis</span>
-                  </li>
-                </ul>
-                <ul className="space-y-3 text-gray-200">
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span><strong>Yield</strong> optimization opportunities by product and process</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span><strong>Throughput</strong> bottleneck identification and capacity planning</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span><strong>Cost-Per-Unit</strong> variance tracking with root cause analysis</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span><strong>Inventory Turns</strong> optimization through demand forecasting</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Results Section - Financial Impact */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-center text-navy mb-16">
-                Expected Financial & Operational Impact
-              </h2>
-
-              {/* Results Grid */}
-              <div className="grid md:grid-cols-4 gap-8 mb-16">
-                <div className="text-center">
-                  <div className="text-5xl font-bold text-accent mb-2">3-7</div>
-                  <div className="text-sm text-gray-600">Point OEE Improvement<br/>Within 12 Months</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-5xl font-bold text-accent mb-2">10-20%</div>
-                  <div className="text-sm text-gray-600">Scrap Rate Reduction<br/>Through Process Control</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-5xl font-bold text-accent mb-2">15%</div>
-                  <div className="text-sm text-gray-600">Lower MRO Spend<br/>Via Predictive Maintenance</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-5xl font-bold text-accent mb-2">$75K-$250K</div>
-                  <div className="text-sm text-gray-600">Annual Savings<br/>Per Production Line</div>
-                </div>
-              </div>
-
-              {/* Detailed Impact Breakdown */}
-              <div className="grid lg:grid-cols-3 gap-8 mb-16">
-                <Card className="border-2 border-accent/20">
-                  <CardContent className="p-8">
-                    <Target className="w-12 h-12 text-accent mb-6" />
-                    <h3 className="text-xl font-bold text-navy mb-4">OEE Improvement</h3>
-                    <p className="text-gray-700 mb-4">
-                      Our clients typically see a 3-7 point improvement in OEE within the first 12 months. 
-                      Each point of OEE improvement on a $25M revenue line can add $125,000-$200,000 in 
-                      additional throughput capacity.
-                    </p>
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Availability improvements through predictive maintenance</li>
-                      <li>• Performance gains via bottleneck elimination</li>
-                      <li>• Quality rate increases through process optimization</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-accent/20">
-                  <CardContent className="p-8">
-                    <BarChart3 className="w-12 h-12 text-accent mb-6" />
-                    <h3 className="text-xl font-bold text-navy mb-4">Scrap Reduction</h3>
-                    <p className="text-gray-700 mb-4">
-                      Identify and eliminate sources of waste, often leading to a 10-20% reduction in scrap rate. 
-                      For manufacturers with 3-5% scrap rates, this improvement directly adds 0.6-1.0% to gross margin.
-                    </p>
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Real-time quality monitoring prevents defect propagation</li>
-                      <li>• Statistical process control reduces variation</li>
-                      <li>• Yield optimization maximizes material utilization</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-accent/20">
-                  <CardContent className="p-8">
-                    <DollarSign className="w-12 h-12 text-accent mb-6" />
-                    <h3 className="text-xl font-bold text-navy mb-4">Maintenance Costs</h3>
-                    <p className="text-gray-700 mb-4">
-                      Move from reactive repairs to predictive maintenance, reducing unplanned downtime 
-                      and lowering MRO spend by up to 15%. Emergency repair costs drop by 60-80%.
-                    </p>
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Condition-based maintenance scheduling</li>
-                      <li>• Parts inventory optimization</li>
-                      <li>• Extended equipment lifecycle through proper care</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Case Study Highlight */}
-              <Card className="bg-gradient-to-r from-navy to-deep-blue text-white p-8">
-                <CardContent className="p-0">
-                  <div className="grid lg:grid-cols-2 gap-8 items-center">
-                    <div>
-                      <Badge className="bg-accent text-navy font-bold px-3 py-1 mb-4">Client Result</Badge>
-                      <h3 className="text-2xl font-bold mb-4">Midwest Food Manufacturer - $42M Revenue</h3>
-                      <p className="text-gray-200 mb-4">
-                        This food manufacturer was experiencing 5.1% scrap rates and 65% OEE across two production lines. 
-                        Our manufacturing analytics platform identified the root causes and provided the data 
-                        needed to implement targeted improvements.
-                      </p>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Target className="w-4 h-4 text-accent" />
-                          <span>OEE increased from 65% to 72% (7-point improvement)</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Target className="w-4 h-4 text-accent" />
-                          <span>Scrap rate reduced from 5.1% to 3.2% (37% reduction)</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Target className="w-4 h-4 text-accent" />
-                          <span>Unplanned downtime decreased by 52%</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Target className="w-4 h-4 text-accent" />
-                          <span>Annual savings: $385,000 (ROI achieved in 11 months)</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-6xl font-bold text-accent mb-2">11 Months</div>
-                      <div className="text-lg text-gray-200">Payback Period</div>
-                      <div className="text-3xl font-bold text-white mt-4">$385,000</div>
-                      <div className="text-sm text-gray-300">Annual Savings</div>
-                    </div>
+      {/* Solution Features */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center text-navy">Manufacturing Intelligence Platform</h2>
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-2xl font-bold mb-6 text-navy">Real-Time Production Monitoring</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <Clock className="w-6 h-6 text-accent mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <strong>Live OEE Dashboard:</strong> Track availability, performance, and quality metrics across all production lines
                   </div>
-                </CardContent>
-              </Card>
+                </li>
+                <li className="flex items-start">
+                  <BarChart3 className="w-6 h-6 text-accent mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <strong>Downtime Analysis:</strong> Identify bottlenecks and optimize changeover times
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <TrendingUp className="w-6 h-6 text-accent mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <strong>Throughput Optimization:</strong> Maximize production efficiency and reduce cycle times
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-2xl font-bold mb-6 text-navy">Quality & Cost Management</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <Shield className="w-6 h-6 text-accent mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <strong>Quality Control Integration:</strong> Connect inspection data to production metrics
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <DollarSign className="w-6 h-6 text-accent mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <strong>Cost Tracking:</strong> Monitor material costs, labor efficiency, and overhead allocation
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <Settings className="w-6 h-6 text-accent mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <strong>Predictive Maintenance:</strong> Reduce unplanned downtime with data-driven insights
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-navy via-deep-blue to-charcoal text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl lg:text-5xl font-poppins font-bold mb-8">
-              Start Improving Your OEE and Cost-Per-Unit Today
-            </h2>
-            <p className="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
-              In a 15-minute discovery call, we'll assess your current OEE performance and identify 
-              the top 2-3 opportunities for immediate cost reduction. No generic sales pitch—just 
-              specific insights based on your production data and P&L goals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Button 
-                onClick={handleBookDiscoveryCall}
-                className="bg-gradient-yellow text-navy font-bold text-xl px-12 py-6 hover:scale-105 transition-transform duration-300 flex items-center gap-3"
-              >
-                <PhoneCall className="w-5 h-5" />
-                Book a 15-Min OEE Discovery Call
-              </Button>
-              <Button 
-                onClick={handleDownloadReport}
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy font-bold text-xl px-12 py-6 transition-all duration-300 flex items-center gap-3"
-              >
-                <Download className="w-5 h-5" />
-                Download Sample P&L Impact Report
-              </Button>
+      {/* ROI Section */}
+      <section className="py-16 bg-navy text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-8">Quantified Manufacturing ROI</h2>
+          <div className="grid md:grid-cols-4 gap-8 mb-12">
+            <div className="bg-white/10 p-6 rounded-lg">
+              <h3 className="text-2xl font-bold text-accent mb-2">15-25%</h3>
+              <p>OEE Improvement</p>
             </div>
-            <p className="text-sm text-gray-300 mt-6">
-              Free consultation • OEE assessment included • Specific savings opportunities identified
-            </p>
+            <div className="bg-white/10 p-6 rounded-lg">
+              <h3 className="text-2xl font-bold text-accent mb-2">$50K-$200K</h3>
+              <p>Annual Waste Reduction</p>
+            </div>
+            <div className="bg-white/10 p-6 rounded-lg">
+              <h3 className="text-2xl font-bold text-accent mb-2">6-12 months</h3>
+              <p>Typical Payback Period</p>
+            </div>
+            <div className="bg-white/10 p-6 rounded-lg">
+              <h3 className="text-2xl font-bold text-accent mb-2">24/7</h3>
+              <p>Real-time Monitoring</p>
+            </div>
           </div>
-        </section>
+          <Button 
+            onClick={handleBooking}
+            className="bg-gradient-yellow text-navy font-bold px-8 py-3 rounded-lg hover:scale-105 transition-all duration-300"
+          >
+            Get Your Manufacturing ROI Analysis
+          </Button>
+        </div>
+      </section>
 
-        <Footer />
-      </div>
-
-      <BookingPopup 
-        isOpen={isBookingOpen} 
-        onClose={() => setIsBookingOpen(false)} 
-      />
-    </>
+      <Footer />
+    </div>
   );
 };
 
