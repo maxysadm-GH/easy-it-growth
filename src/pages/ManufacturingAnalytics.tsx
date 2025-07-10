@@ -5,14 +5,95 @@ import Footer from '../components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, BarChart3, Settings, Shield, DollarSign, Clock } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const ManufacturingAnalytics = () => {
-  const handleBooking = () => {
+  const handleScheduleAudit = () => {
     window.open('https://outlook.office.com/book/MBACIOConsultation@mbacio.com/', '_blank');
+  };
+
+  const handleDownloadReport = () => {
+    // This would link to an actual PDF resource
+    console.log('Download P&L Impact Report');
+  };
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "Manufacturing Analytics & Intelligence",
+        "provider": {
+          "@type": "Organization",
+          "name": "MBACIO, LLC",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "2515 Waukegan Road",
+            "addressLocality": "Bannockburn",
+            "addressRegion": "Illinois",
+            "postalCode": "60015",
+            "addressCountry": "US"
+          },
+          "telephone": "+1-773-657-2300"
+        },
+        "description": "Transform your manufacturing operations with real-time OEE tracking, scrap rate analysis, and cost of quality insights. Enterprise-grade analytics solutions for manufacturers nationwide.",
+        "serviceType": "Manufacturing Analytics",
+        "areaServed": "United States",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Manufacturing Companies"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the typical OEE improvement?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our manufacturing analytics solutions typically deliver 15-25% OEE improvement through real-time monitoring, downtime analysis, and performance optimization."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you integrate with our existing ERP system?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We integrate with all major ERP systems including SAP, Oracle, Microsoft Dynamics, and Acumatica through APIs and data connectors, ensuring seamless data flow without disrupting existing operations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What ROI can we expect from manufacturing analytics?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Clients typically see $250K+ in annual savings through waste reduction, improved efficiency, and optimized operations with a payback period of 6-12 months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you support real-time monitoring?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, our platform provides 24/7 real-time monitoring of all production metrics including OEE, scrap rates, downtime analysis, and quality metrics with instant alerts and dashboards."
+            }
+          }
+        ]
+      }
+    ]
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>Manufacturing Analytics & Intelligence | MBACIO</title>
+        <meta name="description" content="Transform your manufacturing operations with real-time OEE tracking, scrap rate analysis, and cost of quality insights. Based in Chicago, serving manufacturers nationwide." />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+
       <Navigation />
       
       {/* Hero Section */}
@@ -25,10 +106,10 @@ const ManufacturingAnalytics = () => {
             enterprise-grade analytics solutions.
           </p>
           <Button 
-            onClick={handleBooking}
+            onClick={handleScheduleAudit}
             className="bg-gradient-yellow text-navy font-bold px-8 py-3 rounded-lg hover:scale-105 transition-all duration-300"
           >
-            Schedule Manufacturing Assessment
+            Schedule Your Strategic Audit
           </Button>
         </div>
       </section>
@@ -89,6 +170,11 @@ const ManufacturingAnalytics = () => {
           <h2 className="text-3xl font-bold mb-12 text-center text-navy">Manufacturing Intelligence Platform</h2>
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
+              <img 
+                src="/lovable-uploads/444b256c-f552-4b14-aecd-395d6963a3ae.png" 
+                alt="MBACIO manufacturing analytics dashboard showing real-time OEE metrics, production line status, and quality control data for a Chicago-area manufacturer"
+                className="w-full h-64 object-cover rounded-lg mb-6"
+              />
               <h3 className="text-2xl font-bold mb-6 text-navy">Real-Time Production Monitoring</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -113,6 +199,11 @@ const ManufacturingAnalytics = () => {
             </div>
             
             <div>
+              <img 
+                src="/lovable-uploads/4c6038a0-a9a6-4643-b7c5-aa8a4acb59d1.png" 
+                alt="Manufacturing quality control dashboard designed by MBACIO showing cost of quality metrics, defect tracking, and predictive maintenance alerts"
+                className="w-full h-64 object-cover rounded-lg mb-6"
+              />
               <h3 className="text-2xl font-bold mb-6 text-navy">Quality & Cost Management</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -135,6 +226,28 @@ const ManufacturingAnalytics = () => {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-8 text-navy">Ready to Transform Your Manufacturing Operations?</h2>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Button 
+              onClick={handleScheduleAudit}
+              className="bg-gradient-yellow text-navy font-bold px-8 py-3 rounded-lg hover:scale-105 transition-all duration-300"
+            >
+              Schedule Your Strategic Audit
+            </Button>
+            <Button 
+              onClick={handleDownloadReport}
+              variant="outline"
+              className="border-navy text-navy hover:bg-navy hover:text-white px-8 py-3 rounded-lg transition-all duration-300"
+            >
+              Download Sample P&L Impact Report
+            </Button>
           </div>
         </div>
       </section>
@@ -162,7 +275,7 @@ const ManufacturingAnalytics = () => {
             </div>
           </div>
           <Button 
-            onClick={handleBooking}
+            onClick={handleScheduleAudit}
             className="bg-gradient-yellow text-navy font-bold px-8 py-3 rounded-lg hover:scale-105 transition-all duration-300"
           >
             Get Your Manufacturing ROI Analysis
