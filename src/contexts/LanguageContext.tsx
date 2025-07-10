@@ -11,7 +11,7 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-// Translation dictionary
+// Comprehensive translation dictionary
 const translations = {
   en: {
     // Navigation
@@ -42,6 +42,20 @@ const translations = {
     'tools.automationROI': 'Automation ROI Calculator',
     'tools.industryBlog': 'Industry Insights Blog',
     
+    // Hero Section
+    'hero.title': 'Making I.T. Easy',
+    'hero.subtitle': 'Smarter IT. Simpler Growth.',
+    'hero.description': 'From manufacturers to professional firms—we simplify, automate, and modernize your IT operations so your team can focus on growth.',
+    'hero.bookAssessment': 'Book Your Free Assessment',
+    'hero.confidentiality': 'Guaranteed Confidentiality',
+    'hero.confidentialityTooltip': 'Even if you currently have an IT partner, our free risk assessment ensures complete privacy and confidentiality. Make sure they\'re doing a good job before it\'s too late—for free!',
+    'hero.guaranteedROI': 'Guaranteed ROI in 6 weeks',
+    'hero.guaranteedROITooltip': 'We\'re so confident in our IT optimization strategies that we guarantee you\'ll see measurable return on investment within 6 weeks, or we\'ll work for free until you do.',
+    'hero.warranty': '60-Day Satisfaction Warranty',
+    'hero.warrantyTooltip': 'Not completely satisfied with our service? We offer a full 60-day satisfaction warranty. If we don\'t exceed expectations, we\'ll make it right or refund your investment.',
+    'hero.nationwide': 'Nationwide Service',
+    'hero.nationwideTooltip': 'From coast to coast, our expert IT team provides consistent, high-quality service wherever your business operates. Local expertise with national reach.',
+    
     // Common
     'common.language': 'Language',
   },
@@ -53,8 +67,8 @@ const translations = {
     'nav.successStories': 'Casos de Éxito',
     'nav.toolsBlog': 'Herramientas y Blog',
     'nav.about': 'Acerca de',
-    'nav.bookAssessment': 'Reservar Evaluación Gratuita',
-    'nav.bookYourAssessment': 'Reserva Tu Evaluación Gratuita',
+    'nav.bookAssessment': 'Reservar Evaluación',
+    'nav.bookYourAssessment': 'Reserva Tu Evaluación',
     
     // Industries
     'industry.foodBeverage': 'Manufactura de Alimentos y Bebidas',
@@ -63,16 +77,30 @@ const translations = {
     
     // Solutions
     'solution.erpIntegration': 'Integración ERP/MRP',
-    'solution.aiAutomation': 'Automatización de Flujos de Trabajo IA',
-    'solution.digitalOperations': 'Operaciones Comerciales Digitales',
+    'solution.aiAutomation': 'Automatización de Flujos IA',
+    'solution.digitalOperations': 'Operaciones Digitales',
     
     // Tools
-    'tools.allAssessment': 'Todas las Herramientas de Evaluación',
-    'tools.aiReadiness': 'Evaluación de Preparación para IA',
-    'tools.staffProductivity': 'Calculadora de Productividad del Personal',
-    'tools.downtimeCost': 'Calculadora de Costo de Tiempo Muerto',
-    'tools.automationROI': 'Calculadora de ROI de Automatización',
-    'tools.industryBlog': 'Blog de Perspectivas de la Industria',
+    'tools.allAssessment': 'Herramientas de Evaluación',
+    'tools.aiReadiness': 'Evaluación de Preparación IA',
+    'tools.staffProductivity': 'Calculadora de Productividad',
+    'tools.downtimeCost': 'Calculadora de Tiempo Muerto',
+    'tools.automationROI': 'Calculadora de ROI',
+    'tools.industryBlog': 'Blog de la Industria',
+    
+    // Hero Section
+    'hero.title': 'Haciendo la T.I. Fácil',
+    'hero.subtitle': 'TI Más Inteligente. Crecimiento Más Simple.',
+    'hero.description': 'Desde manufactureros hasta firmas profesionales—simplificamos, automatizamos y modernizamos sus operaciones de TI para que su equipo pueda enfocarse en el crecimiento.',
+    'hero.bookAssessment': 'Reservar Evaluación Gratuita',
+    'hero.confidentiality': 'Confidencialidad Garantizada',
+    'hero.confidentialityTooltip': 'Incluso si actualmente tiene un socio de TI, nuestra evaluación gratuita de riesgo garantiza completa privacidad y confidencialidad. ¡Asegúrese de que estén haciendo un buen trabajo antes de que sea demasiado tarde—gratis!',
+    'hero.guaranteedROI': 'ROI Garantizado en 6 semanas',
+    'hero.guaranteedROITooltip': 'Estamos tan seguros de nuestras estrategias de optimización de TI que garantizamos que verá un retorno de inversión medible en 6 semanas, o trabajaremos gratis hasta que lo haga.',
+    'hero.warranty': 'Garantía de Satisfacción de 60 Días',
+    'hero.warrantyTooltip': '¿No está completamente satisfecho con nuestro servicio? Ofrecemos una garantía completa de satisfacción de 60 días. Si no superamos las expectativas, lo solucionaremos o reembolsaremos su inversión.',
+    'hero.nationwide': 'Servicio Nacional',
+    'hero.nationwideTooltip': 'De costa a costa, nuestro equipo experto de TI brinda servicio consistente y de alta calidad donde sea que opere su negocio. Experiencia local con alcance nacional.',
     
     // Common
     'common.language': 'Idioma',

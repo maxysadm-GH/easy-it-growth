@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useChatEngagement } from "@/hooks/useChatEngagement";
 import { useBackgroundDetection } from "@/hooks/useBackgroundDetection";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Message } from "@/types/chat";
 import ChatButton from "./chat/ChatButton";
 import ChatWindow from "./chat/ChatWindow";
@@ -16,6 +16,7 @@ const Chatbot = () => {
   
   const { shouldAutoOpen, pageContext, markAsAutoOpened } = useChatEngagement();
   const backgroundContext = useBackgroundDetection();
+  const { currentLanguage, t } = useLanguage();
 
   // Handle auto-open functionality
   useEffect(() => {
@@ -23,22 +24,26 @@ const Chatbot = () => {
       setOpen(true);
       markAsAutoOpened();
       
-      // Set contextual welcome message
+      // Set contextual welcome message based on language
       const welcomeMessage: Message = {
         from: 'bot',
-        text: pageContext.contextualGreeting,
+        text: currentLanguage === 'es' 
+          ? "¡Hola! Soy el Asistente MBACIO. Puedo ayudarte con consultoría de TI, automatización, ciberseguridad y más. ¿Cómo puedo asistirte hoy?"
+          : pageContext.contextualGreeting,
         timestamp: new Date()
       };
       
       setMessages([welcomeMessage]);
       setHasInitialized(true);
     }
-  }, [shouldAutoOpen, open, hasInitialized, pageContext, markAsAutoOpened]);
+  }, [shouldAutoOpen, open, hasInitialized, pageContext, markAsAutoOpened, currentLanguage]);
 
   // Initialize with default message when manually opened
   useEffect(() => {
     if (open && !hasInitialized && messages.length === 0) {
-      const defaultWelcome = "👋 Hi! I'm the MBACIO Assistant powered by AI. I can help you with IT consulting, automation, cybersecurity, and more. How can I assist you today?";
+      const defaultWelcome = currentLanguage === 'es'
+        ? "👋 ¡Hola! Soy el Asistente MBACIO impulsado por IA. Puedo ayudarte con consultoría de TI, automatización, ciberseguridad y más. ¿Cómo puedo asistirte hoy?"
+        : "👋 Hi! I'm the MBACIO Assistant powered by AI. I can help you with IT consulting, automation, cybersecurity, and more. How can I assist you today?";
       
       setMessages([{
         from: 'bot',
@@ -47,29 +52,51 @@ const Chatbot = () => {
       }]);
       setHasInitialized(true);
     }
-  }, [open, hasInitialized, messages.length]);
+  }, [open, hasInitialized, messages.length, currentLanguage]);
+
+  // Reset initialization when language changes to show appropriate welcome
+  useEffect(() => {
+    if (messages.length > 0) {
+      const welcomeText = currentLanguage === 'es'
+        ? "👋 ¡Hola! Soy el Asistente MBACIO impulsado por IA. Puedo ayudarte con consultoría de TI, automatización, ciberseguridad y más. ¿Cómo puedo asistirte hoy?"
+        : "👋 Hi! I'm the MBACIO Assistant powered by AI. I can help you with IT consulting, automation, cybersecurity, and more. How can I assist you today?";
+      
+      setMessages(prev => [{
+        from: 'bot',
+        text: welcomeText,
+        timestamp: new Date()
+      }, ...prev.slice(1)]);
+    }
+  }, [currentLanguage]);
 
   const sendMessageToAI = async (message: string): Promise<string> => {
     try {
-      // Enhanced context for AI
-      const contextualMessage = `Page Context: ${pageContext.aiContext}\n\nUser Question: ${message}`;
+      // Enhanced context for AI including language preference
+      const contextualMessage = `Language: ${currentLanguage}\nPage Context: ${pageContext.aiContext}\n\nUser Question: ${message}`;
       
       const { data, error } = await supabase.functions.invoke('chat-assistant', {
         body: { 
           message: contextualMessage,
-          pageContext: pageContext.pageName
+          pageContext: pageContext.pageName,
+          language: currentLanguage
         }
       });
 
       if (error) {
         console.error('Supabase function error:', error);
-        return "I'm having trouble connecting right now. Please call (773) 657-2300 for immediate assistance, or use the 'Talk with Engineer' button for human help.";
+        return currentLanguage === 'es'
+          ? "Estoy teniendo problemas para conectarme ahora. Por favor llama al (773) 657-2300 para asistencia inmediata, o usa el botón 'Hablar con Ingeniero' para ayuda humana."
+          : "I'm having trouble connecting right now. Please call (773) 657-2300 for immediate assistance, or use the 'Talk with Engineer' button for human help.";
       }
 
-      return data?.reply || "I didn't understand that. Could you please rephrase your question?";
+      return data?.reply || (currentLanguage === 'es' 
+        ? "No entendí eso. ¿Podrías reformular tu pregunta?"
+        : "I didn't understand that. Could you please rephrase your question?");
     } catch (error) {
       console.error('Error calling chat assistant:', error);
-      return "I'm experiencing technical difficulties. Please call (773) 657-2300 or email info@mbacio.com for help, or click 'Talk with Engineer' for immediate assistance.";
+      return currentLanguage === 'es'
+        ? "Estoy experimentando dificultades técnicas. Por favor llama al (773) 657-2300 o envía un email a info@mbacio.com, o haz clic en 'Hablar con Ingeniero' para asistencia inmediata."
+        : "I'm experiencing technical difficulties. Please call (773) 657-2300 or email info@mbacio.com for help, or click 'Talk with Engineer' for immediate assistance.";
     }
   };
 

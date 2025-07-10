@@ -11,6 +11,7 @@ import Integrations from '../components/Integrations';
 import CaseStudies from '../components/CaseStudies';
 import BlogTeaser from '../components/BlogTeaser';
 import Footer from '../components/Footer';
+import Chatbot from '../components/Chatbot';
 
 const Index = () => {
   return (
@@ -27,6 +28,7 @@ const Index = () => {
       <CaseStudies />
       <BlogTeaser />
       <Footer />
+      <Chatbot />
     </div>
   );
 };

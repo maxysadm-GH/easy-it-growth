@@ -1,12 +1,13 @@
 
-
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useState } from 'react';
 import BookingPopup from './BookingPopup';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const { t } = useLanguage();
 
   const handleBookAssessment = () => {
     setIsBookingOpen(true);
@@ -15,16 +16,16 @@ const Hero = () => {
   // Trust indicators with tooltip content
   const trustIndicators = [
     {
-      text: "Guaranteed ROI in 6 weeks",
-      tooltip: "We're so confident in our IT optimization strategies that we guarantee you'll see measurable return on investment within 6 weeks, or we'll work for free until you do."
+      text: t('hero.guaranteedROI'),
+      tooltip: t('hero.guaranteedROITooltip')
     },
     {
-      text: "60-Day Satisfaction Warranty", 
-      tooltip: "Not completely satisfied with our service? We offer a full 60-day satisfaction warranty. If we don't exceed expectations, we'll make it right or refund your investment."
+      text: t('hero.warranty'), 
+      tooltip: t('hero.warrantyTooltip')
     },
     {
-      text: "Nationwide Service",
-      tooltip: "From coast to coast, our expert IT team provides consistent, high-quality service wherever your business operates. Local expertise with national reach."
+      text: t('hero.nationwide'),
+      tooltip: t('hero.nationwideTooltip')
     }
   ];
 
@@ -67,15 +68,15 @@ const Hero = () => {
             {/* Content Card with subtle background for better readability */}
             <div className="bg-navy/30 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10 shadow-2xl">
               <h1 className="text-5xl lg:text-7xl xl:text-8xl font-poppins font-bold leading-tight mb-6 text-white">
-                Making I.T. Easy
+                {t('hero.title')}
               </h1>
               
               <p className="text-3xl lg:text-4xl xl:text-5xl font-poppins font-bold text-gradient-yellow-end mb-8 leading-tight">
-                Smarter IT. Simpler Growth.
+                {t('hero.subtitle')}
               </p>
               
               <p className="text-xl lg:text-2xl xl:text-3xl text-gray-100 leading-relaxed mb-12 font-medium max-w-4xl">
-                From manufacturers to professional firms—we simplify, automate, and modernize your IT operations so your team can focus on growth.
+                {t('hero.description')}
               </p>
               
               {/* Trust Indicators with enhanced visibility and tooltips */}
@@ -115,7 +116,7 @@ const Hero = () => {
                   size="lg" 
                   className="bg-gradient-yellow text-navy font-poppins font-bold text-2xl px-12 py-8 w-full sm:w-auto shadow-2xl hover:shadow-accent/30 transition-all duration-300 hover:scale-105 hover:opacity-95 border-2 border-gradient-yellow-end"
                 >
-                  Book Your Free Assessment
+                  {t('hero.bookAssessment')}
                 </Button>
                 <TooltipProvider>
                   <Tooltip>
@@ -123,7 +124,7 @@ const Hero = () => {
                       <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10 cursor-help hover:bg-white/10 transition-all duration-300">
                         <span className="text-2xl">🔒</span> 
                         <p className="text-lg lg:text-xl text-gray-200 font-medium">
-                          Guaranteed Confidentiality
+                          {t('hero.confidentiality')}
                         </p>
                       </div>
                     </TooltipTrigger>
@@ -132,8 +133,7 @@ const Hero = () => {
                       className="max-w-sm bg-navy/95 border-accent/20 text-white p-4 rounded-lg shadow-xl"
                     >
                       <p className="text-sm leading-relaxed">
-                        Even if you currently have an IT partner, our free risk assessment ensures complete privacy and confidentiality. 
-                        <strong className="text-accent"> Make sure they're doing a good job before it's too late—for free!</strong>
+                        {t('hero.confidentialityTooltip')}
                       </p>
                     </TooltipContent>
                   </Tooltip>
@@ -154,4 +154,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
