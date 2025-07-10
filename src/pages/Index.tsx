@@ -100,7 +100,10 @@ const Index = () => {
                 className="h-12 w-auto"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling.style.display = 'flex';
+                  const nextSibling = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (nextSibling) {
+                    nextSibling.style.display = 'flex';
+                  }
                 }}
               />
               <span className="text-gray-500 text-sm hidden">Client Logo</span>
@@ -112,7 +115,10 @@ const Index = () => {
                 className="h-12 w-auto"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling.style.display = 'flex';
+                  const nextSibling = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (nextSibling) {
+                    nextSibling.style.display = 'flex';
+                  }
                 }}
               />
               <span className="text-gray-500 text-sm hidden">Client Logo</span>
@@ -124,7 +130,10 @@ const Index = () => {
                 className="h-12 w-auto"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling.style.display = 'flex';
+                  const nextSibling = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (nextSibling) {
+                    nextSibling.style.display = 'flex';
+                  }
                 }}
               />
               <span className="text-gray-500 text-sm hidden">Client Logo</span>
