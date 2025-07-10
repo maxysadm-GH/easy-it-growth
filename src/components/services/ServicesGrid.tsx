@@ -2,72 +2,72 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
-  Settings,
+  Workflow,
   Shield,
-  Cloud,
-  BarChart2,
-  Sliders,
-  Globe,
   Zap,
+  TrendingUp,
+  MessageSquare,
+  Phone,
+  Cloud,
   HardDrive
 } from "lucide-react";
 
 const services = [
   {
-    icon: Settings,
-    title: "24/7 Bilingual Help Desk & Support",
-    description: "Fast, reliable support in English & Spanish with 24/7 monitoring and rapid response using our proven Agile methodology.",
-    superpower: "Bilingual Excellence",
-    features: ["English & Spanish Support", "Agile Ticketing System", "EOS Project Structure", "We Use Our Own Tools Daily"]
+    icon: MessageSquare,
+    title: "24/7 Intelligent Business Operations",
+    description: "Deploy a digital front desk that handles client intake, answers questions, and schedules consultations automatically while providing real-time insights into customer interactions.",
+    superpower: "Never Miss a Lead",
+    features: ["24/7 Lead Capture", "Automated Scheduling", "Multi-Language Support", "Real-Time Analytics"]
   },
   {
     icon: Shield,
-    title: "Advanced Cybersecurity & Compliance",
-    description: "AI-driven threat detection, email security, and comprehensive compliance (SOX, HIPAA, PCI) with bilingual alerts.",
-    superpower: "Real Experience",
-    features: ["Multi-Language Security Alerts", "Industry-Specific Compliance", "Real-time Threat Detection", "Proven Track Record"]
+    title: "Bulletproof Security & Compliance Protection",
+    description: "Sleep soundly with multi-layered security that prevents breaches, ensures regulatory compliance (SOX, HIPAA, PCI), and maintains seamless operations for your team.",
+    superpower: "Zero Breach Guarantee",
+    features: ["Real-Time Threat Detection", "Compliance Automation", "Data Fortress Protection", "24/7 Security Monitoring"]
   },
   {
-    icon: Cloud,
-    title: "Cloud Migration & Microsoft 365",
-    description: "Zero-downtime migration, management, and optimization using our Agile methodology - we've done our own 3 times!",
-    superpower: "Real-World Experience",
-    features: ["Zero-Downtime Migrations", "Agile Implementation", "Proven Experience", "Multi-Language Support"]
+    icon: Workflow,
+    title: "Intelligent Workflow Automation",
+    description: "Eliminate manual data entry and streamline approvals by connecting your software systems so information flows seamlessly from client intake to final delivery.",
+    superpower: "Save 15+ Hours Weekly",
+    features: ["Process Automation", "System Integration", "Error Elimination", "Workflow Intelligence"]
   },
   {
-    icon: BarChart2,
-    title: "Data Analytics & AI Automation",
-    description: "Power BI dashboards in English/Spanish, custom automation workflows, and machine learning insights.",
-    superpower: "Bilingual Analytics",
-    features: ["Bilingual Dashboards", "Custom Automation", "AI-Powered Insights", "EOS-Structured Reporting"]
+    icon: Phone,
+    title: "AI-Powered Communication Systems",
+    description: "Transform your phone system into an intelligence-gathering asset with automated transcription, sentiment analysis, and instant meeting summaries for every client interaction.",
+    superpower: "Never Miss Details",
+    features: ["Call Transcription", "Sentiment Analysis", "Meeting Summaries", "Follow-Up Automation"]
   },
   {
-    icon: Sliders,
-    title: "Strategic IT Leadership & Virtual CIO",
-    description: "EOS-structured IT roadmaps with quarterly business reviews in your preferred language and executive reporting.",
-    superpower: "EOS Methodology",
-    features: ["EOS IT Roadmaps", "Bilingual Executive Reports", "Strategic Planning", "Quarterly Reviews"]
+    icon: TrendingUp,
+    title: "Strategic IT Leadership & Business Acceleration",
+    description: "Get executive-level technology strategy without the CTO salary. We provide growth-focused IT roadmaps and quarterly reviews that align technology with revenue goals.",
+    superpower: "Executive Strategy",
+    features: ["Technology Roadmaps", "ROI Tracking", "Growth Planning", "Competitive Analysis"]
   },
   {
     icon: Zap,
-    title: "Integration & Workflow Optimization",
-    description: "API connections between your tools using Agile sprints with change management in bilingual environments.",
-    superpower: "Agile Integration",
-    features: ["API Integrations", "Agile Sprint Delivery", "Bilingual Change Management", "Process Automation"]
+    title: "Microsoft Copilot Integration for Legal Teams",
+    description: "Embed AI directly into your existing workflow (Word, Outlook, Teams) to slash research time, accelerate document drafting, and automate administrative tasks.",
+    superpower: "60% Faster Research",
+    features: ["Legal Research AI", "Document Automation", "Email Intelligence", "Team Collaboration"]
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Solutions & Digital Transformation",
+    description: "Modernize legacy systems and enable remote work capabilities with secure cloud migrations that connect your existing software ecosystem seamlessly.",
+    superpower: "Zero Downtime",
+    features: ["Cloud Migration", "System Integration", "Remote Work Setup", "Legacy Modernization"]
   },
   {
     icon: HardDrive,
-    title: "Backup & Disaster Recovery",
-    description: "Multi-tier backup strategies with business continuity planning and quarterly recovery testing (like we do for ourselves).",
-    superpower: "Real Experience",
-    features: ["Multi-Tier Backups", "Quarterly Testing", "Business Continuity", "Proven Methods"]
-  },
-  {
-    icon: Globe,
-    title: "Hardware Procurement & Management",
-    description: "Vendor-neutral recommendations with lifecycle management using EOS tracking and bulk purchasing power.",
-    superpower: "EOS Tracking",
-    features: ["Vendor-Neutral Advice", "EOS Lifecycle Management", "Bulk Purchasing", "Strategic Planning"]
+    title: "Business Continuity & Disaster Recovery",
+    description: "Ensure your business never stops with multi-tier backup strategies, rapid recovery systems, and comprehensive business continuity planning.",
+    superpower: "99.9% Uptime",
+    features: ["Multi-Tier Backups", "Rapid Recovery", "Business Continuity", "Disaster Planning"]
   }
 ];
 
@@ -77,11 +77,11 @@ const ServicesGrid = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-6">
-            Comprehensive IT Services
+            Complete Technology Solutions for Chicago Businesses
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From help desk to strategic planning - all delivered with bilingual excellence 
-            and proven methodologies.
+            From automation to security - all delivered with proven results 
+            and measurable business impact.
           </p>
         </div>
         

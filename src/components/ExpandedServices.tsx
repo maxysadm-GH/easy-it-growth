@@ -1,81 +1,45 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Settings,
+  Workflow,
   Shield,
-  Cloud,
   Zap,
-  BarChart2,
-  Database,
-  Users,
-  Lock,
-  Sliders,
+  TrendingUp,
 } from "lucide-react";
 
 const services = [
   {
-    icon: Settings,
-    title: "Managed IT & Automation",
+    icon: Workflow,
+    title: "Intelligent Workflow Automation",
     description:
-      "Proactive IT support, automation, and monitoring to ensure your business is secure and scalable.",
-    highlight: "Managed IT • Automation",
+      "Stop wasting time on repetitive tasks that drain your team's productivity. We eliminate manual data entry, streamline approvals, and connect your software systems so information flows seamlessly from client intake to final delivery.",
+    highlight: "Save 15+ Hours Weekly",
     geo: "Chicago, Nationwide",
+    outcomes: ["60% faster processing", "Eliminate data entry errors", "24/7 automated workflows"]
   },
   {
     icon: Shield,
-    title: "Cybersecurity & Compliance",
-    description: "Protect your data and meet required standards—HIPAA, CMMC, PCI, and more.",
-    highlight: "Compliance • Protection",
+    title: "Bulletproof Security & Compliance Protection",
+    description: "Sleep soundly knowing your client data is fortress-protected and your business meets every regulatory requirement. We implement multi-layered security that prevents breaches while ensuring seamless daily operations for your team.",
+    highlight: "Zero Breach Guarantee",
     geo: "Chicago, US",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud Solutions",
-    description: "Migration & management for Microsoft 365, Google Workspace, Azure, AWS and more.",
-    highlight: "Cloud • Microsoft 365",
-    geo: "Nationwide",
+    outcomes: ["Full regulatory compliance", "Real-time threat detection", "Client trust protection"]
   },
   {
     icon: Zap,
-    title: "Process Automation",
-    description: "Eliminate bottlenecks and automate workflows with RPA and digital solutions.",
-    highlight: "Workflow • RPA",
+    title: "24/7 Digital Business Operations",
+    description: "Never miss another lead or client inquiry, even after hours. We deploy intelligent systems that handle client intake, answer questions, schedule appointments, and manage communications automatically while you focus on high-value work.",
+    highlight: "Never Miss a Lead",
     geo: "Chicago, US",
+    outcomes: ["24/7 client capture", "Automated scheduling", "Instant response times"]
   },
   {
-    icon: BarChart2,
-    title: "AI Insights & Dashboards",
-    description: "Real-time dashboards, analytics, and reporting for data-driven decisions.",
-    highlight: "Dashboards • AI Insights",
-    geo: "Chicago, US",
-  },
-  {
-    icon: Database,
-    title: "ERP, MRP & System Integration",
-    description: "Connect ERP, MRP, and accounting for automated, real-time workflows.",
-    highlight: "ERP • Integration",
-    geo: "Chicago, US",
-  },
-  {
-    icon: Users,
-    title: "Collaboration & Productivity",
-    description: "Empower hybrid teams with secure tools, cloud files, and unified communications.",
-    highlight: "Teams • Productivity",
-    geo: "Chicago, US",
-  },
-  {
-    icon: Lock,
-    title: "Backup & Disaster Recovery",
-    description: "Tailored backups and rapid recovery for business continuity.",
-    highlight: "Continuity • Recovery",
-    geo: "Chicago, US",
-  },
-  {
-    icon: Sliders,
-    title: "IT Roadmapping & vCIO",
-    description: "Strategic IT planning and vCIO—align your tech with growth goals.",
-    highlight: "Strategy • vCIO",
+    icon: TrendingUp,
+    title: "Strategic IT Leadership & Business Acceleration",
+    description: "Get a seasoned CTO's perspective without the executive salary. We provide strategic technology roadmaps, quarterly business reviews, and growth-focused IT planning that aligns your technology investments with revenue goals.",
+    highlight: "Executive-Level Strategy",
     geo: "Chicago, Nationwide",
+    outcomes: ["Clear growth roadmap", "Technology ROI tracking", "Competitive advantage"]
   },
 ];
 
@@ -84,43 +48,58 @@ const ExpandedServices = () => (
     <div className="container mx-auto px-4">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-poppins font-bold text-navy mb-6">
-          Complete IT Solutions for Growing Businesses
+          Complete Business Solutions for Chicago's Leading Firms
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto font-inter leading-relaxed">
-          From cybersecurity to automation, we provide comprehensive IT services 
+          From automation to security, we provide comprehensive technology solutions 
           that scale with your business and protect what matters most.
         </p>
       </div>
       
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {services.map((service, idx) => {
           const Icon = service.icon;
           return (
             <Card
               key={service.title}
-              className="group bg-white border border-gray-200 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-xl overflow-hidden"
+              className="group bg-white border border-gray-200 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-xl overflow-hidden h-full"
             >
-              <CardContent className="p-8">
+              <CardContent className="p-8 h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
-                    <Icon className="w-6 h-6 text-accent" />
+                  <div className="w-16 h-16 bg-gradient-yellow rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-8 h-8 text-navy" />
                   </div>
-                  <h3 className="text-xl font-poppins font-bold text-navy group-hover:text-accent transition-colors duration-300">
-                    {service.title}
-                  </h3>
+                  <div>
+                    <h3 className="text-2xl font-poppins font-bold text-navy group-hover:text-accent transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <span className="inline-block bg-navy/5 text-navy px-3 py-1 rounded-full text-sm font-semibold mt-2">
+                      {service.highlight}
+                    </span>
+                  </div>
                 </div>
                 
-                <p className="text-gray-600 font-inter leading-relaxed mb-6 min-h-[60px]">
+                <p className="text-gray-600 font-inter leading-relaxed mb-6 flex-grow">
                   {service.description}
                 </p>
                 
+                <div className="space-y-2 mb-6">
+                  <h4 className="text-navy font-semibold">Key Outcomes:</h4>
+                  {service.outcomes.map((outcome, outcomeIdx) => (
+                    <div key={outcomeIdx} className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 bg-accent rounded-full" />
+                      <span className="text-gray-700 font-medium">{outcome}</span>
+                    </div>
+                  ))}
+                </div>
+                
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="inline-block bg-navy/5 text-navy px-3 py-1 rounded-full text-sm font-semibold">
-                    {service.highlight}
-                  </span>
                   <span className="text-xs text-gray-500 font-medium">
-                    {service.geo}
+                    📍 {service.geo}
                   </span>
+                  <button className="text-navy hover:text-accent font-semibold text-sm hover:underline transition-colors duration-200">
+                    Learn More →
+                  </button>
                 </div>
               </CardContent>
             </Card>
@@ -133,7 +112,7 @@ const ExpandedServices = () => (
           href="/services"
           className="inline-flex items-center gap-2 bg-navy text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg hover:bg-deep-blue transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
         >
-          View All Services
+          Explore All Solutions
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
           </svg>

@@ -1,6 +1,7 @@
 
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
+import AISuperPowers from '../components/AISuperPowers';
 import IdealClients from '../components/IdealClients';
 import WhyMBACIO from '../components/WhyMBACIO';
 import ThreeStepFramework from '../components/ThreeStepFramework';
@@ -16,6 +17,7 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <Navigation />
       <Hero />
+      <AISuperPowers />
       <IdealClients />
       <WhyMBACIO />
       <ThreeStepFramework />
