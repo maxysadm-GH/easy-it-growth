@@ -24,6 +24,7 @@ import CPALawClient from "./pages/CPALawClient";
 import FinanceLeadersClient from "./pages/FinanceLeadersClient";
 import AssessmentTools from "./pages/AssessmentTools";
 import AIReadinessAssessment from "./pages/AIReadinessAssessment";
+import ERPMRPClient from "./pages/ERPMRPClient";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ function App() {
               <Route path="/tools/staff-productivity" element={<StaffProductivity />} />
               <Route path="/tools/downtime-cost" element={<DowntimeCost />} />
               <Route path="/solutions/manufacturing-analytics" element={<ManufacturingAnalytics />} />
+              <Route path="/manufacturing-analytics" element={<ManufacturingAnalytics />} />
               <Route path="/data-ai" element={<DataAI />} />
               <Route path="/dashboard-solutions" element={<DashboardSolutions />} />
               <Route path="/tools/automation-roi" element={<AutomationROI />} />
@@ -55,6 +57,7 @@ function App() {
               <Route path="/finance-leaders-client" element={<FinanceLeadersClient />} />
               <Route path="/assessment-tools" element={<AssessmentTools />} />
               <Route path="/ai-readiness-assessment" element={<AIReadinessAssessment />} />
+              <Route path="/erp-mrp-client" element={<ERPMRPClient />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>

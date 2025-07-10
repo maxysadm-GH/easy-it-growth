@@ -19,6 +19,15 @@ export const CTA_CONFIGS: Record<string, CTAConfig> = {
     description: 'Main booking CTA for free assessments'
   },
   
+  'schedule-audit': {
+    id: 'schedule-audit',
+    text: 'Schedule Your Strategic Audit',
+    url: 'https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/',
+    type: 'external',
+    category: 'booking',
+    description: 'Strategic audit booking for high-value prospects'
+  },
+  
   // Tool CTAs
   'ai-readiness': {
     id: 'ai-readiness',
@@ -35,6 +44,14 @@ export const CTA_CONFIGS: Record<string, CTAConfig> = {
     type: 'internal',
     category: 'tool',
     description: 'ROI calculator for automation investments'
+  },
+  'smart-factory-roi': {
+    id: 'smart-factory-roi',
+    text: 'Download: Smart Factory ROI Calculator',
+    url: '/tools/smart-factory-roi',
+    type: 'internal',
+    category: 'tool',
+    description: 'Manufacturing-specific ROI calculator'
   },
   'cyber-risk': {
     id: 'cyber-risk',
