@@ -24,16 +24,6 @@ const ServicesCTA = () => {
             className="text-xl px-10 py-6"
             forcePopup={true}
           />
-          <CTAButton 
-            customConfig={{
-              text: "Ver en Español",
-              url: "/servicios",
-              type: "internal"
-            }}
-            variant="outline"
-            size="lg"
-            className="text-xl px-10 py-6 border-white text-white hover:bg-white hover:text-navy"
-          />
         </div>
         
         <div className="mt-16 grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">

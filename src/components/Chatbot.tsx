@@ -17,7 +17,7 @@ const Chatbot = () => {
   
   const { shouldAutoOpen, pageContext, markAsAutoOpened } = useChatEngagement();
   const backgroundContext = useBackgroundDetection();
-  const { currentLanguage, t } = useLanguage();
+  const { t } = useLanguage();
 
   // Handle auto-open functionality
   useEffect(() => {
@@ -25,7 +25,7 @@ const Chatbot = () => {
       setOpen(true);
       markAsAutoOpened();
       
-      // Set contextual welcome message based on language
+      // Set contextual welcome message
       const welcomeMessage: Message = {
         from: 'bot',
         text: t('chat.contextualWelcome'),
@@ -35,7 +35,7 @@ const Chatbot = () => {
       setMessages([welcomeMessage]);
       setHasInitialized(true);
     }
-  }, [shouldAutoOpen, open, hasInitialized, pageContext, markAsAutoOpened, currentLanguage, t]);
+  }, [shouldAutoOpen, open, hasInitialized, pageContext, markAsAutoOpened, t]);
 
   // Initialize with default message when manually opened
   useEffect(() => {
@@ -49,49 +49,30 @@ const Chatbot = () => {
       }]);
       setHasInitialized(true);
     }
-  }, [open, hasInitialized, messages.length, currentLanguage, t]);
-
-  // Update welcome message when language changes
-  useEffect(() => {
-    if (messages.length > 0 && hasInitialized) {
-      const welcomeText = t('chat.welcome');
-      
-      setMessages(prev => [{
-        from: 'bot',
-        text: welcomeText,
-        timestamp: new Date()
-      }, ...prev.slice(1)]);
-    }
-  }, [currentLanguage, t, messages.length, hasInitialized]);
+  }, [open, hasInitialized, messages.length, t]);
 
   const sendMessageToAI = async (message: string): Promise<string> => {
     try {
-      // Enhanced context for AI including language preference
-      const contextualMessage = `Language: ${currentLanguage}\nPage Context: ${pageContext.aiContext}\n\nUser Question: ${message}`;
+      // Enhanced context for AI
+      const contextualMessage = `Language: en\nPage Context: ${pageContext.aiContext}\n\nUser Question: ${message}`;
       
       const { data, error } = await supabase.functions.invoke('chat-assistant', {
         body: { 
           message: contextualMessage,
           pageContext: pageContext.pageName,
-          language: currentLanguage
+          language: 'en'
         }
       });
 
       if (error) {
         console.error('Supabase function error:', error);
-        return currentLanguage === 'es'
-          ? "Estoy teniendo problemas para conectarme ahora. Por favor llama al (773) 657-2300 para asistencia inmediata, o usa el botón 'Hablar con Ingeniero' para ayuda humana."
-          : "I'm having trouble connecting right now. Please call (773) 657-2300 for immediate assistance, or use the 'Talk with Engineer' button for human help.";
+        return "I'm having trouble connecting right now. Please call (773) 657-2300 for immediate assistance, or use the 'Talk with Engineer' button for human help.";
       }
 
-      return data?.reply || (currentLanguage === 'es' 
-        ? "No entendí eso. ¿Podrías reformular tu pregunta?"
-        : "I didn't understand that. Could you please rephrase your question?");
+      return data?.reply || "I didn't understand that. Could you please rephrase your question?";
     } catch (error) {
       console.error('Error calling chat assistant:', error);
-      return currentLanguage === 'es'
-        ? "Estoy experimentando dificultades técnicas. Por favor llama al (773) 657-2300 o envía un email a info@mbacio.com, o haz clic en 'Hablar con Ingeniero' para asistencia inmediata."
-        : "I'm experiencing technical difficulties. Please call (773) 657-2300 or email info@mbacio.com for help, or click 'Talk with Engineer' for immediate assistance.";
+      return "I'm experiencing technical difficulties. Please call (773) 657-2300 or email info@mbacio.com for help, or click 'Talk with Engineer' for immediate assistance.";
     }
   };
 

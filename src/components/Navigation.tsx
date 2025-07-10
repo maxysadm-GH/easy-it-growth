@@ -19,29 +19,16 @@ const Logo = () => (
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const { currentLanguage, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
 
   const handleBookAssessment = () => {
     console.log('📞 Navigation CTA clicked - opening booking popup');
     setIsBookingOpen(true);
   };
 
-  const handleLanguageSwitch = (lang: 'en' | 'es') => {
-    setLanguage(lang);
-  };
+  const navLinkClass = "text-white font-poppins font-bold transition-all duration-300 drop-shadow-header relative group whitespace-nowrap hover:text-accent text-sm md:text-base lg:text-lg";
 
-  // Responsive navigation classes based on language
-  const navLinkClass = `text-white font-poppins font-bold transition-all duration-300 drop-shadow-header relative group whitespace-nowrap hover:text-accent ${
-    currentLanguage === 'es' 
-      ? 'text-xs md:text-sm lg:text-base xl:text-lg' 
-      : 'text-sm md:text-base lg:text-lg'
-  }`;
-
-  const ctaButtonClass = `bg-gradient-yellow text-navy font-bold shadow-lg hover:shadow-xl hover:shadow-accent/20 hover:scale-105 transition-all duration-300 whitespace-nowrap ${
-    currentLanguage === 'es'
-      ? 'text-xs md:text-sm px-2 md:px-3 lg:px-4 py-2'
-      : 'text-sm px-4 py-2'
-  }`;
+  const ctaButtonClass = "bg-gradient-yellow text-navy font-bold shadow-lg hover:shadow-xl hover:shadow-accent/20 hover:scale-105 transition-all duration-300 whitespace-nowrap text-sm px-4 py-2";
 
   return (
     <>
@@ -158,31 +145,6 @@ const Navigation = () => {
                 {t('nav.about')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
-
-              {/* Language Switcher */}
-              <div className="flex items-center gap-1 ml-2">
-                <button 
-                  onClick={() => handleLanguageSwitch('en')}
-                  className={`text-xs px-2 py-1 rounded font-bold transition-all duration-200 ${
-                    currentLanguage === 'en' 
-                      ? 'bg-accent/20 text-accent' 
-                      : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  EN
-                </button>
-                <span className="text-white/30">|</span>
-                <button 
-                  onClick={() => handleLanguageSwitch('es')}
-                  className={`text-xs px-2 py-1 rounded font-bold transition-all duration-200 ${
-                    currentLanguage === 'es' 
-                      ? 'bg-accent/20 text-accent' 
-                      : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  ES
-                </button>
-              </div>
               
               <Button 
                 onClick={handleBookAssessment}
@@ -194,31 +156,11 @@ const Navigation = () => {
 
             {/* Medium Screen Navigation */}
             <div className="hidden md:flex lg:hidden items-center space-x-2">
-              <div className="flex items-center gap-1">
-                <button 
-                  onClick={() => handleLanguageSwitch('en')}
-                  className={`text-xs px-2 py-1 rounded font-bold transition-all duration-200 ${
-                    currentLanguage === 'en' ? 'bg-accent/20 text-accent' : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  EN
-                </button>
-                <span className="text-white/30">|</span>
-                <button 
-                  onClick={() => handleLanguageSwitch('es')}
-                  className={`text-xs px-2 py-1 rounded font-bold transition-all duration-200 ${
-                    currentLanguage === 'es' ? 'bg-accent/20 text-accent' : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  ES
-                </button>
-              </div>
-              
               <Button 
                 onClick={handleBookAssessment}
                 className={ctaButtonClass + " rounded-lg"}
               >
-                {currentLanguage === 'es' ? 'Reservar' : t('nav.bookAssessment')}
+                {t('nav.bookAssessment')}
               </Button>
             </div>
 
@@ -254,25 +196,6 @@ const Navigation = () => {
                   <a href="/blog" className={navLinkClass + " text-sm pl-4"}>📝 {t('tools.industryBlog')}</a>
                 </div>
                 <a href="/why-us" className={navLinkClass + " text-sm"}>{t('nav.about')}</a>
-                <div className="flex items-center gap-4 pt-2">
-                  <span className="text-white font-medium text-sm">{t('common.language')}:</span>
-                  <button 
-                    onClick={() => handleLanguageSwitch('en')}
-                    className={`text-xs px-3 py-1 rounded font-bold transition-all duration-200 ${
-                      currentLanguage === 'en' ? 'bg-accent/20 text-accent' : 'text-white/70 hover:text-white'
-                    }`}
-                  >
-                    EN
-                  </button>
-                  <button 
-                    onClick={() => handleLanguageSwitch('es')}
-                    className={`text-xs px-3 py-1 rounded font-bold transition-all duration-200 ${
-                      currentLanguage === 'es' ? 'bg-accent/20 text-accent' : 'text-white/70 hover:text-white'
-                    }`}
-                  >
-                    ES
-                  </button>
-                </div>
                 <Button 
                   onClick={handleBookAssessment}
                   className="bg-gradient-yellow text-navy font-bold text-sm px-4 py-2 rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
