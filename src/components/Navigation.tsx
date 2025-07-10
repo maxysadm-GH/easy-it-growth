@@ -9,14 +9,12 @@ const Logo = () => (
     <img
       src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
       alt="MBACIO Logo"
-      className="h-12 md:h-16 w-auto select-none pointer-events-none transition-all duration-300 hover:scale-105"
+      className="h-10 md:h-12 lg:h-16 w-auto select-none pointer-events-none transition-all duration-300 hover:scale-105"
       style={{ filter: 'drop-shadow(0 2px 18px rgba(0,0,0,0.16))' }}
       draggable={false}
     />
   </a>
 );
-
-const navLinkClass = "text-white font-poppins font-bold text-sm md:text-base lg:text-lg hover:text-accent transition-all duration-300 drop-shadow-header relative group whitespace-nowrap";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,15 +30,28 @@ const Navigation = () => {
     setLanguage(lang);
   };
 
+  // Responsive navigation classes based on language
+  const navLinkClass = `text-white font-poppins font-bold transition-all duration-300 drop-shadow-header relative group whitespace-nowrap hover:text-accent ${
+    currentLanguage === 'es' 
+      ? 'text-xs md:text-sm lg:text-base xl:text-lg' 
+      : 'text-sm md:text-base lg:text-lg'
+  }`;
+
+  const ctaButtonClass = `bg-gradient-yellow text-navy font-bold shadow-lg hover:shadow-xl hover:shadow-accent/20 hover:scale-105 transition-all duration-300 whitespace-nowrap ${
+    currentLanguage === 'es'
+      ? 'text-xs md:text-sm px-2 md:px-3 lg:px-4 py-2'
+      : 'text-sm px-4 py-2'
+  }`;
+
   return (
     <>
       <nav className="fixed top-0 left-0 w-full bg-navy/95 backdrop-blur-sm z-50 shadow-lg border-b border-accent/20">
         <div className="container mx-auto px-2 md:px-4">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-16 md:h-18 lg:h-20">
             <Logo />
             
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
+            <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 2xl:space-x-4">
               {/* Industries Dropdown */}
               <div className="relative group">
                 <button className={navLinkClass + " focus:outline-none flex items-center gap-1"}>
@@ -103,7 +114,7 @@ const Navigation = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
               
-              {/* Tools & Blog Dropdown */}
+              {/* Tools & Blog Dropdown - Right aligned */}
               <div className="relative group">
                 <button className={navLinkClass + " focus:outline-none flex items-center gap-1"}>
                   {t('nav.toolsBlog')}
@@ -133,7 +144,7 @@ const Navigation = () => {
                       <span className="mr-3">💰</span>
                       {t('tools.automationROI')}
                     </a>
-                    <div className="px-4 py-2 border-t border-accent/20">
+                    <div className="px-4 py-2 border-t border-accent/20 mt-2">
                       <a href="/blog" className="flex items-center px-1 py-2 hover:bg-accent/10 text-white transition-all duration-200 rounded text-sm">
                         <span className="mr-3">📝</span>
                         <span className="font-semibold">{t('tools.industryBlog')}</span>
@@ -175,7 +186,7 @@ const Navigation = () => {
               
               <Button 
                 onClick={handleBookAssessment}
-                className="bg-gradient-yellow text-navy font-bold text-sm px-4 py-2 rounded-lg shadow-lg hover:shadow-xl hover:shadow-accent/20 ml-2 hover:scale-105 transition-all duration-300 whitespace-nowrap"
+                className={ctaButtonClass + " ml-2 rounded-lg"}
               >
                 {t('nav.bookAssessment')}
               </Button>
@@ -205,9 +216,9 @@ const Navigation = () => {
               
               <Button 
                 onClick={handleBookAssessment}
-                className="bg-gradient-yellow text-navy font-bold text-sm px-3 py-2 rounded-lg shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap"
+                className={ctaButtonClass + " rounded-lg"}
               >
-                {t('nav.bookAssessment')}
+                {currentLanguage === 'es' ? 'Reservar' : t('nav.bookAssessment')}
               </Button>
             </div>
 

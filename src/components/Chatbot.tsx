@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useChatEngagement } from "@/hooks/useChatEngagement";
@@ -27,23 +28,19 @@ const Chatbot = () => {
       // Set contextual welcome message based on language
       const welcomeMessage: Message = {
         from: 'bot',
-        text: currentLanguage === 'es' 
-          ? "¡Hola! Soy el Asistente MBACIO. Puedo ayudarte con consultoría de TI, automatización, ciberseguridad y más. ¿Cómo puedo asistirte hoy?"
-          : pageContext.contextualGreeting,
+        text: t('chat.contextualWelcome'),
         timestamp: new Date()
       };
       
       setMessages([welcomeMessage]);
       setHasInitialized(true);
     }
-  }, [shouldAutoOpen, open, hasInitialized, pageContext, markAsAutoOpened, currentLanguage]);
+  }, [shouldAutoOpen, open, hasInitialized, pageContext, markAsAutoOpened, currentLanguage, t]);
 
   // Initialize with default message when manually opened
   useEffect(() => {
     if (open && !hasInitialized && messages.length === 0) {
-      const defaultWelcome = currentLanguage === 'es'
-        ? "👋 ¡Hola! Soy el Asistente MBACIO impulsado por IA. Puedo ayudarte con consultoría de TI, automatización, ciberseguridad y más. ¿Cómo puedo asistirte hoy?"
-        : "👋 Hi! I'm the MBACIO Assistant powered by AI. I can help you with IT consulting, automation, cybersecurity, and more. How can I assist you today?";
+      const defaultWelcome = t('chat.welcome');
       
       setMessages([{
         from: 'bot',
@@ -52,14 +49,12 @@ const Chatbot = () => {
       }]);
       setHasInitialized(true);
     }
-  }, [open, hasInitialized, messages.length, currentLanguage]);
+  }, [open, hasInitialized, messages.length, currentLanguage, t]);
 
-  // Reset initialization when language changes to show appropriate welcome
+  // Update welcome message when language changes
   useEffect(() => {
-    if (messages.length > 0) {
-      const welcomeText = currentLanguage === 'es'
-        ? "👋 ¡Hola! Soy el Asistente MBACIO impulsado por IA. Puedo ayudarte con consultoría de TI, automatización, ciberseguridad y más. ¿Cómo puedo asistirte hoy?"
-        : "👋 Hi! I'm the MBACIO Assistant powered by AI. I can help you with IT consulting, automation, cybersecurity, and more. How can I assist you today?";
+    if (messages.length > 0 && hasInitialized) {
+      const welcomeText = t('chat.welcome');
       
       setMessages(prev => [{
         from: 'bot',
@@ -67,7 +62,7 @@ const Chatbot = () => {
         timestamp: new Date()
       }, ...prev.slice(1)]);
     }
-  }, [currentLanguage]);
+  }, [currentLanguage, t, messages.length, hasInitialized]);
 
   const sendMessageToAI = async (message: string): Promise<string> => {
     try {

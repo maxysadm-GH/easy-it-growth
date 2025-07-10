@@ -58,6 +58,10 @@ const translations = {
     
     // Common
     'common.language': 'Language',
+    
+    // Chatbot
+    'chat.welcome': '👋 Hi! I\'m the MBACIO Assistant powered by AI. I can help you with IT consulting, automation, cybersecurity, and more. How can I assist you today?',
+    'chat.contextualWelcome': 'Hello! I\'m here to help with your IT needs. What can I assist you with today?',
   },
   es: {
     // Navigation
@@ -66,7 +70,7 @@ const translations = {
     'nav.solutions': 'Soluciones',
     'nav.successStories': 'Casos de Éxito',
     'nav.toolsBlog': 'Herramientas y Blog',
-    'nav.about': 'Acerca de',
+    'nav.about': 'Nosotros',
     'nav.bookAssessment': 'Reservar Evaluación',
     'nav.bookYourAssessment': 'Reserva Tu Evaluación',
     
@@ -77,7 +81,7 @@ const translations = {
     
     // Solutions
     'solution.erpIntegration': 'Integración ERP/MRP',
-    'solution.aiAutomation': 'Automatización de Flujos IA',
+    'solution.aiAutomation': 'Automatización IA',
     'solution.digitalOperations': 'Operaciones Digitales',
     
     // Tools
@@ -104,6 +108,10 @@ const translations = {
     
     // Common
     'common.language': 'Idioma',
+    
+    // Chatbot
+    'chat.welcome': '👋 ¡Hola! Soy el Asistente MBACIO impulsado por IA. Puedo ayudarte con consultoría de TI, automatización, ciberseguridad y más. ¿Cómo puedo asistirte hoy?',
+    'chat.contextualWelcome': '¡Hola! Estoy aquí para ayudarte con tus necesidades de TI. ¿En qué puedo asistirte hoy?',
   }
 };
 
@@ -113,11 +121,21 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   const setLanguage = (lang: Language) => {
     setCurrentLanguage(lang);
     console.log(`Language switched to: ${lang}`);
+    // Store language preference
+    localStorage.setItem('preferred-language', lang);
   };
 
   const t = (key: string): string => {
-    return translations[currentLanguage][key] || key;
+    return translations[currentLanguage][key] || translations['en'][key] || key;
   };
+
+  // Initialize language from storage on mount
+  React.useEffect(() => {
+    const stored = localStorage.getItem('preferred-language') as Language;
+    if (stored && (stored === 'en' || stored === 'es')) {
+      setCurrentLanguage(stored);
+    }
+  }, []);
 
   return (
     <LanguageContext.Provider value={{ currentLanguage, setLanguage, t }}>
