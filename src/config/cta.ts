@@ -9,7 +9,7 @@ export interface CTAConfig {
 }
 
 export const CTA_CONFIGS: Record<string, CTAConfig> = {
-  // Booking CTAs - Updated with corrected Microsoft Bookings URL
+  // Booking CTAs - Updated with new discovery call CTA
   'book-assessment': {
     id: 'book-assessment',
     text: 'Book Your Free Assessment',
@@ -26,6 +26,15 @@ export const CTA_CONFIGS: Record<string, CTAConfig> = {
     type: 'external',
     category: 'booking',
     description: 'Strategic audit booking for high-value prospects'
+  },
+
+  'book-oee-discovery': {
+    id: 'book-oee-discovery',
+    text: 'Book a 15-Min OEE Discovery Call',
+    url: 'https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/',
+    type: 'external',
+    category: 'booking',
+    description: 'Manufacturing-specific discovery call for OEE assessment'
   },
   
   // Tool CTAs
@@ -52,6 +61,14 @@ export const CTA_CONFIGS: Record<string, CTAConfig> = {
     type: 'internal',
     category: 'tool',
     description: 'Manufacturing-specific ROI calculator'
+  },
+  'pl-impact-report': {
+    id: 'pl-impact-report',
+    text: 'Download Sample P&L Impact Report',
+    url: '/tools/pl-impact-report',
+    type: 'internal',
+    category: 'tool',
+    description: 'Sample P&L impact report for manufacturing improvements'
   },
   'cyber-risk': {
     id: 'cyber-risk',
