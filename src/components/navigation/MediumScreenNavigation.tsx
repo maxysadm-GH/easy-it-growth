@@ -17,7 +17,7 @@ const MediumScreenNavigation: React.FC<MediumScreenNavigationProps> = ({ onBookA
         onClick={onBookAssessment}
         className={ctaButtonClass + " rounded-lg"}
       >
-        {t('nav.bookAssessment')}
+        Schedule Your Strategic Audit
       </Button>
     </div>
   );

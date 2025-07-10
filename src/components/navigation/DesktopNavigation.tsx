@@ -2,9 +2,8 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import IndustriesDropdown from './dropdowns/IndustriesDropdown';
 import SolutionsDropdown from './dropdowns/SolutionsDropdown';
-import ToolsBlogDropdown from './dropdowns/ToolsBlogDropdown';
+import IndustriesDropdown from './dropdowns/IndustriesDropdown';
 
 interface DesktopNavigationProps {
   onBookAssessment: () => void;
@@ -18,17 +17,15 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ onBookAssessment 
 
   return (
     <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 2xl:space-x-4">
-      <IndustriesDropdown navLinkClass={navLinkClass} />
-
       <a href="/services" className={navLinkClass}>
-        {t('nav.services')}
+        Services
         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
       </a>
 
-      <SolutionsDropdown navLinkClass={navLinkClass} />
+      <IndustriesDropdown navLinkClass={navLinkClass} />
 
       <a href="/case-studies" className={navLinkClass}>
-        {t('nav.successStories')}
+        Success Stories
         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
       </a>
 
@@ -36,11 +33,9 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ onBookAssessment 
         Pricing
         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
       </a>
-      
-      <ToolsBlogDropdown navLinkClass={navLinkClass} />
 
       <a href="/about" className={navLinkClass}>
-        {t('nav.about')}
+        About
         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
       </a>
 
@@ -58,7 +53,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ onBookAssessment 
         onClick={onBookAssessment}
         className={ctaButtonClass + " ml-2 rounded-lg"}
       >
-        {t('nav.bookAssessment')}
+        Schedule Your Strategic Audit
       </Button>
     </div>
   );

@@ -36,28 +36,27 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
       {isMenuOpen && (
         <div className="md:hidden py-4 animate-fade-in">
           <div className="flex flex-col space-y-3 bg-navy/95 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-accent/20">
+            <a href="/services" className={navLinkClass + " text-sm"}>Services</a>
             <div className="flex flex-col gap-2">
-              <span className="text-accent font-bold text-sm uppercase tracking-wide">{t('nav.industries')}</span>
-              <a href="/food-beverage-client" className={navLinkClass + " text-sm pl-4"}>🏭 {t('industry.foodBeverage')}</a>
-              <a href="/cpa-law-client" className={navLinkClass + " text-sm pl-4"}>⚖️ {t('industry.lawFirms')}</a>
-              <a href="/finance-leaders-client" className={navLinkClass + " text-sm pl-4"}>📊 {t('industry.accountingFirms')}</a>
+              <span className="text-accent font-bold text-sm uppercase tracking-wide">Industries</span>
+              <a href="/food-beverage-client" className={navLinkClass + " text-sm pl-4"}>🏭 Food & Beverage</a>
+              <a href="/cpa-law-client" className={navLinkClass + " text-sm pl-4"}>⚖️ Law Firms</a>
+              <a href="/finance-leaders-client" className={navLinkClass + " text-sm pl-4"}>📊 CPA Firms</a>
             </div>
-            <a href="/services" className={navLinkClass + " text-sm"}>{t('nav.services')}</a>
-            <a href="/case-studies" className={navLinkClass + " text-sm"}>{t('nav.successStories')}</a>
+            <a href="/case-studies" className={navLinkClass + " text-sm"}>Success Stories</a>
             <a href="/pricing" className={navLinkClass + " text-sm"}>Pricing</a>
+            <a href="/about" className={navLinkClass + " text-sm"}>About</a>
             <div className="flex flex-col gap-2">
-              <span className="text-accent font-bold text-sm uppercase tracking-wide">{t('nav.toolsBlog')}</span>
-              <a href="/assessment-tools" className={navLinkClass + " text-sm pl-4"}>🛠️ {t('tools.allAssessment')}</a>
-              <a href="/blog" className={navLinkClass + " text-sm pl-4"}>📝 {t('tools.industryBlog')}</a>
+              <span className="text-accent font-bold text-sm uppercase tracking-wide">Resources</span>
+              <a href="/assessment-tools" className={navLinkClass + " text-sm pl-4"}>🛠️ Assessment Tools</a>
+              <a href="/blog" className={navLinkClass + " text-sm pl-4"}>📝 Blog</a>
             </div>
-            <a href="/about" className={navLinkClass + " text-sm"}>{t('nav.about')}</a>
-            <a href="/resources" className={navLinkClass + " text-sm"}>Resources</a>
             <a href="/contact" className={navLinkClass + " text-sm"}>Contact</a>
             <Button 
               onClick={onBookAssessment}
               className="bg-gradient-yellow text-navy font-bold text-sm px-4 py-2 rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
             >
-              {t('nav.bookYourAssessment')}
+              Schedule Your Strategic Audit
             </Button>
           </div>
         </div>

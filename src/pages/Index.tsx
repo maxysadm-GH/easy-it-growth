@@ -1,7 +1,9 @@
+
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import Chatbot from '../components/Chatbot';
 import BlogTeaser from '../components/BlogTeaser';
+import PricingCalculator from '../components/PricingCalculator';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -89,23 +91,41 @@ const Index = () => {
       {/* Section 1: Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-br from-navy via-deep-blue to-charcoal text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8 drop-shadow-header">
-              Stop Wasting Margin on Inefficient IT.
-            </h1>
-            <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed max-w-4xl mx-auto">
-              We deliver compliant, profitable, and secure IT operations for mid-market Manufacturing, Law, and CPA firms. 
-              We connect your technology directly to your bottom line by reducing operational drag and mitigating risk.
-            </p>
-            <a 
-              href="/schedule" 
-              className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-            >
-              Schedule Your Strategic Audit
-            </a>
-            <p className="text-sm text-gray-300 mt-6 max-w-2xl mx-auto">
-              A 30-minute, no-obligation assessment to identify immediate opportunities for operational improvement.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+            {/* Left Column - The Message */}
+            <div className="hero-text-content">
+              <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8 drop-shadow-header">
+                Stop Wasting Margin on Inefficient IT.
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
+                We deliver compliant, profitable, and secure IT operations for mid-market Manufacturing, Law, and CPA firms. 
+                We connect your technology directly to your bottom line by reducing operational drag and mitigating risk.
+              </p>
+              
+              <a 
+                href="/schedule" 
+                className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 mb-6"
+              >
+                Schedule Your Strategic Audit
+              </a>
+              
+              <p className="reassurance-copy text-sm text-gray-300 max-w-2xl">
+                A 30-minute, no-obligation assessment to identify immediate opportunities for operational improvement.
+              </p>
+            </div>
+
+            {/* Right Column - Professional Visual */}
+            <div className="hero-image-placeholder bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 min-h-[400px] flex items-center justify-center">
+              {/* Placeholder for high-impact brand image */}
+              <div className="text-center text-white/60">
+                <div className="w-32 h-32 bg-gradient-yellow rounded-full flex items-center justify-center mx-auto mb-6 opacity-20">
+                  <TrendingUp className="w-16 h-16 text-navy" />
+                </div>
+                <p className="text-lg font-medium">Professional Brand Visual</p>
+                <p className="text-sm">High-impact image placement</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -358,6 +378,25 @@ const Index = () => {
                 </p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* New Section: Build the Business Case for Automation */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-6">
+              Build the Business Case for Automation
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              Use our interactive ROI Calculator to instantly see the annual cost of a specific manual task. 
+              Quantify your operational drag and discover the potential return on investment.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <PricingCalculator />
           </div>
         </div>
       </section>
