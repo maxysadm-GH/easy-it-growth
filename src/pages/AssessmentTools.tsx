@@ -1,65 +1,73 @@
 
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Card, CardContent } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
 import CTAButton from '@/components/ui/cta-button';
-import { ArrowRight, Bot, TrendingUp, DollarSign, Shield, Cloud, Users, AlertTriangle } from 'lucide-react';
+import { Calculator, Shield, TrendingUp, Zap, Clock, AlertTriangle, Cog, BarChart } from 'lucide-react';
 
 const tools = [
   {
+    icon: Zap,
     title: "AI Readiness Assessment",
-    description: "Discover your business's AI potential and get a personalized roadmap for 2024. Based on current AI trends and adoption patterns.",
-    icon: Bot,
-    href: "/tools/ai-readiness",
-    color: "bg-gradient-to-br from-purple-500 to-blue-600",
-    badge: "🔥 Trending",
-    estimatedTime: "3 minutes"
+    description: "Evaluate your organization's readiness for AI implementation and discover automation opportunities.",
+    link: "/ai-readiness-assessment",
+    duration: "5 minutes",
+    benefit: "Custom AI roadmap"
   },
   {
+    icon: TrendingUp,
     title: "IT Staff Productivity Calculator",
-    description: "Measure your IT team's efficiency and identify improvement opportunities with actionable insights.",
-    icon: Users,
-    href: "/tools/staff-productivity",
-    color: "bg-gradient-to-br from-green-500 to-teal-600",
-    badge: "Popular",
-    estimatedTime: "2 minutes"
+    description: "Calculate how much time and money you could save by optimizing your IT team's efficiency.",
+    link: "/tools/staff-productivity",
+    duration: "3 minutes",
+    benefit: "ROI projections"
   },
   {
-    title: "Downtime Cost Calculator",
-    description: "Calculate the true cost of IT downtime on your business and understand the ROI of reliability investments.",
     icon: AlertTriangle,
-    href: "/tools/downtime-cost",
-    color: "bg-gradient-to-br from-red-500 to-orange-600",
-    badge: "Essential",
-    estimatedTime: "2 minutes"
+    title: "Downtime Cost Calculator",
+    description: "Discover the true cost of system downtime and the value of reliable infrastructure.",
+    link: "/tools/downtime-cost",
+    duration: "4 minutes",
+    benefit: "Risk assessment"
   },
   {
-    title: "Vendor Consolidation Savings",
-    description: "See how much you could save by consolidating IT vendors and streamlining your technology stack.",
-    icon: DollarSign,
-    href: "/tools/vendor-consolidation",
-    color: "bg-gradient-to-br from-blue-500 to-indigo-600",
-    badge: "ROI Focused",
-    estimatedTime: "3 minutes"
+    icon: Calculator,
+    title: "Automation ROI Calculator",
+    description: "Calculate the return on investment for workflow automation in your specific industry.",
+    link: "/tools/automation-roi",
+    duration: "6 minutes",
+    benefit: "Business case"
   },
   {
-    title: "Cloud Migration ROI",
-    description: "Evaluate the financial benefits and timeline for migrating your systems to the cloud.",
-    icon: Cloud,
-    href: "/tools/cloud-migration",
-    color: "bg-gradient-to-br from-cyan-500 to-blue-600",
-    badge: "Strategic",
-    estimatedTime: "4 minutes"
-  },
-  {
-    title: "Cybersecurity Risk Assessment",
-    description: "Identify potential security vulnerabilities and get recommendations to protect your business.",
     icon: Shield,
-    href: "/tools/cyber-risk",
-    color: "bg-gradient-to-br from-red-600 to-pink-600",
-    badge: "Critical",
-    estimatedTime: "5 minutes"
+    title: "Risk Assessment Tool",
+    description: "Identify cybersecurity vulnerabilities and compliance gaps in your current setup.",
+    link: "/tools/assessment-risk",
+    duration: "7 minutes",
+    benefit: "Security roadmap"
+  },
+  {
+    icon: Cog,
+    title: "Automation Assessment",
+    description: "Discover which business processes are prime candidates for automation.",
+    link: "/tools/assessment-automation",
+    duration: "5 minutes",
+    benefit: "Automation priorities"
+  },
+  {
+    icon: BarChart,
+    title: "Manufacturing Analytics Assessment",
+    description: "Evaluate your production data visibility and identify improvement opportunities.",
+    link: "/solutions/manufacturing-analytics",
+    duration: "8 minutes",
+    benefit: "Efficiency gains"
+  },
+  {
+    icon: Clock,
+    title: "Vendor Consolidation Assessment",
+    description: "Calculate potential savings from consolidating your IT vendors and services.",
+    link: "/vendor-consolidation",
+    duration: "4 minutes",
+    benefit: "Cost savings"
   }
 ];
 
@@ -69,16 +77,21 @@ const AssessmentTools = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-navy via-deep-blue to-charcoal text-white">
+      <section className="pt-32 pb-20 bg-gradient-to-br from-navy via-deep-blue to-charcoal text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8 drop-shadow-header">
-              Free Assessment Tools
+              Free Business Assessment Tools
             </h1>
             <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
-              Get instant insights into your business with our collection of free assessment tools. 
-              Each tool provides personalized recommendations in just minutes.
+              Get instant insights into your business operations with our collection of free assessment tools. 
+              Discover opportunities for automation, efficiency gains, and cost savings.
             </p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8">
+              <p className="text-lg font-semibold">
+                ✨ All tools provide instant results and actionable recommendations
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -86,36 +99,51 @@ const AssessmentTools = () => {
       {/* Tools Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-poppins font-bold text-navy mb-6">
+              Choose Your Assessment Tool
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Each tool is designed to provide specific insights for your business. 
+              Take multiple assessments to get a comprehensive view of your optimization opportunities.
+            </p>
+          </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {tools.map((tool, index) => {
               const Icon = tool.icon;
               return (
-                <Card key={index} className="group hover:shadow-2xl transition-all duration-300 hover:scale-105 border-accent/20">
-                  <CardContent className="p-0">
-                    <div className={`${tool.color} p-6 text-white rounded-t-lg relative overflow-hidden`}>
-                      <div className="absolute top-2 right-2">
-                        <span className="bg-white/20 text-xs px-2 py-1 rounded-full backdrop-blur-sm">
-                          {tool.badge}
-                        </span>
-                      </div>
-                      <Icon className="w-12 h-12 mb-4" />
-                      <h3 className="text-xl font-poppins font-bold mb-2">{tool.title}</h3>
-                      <p className="text-sm opacity-90">{tool.estimatedTime}</p>
+                <div key={index} className="group hover:scale-105 transition-all duration-300">
+                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-accent/20 h-full flex flex-col">
+                    <div className="w-16 h-16 bg-gradient-yellow rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-8 h-8 text-navy" />
                     </div>
                     
-                    <div className="p-6">
-                      <p className="text-gray-600 mb-6 leading-relaxed">{tool.description}</p>
-                      
-                      <Link 
-                        to={tool.href}
-                        className="inline-flex items-center gap-2 bg-accent text-navy font-bold px-6 py-3 rounded-lg hover:bg-accent/90 transition-all duration-300 group-hover:scale-105"
-                      >
-                        Start Assessment
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-sm font-bold text-accent bg-accent/10 px-3 py-1 rounded-full">
+                        {tool.duration}
+                      </span>
+                      <span className="text-sm font-bold text-navy bg-navy/10 px-3 py-1 rounded-full">
+                        {tool.benefit}
+                      </span>
                     </div>
-                  </CardContent>
-                </Card>
+                    
+                    <h3 className="text-xl font-poppins font-bold text-navy mb-4 text-center">
+                      {tool.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed mb-6 flex-grow text-center">
+                      {tool.description}
+                    </p>
+                    
+                    <a 
+                      href={tool.link}
+                      className="w-full bg-navy text-white hover:bg-deep-blue transition-all duration-300 hover:scale-105 font-bold py-3 px-6 rounded-lg text-center inline-block"
+                    >
+                      Start Assessment →
+                    </a>
+                  </div>
+                </div>
               );
             })}
           </div>
@@ -126,10 +154,11 @@ const AssessmentTools = () => {
       <section className="py-20 bg-navy text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-5xl font-poppins font-bold mb-8 text-accent">
-            Ready for a Comprehensive Assessment?
+            Ready for a Comprehensive Business Review?
           </h2>
           <p className="text-xl text-gray-200 mb-12 max-w-3xl mx-auto">
-            Get a personalized consultation with our experts to discuss your specific needs and challenges.
+            While our assessment tools provide valuable insights, nothing beats a personalized consultation. 
+            Schedule a free assessment to get a complete analysis of your business optimization opportunities.
           </p>
           <CTAButton 
             ctaId="book-assessment"

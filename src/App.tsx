@@ -18,6 +18,11 @@ import AutomationROI from './pages/AutomationROI';
 import AssessmentRisk from './pages/AssessmentRisk';
 import AssessmentAutomation from './pages/AssessmentAutomation';
 import IntelligentWorkflowAutomation from "./pages/IntelligentWorkflowAutomation";
+import FoodBeverageClient from "./pages/FoodBeverageClient";
+import CPALawClient from "./pages/CPALawClient";
+import FinanceLeadersClient from "./pages/FinanceLeadersClient";
+import AssessmentTools from "./pages/AssessmentTools";
+import AIReadinessAssessment from "./pages/AIReadinessAssessment";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -43,6 +48,11 @@ function App() {
             <Route path="/tools/assessment-risk" element={<AssessmentRisk />} />
             <Route path="/tools/assessment-automation" element={<AssessmentAutomation />} />
             <Route path="/services/intelligent-workflow-automation" element={<IntelligentWorkflowAutomation />} />
+            <Route path="/food-beverage-client" element={<FoodBeverageClient />} />
+            <Route path="/cpa-law-client" element={<CPALawClient />} />
+            <Route path="/finance-leaders-client" element={<FinanceLeadersClient />} />
+            <Route path="/assessment-tools" element={<AssessmentTools />} />
+            <Route path="/ai-readiness-assessment" element={<AIReadinessAssessment />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

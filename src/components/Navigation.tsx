@@ -29,7 +29,13 @@ const Navigation = () => {
 
   const handleLanguageSwitch = (lang: string) => {
     setCurrentLanguage(lang);
-    // TODO: Implement actual language switching functionality
+    if (lang === 'ES') {
+      // Redirect to Spanish version of the site
+      window.location.href = '/es';
+    } else {
+      // Stay on English version
+      window.location.href = '/';
+    }
     console.log(`Language switched to: ${lang}`);
   };
 
@@ -52,15 +58,15 @@ const Navigation = () => {
                 </button>
                 <div className="absolute hidden group-hover:block pt-2 z-20 left-0">
                   <div className="bg-charcoal/95 backdrop-blur-sm rounded-lg shadow-xl py-3 w-64 border border-accent/20">
-                    <a href="/ideal-client/food-beverage" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <a href="/food-beverage-client" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">🏭</span>
                       Food & Beverage Manufacturing
                     </a>
-                    <a href="/ideal-client/cpa-law" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <a href="/cpa-law-client" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">⚖️</span>
                       Law Firms
                     </a>
-                    <a href="/ideal-client/finance-leaders" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <a href="/finance-leaders-client" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">📊</span>
                       Accounting Firms
                     </a>
@@ -114,11 +120,11 @@ const Navigation = () => {
                 </button>
                 <div className="absolute hidden group-hover:block pt-2 z-20 left-0">
                   <div className="bg-charcoal/95 backdrop-blur-sm rounded-lg shadow-xl py-3 w-72 border border-accent/20">
-                    <a href="/tools" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <a href="/assessment-tools" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">🛠️</span>
                       All Free Assessment Tools
                     </a>
-                    <a href="/tools/ai-readiness" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
+                    <a href="/ai-readiness-assessment" className="flex items-center px-5 py-3 hover:bg-accent/10 text-white transition-all duration-200">
                       <span className="mr-3">🤖</span>
                       AI Readiness Assessment
                     </a>
@@ -208,15 +214,15 @@ const Navigation = () => {
               <div className="flex flex-col space-y-4 bg-navy/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-accent/20">
                 <div className="flex flex-col gap-2">
                   <span className="text-accent font-bold text-sm uppercase tracking-wide">Industries</span>
-                  <a href="/ideal-client/food-beverage" className={navLinkClass + " text-base pl-4"}>🏭 Food & Beverage</a>
-                  <a href="/ideal-client/cpa-law" className={navLinkClass + " text-base pl-4"}>⚖️ Law Firms</a>
-                  <a href="/ideal-client/finance-leaders" className={navLinkClass + " text-base pl-4"}>📊 Accounting Firms</a>
+                  <a href="/food-beverage-client" className={navLinkClass + " text-base pl-4"}>🏭 Food & Beverage</a>
+                  <a href="/cpa-law-client" className={navLinkClass + " text-base pl-4"}>⚖️ Law Firms</a>
+                  <a href="/finance-leaders-client" className={navLinkClass + " text-base pl-4"}>📊 Accounting Firms</a>
                 </div>
                 <a href="/services" className={navLinkClass}>Services</a>
                 <a href="/case-studies" className={navLinkClass}>Success Stories</a>
                 <div className="flex flex-col gap-2">
                   <span className="text-gradient-yellow-end font-bold text-sm uppercase tracking-wide">Free Tools & Blog</span>
-                  <a href="/tools" className={navLinkClass + " text-base pl-4"}>🛠️ All Assessment Tools</a>
+                  <a href="/assessment-tools" className={navLinkClass + " text-base pl-4"}>🛠️ All Assessment Tools</a>
                   <a href="/blog" className={navLinkClass + " text-base pl-4"}>📝 Industry Blog</a>
                 </div>
                 <a href="/why-us" className={navLinkClass}>About</a>
