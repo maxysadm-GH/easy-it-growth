@@ -195,18 +195,18 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section 3: The MBACIO Difference */}
+      {/* Section 3: The MBACIO Superpowers */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-navy text-white font-bold px-6 py-2 text-lg">
-              🎯 Why MBACIO
+              🚀 Our Superpowers
             </Badge>
             <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-6">
-              Why MBACIO
+              The MBACIO Superpowers
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Three unique strengths that deliver smarter setup, faster support, and clear ROI.
+              Make every penny work for you with Automation, AI, and Secure Support backed by 20 years of Manufacturing expertise.
             </p>
           </div>
           
@@ -214,16 +214,16 @@ const Index = () => {
             <Card className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white border-2 border-accent/20">
               <CardContent className="p-8 text-center">
                 <div className="w-20 h-20 bg-navy rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Target className="w-10 h-10 text-accent" />
+                  <Zap className="w-10 h-10 text-accent" />
                 </div>
                 <Badge className="mb-4 bg-gradient-yellow text-navy font-bold">
-                  Smarter Setup
+                  Intelligent Automation
                 </Badge>
                 <h3 className="text-2xl font-poppins font-bold text-navy mb-4">
-                  Smarter Setup
+                  Automation & AI
                 </h3>
                 <p className="text-gray-700 font-inter leading-relaxed">
-                  Cloud-first, integrated, no duct-tape fixes. Deep expertise in Manufacturing, Law, and CPA firm operations with unified solutions.
+                  Cut manual work by 45% with intelligent automation and AI-powered insights. Every process optimized to maximize your ROI.
                 </p>
               </CardContent>
             </Card>
@@ -231,16 +231,16 @@ const Index = () => {
             <Card className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white border-2 border-accent/20">
               <CardContent className="p-8 text-center">
                 <div className="w-20 h-20 bg-navy rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Award className="w-10 h-10 text-accent" />
+                  <Shield className="w-10 h-10 text-accent" />
                 </div>
                 <Badge className="mb-4 bg-gradient-yellow text-navy font-bold">
-                  Faster Support
+                  Bulletproof Security
                 </Badge>
                 <h3 className="text-2xl font-poppins font-bold text-navy mb-4">
-                  Faster Support
+                  Secure Support
                 </h3>
                 <p className="text-gray-700 font-inter leading-relaxed">
-                  24/7 SLA-backed response; continuous improvement reporting; global team coverage with bilingual excellence.
+                  24/7 enterprise-grade security with bilingual excellence. English & Spanish support ensuring your team never misses a beat.
                 </p>
               </CardContent>
             </Card>
@@ -248,16 +248,16 @@ const Index = () => {
             <Card className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white border-2 border-accent/20">
               <CardContent className="p-8 text-center">
                 <div className="w-20 h-20 bg-navy rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Globe className="w-10 h-10 text-accent" />
+                  <TrendingUp className="w-10 h-10 text-accent" />
                 </div>
                 <Badge className="mb-4 bg-gradient-yellow text-navy font-bold">
-                  Clear ROI
+                  20 Years Manufacturing
                 </Badge>
                 <h3 className="text-2xl font-poppins font-bold text-navy mb-4">
-                  Clear ROI
+                  Data-Driven Decisions
                 </h3>
                 <p className="text-gray-700 font-inter leading-relaxed">
-                  Reduce overhead, cut manual work up to 37%, predictable pricing. We measure and report on your operational improvements.
+                  Two decades of Manufacturing expertise with data-driven insights that optimize costs and maximize every penny you invest.
                 </p>
               </CardContent>
             </Card>
@@ -448,19 +448,38 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
-            {["QuickBooks Online", "HubSpot", "Salesforce", "Microsoft 365", "Fishbowl Inventory", "Shopify", "Slack", "Google Analytics", "Xero", "NetSuite", "Sage", "FreshBooks", "Zoho", "monday.com", "Asana"].map((tool, index) => (
-              <a
-                key={index}
-                href="/dashboard-solutions#integrations"
-                className="bg-white border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
-              >
-                <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-accent/10 transition-colors">
-                  <BarChart className="w-6 h-6 text-gray-600 group-hover:text-accent transition-colors" />
-                </div>
-                <p className="text-sm font-medium text-gray-700 group-hover:text-navy transition-colors">{tool}</p>
-                <p className="text-xs text-gray-500 mt-1" role="img" aria-label={`Integrates with ${tool} dashboards`}>Integrates with {tool} dashboards</p>
-              </a>
-            ))}
+            {[
+              { name: "QuickBooks Online", icon: BarChart },
+              { name: "HubSpot", icon: Users },
+              { name: "Salesforce", icon: TrendingUp },
+              { name: "Microsoft 365", icon: Globe },
+              { name: "Fishbowl Inventory", icon: BarChart },
+              { name: "Shopify", icon: TrendingUp },
+              { name: "Slack", icon: Users },
+              { name: "Google Analytics", icon: BarChart },
+              { name: "Xero", icon: BarChart },
+              { name: "NetSuite", icon: TrendingUp },
+              { name: "Sage", icon: BarChart },
+              { name: "FreshBooks", icon: BarChart },
+              { name: "Zoho", icon: Users },
+              { name: "monday.com", icon: CheckCircle },
+              { name: "Asana", icon: CheckCircle }
+            ].map((tool, index) => {
+              const Icon = tool.icon;
+              return (
+                <a
+                  key={index}
+                  href="/dashboard-solutions#integrations"
+                  className="bg-white border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
+                >
+                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-accent/10 transition-colors">
+                    <Icon className="w-6 h-6 text-gray-600 group-hover:text-accent transition-colors" />
+                  </div>
+                  <p className="text-sm font-medium text-gray-700 group-hover:text-navy transition-colors">{tool.name}</p>
+                  <p className="text-xs text-gray-500 mt-1">Seamless Integration</p>
+                </a>
+              );
+            })}
           </div>
           
           <div className="text-center mt-12">
