@@ -15,6 +15,7 @@ import DowntimeCost from './pages/DowntimeCost';
 import ManufacturingAnalytics from './pages/ManufacturingAnalytics';
 import DataAI from './pages/DataAI';
 import DashboardSolutions from './pages/DashboardSolutions';
+import Warranty from './pages/Warranty';
 import AutomationROI from './pages/AutomationROI';
 import AssessmentRisk from './pages/AssessmentRisk';
 import AssessmentAutomation from './pages/AssessmentAutomation';
@@ -58,7 +59,8 @@ function App() {
                 <Route path="/manufacturing-analytics" element={<ManufacturingAnalytics />} />
                 <Route path="/solutions/manufacturing-analytics" element={<ManufacturingAnalytics />} />
                 <Route path="/data-ai" element={<DataAI />} />
-                <Route path="/dashboard-solutions" element={<DashboardSolutions />} />
+            <Route path="/dashboard-solutions" element={<DashboardSolutions />} />
+            <Route path="/warranty" element={<Warranty />} />
                 <Route path="/tools/automation-roi" element={<AutomationROI />} />
                 <Route path="/tools/assessment-risk" element={<AssessmentRisk />} />
                 <Route path="/tools/assessment-automation" element={<AssessmentAutomation />} />

@@ -53,7 +53,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ onBookAssessment 
         onClick={onBookAssessment}
         className={ctaButtonClass + " ml-2 rounded-lg"}
       >
-        Schedule Your Strategic Audit
+        Book Your Free Assessment
       </Button>
     </div>
   );

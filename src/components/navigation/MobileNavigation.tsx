@@ -56,7 +56,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
               onClick={onBookAssessment}
               className="bg-gradient-yellow text-navy font-bold text-sm px-4 py-2 rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
             >
-              Schedule Your Strategic Audit
+              Book Your Free Assessment
             </Button>
           </div>
         </div>

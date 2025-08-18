@@ -79,8 +79,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>MBACIO - Making I.T. Easy | IT & AI Consulting for Growing Businesses</title>
-        <meta name="description" content="From food & beverage manufacturers to law and accounting firms — we simplify, automate, and modernize your IT so your team can focus on results. Book a free consultation." />
+        <title>Smarter IT. Simpler Growth. | MBACIO Serving Bannockburn & Chicagoland</title>
+        <meta name="description" content="Automation, dashboards, and secure support—built for busy teams who need results, not jargon. Serving manufacturing, law, and CPA firms in Bannockburn & Chicagoland." />
+        <meta name="keywords" content="IT automation, business dashboards, managed IT services, Bannockburn IT, Chicagoland IT consulting, manufacturing IT, legal IT, CPA firm IT" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
@@ -95,23 +96,32 @@ const Index = () => {
             {/* Left Column - The Message */}
             <div className="hero-text-content">
               <h1 className="text-4xl lg:text-6xl font-poppins font-bold mb-8 drop-shadow-header">
-                Stop Wasting Margin on Inefficient IT.
+                Smarter IT. Simpler Growth.
               </h1>
               
               <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
-                We deliver compliant, profitable, and secure IT operations for mid-market Manufacturing, Law, and CPA firms. 
-                We connect your technology directly to your bottom line by reducing operational drag and mitigating risk.
+                Automation, dashboards, and secure support—built for busy teams who need results, not jargon.
               </p>
               
-              <a 
-                href="/schedule" 
-                className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 mb-6"
-              >
-                Schedule Your Strategic Audit
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <a 
+                  href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                >
+                  Book Your Free Assessment
+                </a>
+                <a 
+                  href="/dashboard-solutions"
+                  className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold border-2 border-accent text-accent rounded-lg shadow-lg hover:bg-accent hover:text-navy hover:scale-105 transition-all duration-300"
+                >
+                  See What We Build
+                </a>
+              </div>
               
               <p className="reassurance-copy text-sm text-gray-300 max-w-2xl">
-                A 30-minute, no-obligation assessment to identify immediate opportunities for operational improvement.
+                30-minute, no-obligation consultation to identify immediate opportunities for operational improvement.
               </p>
             </div>
 
@@ -174,10 +184,12 @@ const Index = () => {
 
           <div className="text-center">
             <a 
-              href="/schedule" 
+              href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              Schedule Your Strategic Audit
+              Book Your Free Assessment
             </a>
           </div>
         </div>
@@ -188,14 +200,13 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-navy text-white font-bold px-6 py-2 text-lg">
-              🎯 Why Choose MBACIO
+              🎯 Why MBACIO
             </Badge>
             <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-navy mb-6">
-              The MBACIO Difference
+              Why MBACIO
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              What sets us apart? We don't just provide IT services - we bring unique strengths 
-              that transform how your business operates.
+              Three unique strengths that deliver smarter setup, faster support, and clear ROI.
             </p>
           </div>
           
@@ -206,13 +217,13 @@ const Index = () => {
                   <Target className="w-10 h-10 text-accent" />
                 </div>
                 <Badge className="mb-4 bg-gradient-yellow text-navy font-bold">
-                  Niche Focus
+                  Smarter Setup
                 </Badge>
                 <h3 className="text-2xl font-poppins font-bold text-navy mb-4">
-                  Industry Specialization
+                  Smarter Setup
                 </h3>
                 <p className="text-gray-700 font-inter leading-relaxed">
-                  Deep expertise in Manufacturing, Law, and CPA firm operations. We understand your unique compliance requirements, workflows, and profitability drivers.
+                  Cloud-first, integrated, no duct-tape fixes. Deep expertise in Manufacturing, Law, and CPA firm operations with unified solutions.
                 </p>
               </CardContent>
             </Card>
@@ -223,13 +234,13 @@ const Index = () => {
                   <Award className="w-10 h-10 text-accent" />
                 </div>
                 <Badge className="mb-4 bg-gradient-yellow text-navy font-bold">
-                  Battle-Tested Solutions
+                  Faster Support
                 </Badge>
                 <h3 className="text-2xl font-poppins font-bold text-navy mb-4">
-                  Real-World Experience
+                  Faster Support
                 </h3>
                 <p className="text-gray-700 font-inter leading-relaxed">
-                  We use every tool we recommend in our own business, ensuring authentic experience and understanding of your challenges.
+                  24/7 SLA-backed response; continuous improvement reporting; global team coverage with bilingual excellence.
                 </p>
               </CardContent>
             </Card>
@@ -240,13 +251,13 @@ const Index = () => {
                   <Globe className="w-10 h-10 text-accent" />
                 </div>
                 <Badge className="mb-4 bg-gradient-yellow text-navy font-bold">
-                  100% Bilingual Team
+                  Clear ROI
                 </Badge>
                 <h3 className="text-2xl font-poppins font-bold text-navy mb-4">
-                  Bilingual Excellence
+                  Clear ROI
                 </h3>
                 <p className="text-gray-700 font-inter leading-relaxed">
-                  All our agents are fluent in English & Spanish, ensuring seamless communication with your diverse team and clients.
+                  Reduce overhead, cut manual work up to 37%, predictable pricing. We measure and report on your operational improvements.
                 </p>
               </CardContent>
             </Card>
@@ -315,10 +326,12 @@ const Index = () => {
 
           <div className="text-center">
             <a 
-              href="/schedule" 
+              href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              Schedule Your Strategic Audit
+              Book Your Free Assessment
             </a>
           </div>
         </div>
@@ -412,11 +425,52 @@ const Index = () => {
             measurable ROI for your business.
           </p>
           <a 
-            href="/schedule" 
+            href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
-            Schedule Your Strategic Audit
+            Book Your Free Assessment
           </a>
+        </div>
+      </section>
+
+      {/* Works With Your Favorite Tools */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-poppins font-bold text-navy mb-6">
+              Works With Your Favorite Tools
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Seamlessly integrate with the business tools you already use and love.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+            {["QuickBooks Online", "HubSpot", "Salesforce", "Microsoft 365", "Fishbowl Inventory", "Shopify", "Slack", "Google Analytics", "Xero", "NetSuite", "Sage", "FreshBooks", "Zoho", "monday.com", "Asana"].map((tool, index) => (
+              <a
+                key={index}
+                href="/dashboard-solutions#integrations"
+                className="bg-white border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
+              >
+                <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-accent/10 transition-colors">
+                  <BarChart className="w-6 h-6 text-gray-600 group-hover:text-accent transition-colors" />
+                </div>
+                <p className="text-sm font-medium text-gray-700 group-hover:text-navy transition-colors">{tool}</p>
+                <p className="text-xs text-gray-500 mt-1" role="img" aria-label={`Integrates with ${tool} dashboards`}>Integrates with {tool} dashboards</p>
+              </a>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <a 
+              href="/dashboard-solutions"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              See All Integrations <ArrowRight className="w-5 h-5 ml-2" />
+            </a>
+          </div>
         </div>
       </section>
 
