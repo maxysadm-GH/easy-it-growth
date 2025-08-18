@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { X, Menu, User } from "lucide-react";
+import { X, Menu, Phone, Calculator, Calendar, MessageSquare } from "lucide-react";
 import ChatMessages from './ChatMessages';
 import ChatInput from './ChatInput';
 import QuickActions from './QuickActions';
@@ -8,7 +7,6 @@ import ChatMenu from './ChatMenu';
 import SmartTips from './SmartTips';
 import { Message } from '@/types/chat';
 import { getContextualTips, SmartTip } from '@/data/smartTips';
-import { useBackgroundDetection } from '@/hooks/useBackgroundDetection';
 import ChatHealthMonitor from './ChatHealthMonitor';
 import OfflineWelcome from './OfflineWelcome';
 import EnhancedQuickActions from './EnhancedQuickActions';
@@ -37,7 +35,6 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showTips, setShowTips] = useState(true);
   const [isAIHealthy, setIsAIHealthy] = useState(true);
-  const backgroundContext = useBackgroundDetection();
   
   const currentQuickActions = messages.length <= 1 ? quickActions : [];
   const contextualTips = getContextualTips(pageName.toLowerCase(), messages.length);
@@ -74,128 +71,45 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
     setIsAIHealthy(healthy);
   };
 
-  const getMaxHeight = () => {
-    const viewportHeight = window.innerHeight;
-    const baseHeight = Math.min(500, viewportHeight * 0.75);
-    const messageHeight = 60;
-    const calculatedHeight = Math.min(baseHeight + (messages.length * messageHeight * 0.5), viewportHeight * 0.85);
-    return `${Math.max(calculatedHeight, 400)}px`;
+  const handleDirectBooking = () => {
+    window.open('https://calendly.com/mbacio-consult', '_blank');
+  };
+
+  const handleCallNow = () => {
+    window.location.href = 'tel:(773) 657-2300';
   };
 
   return (
-    <div 
-      className="fixed bottom-24 right-6 z-50 max-w-sm w-full flex flex-col animate-fade-in border border-white/40 rounded-2xl overflow-hidden"
-      style={{ 
-        height: getMaxHeight(),
-        backdropFilter: 'blur(20px) saturate(150%)',
-        background: 'rgba(255, 255, 255, 0.18)',
-        boxShadow: `
-          0 25px 50px -12px rgba(0, 0, 0, 0.3),
-          0 0 0 1px rgba(255, 255, 255, 0.2),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3)
-        `
-      }}
-    >
+    <div className="fixed bottom-24 right-6 z-50 max-w-sm w-full flex flex-col animate-fade-in bg-background border border-border rounded-xl shadow-2xl overflow-hidden">
       {/* Header */}
-      <div className="relative flex items-center px-4 py-3 border-b border-white/30 font-bold transition-all duration-300 flex-shrink-0"
-           style={{
-             backdropFilter: 'blur(20px) saturate(150%)',
-             background: backgroundContext.adaptiveColors.headerBackground,
-             borderBottom: '1px solid rgba(255, 255, 255, 0.3)'
-           }}>
-        
-        {/* Menu Button */}
-        <button
-          className="mr-2 p-1 rounded-lg transition-all duration-200 hover:bg-white/25 backdrop-blur-sm"
-          style={{ color: backgroundContext.adaptiveColors.textColor }}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Open Menu"
-        >
-          <Menu className="w-5 h-5" />
-        </button>
-        
-        {/* Assistant Icon */}
-        <div className="relative mr-2">
-          <div 
-            className="absolute inset-0 rounded-full transition-all duration-300"
-            style={{
-              background: backgroundContext.adaptiveColors.logoBackground,
-              backdropFilter: 'blur(15px) saturate(180%)',
-              transform: 'scale(1.15)',
-              boxShadow: backgroundContext.isBlueBackground 
-                ? '0 0 20px rgba(250, 207, 57, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.6)'
-                : '0 0 15px rgba(17, 45, 78, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6)',
-              border: backgroundContext.isBlueBackground 
-                ? '1px solid rgba(250, 207, 57, 0.4)'
-                : '1px solid rgba(17, 45, 78, 0.3)'
-            }}
-          />
-          <img src={assistantIconUrl} className="relative w-8 h-8 rounded-full" alt="Assistant Icon" />
-        </div>
-        
-        {/* Title with AI Health Status */}
-        <div className="flex-1">
-          <div className="flex items-center gap-2">
-            <div className="font-bold text-sm transition-all duration-300"
-                 style={{ 
-                   color: backgroundContext.adaptiveColors.textColor,
-                   textShadow: backgroundContext.adaptiveColors.textShadow
-                 }}>
-              MBACIO Assistant
+      <div className="bg-primary text-primary-foreground px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <img src={assistantIconUrl} className="w-8 h-8 rounded-full" alt="MBACIO Assistant" />
+          <div>
+            <div className="font-semibold text-sm">MBACIO Assistant</div>
+            <div className="text-xs opacity-90">
+              {isAIHealthy ? `AI Powered • ${pageName}` : `Always Available • ${pageName}`}
             </div>
-            <ChatHealthMonitor onHealthChange={handleAIHealthChange} />
           </div>
-          <div 
-            className="text-xs font-normal transition-all duration-300"
-            style={{ 
-              color: backgroundContext.isBlueBackground 
-                ? 'rgba(250, 207, 57, 0.9)' 
-                : backgroundContext.adaptiveColors.textColor.replace('0.98', '0.8'),
-              textShadow: backgroundContext.adaptiveColors.textShadow
-            }}
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <ChatHealthMonitor onHealthChange={handleAIHealthChange} />
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-1 rounded hover:bg-primary-foreground/20 transition-colors"
+            aria-label="Open Menu"
           >
-            {isAIHealthy ? `Powered by AI • ${pageName}` : `Always Available • ${pageName}`}
-          </div>
+            <Menu className="w-4 h-4" />
+          </button>
+          <button
+            onClick={onClose}
+            className="p-1 rounded hover:bg-primary-foreground/20 transition-colors"
+            aria-label="Close Chat"
+          >
+            <X className="w-4 h-4" />
+          </button>
         </div>
-        
-        {/* Logo */}
-        <div className="relative ml-2">
-          <div 
-            className="absolute inset-0 rounded transition-all duration-300"
-            style={{
-              background: backgroundContext.adaptiveColors.logoBackground,
-              backdropFilter: 'blur(15px) saturate(180%)',
-              transform: 'scale(1.2)',
-              boxShadow: backgroundContext.isBlueBackground 
-                ? '0 0 25px rgba(250, 207, 57, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.7)'
-                : '0 0 20px rgba(17, 45, 78, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7)',
-              border: backgroundContext.isBlueBackground 
-                ? '1px solid rgba(250, 207, 57, 0.6)'
-                : '1px solid rgba(17, 45, 78, 0.4)'
-            }}
-          />
-          <img
-            src="/lovable-uploads/e6bae145-8de8-4b55-bdeb-86d42f20f90c.png"
-            className="relative h-6 w-auto transition-all duration-300"
-            alt="MBACIO Logo"
-            draggable={false}
-            style={{
-              filter: backgroundContext.isBlueBackground 
-                ? 'drop-shadow(0 0 12px rgba(250, 207, 57, 0.8)) brightness(1.2) contrast(1.1)'
-                : 'drop-shadow(0 0 8px rgba(17, 45, 78, 0.6)) brightness(1.1) contrast(1.05)'
-            }}
-          />
-        </div>
-        
-        {/* Close Button */}
-        <button
-          className="ml-2 p-1 rounded-lg transition-all duration-200 hover:bg-red-500/25 backdrop-blur-sm"
-          style={{ color: backgroundContext.adaptiveColors.textColor }}
-          onClick={onClose}
-          aria-label="Close Chat"
-        >
-          <X className="w-5 h-5" />
-        </button>
 
         <ChatMenu 
           isOpen={isMenuOpen}
@@ -205,8 +119,58 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         />
       </div>
 
-      {/* Messages Area or Offline Welcome */}
-      <div className="flex-1 min-h-0 overflow-hidden">
+      {/* Lead Capture Banner */}
+      <div className="bg-yellow text-navy px-4 py-2 border-b border-border">
+        <div className="text-xs font-medium text-center">
+          🎯 Get ROI-guaranteed IT transformation in 6 weeks
+        </div>
+      </div>
+
+      {/* Quick CTAs */}
+      <div className="bg-muted/50 px-4 py-3 border-b border-border">
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            onClick={handleDirectBooking}
+            className="flex items-center gap-2 px-3 py-2 bg-yellow text-navy rounded-lg text-xs font-medium hover:bg-yellow/90 transition-colors"
+          >
+            <Calendar className="w-3 h-3" />
+            Free Consultation
+          </button>
+          <button
+            onClick={handleCallNow}
+            className="flex items-center gap-2 px-3 py-2 bg-primary text-primary-foreground rounded-lg text-xs font-medium hover:bg-primary/90 transition-colors"
+          >
+            <Phone className="w-3 h-3" />
+            Call Now
+          </button>
+        </div>
+        <div className="grid grid-cols-2 gap-2 mt-2">
+          <button
+            onClick={() => window.location.href = '/tools/automation-roi'}
+            className="flex items-center gap-2 px-3 py-2 bg-secondary text-secondary-foreground rounded-lg text-xs font-medium hover:bg-secondary/90 transition-colors"
+          >
+            <Calculator className="w-3 h-3" />
+            ROI Calculator
+          </button>
+          <button
+            onClick={() => onSendMessage('Tell me about your pricing and service plans')}
+            className="flex items-center gap-2 px-3 py-2 bg-accent text-accent-foreground rounded-lg text-xs font-medium hover:bg-accent/90 transition-colors"
+          >
+            <MessageSquare className="w-3 h-3" />
+            Get Pricing
+          </button>
+        </div>
+      </div>
+
+      {/* Value Proposition */}
+      <div className="bg-muted px-4 py-2 border-b border-border">
+        <div className="text-xs text-muted-foreground">
+          ✅ 100% Bilingual Support • ✅ 60-Day Warranty • ✅ 20+ Years Manufacturing Experience
+        </div>
+      </div>
+
+      {/* Messages Area */}
+      <div className="flex-1 min-h-0 overflow-hidden" style={{ height: '300px' }}>
         {showOfflineWelcome ? (
           <OfflineWelcome />
         ) : (
@@ -225,50 +189,26 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 
       {/* Input Area */}
       {!showOfflineWelcome && (
-        <div className="px-4 pb-3 border-t border-white/30 flex-shrink-0"
-             style={{
-               backdropFilter: 'blur(20px)',
-               background: backgroundContext.adaptiveColors.footerBackground
-             }}>
-          
+        <div className="bg-background border-t border-border px-4 py-3">
           <EnhancedQuickActions 
             actions={currentQuickActions}
             onActionClick={onQuickAction}
-            onDirectCTA={() => {}} // Removed since floating widget handles CTAs
+            onDirectCTA={() => {}}
             isLoading={isLoading}
           />
 
-          {/* Always show chat input, but with warning if AI is down */}
           <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
           
           {/* AI Status Warning */}
           {!isAIHealthy && (
-            <div 
-              className="text-xs text-center mt-1 p-1 rounded"
-              style={{ 
-                color: 'rgba(255, 165, 0, 0.9)',
-                background: 'rgba(255, 165, 0, 0.1)'
-              }}
-            >
-              AI responses may be delayed. Use the booking widget for immediate help.
+            <div className="text-xs text-center mt-2 p-2 bg-yellow/20 text-yellow-800 rounded">
+              AI responses may be delayed. Use Quick Actions above for immediate help.
             </div>
           )}
           
-          {/* Footer */}
-          <div 
-            className="text-[10px] pt-2 pl-1 font-medium transition-all duration-300 px-2 py-1 rounded-md mt-1"
-            style={{ 
-              color: backgroundContext.adaptiveColors.footerTextColor,
-              textShadow: backgroundContext.adaptiveColors.textShadow,
-              background: backgroundContext.isBlueBackground 
-                ? 'rgba(17, 45, 78, 0.4)' 
-                : 'rgba(255, 255, 255, 0.5)',
-              backdropFilter: 'blur(10px)',
-              border: `1px solid ${backgroundContext.isBlueBackground ? 'rgba(250, 207, 57, 0.3)' : 'rgba(17, 45, 78, 0.2)'}`,
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            Innovation isn't a luxury. It's a necessity. MBACIO brings affordable tech breakthroughs to mid-market businesses.
+          {/* Trust Footer */}
+          <div className="text-xs text-muted-foreground text-center mt-2 leading-relaxed">
+            🔒 Confidential • 📞 (773) 657-2300 • 🌟 ROI Guaranteed in 6 Weeks
           </div>
         </div>
       )}
