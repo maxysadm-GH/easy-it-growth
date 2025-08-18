@@ -443,51 +443,126 @@ const Index = () => {
               Works With Your Favorite Tools
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Seamlessly integrate with the business tools you already use and love.
+              As business intelligence software, we build comprehensive integrations. Across our 100+ connectors, we've pre-built thousands of metrics—just drag & drop into any dashboard and your visualizations update automatically.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
-            {[
-              { name: "QuickBooks Online", icon: BarChart },
-              { name: "HubSpot", icon: Users },
-              { name: "Salesforce", icon: TrendingUp },
-              { name: "Microsoft 365", icon: Globe },
-              { name: "Fishbowl Inventory", icon: BarChart },
-              { name: "Shopify", icon: TrendingUp },
-              { name: "Slack", icon: Users },
-              { name: "Google Analytics", icon: BarChart },
-              { name: "Xero", icon: BarChart },
-              { name: "NetSuite", icon: TrendingUp },
-              { name: "Sage", icon: BarChart },
-              { name: "FreshBooks", icon: BarChart },
-              { name: "Zoho", icon: Users },
-              { name: "monday.com", icon: CheckCircle },
-              { name: "Asana", icon: CheckCircle }
-            ].map((tool, index) => {
-              const Icon = tool.icon;
-              return (
-                <a
-                  key={index}
-                  href="/dashboard-solutions#integrations"
-                  className="bg-white border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
-                >
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-accent/10 transition-colors">
-                    <Icon className="w-6 h-6 text-gray-600 group-hover:text-accent transition-colors" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-700 group-hover:text-navy transition-colors">{tool.name}</p>
-                  <p className="text-xs text-gray-500 mt-1">Seamless Integration</p>
+          {/* Scrolling Carousel */}
+          <div className="relative overflow-hidden">
+            <div className="flex animate-[scroll_60s_linear_infinite] gap-8">
+              {/* First set of logos */}
+              <div className="flex gap-8 min-w-max">
+                <a href="/integrations/quickbooks-online" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/d324d6cc-e672-484c-98b4-975a82f442d9.png" alt="QuickBooks Online integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">QuickBooks Online</span>
                 </a>
-              );
-            })}
+                <a href="/integrations/xero" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/2921df64-9629-4495-9d5b-353d790d9820.png" alt="Xero integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Xero</span>
+                </a>
+                <a href="/integrations/hubspot" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/7ec7ce1c-7a50-49ef-b262-cd8cdeb7ad9e.png" alt="HubSpot integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">HubSpot</span>
+                </a>
+                <a href="/integrations/salesforce" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/a35e001c-605e-491a-8c9e-35d244ad3cf2.png" alt="Salesforce integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Salesforce</span>
+                </a>
+                <a href="/integrations/asana" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/b63669e1-3437-45a5-8cad-0cb43f692a99.png" alt="Asana integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Asana</span>
+                </a>
+                <a href="/integrations/trello" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/0bd362c9-eb56-41d6-8b73-6606f2890b56.png" alt="Trello integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Trello</span>
+                </a>
+                <a href="/integrations/monday" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/285df723-c382-4cfc-b46f-891081bd952a.png" alt="Monday.com integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Monday.com</span>
+                </a>
+                <a href="/integrations/clickup" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/6b455002-4313-4c38-b07f-e9f8f7aeff21.png" alt="ClickUp integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">ClickUp</span>
+                </a>
+                <a href="/integrations/netsuite" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/6176fded-c097-452c-8848-2cd686b672eb.png" alt="NetSuite integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">NetSuite</span>
+                </a>
+                <a href="/integrations/fishbowl-inventory" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/7a81da02-7a89-49d6-bb4f-eca861e810b9.png" alt="Fishbowl Inventory integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Fishbowl Inventory</span>
+                </a>
+                <a href="/integrations/shopify" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/64928a8d-ea10-47d3-a59b-ca0199366b21.png" alt="Shopify integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Shopify</span>
+                </a>
+                <a href="/integrations/slack" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/e2a53896-8cd4-4a89-be8f-49b1626c6bcd.png" alt="Slack integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Slack</span>
+                </a>
+              </div>
+              
+              {/* Duplicate set for seamless loop */}
+              <div className="flex gap-8 min-w-max">
+                <a href="/integrations/quickbooks-online" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/d324d6cc-e672-484c-98b4-975a82f442d9.png" alt="QuickBooks Online integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">QuickBooks Online</span>
+                </a>
+                <a href="/integrations/xero" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/2921df64-9629-4495-9d5b-353d790d9820.png" alt="Xero integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Xero</span>
+                </a>
+                <a href="/integrations/hubspot" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/7ec7ce1c-7a50-49ef-b262-cd8cdeb7ad9e.png" alt="HubSpot integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">HubSpot</span>
+                </a>
+                <a href="/integrations/salesforce" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/a35e001c-605e-491a-8c9e-35d244ad3cf2.png" alt="Salesforce integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Salesforce</span>
+                </a>
+                <a href="/integrations/asana" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/b63669e1-3437-45a5-8cad-0cb43f692a99.png" alt="Asana integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Asana</span>
+                </a>
+                <a href="/integrations/trello" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/0bd362c9-eb56-41d6-8b73-6606f2890b56.png" alt="Trello integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Trello</span>
+                </a>
+                <a href="/integrations/monday" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/285df723-c382-4cfc-b46f-891081bd952a.png" alt="Monday.com integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Monday.com</span>
+                </a>
+                <a href="/integrations/clickup" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/6b455002-4313-4c38-b07f-e9f8f7aeff21.png" alt="ClickUp integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">ClickUp</span>
+                </a>
+                <a href="/integrations/netsuite" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/6176fded-c097-452c-8848-2cd686b672eb.png" alt="NetSuite integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">NetSuite</span>
+                </a>
+                <a href="/integrations/fishbowl-inventory" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/7a81da02-7a89-49d6-bb4f-eca861e810b9.png" alt="Fishbowl Inventory integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Fishbowl Inventory</span>
+                </a>
+                <a href="/integrations/shopify" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/64928a8d-ea10-47d3-a59b-ca0199366b21.png" alt="Shopify integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Shopify</span>
+                </a>
+                <a href="/integrations/slack" className="flex flex-col items-center p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow min-w-[150px]">
+                  <img src="/lovable-uploads/e2a53896-8cd4-4a89-be8f-49b1626c6bcd.png" alt="Slack integration" className="w-16 h-16 object-contain mb-2" />
+                  <span className="text-sm font-medium text-navy">Slack</span>
+                </a>
+              </div>
+            </div>
           </div>
           
           <div className="text-center mt-12">
+            <p className="text-gray-600 mb-6">Seamlessly integrate with the tools your team already loves</p>
             <a 
-              href="/dashboard-solutions"
+              href="/integrations"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              See All Integrations <ArrowRight className="w-5 h-5 ml-2" />
+              View All Integrations <ArrowRight className="w-5 h-5 ml-2" />
             </a>
           </div>
         </div>
