@@ -36,6 +36,8 @@ import Resources from './pages/Resources';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Security from './pages/Security';
+import ChicagoManufacturingIT from './pages/ChicagoManufacturingIT';
+import BannockburnLegalTechnology from './pages/BannockburnLegalTechnology';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -82,6 +84,8 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/security" element={<Security />} />
+                <Route path="/manufacturing-it-chicago" element={<ChicagoManufacturingIT />} />
+                <Route path="/legal-technology-bannockburn" element={<BannockburnLegalTechnology />} />
               </Routes>
             </BrowserRouter>
           </TooltipProvider>
