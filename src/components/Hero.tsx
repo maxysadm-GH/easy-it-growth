@@ -7,20 +7,20 @@ const Hero = () => {
   const handlePrimaryClick = () => {
     // Track analytics event
     if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'click', {
-        event_category: 'CTA',
-        event_label: 'cta_hero_primary'
+      (window as any).gtag('event', 'cta_click', {
+        location: 'hero',
+        action: 'assessment'
       });
     }
-    window.open('https://calendly.com/mbacio/free-assessment', '_blank', 'noopener,noreferrer');
+    window.open('https://calendly.com/mbacio/assessment', '_blank', 'noopener,noreferrer');
   };
 
   const handleSecondaryClick = () => {
     // Track analytics event
     if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'click', {
-        event_category: 'CTA',
-        event_label: 'cta_hero_secondary'
+      (window as any).gtag('event', 'cta_click', {
+        location: 'hero',
+        action: 'dashboard_examples'
       });
     }
     window.location.href = '/dashboard-solutions';
@@ -78,9 +78,9 @@ const Hero = () => {
             <button
               onClick={handleSecondaryClick}
               className="inline-flex items-center rounded-2xl border border-white/30 px-6 py-3 font-semibold text-white hover:bg-white/10 transition-all duration-300"
-              aria-label="Explore MBACIO automation solutions"
+              aria-label="See dashboard examples and automation solutions"
             >
-              Explore Our Automation
+              See Dashboard Examples
             </button>
           </div>
           

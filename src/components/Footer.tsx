@@ -7,7 +7,7 @@ const Footer = () => {
   const [isWarrantyOpen, setIsWarrantyOpen] = useState(false);
 
   const handleWarrantyClick = () => {
-    setIsWarrantyOpen(true);
+    window.location.href = '/warranty';
   };
 
   const handleMapClick = () => {
@@ -75,13 +75,13 @@ const Footer = () => {
               </p>
               {/* Updated warranty button */}
               <div className="mb-4">
-                <button
-                  onClick={handleWarrantyClick}
-                  className="inline-block bg-gradient-yellow text-navy font-bold px-4 py-2 rounded-full shadow-md hover:underline transition-all duration-300 hover:scale-105 text-sm cursor-pointer"
-                  style={{ textDecoration: 'none' }}
-                >
-                  60-Day Satisfaction Warranty
-                </button>
+              <a
+                href="/warranty"
+                className="inline-block bg-gradient-yellow text-navy font-bold px-4 py-2 rounded-full shadow-md hover:underline transition-all duration-300 hover:scale-105 text-sm cursor-pointer"
+                style={{ textDecoration: 'none' }}
+              >
+                60-Day Satisfaction Warranty
+              </a>
               </div>
               <div className="text-gray-300 text-sm space-y-1">
                 <div className="font-semibold mb-2">Business Hours</div>
@@ -139,9 +139,9 @@ const Footer = () => {
                   <li><a href="/blog" className="hover:text-accent transition-colors">Blog & Insights</a></li>
                   <li><a href="/case-studies" className="hover:text-accent transition-colors">Case Studies</a></li>
                   <li><a href="/why-us" className="hover:text-accent transition-colors">Why Choose MBACIO</a></li>
-                  <li><a href="#" className="hover:text-accent transition-colors">Privacy Policy</a></li>
-                  <li><a href="#" className="hover:text-accent transition-colors">Terms of Service</a></li>
-                  <li><a href="#" className="hover:text-accent transition-colors">Security</a></li>
+                  <li><a href="/privacy-policy" className="hover:text-accent transition-colors">Privacy Policy</a></li>
+                  <li><a href="/terms-of-service" className="hover:text-accent transition-colors">Terms of Service</a></li>
+                  <li><a href="/security" className="hover:text-accent transition-colors">Security</a></li>
                 </ul>
               </div>
             </div>
@@ -154,20 +154,15 @@ const Footer = () => {
                 © 2024 MBACIO, LLC. All rights reserved. • IT Support for Growing Businesses • Serving Bannockburn & Chicagoland
               </div>
               <div className="flex space-x-6 text-sm">
-                <a href="#" className="text-gray-400 hover:text-accent transition-colors">Privacy Policy</a>
-                <a href="#" className="text-gray-400 hover:text-accent transition-colors">Terms of Service</a>
-                <a href="#" className="text-gray-400 hover:text-accent transition-colors">Security</a>
+                <a href="/privacy-policy" className="text-gray-400 hover:text-accent transition-colors">Privacy Policy</a>
+                <a href="/terms-of-service" className="text-gray-400 hover:text-accent transition-colors">Terms of Service</a>
+                <a href="/security" className="text-gray-400 hover:text-accent transition-colors">Security</a>
               </div>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* Warranty Modal */}
-      <WarrantyModal 
-        isOpen={isWarrantyOpen} 
-        onClose={() => setIsWarrantyOpen(false)} 
-      />
     </>
   );
 };

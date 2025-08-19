@@ -4,8 +4,20 @@ import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Shield, Clock, CheckCircle, RefreshCw } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
+import BreadcrumbSchema from '../components/BreadcrumbSchema';
 
 const Warranty = () => {
+  const handleCTAClick = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'cta_click', {
+        location: 'warranty_page',
+        action: 'assessment'
+      });
+    }
+    window.open('https://calendly.com/mbacio/assessment', '_blank', 'noopener,noreferrer');
+  };
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -39,14 +51,16 @@ const Warranty = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Helmet>
-        <title>60-Day Satisfaction Warranty | MBACIO Risk-Free IT Services</title>
-        <meta name="description" content="MBACIO's 60-Day Satisfaction Warranty ensures you're completely satisfied with our IT services or we'll work free until you are. Risk-free guarantee for Bannockburn & Chicagoland businesses." />
-        <meta name="keywords" content="IT service warranty, satisfaction guarantee, risk-free IT, MBACIO guarantee, Bannockburn IT services" />
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="60-Day Satisfaction Warranty – Risk-Free IT Services"
+        description="MBACIO's 60-Day Satisfaction Warranty ensures you're completely satisfied with our IT services or we'll work free until you are. Risk-free guarantee for Bannockburn & Chicagoland businesses."
+        keywords="IT service warranty, satisfaction guarantee, risk-free IT, MBACIO guarantee, Bannockburn IT services"
+        structuredData={structuredData}
+      />
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "/" },
+        { name: "60-Day Warranty", url: "/warranty" }
+      ]} />
 
       <Navigation />
 
@@ -82,14 +96,12 @@ const Warranty = () => {
                 <p className="text-gray-600 mb-8">
                   <strong>Exclusions:</strong> Third-party license costs. Applies to new dashboard or managed-IT engagements signed this quarter.
                 </p>
-                <a 
-                  href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button 
+                  onClick={handleCTAClick}
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 >
                   Start Risk-Free
-                </a>
+                </button>
               </div>
               <div className="bg-gradient-to-br from-accent/10 to-navy/10 rounded-2xl p-8">
                 <div className="text-center">
@@ -187,14 +199,12 @@ const Warranty = () => {
             <p className="text-xl text-gray-200 mb-12">
               Start your project with complete confidence. Our 60-day satisfaction warranty ensures you get exactly what you need.
             </p>
-            <a 
-              href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button 
+              onClick={handleCTAClick}
               className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Start Risk-Free Today
-            </a>
+            </button>
           </div>
         </div>
       </section>

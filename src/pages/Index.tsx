@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import Chatbot from '../components/Chatbot';
 import BlogTeaser from '../components/BlogTeaser';
 import PricingCalculator from '../components/PricingCalculator';
+import SEOHead from '../components/SEOHead';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -23,6 +24,15 @@ import {
 } from 'lucide-react';
 
 const Index = () => {
+  const handleCTAClick = (location: string) => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'cta_click', {
+        location: location,
+        action: 'assessment'
+      });
+    }
+    window.open('https://calendly.com/mbacio/assessment', '_blank', 'noopener,noreferrer');
+  };
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -78,14 +88,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Helmet>
-        <title>Smarter IT. Simpler Growth. | MBACIO Serving Bannockburn & Chicagoland</title>
-        <meta name="description" content="Automation, AI, and secure support—built for busy teams who need results, not jargon. Serving manufacturing, law, and CPA firms in Bannockburn & Chicagoland." />
-        <meta name="keywords" content="IT automation, business dashboards, managed IT services, Bannockburn IT, Chicagoland IT consulting, manufacturing IT, legal IT, CPA firm IT" />
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="MBACIO – IT & AI Consulting for Growing Businesses"
+        description="Dashboards, automation, and 24/7 support—built for teams that need results, not jargon. Serving Bannockburn & Chicagoland."
+        keywords="IT automation, business dashboards, managed IT services, Bannockburn IT, Chicagoland IT consulting, manufacturing IT, legal IT, CPA firm IT"
+        structuredData={structuredData}
+      />
 
       <Navigation />
 
@@ -104,19 +112,17 @@ const Index = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <a 
-                  href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button 
+                  onClick={() => handleCTAClick('hero')}
                   className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 >
                   Book Your Free Assessment
-                </a>
+                </button>
                 <a 
                   href="/dashboard-solutions"
                   className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold border-2 border-accent text-accent rounded-lg shadow-lg hover:bg-accent hover:text-navy hover:scale-105 transition-all duration-300"
                 >
-                  Explore Our Automation
+                  See Dashboard Examples
                 </a>
               </div>
               
@@ -188,14 +194,12 @@ const Index = () => {
           </div>
 
           <div className="text-center">
-            <a 
-              href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button 
+              onClick={() => handleCTAClick('results_section')}
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Book Your Free Assessment
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -330,14 +334,12 @@ const Index = () => {
           </div>
 
           <div className="text-center">
-            <a 
-              href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button 
+              onClick={() => handleCTAClick('framework_section')}
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Book Your Free Assessment
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -429,14 +431,12 @@ const Index = () => {
             Let's discuss how we can transform your IT operations and deliver 
             measurable ROI for your business.
           </p>
-          <a 
-            href="https://outlook.office.com/book/MBACIOITAssessments@mbacio.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button 
+            onClick={() => handleCTAClick('final_cta')}
             className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold bg-gradient-yellow text-navy rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             Book Your Free Assessment
-          </a>
+          </button>
         </div>
       </section>
 

@@ -12,8 +12,14 @@ const Navigation = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const handleBookAssessment = () => {
-    console.log('📞 Navigation CTA clicked - opening booking popup');
-    setIsBookingOpen(true);
+    console.log('📞 Navigation CTA clicked - opening Calendly');
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'cta_click', {
+        location: 'header',
+        action: 'assessment'
+      });
+    }
+    window.open('https://calendly.com/mbacio/assessment', '_blank', 'noopener,noreferrer');
   };
 
   return (
