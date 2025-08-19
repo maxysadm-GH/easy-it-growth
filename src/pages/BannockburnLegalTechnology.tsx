@@ -40,8 +40,13 @@ const BannockburnLegalTechnology = () => {
     "areaServed": [
       {"@type": "City", "name": "Bannockburn"},
       {"@type": "City", "name": "Deerfield"},
+      {"@type": "City", "name": "Northfield"},
+      {"@type": "City", "name": "Glenview"},
+      {"@type": "City", "name": "Highland Park"},
       {"@type": "City", "name": "Lake Forest"},
-      {"@type": "City", "name": "Highland Park"}
+      {"@type": "City", "name": "Buffalo Grove"},
+      {"@type": "City", "name": "Vernon Hills"},
+      {"@type": "City", "name": "Libertyville"}
     ],
     "serviceType": "Legal Technology Support"
   };
@@ -71,8 +76,8 @@ const BannockburnLegalTechnology = () => {
     <div className="min-h-screen bg-gray-50">
       <SEOHead
         title="Bannockburn Legal Technology Services – Law Firm IT Support"
-        description="Specialized technology services for Bannockburn law firms. Case management integration, legal cybersecurity, document automation. Serving Deerfield, Lake Forest, Highland Park."
-        keywords="Bannockburn legal technology, law firm IT support, Clio integration, legal cybersecurity, attorney technology Highland Park"
+        description="Specialized technology services for Bannockburn area law firms. Case management integration, legal cybersecurity, document automation. Serving North Chicago: Deerfield, Northfield, Glenview, Highland Park."
+        keywords="Bannockburn legal technology, law firm IT support North Chicago, Clio integration, legal cybersecurity Deerfield, attorney technology Northfield"
         structuredData={structuredData}
       />
       <BreadcrumbSchema items={[
@@ -95,7 +100,7 @@ const BannockburnLegalTechnology = () => {
             </h1>
             <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
               Specialized technology solutions for Bannockburn area law firms. Secure case management, 
-              cybersecurity, and practice efficiency - all designed for legal professionals.
+              cybersecurity, and practice efficiency - all designed for legal professionals across North Chicago.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -115,7 +120,7 @@ const BannockburnLegalTechnology = () => {
               </Button>
             </div>
             <p className="text-sm text-gray-300 mt-6">
-              📍 Serving Bannockburn, Deerfield, Lake Forest, Highland Park & North Shore
+              📍 Serving North Chicago: Bannockburn • Deerfield • Northfield • Glenview • Highland Park
             </p>
           </div>
         </div>
@@ -131,14 +136,14 @@ const BannockburnLegalTechnology = () => {
                   North Shore Legal Technology Specialists
                 </h2>
                 <p className="text-lg text-gray-700 mb-8">
-                  Located in Bannockburn, we understand the unique needs of North Shore law firms. 
+                  Located in the Bannockburn/Deerfield area, we understand the unique needs of North Chicago law firms. 
                   From solo practitioners to mid-size firms, we provide technology solutions that 
                   enhance your practice while maintaining the highest security standards.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-accent" />
-                    <span className="text-gray-700">On-site service: Bannockburn, Deerfield, Lake Forest area</span>
+                    <span className="text-gray-700">On-site service: Bannockburn, Deerfield, Northfield, Glenview area</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-5 h-5 text-accent" />
@@ -156,15 +161,15 @@ const BannockburnLegalTechnology = () => {
               </div>
               <Card className="bg-gradient-to-br from-accent/10 to-navy/10">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-poppins font-bold text-navy mb-4">North Shore Legal Community</h3>
+                  <h3 className="text-xl font-poppins font-bold text-navy mb-4">North Chicago Legal Community</h3>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                       <p className="font-semibold text-navy mb-2">Primary Service Area:</p>
                       <ul className="space-y-1 text-gray-700">
                         <li>• Bannockburn</li>
                         <li>• Deerfield</li>
-                        <li>• Lake Forest</li>
-                        <li>• Highland Park</li>
+                        <li>• Northfield</li>
+                        <li>• Glenview</li>
                       </ul>
                     </div>
                     <div>

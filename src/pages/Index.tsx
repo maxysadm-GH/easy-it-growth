@@ -90,8 +90,8 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <SEOHead
         title="MBACIO – IT & AI Consulting for Growing Businesses"
-        description="Dashboards, automation, and 24/7 support—built for teams that need results, not jargon. Serving Bannockburn & Chicagoland."
-        keywords="IT automation, business dashboards, managed IT services, Bannockburn IT, Chicagoland IT consulting, manufacturing IT, legal IT, CPA firm IT"
+        description="Dashboards, automation, and 24/7 support—built for teams that need results, not jargon. Serving North Chicago: Bannockburn, Deerfield, Northfield, Glenview, Niles & surrounding areas."
+        keywords="IT automation, business dashboards, managed IT services, North Chicago IT, Bannockburn IT consulting, Deerfield technology, Northfield IT support, Glenview managed services"
         structuredData={structuredData}
       />
 

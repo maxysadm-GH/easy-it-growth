@@ -41,7 +41,16 @@ const ChicagoManufacturingIT = () => {
       {"@type": "City", "name": "Chicago"},
       {"@type": "City", "name": "Bannockburn"},
       {"@type": "City", "name": "Deerfield"},
-      {"@type": "City", "name": "Lake Forest"}
+      {"@type": "City", "name": "Northfield"},
+      {"@type": "City", "name": "Glenview"},
+      {"@type": "City", "name": "Niles"},
+      {"@type": "City", "name": "Highland Park"},
+      {"@type": "City", "name": "Lake Forest"},
+      {"@type": "City", "name": "Libertyville"},
+      {"@type": "City", "name": "Vernon Hills"},
+      {"@type": "City", "name": "Buffalo Grove"},
+      {"@type": "City", "name": "Wheeling"},
+      {"@type": "City", "name": "Des Plaines"}
     ],
     "serviceType": "Manufacturing IT Support"
   };
@@ -71,8 +80,8 @@ const ChicagoManufacturingIT = () => {
     <div className="min-h-screen bg-gray-50">
       <SEOHead
         title="Chicago Manufacturing IT Services – ERP Integration & Automation"
-        description="Specialized IT services for Chicago manufacturing companies. ERP integration, production dashboards, cybersecurity, and automation. Serving Bannockburn, Deerfield, Lake Forest."
-        keywords="Chicago manufacturing IT, Fishbowl integration Chicago, manufacturing cybersecurity, ERP support Bannockburn, production dashboards Illinois"
+        description="Specialized IT services for Chicago manufacturing companies. ERP integration, production dashboards, cybersecurity, and automation. Serving North Chicago: Bannockburn, Deerfield, Northfield, Glenview, Niles & surrounding areas."
+        keywords="Chicago manufacturing IT, North Chicago manufacturing, Fishbowl integration, manufacturing cybersecurity, ERP support Bannockburn, Deerfield manufacturing IT, Northfield industrial IT"
         structuredData={structuredData}
       />
       <BreadcrumbSchema items={[
@@ -95,7 +104,7 @@ const ChicagoManufacturingIT = () => {
             </h1>
             <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
               Specialized technology solutions for Chicago manufacturers. From ERP integration to cybersecurity, 
-              we keep your production running smoothly and securely.
+              we keep your production running smoothly and securely across North Chicago.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -115,7 +124,7 @@ const ChicagoManufacturingIT = () => {
               </Button>
             </div>
             <p className="text-sm text-gray-300 mt-6">
-              📍 Serving Chicago, Bannockburn, Deerfield, Lake Forest & surrounding areas
+              📍 Serving North Chicago: Bannockburn • Deerfield • Northfield • Glenview • Niles & surrounding areas
             </p>
           </div>
         </div>
@@ -128,17 +137,17 @@ const ChicagoManufacturingIT = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-poppins font-bold text-navy mb-6">
-                  Local Chicago Manufacturing IT Experts
+                  North Chicago Manufacturing IT Experts
                 </h2>
                 <p className="text-lg text-gray-700 mb-8">
-                  Based in Bannockburn, we've been serving Chicago-area manufacturers for over 15 years. 
+                  Based in Bannockburn/Deerfield area, we've been serving North Chicago manufacturers for over 15 years. 
                   We understand the unique challenges of Illinois manufacturing - from compliance requirements 
                   to seasonal demand fluctuations.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-accent" />
-                    <span className="text-gray-700">Local presence: 15-minute response time in Bannockburn/Deerfield</span>
+                    <span className="text-gray-700">Local presence: 15-minute response time in Bannockburn/Deerfield/Northfield area</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-5 h-5 text-accent" />
@@ -152,24 +161,24 @@ const ChicagoManufacturingIT = () => {
               </div>
               <Card className="bg-gradient-to-br from-accent/10 to-navy/10">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-poppins font-bold text-navy mb-4">Chicago Area Coverage</h3>
+                  <h3 className="text-xl font-poppins font-bold text-navy mb-4">North Chicago Area Coverage</h3>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <p className="font-semibold text-navy mb-2">North Shore:</p>
+                      <p className="font-semibold text-navy mb-2">Primary Coverage:</p>
                       <ul className="space-y-1 text-gray-700">
                         <li>• Bannockburn</li>
                         <li>• Deerfield</li>
-                        <li>• Lake Forest</li>
-                        <li>• Highland Park</li>
+                        <li>• Northfield</li>
+                        <li>• Glenview</li>
                       </ul>
                     </div>
                     <div>
-                      <p className="font-semibold text-navy mb-2">Chicago Metro:</p>
+                      <p className="font-semibold text-navy mb-2">Extended Area:</p>
                       <ul className="space-y-1 text-gray-700">
-                        <li>• North Chicago</li>
-                        <li>• Waukegan</li>
-                        <li>• Libertyville</li>
-                        <li>• Gurnee</li>
+                        <li>• Highland Park</li>
+                        <li>• Lake Forest</li>
+                        <li>• Niles</li>
+                        <li>• Buffalo Grove</li>
                       </ul>
                     </div>
                   </div>

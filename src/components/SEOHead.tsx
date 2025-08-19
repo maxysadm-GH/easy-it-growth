@@ -49,8 +49,21 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     },
     "areaServed": [
       {"@type": "City", "name": "Bannockburn"},
-      {"@type": "City", "name": "Chicago"},
       {"@type": "City", "name": "Deerfield"},
+      {"@type": "City", "name": "Northfield"},
+      {"@type": "City", "name": "Glenview"},
+      {"@type": "City", "name": "Niles"},
+      {"@type": "City", "name": "Highland Park"},
+      {"@type": "City", "name": "Lake Forest"},
+      {"@type": "City", "name": "Libertyville"},
+      {"@type": "City", "name": "Vernon Hills"},
+      {"@type": "City", "name": "Buffalo Grove"},
+      {"@type": "City", "name": "Wheeling"},
+      {"@type": "City", "name": "Prospect Heights"},
+      {"@type": "City", "name": "Des Plaines"},
+      {"@type": "City", "name": "Mount Prospect"},
+      {"@type": "City", "name": "Arlington Heights"},
+      {"@type": "City", "name": "Chicago"},
       {"@type": "State", "name": "Illinois"}
     ],
     "sameAs": [

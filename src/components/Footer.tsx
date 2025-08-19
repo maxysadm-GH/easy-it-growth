@@ -150,9 +150,9 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="border-t border-gray-700 pt-6">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="text-gray-400 text-sm">
-                © 2024 MBACIO, LLC. All rights reserved. • IT Support for Growing Businesses • Serving Bannockburn & Chicagoland
-              </div>
+            <div className="text-gray-400 text-sm">
+              © 2024 MBACIO, LLC. All rights reserved. • IT Support for Growing Businesses • Serving North Chicago: Bannockburn, Deerfield, Northfield, Glenview & surrounding areas
+            </div>
               <div className="flex space-x-6 text-sm">
                 <a href="/privacy-policy" className="text-gray-400 hover:text-accent transition-colors">Privacy Policy</a>
                 <a href="/terms-of-service" className="text-gray-400 hover:text-accent transition-colors">Terms of Service</a>

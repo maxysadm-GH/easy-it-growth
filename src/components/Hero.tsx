@@ -86,7 +86,7 @@ const Hero = () => {
           
           {/* Trust microcopy */}
           <p className="mt-4 text-sm text-white/60">
-            Serving Bannockburn & Chicagoland • 60-Day Satisfaction Warranty
+            Serving North Chicago • Bannockburn • Deerfield • Northfield • Glenview • 60-Day Satisfaction Warranty
           </p>
         </div>
       </div>
