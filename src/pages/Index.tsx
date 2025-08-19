@@ -100,7 +100,7 @@ const Index = () => {
               </h1>
               
               <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
-                Automation, dashboards, and secure support—built for busy teams who need results, not jargon.
+                Automation, AI, and secure 24/7 support that makes every penny work for you. 20 years optimizing manufacturing operations with bilingual expertise.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -116,7 +116,7 @@ const Index = () => {
                   href="/dashboard-solutions"
                   className="inline-flex items-center justify-center px-10 py-6 text-xl font-bold border-2 border-accent text-accent rounded-lg shadow-lg hover:bg-accent hover:text-navy hover:scale-105 transition-all duration-300"
                 >
-                  See What We Build
+                  Explore Our Automation
                 </a>
               </div>
               
@@ -126,15 +126,14 @@ const Index = () => {
             </div>
 
             {/* Right Column - Professional Visual */}
-            <div className="hero-image-placeholder bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 min-h-[400px] flex items-center justify-center">
-              {/* Placeholder for high-impact brand image */}
-              <div className="text-center text-white/60">
-                <div className="w-32 h-32 bg-gradient-yellow rounded-full flex items-center justify-center mx-auto mb-6 opacity-20">
-                  <TrendingUp className="w-16 h-16 text-navy" />
-                </div>
-                <p className="text-lg font-medium">Professional Brand Visual</p>
-                <p className="text-sm">High-impact image placement</p>
-              </div>
+            <div className="hero-image-placeholder relative rounded-2xl overflow-hidden min-h-[400px] bg-gradient-to-br from-electric-blue/20 to-navy/40">
+              <img 
+                src="/assets/hero-manufacturing-automation.jpg"
+                alt="Modern manufacturing facility with AI automation and bilingual support systems"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-navy/30 to-transparent"></div>
             </div>
           </div>
         </div>
