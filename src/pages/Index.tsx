@@ -80,7 +80,7 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <Helmet>
         <title>Smarter IT. Simpler Growth. | MBACIO Serving Bannockburn & Chicagoland</title>
-        <meta name="description" content="Automation, dashboards, and secure support—built for busy teams who need results, not jargon. Serving manufacturing, law, and CPA firms in Bannockburn & Chicagoland." />
+        <meta name="description" content="Automation, AI, and secure support—built for busy teams who need results, not jargon. Serving manufacturing, law, and CPA firms in Bannockburn & Chicagoland." />
         <meta name="keywords" content="IT automation, business dashboards, managed IT services, Bannockburn IT, Chicagoland IT consulting, manufacturing IT, legal IT, CPA firm IT" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
@@ -100,7 +100,7 @@ const Index = () => {
               </h1>
               
               <p className="text-xl lg:text-2xl text-gray-200 mb-12 leading-relaxed">
-                Automation, AI, and secure 24/7 support that makes every penny work for you. 20 years optimizing manufacturing operations with bilingual expertise.
+                Automation, AI, and secure support that makes every penny work for you. 20 years optimizing manufacturing operations with bilingual expertise.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -128,7 +128,7 @@ const Index = () => {
             {/* Right Column - Professional Visual */}
             <div className="hero-image-placeholder relative rounded-2xl overflow-hidden min-h-[400px] bg-gradient-to-br from-electric-blue/20 to-navy/40">
               <img 
-                src="/assets/hero-manufacturing-automation.jpg"
+                src="/lovable-uploads/hero-manufacturing-automation.jpg"
                 alt="Modern manufacturing facility with AI automation and bilingual support systems"
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="eager"
@@ -239,7 +239,7 @@ const Index = () => {
                   Secure Support
                 </h3>
                 <p className="text-gray-700 font-inter leading-relaxed">
-                  24/7 enterprise-grade security with bilingual excellence. English & Spanish support ensuring your team never misses a beat.
+                  Enterprise-grade security with bilingual excellence. English & Spanish support ensuring your team never misses a beat.
                 </p>
               </CardContent>
             </Card>
