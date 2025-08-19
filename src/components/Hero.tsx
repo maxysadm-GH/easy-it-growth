@@ -1,7 +1,7 @@
 
 import React from 'react';
-import heroImage from '@/assets/hero-mbacio-A.webp';
-import heroImageMobile from '@/assets/hero-mbacio-mobile.webp';
+import heroImage from '@/assets/hero-manufacturing-automation.jpg';
+import heroImageMobile from '@/assets/hero-manufacturing-mobile.jpg';
 
 const Hero = () => {
   const handlePrimaryClick = () => {
@@ -46,7 +46,7 @@ const Hero = () => {
         />
         <img 
           src={heroImage}
-          alt="Abstract data streams converging into a single source of truth"
+          alt="Modern manufacturing facility with AI automation and bilingual support systems"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-75 ease-linear"
           style={{
             transform: 'translate(var(--parallax-x, 0), var(--parallax-y, 0))'
@@ -64,7 +64,7 @@ const Hero = () => {
             Smarter IT. Simpler Growth.
           </h1>
           <p className="mt-6 text-lg leading-8 text-white/80">
-            Dashboards, AI, and 24/7 support—built for teams that need results, not jargon.
+            Automation, AI, and secure 24/7 support that makes every penny work for you. 20 years optimizing manufacturing operations with bilingual expertise.
           </p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-start gap-4">
@@ -78,9 +78,9 @@ const Hero = () => {
             <button
               onClick={handleSecondaryClick}
               className="inline-flex items-center rounded-2xl border border-white/30 px-6 py-3 font-semibold text-white hover:bg-white/10 transition-all duration-300"
-              aria-label="View MBACIO dashboard examples"
+              aria-label="Explore MBACIO automation solutions"
             >
-              See Dashboard Examples
+              Explore Our Automation
             </button>
           </div>
           
