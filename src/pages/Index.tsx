@@ -125,15 +125,61 @@ const Index = () => {
               </p>
             </div>
 
-            {/* Right Column - Professional Visual */}
-            <div className="hero-image-placeholder relative rounded-2xl overflow-hidden min-h-[400px] bg-gradient-to-br from-electric-blue/20 to-navy/40">
+            {/* Right Column - Animated Visual */}
+            <div className="hero-visual relative rounded-2xl overflow-hidden min-h-[400px] lg:min-h-[500px]">
+              {/* Animated Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/30 via-navy/60 to-purple-600/40 animate-gradient-shift"></div>
+              
+              {/* Floating Particles */}
+              <div className="absolute inset-0">
+                {[...Array(20)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-2 h-2 bg-electric-yellow/60 rounded-full animate-float-particle"
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      animationDelay: `${Math.random() * 5}s`,
+                      animationDuration: `${3 + Math.random() * 4}s`
+                    }}
+                  />
+                ))}
+              </div>
+              
+              {/* Geometric Shapes */}
+              <div className="absolute inset-0">
+                <div className="absolute top-10 right-10 w-20 h-20 border-2 border-electric-yellow/30 rotate-45 animate-spin-slow"></div>
+                <div className="absolute bottom-20 left-10 w-16 h-16 bg-electric-blue/20 rounded-full animate-pulse-glow"></div>
+                <div className="absolute top-1/2 left-1/4 w-12 h-12 border border-white/20 animate-float-up"></div>
+              </div>
+              
+              {/* Manufacturing Background Image */}
               <img 
                 src="/lovable-uploads/hero-manufacturing-automation.jpg"
                 alt="Modern manufacturing facility with AI automation and bilingual support systems"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply"
                 loading="eager"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-navy/30 to-transparent"></div>
+              
+              {/* Overlay Gradients */}
+              <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-electric-blue/30"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent"></div>
+              
+              {/* AI Circuit Pattern Overlay */}
+              <div className="absolute inset-0 opacity-30">
+                <svg className="w-full h-full" viewBox="0 0 400 300" fill="none">
+                  <defs>
+                    <pattern id="circuit" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                      <path d="M20 0v40M0 20h40" stroke="currentColor" strokeWidth="0.5" className="text-electric-yellow animate-pulse"/>
+                      <circle cx="20" cy="20" r="2" fill="currentColor" className="text-electric-blue animate-ping"/>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#circuit)"/>
+                </svg>
+              </div>
+              
+              {/* Glowing Edge Effect */}
+              <div className="absolute inset-0 rounded-2xl border border-electric-blue/50 shadow-[0_0_30px_rgba(59,130,246,0.3)] animate-pulse-border"></div>
             </div>
           </div>
         </div>
