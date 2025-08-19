@@ -1,6 +1,8 @@
 
 import React from 'react';
 import BlogContentParser from './BlogContentParser';
+import BlogInternalLinks from './BlogInternalLinks';
+import MidArticleCTA from './MidArticleCTA';
 
 // Define the BlogPost type locally to match what we expect
 interface BlogPost {
@@ -34,6 +36,16 @@ const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
               seoKeyword={post.seo_keyword}
               title={post.title}
             />
+
+            {/* Mid-article CTA - appears after content */}
+            <MidArticleCTA 
+              variant={post.seo_keyword?.includes('security') || post.seo_keyword?.includes('cyber') ? 'security' : 
+                      post.seo_keyword?.includes('dashboard') || post.seo_keyword?.includes('analytics') ? 'dashboard' : 
+                      'assessment'}
+            />
+
+            {/* Internal links section */}
+            <BlogInternalLinks currentPostTitle={post.title} />
 
             {/* Embedded content */}
             {post.embedded_c && (

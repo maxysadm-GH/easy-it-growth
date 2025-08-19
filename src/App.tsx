@@ -33,6 +33,9 @@ import Industries from './pages/Industries';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Resources from './pages/Resources';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import Security from './pages/Security';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -76,6 +79,9 @@ function App() {
                 <Route path="/tools/pl-impact-report" element={<PLImpactReport />} />
                 <Route path="/pricing" element={<PricingROI />} />
                 <Route path="/schedule" element={<Services />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
+                <Route path="/security" element={<Security />} />
               </Routes>
             </BrowserRouter>
           </TooltipProvider>
