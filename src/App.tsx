@@ -10,6 +10,7 @@ import Services from './pages/Services';
 import CaseStudies from './pages/CaseStudies';
 import WhyUs from './pages/WhyUs';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import StaffProductivity from './pages/StaffProductivity';
 import DowntimeCost from './pages/DowntimeCost';
 import ManufacturingAnalytics from './pages/ManufacturingAnalytics';
@@ -54,6 +55,7 @@ function App() {
                 <Route path="/case-studies" element={<CaseStudies />} />
                 <Route path="/why-us" element={<WhyUs />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/tools/staff-productivity" element={<StaffProductivity />} />
                 <Route path="/tools/downtime-cost" element={<DowntimeCost />} />
                 <Route path="/manufacturing-analytics" element={<ManufacturingAnalytics />} />
