@@ -125,15 +125,21 @@ const Index = () => {
               </p>
             </div>
 
-            {/* Right Column - Professional Visual */}
-            <div className="hero-image-placeholder relative rounded-2xl overflow-hidden min-h-[400px] bg-gradient-to-br from-electric-blue/20 to-navy/40">
-              <img 
-                src="/lovable-uploads/hero-manufacturing-automation.jpg"
-                alt="Modern manufacturing facility with AI automation and bilingual support systems"
+            {/* Right Column - Hero Video */}
+            <div className="hero-video-container relative rounded-2xl overflow-hidden min-h-[400px] bg-gradient-to-br from-electric-blue/20 to-navy/40">
+              <video 
+                src="/assets/hero-mbacio-veo3.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
                 className="absolute inset-0 w-full h-full object-cover"
-                loading="eager"
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-navy/30 to-transparent"></div>
+                poster="/lovable-uploads/hero-manufacturing-automation.jpg"
+              >
+                <source src="/assets/hero-mbacio-veo3.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-br from-navy/30 to-transparent pointer-events-none"></div>
             </div>
           </div>
         </div>
