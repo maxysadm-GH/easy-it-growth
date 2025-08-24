@@ -170,7 +170,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
       </div>
 
       {/* Messages Area */}
-      <div className="flex-1 min-h-0 overflow-hidden" style={{ height: '300px' }}>
+      <div className="flex-1 overflow-hidden" style={{ height: '300px', minHeight: '300px' }}>
         {showOfflineWelcome ? (
           <OfflineWelcome />
         ) : (

@@ -19,8 +19,8 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
   }, [messages]);
 
   return (
-    <ScrollArea className="flex-1 h-full">
-      <div className="p-4 space-y-3 min-h-full">
+    <ScrollArea className="flex-1 h-full overflow-y-auto">
+      <div className="p-4 space-y-3">
         {messages.map((msg, i) => (
           <div
             key={i}

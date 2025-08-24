@@ -1,5 +1,6 @@
 
 import { useParams, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import BlogSubscription from '../components/BlogSubscription';
@@ -18,6 +19,11 @@ const BlogPost = () => {
   }
 
   const { data: post, isLoading, error } = useBlogPost(slug);
+
+  // Scroll to top when component loads or slug changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [slug]);
 
   if (isLoading) {
     return (
