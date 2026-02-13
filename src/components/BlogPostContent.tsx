@@ -1,5 +1,6 @@
 
 import React from 'react';
+import DOMPurify from 'dompurify';
 import BlogContentParser from './BlogContentParser';
 import BlogInternalLinks from './BlogInternalLinks';
 import MidArticleCTA from './MidArticleCTA';
@@ -50,9 +51,12 @@ const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
             {/* Embedded content */}
             {post.embedded_c && (
               <div className="my-12 animate-fade-in">
-                <div 
+              <div 
                   className="bg-gradient-to-r from-accent/5 to-transparent p-6 rounded-lg border-l-4 border-accent"
-                  dangerouslySetInnerHTML={{ __html: post.embedded_c }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.embedded_c, {
+                    ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'a', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'div', 'img', 'blockquote'],
+                    ALLOWED_ATTR: ['href', 'target', 'rel', 'src', 'alt', 'class', 'style']
+                  }) }}
                 />
               </div>
             )}
